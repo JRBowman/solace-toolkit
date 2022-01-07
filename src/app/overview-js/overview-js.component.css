@@ -1,0 +1,18 @@
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.headers-align .mat-expansion-panel-header-title h3 {
+    display: contents;
+}
+
+.headers-align .mat-expansion-panel-header-title .mat-icon {
+    margin-right: 10%;
+}

@@ -1,0 +1,56 @@
+<h1>Documentation</h1>
+<div class="disp-flex">
+  <mat-card class="auto-flex mr-2">
+    <mat-card-title>Microservice Oriented Archtiecture (MSOA)</mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Project Tags">
+        <mat-chip class="font-small">typescript</mat-chip>
+        <mat-chip class="font-small">javascript</mat-chip>
+        <mat-chip class="font-small">node</mat-chip>
+        <mat-chip class="font-small">angular-12</mat-chip>
+        <mat-chip class="font-small">msoa-demo</mat-chip>
+        <mat-chip class="font-small">oidc</mat-chip>
+        <mat-chip class="font-small">identity-server-4</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <h4 class="auto-flex">1.) Angular 12 - powered by TypeScript and JavaScript</h4>
+          <a mat-stroked-button class="no-flex" color="primary" href="https://angular.io/docs">ReadTheDocs</a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <h4 class="auto-flex">2.) Angular Auth OIDC Client - to handle User Session authentication using OIDC to another MSOA service</h4>
+          <a mat-stroked-button class="no-flex" color="warn"
+            href="https://github.com/damienbod/angular-auth-oidc-client">ReadTheDocs</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="auto-flex" style="width: 25%;">
+    <mat-card-title style="text-align: center; margin-bottom: 24px;">Identity</mat-card-title>
+
+    <mat-card-content>
+      <div *ngIf="!msoaUserService.IsAuthenticated" style="text-align: center;">
+        <button mat-fab color="primary" class="disp-flex" (click)="msoaUserService.Login()">
+          <mat-icon>login</mat-icon>
+        </button>
+        <mat-divider style="margin-top: 24px; margin-bottom: 24px;" inset="true"></mat-divider>
+        <h4 class="auto-flex">Login</h4>
+      </div>
+      <div *ngIf="msoaUserService.IsAuthenticated" style="text-align: center;">
+        <button mat-fab color="primary" class="disp-flex" (click)="router.navigateByUrl('/identity')">
+          <mat-icon>badge</mat-icon>
+        </button>
+        <mat-divider style="margin-top: 24px; margin-bottom: 24px;" inset="true"></mat-divider>
+        <h4 class="auto-flex">{{msoaUserService.testUser.name}}</h4>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      
+    </mat-card-actions>
+  </mat-card>
+</div>

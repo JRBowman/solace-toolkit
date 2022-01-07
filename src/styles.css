@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
+
+.router-content {
+    padding-left: 9%;
+    padding-right: 9%;
+    padding-top: 32px;
+}
+
+.mr-2 {
+    margin-right: 2%;
+}
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+
+.site-nav-bar {
+    width: 17%;
+    min-width: 256px;
+    z-index: 20;
+}
+
+.auto-flex {
+    flex: auto;
+}
+
+.no-flex {
+    flex: none;
+}
+
+.font-small {
+    font-size: small;
+}
+
+.font-medium {
+    font-size: medium;
+}
+
+.font-large {
+    font-size: large;
+}
+
+.disp-flex {
+    display: flex;
+}
