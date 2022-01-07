@@ -21,10 +21,10 @@ export class MsoaUserService implements OnInit {
 
     ngOnInit()
     {
-        if (this.oidcSecurityService.isAuthenticated())
-        {
-            this.testUser = this.oidcSecurityService.getUserData();
-        }
+        // if (this.oidcSecurityService.isAuthenticated())
+        // {
+        //     this.testUser = this.oidcSecurityService.getUserData();
+        // }
     }
 
     public SetState(accessToken: string, isAuthenticated: boolean, idToken: string, userData: any) {

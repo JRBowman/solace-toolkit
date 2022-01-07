@@ -10,13 +10,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
 }
 
 .mr-2 {
-    margin-right: 2%;
+    margin-right: 2% !important;
+}
+
+.mt-2 {
+    margin-top: 2% !important;
+}
+
+.mb-2 {
+    margin-bottom: 2% !important;
 }
 
 .top-nav {
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.center-image-fab {
+    top: -4px; 
+    position: relative; 
+    width: 32px;
+    height: 32px;
 }
 
 

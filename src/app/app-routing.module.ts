@@ -13,12 +13,12 @@ const routes: Routes = [
   {
     path: 'overview',
     component: OverviewJsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'identity',
     component: IdentityComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   }
 ];
 

@@ -13,9 +13,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     // Process Authorization checks here:
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken}) => {
-      this.msoaUserService.SetState(accessToken, isAuthenticated, idToken, userData)
-    })
+    // this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken}) => {
+    //   this.msoaUserService.SetState(accessToken, isAuthenticated, idToken, userData)
+    // })
   }
 
   login(){
