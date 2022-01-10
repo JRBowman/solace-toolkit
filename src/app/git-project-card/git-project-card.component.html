@@ -3,6 +3,8 @@
         <a mat-button class="no-flex" [href]="gitUrl | safeurl" style="padding: 0;"><h2 style="margin: 0; color: rgb(88, 166, 255);">{{gitName}}</h2></a>
         <span class="auto-flex"></span>
         <icon-github *ngIf="sourceType == 0" class="no-flex"></icon-github>
+        <!--<img *ngIf="sourceType == 0" src="assets/scalableVectorGraphics/github.svg">-->
+        <!--<img *ngIf="sourceType == 1" src="assets/scalableVectorGraphics/azure-devops.svg">-->
         <icon-azuredevops *ngIf="sourceType == 1" class="no-flex"></icon-azuredevops>
     </mat-card-title>
     <mat-card-content>

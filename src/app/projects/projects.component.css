@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.headers-align .mat-expansion-panel-header-title h1 {
+.headers-align .mat-expansion-panel-header-title h1,h2 {
     margin-left: 16px;
     margin-bottom: 0px;
 }

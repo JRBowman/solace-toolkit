@@ -1,15 +1,12 @@
+<h1>Projects</h1>
 <mat-accordion class="headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="step = 0">
       <mat-expansion-panel-header>
         <mat-panel-title>
             <icon-github></icon-github>
-            <h1>GitHub</h1>
+            <h2>GitHub</h2>
         </mat-panel-title>
-        <mat-panel-description>
-          Public Projects
-        </mat-panel-description>
       </mat-expansion-panel-header>
-
         <section id="projects-github">
             <mat-divider></mat-divider>
             <mat-list role="list">
@@ -43,7 +40,6 @@
                 
                 </mat-list>
         </section>
-
       <mat-action-row>
       </mat-action-row>
     </mat-expansion-panel>
@@ -52,11 +48,8 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
               <icon-azuredevops></icon-azuredevops>
-              <h1>Azure DevOps</h1>
+              <h2 class="no-break">Azure DevOps</h2>
           </mat-panel-title>
-          <mat-panel-description>
-            Private Projects
-          </mat-panel-description>
         </mat-expansion-panel-header>
   
         <section id="projects-azuredevops">
@@ -79,7 +72,7 @@
                 <mat-list-item class="auto-height mb-2">
                     <git-project-card class="full-width" gitUrl="'https://dev.azure.com/bowman-redhat/dotnet-msoa'" 
                     gitClone="'vscode://vscode.git/clone?url=https://bowman-redhat@dev.azure.com/bowman-redhat/dotnet-msoa/_git/angular-ui'" 
-                    gitName="Bowman / bowman-site"
+                    gitName="Bowman / dotnet-msoa"
                     [sourceType]="1">
                         <p>Microservice-Oriented Application Stack Example</p>
                         <p>Complex .NET 5 Microservice-Oriented Application (MSOA) - Produces a number of modernization use cases / examples to work from
