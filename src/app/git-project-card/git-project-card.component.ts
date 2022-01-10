@@ -11,12 +11,20 @@ export class GitProjectCardComponent implements OnInit {
   
   @Input() gitUrl: string = "github.com";
   @Input() gitName: string = "JRBowman / ansible-winset";
-  @Input() gitClone: string = "git-client://clone?repo=https%3A%2F%2Fgithub.com%2FJRBowman%2Fansible-winset";
   @Input() sourceType: number = 0;
   // 0 = GitHub,
   // 1 = AzureDevOps
 
+  public gitClone: string = "git-client://clone?repo=";
+  public vscodeClone: string = "vscode://vscode.git/clone?url="
+
   ngOnInit(): void {
+    // Remove String Literal Markers:
+    this.gitUrl = this.gitUrl.replace(/'/gm, "");
+    //this.gitClone = this.gitClone.replace(/'/gm, "");
+
+    this.gitClone += this.gitUrl;
+    this.vscodeClone += this.gitUrl;
   }
 
 }

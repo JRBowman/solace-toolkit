@@ -4,8 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
 
 .router-content {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 24%;
+    padding-right: 24%;
     padding-top: 32px;
 }
 

@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="mat-elevation-z0">
     <mat-card-title class="disp-flex">
-        <a mat-button class="no-flex" [href]="gitUrl" style="padding: 0;"><h2 style="margin: 0; color: rgb(88, 166, 255);">{{gitName}}</h2></a>
+        <a mat-button class="no-flex" [href]="gitUrl | safeurl" style="padding: 0;"><h2 style="margin: 0; color: rgb(88, 166, 255);">{{gitName}}</h2></a>
         <span class="auto-flex"></span>
         <icon-github *ngIf="sourceType == 0" class="no-flex"></icon-github>
         <icon-azuredevops *ngIf="sourceType == 1" class="no-flex"></icon-azuredevops>
@@ -9,6 +9,8 @@
         <ng-content></ng-content>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-button [href]="gitClone">Clone</a>
+        <a mat-button [href]="gitClone | safeurl">Git Clone</a>
+        <a mat-button [href]="vscodeClone | safeurl">Open in VSCode</a>
     </mat-card-actions>
 </mat-card>
+<mat-divider></mat-divider>

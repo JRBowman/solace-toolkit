@@ -18,6 +18,7 @@ import { GitProjectCardComponent } from './git-project-card/git-project-card.com
 import { IconGithubComponent } from './common/icon-github/icon-github.component';
 import { IconLinkedinComponent } from './common/icon-linkedin/icon-linkedin.component';
 import { IconAzuredevopsComponent } from './common/icon-azuredevops/icon-azuredevops.component';
+import { SafeurlPipe } from './common/safeurl.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { IconAzuredevopsComponent } from './common/icon-azuredevops/icon-azurede
     GitProjectCardComponent,
     IconGithubComponent,
     IconLinkedinComponent,
-    IconAzuredevopsComponent
+    IconAzuredevopsComponent,
+    SafeurlPipe
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor() { }
 
+  public step = 0;
+
   ngOnInit(): void {
   }
 
