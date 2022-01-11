@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ResumeSheetComponent } from './resume-sheet/resume-sheet.component';
 
 @Component({
   selector: 'app-resume',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResumeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _resumeSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
+  }
+
+  openResumeSheet(): void {
+    this._resumeSheet.open(ResumeSheetComponent);
   }
 
 }

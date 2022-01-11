@@ -1,0 +1,35 @@
+<div class="resume-form">
+    <h1 class="no-margin">Reach Out</h1>
+    <small>No personal data processing or storage - Only a note directly to me!</small>
+
+    <div class="resume-sheet mt-2">
+        <form [formGroup]="form" (ngSubmit)="send()">
+
+            <mat-button-toggle-group class="full-width mb-2" name="contactReason" formControlName="reason" aria-label="Contact Preface">
+                <mat-button-toggle style="width: 33%;" value="Collaborate" checked>Collaborate</mat-button-toggle>
+                <mat-button-toggle style="width: 33%;" value="Opportunity">Opportunity</mat-button-toggle>
+                <mat-button-toggle style="width: 33%;" value="Connect">Connect</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="me@example.com" formControlName="email" required>
+                <mat-error *ngIf="form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Callback Number</mat-label>
+                <input matInput placeholder="111-111-1111" formControlName="phoneNumber">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Message</mat-label>
+                <textarea #tainput class="message-box" matInput placeholder="Optional Message..." formControlName="message"></textarea>
+                <mat-hint>{{tainput.value?.length || 0}}/1250</mat-hint>
+            </mat-form-field>
+
+            <button mat-button *ngIf="form.invalid" disabled class="full-width mt-2" type="submit">Send</button>
+            <button mat-flat-button *ngIf="!form.invalid" color="primary" class="full-width mt-2" type="submit">Send</button>
+        </form>
+    </div>
+</div>

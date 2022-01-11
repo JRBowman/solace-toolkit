@@ -1,0 +1,13 @@
+.resume-sheet {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message-box {
+    min-height: 20vh;
+}
+
+.no-margin {
+    margin: 0px;
+}

@@ -21,6 +21,7 @@ import { IconAzuredevopsComponent } from './common/icon-azuredevops/icon-azurede
 import { SafeurlPipe } from './common/safeurl.pipe';
 import { IconFacebookComponent } from './common/icon-facebook/icon-facebook.component';
 import { IconSoundcloudComponent } from './common/icon-soundcloud/icon-soundcloud.component';
+import { ResumeSheetComponent } from './resume/resume-sheet/resume-sheet.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { IconSoundcloudComponent } from './common/icon-soundcloud/icon-soundclou
     IconAzuredevopsComponent,
     SafeurlPipe,
     IconFacebookComponent,
-    IconSoundcloudComponent
+    IconSoundcloudComponent,
+    ResumeSheetComponent
   ],
   imports: [
     BrowserModule,
