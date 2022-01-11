@@ -41,4 +41,4 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'bocp4-onbowman'
-        cmd: 'oc create imagestreamtag $(imageRepository):latest --from-image=$(containerRegistry)/$(imageRepository):$(tag) -n bowman-dev'
+        cmd: 'oc create imagestreamtag bowman-site:latest --from-image=$(containerRegistry)/$(imageRepository):$(tag) -n bowman-dev'
