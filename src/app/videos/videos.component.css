@@ -1,0 +1,16 @@
+.video-card {
+    width: fit-content;
+    height: fit-content;
+}
+
+@media screen and (min-width: 982px) {
+    .video-card {
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .video-card {
+        max-width: 97%;
+    }
+}

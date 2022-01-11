@@ -8,6 +8,7 @@ import { OverviewJsComponent } from './overview-js/overview-js.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SoftwareComponent } from './software/software.component';
+import { VideosComponent } from './videos/videos.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'music',
     component: MusicComponent,
+    //canActivate: [AuthorizationGuard]
+  },
+  {
+    path: 'videos',
+    component: VideosComponent,
     //canActivate: [AuthorizationGuard]
   }
 ];

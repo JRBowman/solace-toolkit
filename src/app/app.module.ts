@@ -22,6 +22,10 @@ import { SafeurlPipe } from './common/safeurl.pipe';
 import { IconFacebookComponent } from './common/icon-facebook/icon-facebook.component';
 import { IconSoundcloudComponent } from './common/icon-soundcloud/icon-soundcloud.component';
 import { ResumeSheetComponent } from './resume/resume-sheet/resume-sheet.component';
+import { VideosComponent } from './videos/videos.component';
+import { IconDynamicsvgComponent } from './common/icon-dynamicsvg/icon-dynamicsvg.component';
+import { IconK8sComponent } from './common/icon-k8s/icon-k8s.component';
+import { IconOpenshiftComponent } from './common/icon-openshift/icon-openshift.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { ResumeSheetComponent } from './resume/resume-sheet/resume-sheet.compone
     SafeurlPipe,
     IconFacebookComponent,
     IconSoundcloudComponent,
-    ResumeSheetComponent
+    ResumeSheetComponent,
+    VideosComponent,
+    IconDynamicsvgComponent,
+    IconK8sComponent,
+    IconOpenshiftComponent
   ],
   imports: [
     BrowserModule,
