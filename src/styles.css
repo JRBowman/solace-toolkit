@@ -4,8 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
 
 .router-content {
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 17%;
+    padding-right: 17%;
     padding-top: 32px;
 }
 
@@ -77,7 +77,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     white-space: nowrap !important;
 }
 
+@media screen and (max-width: 2560px) {
+    .router-content {
+        padding-left: 23%;
+        padding-right: 23%;
+        padding-top: 32px;
+    }
+}
+
 @media screen and (max-width: 1920px) {
+    .router-content {
+        padding-left: 21%;
+        padding-right: 21%;
+        padding-top: 32px;
+    }
+}
+
+@media screen and (max-width: 1720px) {
+    .router-content {
+        padding-left: 19%;
+        padding-right: 19%;
+        padding-top: 32px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
     .router-content {
         padding-left: 17%;
         padding-right: 17%;
