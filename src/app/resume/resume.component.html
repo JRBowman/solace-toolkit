@@ -1,4 +1,8 @@
-<h1>Resume</h1>
-<mat-divider></mat-divider>
+<section name="bowman-resume" class="resume-view">
+<markdown [src]="'assets/bowman-resume.md'"></markdown>
 
-<button mat-flat-button color="primary" (click)="openResumeSheet()">Options</button>
+<mat-divider></mat-divider>
+<button mat-fab color="primary" class="float-button" (click)="openResumeSheet()">
+    <mat-icon>email</mat-icon>
+</button>
+</section>
