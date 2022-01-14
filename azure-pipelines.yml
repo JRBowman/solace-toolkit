@@ -38,12 +38,14 @@ stages:
         tags: |
           $(tag)
     - task: oc-cmd@2
+      displayName: OCP sync images
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'bocp4-onbowman'
-        cmd: 'oc import-image bowman-site --from=onbowman.azurecr.io/bowmansite --all --confirm -n bowman-dev'
-        #cmd: 'oc create imagestreamtag $(ocpDeploymentName):latest --from-image=$(containerRegistry)/$(imageRepository):$(tag) -n $(ocpProject)'
+        cmd: 'oc import-image bowman-site --from=$(containerRegistry)/$(imageRepository) --all --confirm -n bowman-dev'
+
     - task: oc-cmd@2
+      displayName: OCP Update Latest ImageStreamTag
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'bocp4-onbowman'
