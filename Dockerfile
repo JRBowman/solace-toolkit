@@ -18,8 +18,8 @@ RUN npm run build
 # Stage 2: Serve app with nginx server
 
 # Use official nginx image as the base image
-#FROM registry.redhat.io/ubi8/nginx-120
-FROM nginx:latest
+FROM registry.redhat.io/ubi8/nginx-120
+#FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/onbowman-13 /usr/share/nginx/html
