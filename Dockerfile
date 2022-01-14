@@ -18,7 +18,7 @@ RUN npm run build
 # Stage 2: Serve app with nginx server
 
 # Use official nginx image as the base image
-FROM registry.redhat.io/ubi8/nginx-120
+FROM registry.access.redhat.com/ubi8/nginx-120
 #FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
