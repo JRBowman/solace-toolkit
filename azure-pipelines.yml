@@ -37,17 +37,3 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
-    - task: oc-cmd@2
-      displayName: OCP sync images
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'bocp4-onbowman'
-        cmd: 'oc import-image bowman-site --from=$(containerRegistry)/$(imageRepository) --all --confirm -n bowman-dev'
-
-    - task: oc-cmd@2
-      displayName: OCP Update Latest ImageStreamTag
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'bocp4-onbowman'
-        cmd: 'oc tag bowman-dev/bowman-site:$(tag) bowman-dev/bowman-site:latest'
