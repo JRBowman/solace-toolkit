@@ -1,0 +1,25 @@
+<svg viewBox="0 0 110 89" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414">
+                                        <path d="M45.424 0L9 17.55 0 56.954l25.206 31.61H65.64l25.205-31.61-8.992-39.406L45.423 0z" fill="#e7f1f9" fill-rule="nonzero"></path>
+                                        <clipPath id="apprenda-diagram-logo-a">
+                                            <path d="M0 0h241.063v88.565H0z"></path>
+                                        </clipPath>
+                                        <g clip-path="url(#apprenda-diagram-logo-a)" fill-rule="nonzero">
+                                            <path d="M45.375 15.052l-12.57 26.05 12.57 12.47L57.948 41.1 45.375 15.05z" fill="url(#apprenda-diagram-logo-b)"></path>
+                                            <path d="M71.743 69.43L57.948 41.1 45.375 53.57l15.987 15.86h10.38z" fill="url(#apprenda-diagram-logo-c)"></path>
+                                            <path d="M45.375 53.57L32.805 41.1l-13.8 28.33h10.382l15.988-15.86z" fill="url(#apprenda-diagram-logo-d)"></path>
+                                        </g>
+                                        <defs>
+                                            <radialGradient id="apprenda-diagram-logo-b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(180 28.48 20.667) scale(23.7178)">
+                                                <stop offset="0%" stop-color="#0968ad"></stop>
+                                                <stop offset="100%" stop-color="#103e68"></stop>
+                                            </radialGradient>
+                                            <radialGradient id="apprenda-diagram-logo-c" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-20.7924 2.035 -2.2252 -22.736 53.846 38.922)">
+                                                <stop offset="0%" stop-color="#2189ca"></stop>
+                                                <stop offset="100%" stop-color="#0968ad"></stop>
+                                            </radialGradient>
+                                            <linearGradient id="apprenda-diagram-logo-d" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(19.006 55.266) scale(26.369)">
+                                                <stop offset="0%" stop-color="#94c2e0"></stop>
+                                                <stop offset="100%" stop-color="#c4dcef"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>

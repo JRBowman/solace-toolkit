@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthorizationGuard } from './auth/auth-guard';
-import { IdentityComponent } from './identity/identity.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { MusicComponent } from './music/music.component';
-import { OverviewJsComponent } from './overview-js/overview-js.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SoftwareComponent } from './software/software.component';

@@ -1,0 +1,10 @@
+.resume-view {
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.float-button {
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+}
