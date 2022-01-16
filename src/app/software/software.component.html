@@ -1,4 +1,16 @@
 <h1>Software</h1>
+<mat-card class="mb-2">
+    <mat-card-content>
+        <markdown class="word-wrap" lineNumbers ngPreserveWhitespaces [src]="'assets/software/intro.md'">
+        </markdown>
+    </mat-card-content>
+</mat-card>
 
-<markdown lineNumbers [src]="'https://raw.githubusercontent.com/JRBowman/rhet-log/main/rhet-log/src/app/app.component.ts'">
-</markdown>
+<section name="articles">
+    <h1>Articles</h1>
+    <div class="articles-container">
+        <div *ngFor="let article of softwareArticles">
+            <git-article [data]="article"></git-article>
+        </div>
+    </div>
+</section>

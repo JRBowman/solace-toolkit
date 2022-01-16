@@ -13,6 +13,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     padding-top: 32px;
 }
 
+.word-wrap * {
+    white-space: normal;
+}
+
+.word-wrap > pre[class*="language-"].line-numbers > code {
+    white-space: normal;
+}
+
 .auto-height {
     height: auto !important;
 }

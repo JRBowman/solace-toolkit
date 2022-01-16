@@ -30,6 +30,7 @@ import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+import { GitArticleComponent } from './git-article/git-article.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
     IconLinkedinComponent,
     IconOpenshiftComponent,
     IconSoundcloudComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    GitArticleComponent
   ],
   imports: [
     BrowserModule,
