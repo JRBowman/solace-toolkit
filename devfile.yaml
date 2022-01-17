@@ -1,0 +1,62 @@
+apiVersion: 1.0.0
+metadata:
+  name: ang13-bowmansite
+projects:
+  - name: nodejs-web-app
+    source:
+      location: 'https://bowman-redhat@dev.azure.com/bowman-redhat/bowman-site/_git/bowman-site'
+      type: git
+components:
+  - id: vscode/typescript-language-features/latest
+    type: chePlugin
+  - id: ms-vscode/node-debug2/latest
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: nodejs
+        port: 5500
+    args:
+      - /bin/sh
+      - '-c'
+      - while true; do sleep 30; done;
+    memoryLimit: 2Gi
+    type: dockerimage
+    alias: nodejs
+    image: 'registry.redhat.io/rhel8/nodejs-14@sha256:a9c8dfba4ea4dd6666b167dc0dc7b989bee71c17cbd415103295bb8ea16dc468'
+commands:
+  - name: 1. NPM Install
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/'
+        type: exec
+        command: npm install
+        component: nodejs
+  - name: 2. Install NG dependencies
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/'
+        type: exec
+        command: npm install -g @angular/cli
+        component: nodejs
+  - name: 3. NG Serve
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/nodejs-web-app/'
+        type: exec
+        command: ng serve --disable-host-check
+        component: nodejs
+  - name: Attach remote debugger
+    actions:
+      - referenceContent: |
+          {
+            "version": "0.2.0",
+            "configurations": [
+              {
+                "type": "node",
+                "request": "attach",
+                "name": "Attach to Remote",
+                "address": "localhost",
+                "port": 9229,
+                "localRoot": "${workspaceFolder}",
+                "remoteRoot": "${workspaceFolder}"
+              }
+            ]
+          }
+        type: vscode-launch
