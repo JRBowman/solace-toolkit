@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { MusicComponent } from './music/music.component';
+import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SoftwareComponent } from './software/software.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'videos',
     component: VideosComponent,
     //canActivate: [AuthorizationGuard]
+  },
+  {
+    path: 'openshift-visual-system',
+    component: OpenshiftVisualSystemComponent
   }
 ];
 

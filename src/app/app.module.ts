@@ -31,6 +31,8 @@ import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 import { GitArticleComponent } from './git-article/git-article.component';
+import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
+import { GojsAngularModule } from 'gojs-angular';
 
 @NgModule({
   declarations: [
@@ -53,13 +55,15 @@ import { GitArticleComponent } from './git-article/git-article.component';
     IconOpenshiftComponent,
     IconSoundcloudComponent,
     SafeurlPipe,
-    GitArticleComponent
+    GitArticleComponent,
+    OpenshiftVisualSystemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    GojsAngularModule,
     AllMaterialsModule,
     MarkdownModule.forRoot({
       loader: HttpClient

@@ -15,16 +15,19 @@
 
 <mat-drawer-container class="site-nav" autosize>
   <mat-drawer #drawer class="site-nav-bar mat-elevation-z4" opened="true" mode="side">
-    <mat-list role="list">
-      <mat-list-item><a class="auto-flex" mat-button href="/">Introduction</a></mat-list-item>
+    <mat-nav-list>
+      <a mat-list-item class="auto-flex" [routerLink]="['/']">Introduction</a>
       <mat-divider></mat-divider>
-      <mat-list-item><a class="auto-flex" mat-button href="/resume">Resume / CV</a></mat-list-item>
-      <mat-list-item><a class="auto-flex" mat-button href="/software">Software</a></mat-list-item>
-      <mat-list-item><a class="auto-flex" mat-button href="/projects">Projects</a></mat-list-item>
-      <mat-list-item><a class="auto-flex" mat-button href="/music">Music</a></mat-list-item>
-      <mat-list-item><a class="auto-flex" mat-button href="/videos">Videos</a></mat-list-item>
+      <div mat-subheader>Content</div>
+      <a mat-list-item class="auto-flex" [routerLink]="['/resume']">Resume / CV</a>
+      <a mat-list-item class="auto-flex" [routerLink]="['/software']">Software</a>
+      <a mat-list-item class="auto-flex" [routerLink]="['/projects']">Projects</a>
+      <a mat-list-item class="auto-flex" [routerLink]="['/music']">Music</a>
+      <a mat-list-item class="auto-flex" [routerLink]="['/videos']">Videos</a>
       <mat-divider></mat-divider>
-    </mat-list>
+      <div mat-subheader>Tools</div>
+      <a mat-list-item class="auto-flex" [routerLink]="['/openshift-visual-system']">OpenShift Visual System</a>
+    </mat-nav-list>
   </mat-drawer>
 
   <section class="router-content">

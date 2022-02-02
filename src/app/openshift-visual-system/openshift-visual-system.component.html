@@ -1,0 +1,27 @@
+<section name="OpenShift Visual System" class="full-frame">
+    <mat-card>
+        <mat-card-title>
+            OpenShift Visual System
+        </mat-card-title>
+        <gojs-diagram #ocpVisual [initDiagram]='initDiagram' [linkDataArray]='state.diagramLinkData'
+            [nodeDataArray]='state.diagramNodeData' [modelData]='state.diagramModelData'
+            [skipsDiagramUpdate]='state.skipsDiagramUpdate' (modelChange)='diagramModelChange($event)'
+            [divClassName]='diagramDivClassName'>
+        </gojs-diagram>
+        <mat-card-actions>
+            <button mat-button (click)="Save()">Start</button>
+            <button mat-button (click)="load()">load</button>
+            <button mat-button (click)="AddDefaultNodeTypes()">AddDefaultPorts</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
+
+<div class="mt-2">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Backlog</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/backlog/ocp-visual-system.md'"></markdown>
+    </mat-expansion-panel>
+</div>
