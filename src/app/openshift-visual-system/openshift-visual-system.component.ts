@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import * as go from 'gojs';
 import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
 import produce from "immer";
@@ -10,9 +10,19 @@ import { CustomLink } from './custom-link';
   styleUrls: ['./openshift-visual-system.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class OpenshiftVisualSystemComponent implements OnInit {
+export class OpenshiftVisualSystemComponent implements OnInit, AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef) { }
+
+  public IsLoading: boolean = true;
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.IsLoading = false;
+      this.load();
+  }, 1000);
+    
+  }
 
   ngOnInit(): void {
     //this.diagramModelChange(this.model);
@@ -25,10 +35,15 @@ export class OpenshiftVisualSystemComponent implements OnInit {
   @ViewChild('ocpVisual', { static: true })
   public myDiagramComponent!: DiagramComponent;
 
+  public diaListener(e: go.DiagramEvent) {
+    console.log(e);
+    //this.load();
+  }
+
   public state = {
-    diagramNodeData: this.model.nodeDataArray,
-    diagramLinkData: this.model.linkDataArray,
-    diagramModelData: this.model,
+    diagramNodeData: [{}],
+    diagramLinkData: [{}],
+    diagramModelData: {},
     skipsDiagramUpdate: false,
   };
 
@@ -42,7 +57,7 @@ export class OpenshiftVisualSystemComponent implements OnInit {
     const dia = $(go.Diagram, {
       'undoManager.isEnabled': false,
       allowMove: true,
-      //model: this.model
+      //model: this.model,
       hasVerticalScrollbar: false,
       hasHorizontalScrollbar: false,
       'draggingTool.isGridSnapEnabled': true,
@@ -55,8 +70,6 @@ export class OpenshiftVisualSystemComponent implements OnInit {
         }
       )
     });
-
-    //dia.model = this.model;
 
     // define the Node template:
     dia.nodeTemplate =
@@ -214,6 +227,8 @@ export class OpenshiftVisualSystemComponent implements OnInit {
       topArray: [{"portColor":"#fae3d7", "portId":"t0"} ],
       bottomArray: [{"portColor":"#fae3d7", "portId":"b0"} ]
     };
+
+    // Load Data:
     return dia;
   }
 
@@ -278,8 +293,9 @@ export class OpenshiftVisualSystemComponent implements OnInit {
       // set skipsDiagramUpdate: true since GoJS already has this update
       // this way, we don't log an unneeded transaction in the Diagram's undoManager history
       draft.skipsDiagramUpdate = true;
-      //draft.diagramNodeData = DataSyncService.syncNodeData(changes, draft.diagramNodeData, appComp.model);
-      //draft.diagramLinkData = DataSyncService.syncLinkData(changes, draft.diagramLinkData, appComp.model);
+      draft.diagramModelData = DataSyncService.syncModelData(changes, draft.diagramModelData);
+      draft.diagramNodeData = DataSyncService.syncNodeData(changes, draft.diagramNodeData, this.model);
+      draft.diagramLinkData = DataSyncService.syncLinkData(changes, draft.diagramLinkData, this.model);
       //draft.diagramModelData = DataSyncService.syncModelData(changes, draft.diagramModelData);
     });
   };

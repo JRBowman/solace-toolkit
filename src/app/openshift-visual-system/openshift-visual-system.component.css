@@ -7,6 +7,12 @@
   .full-frame {
 
   }
+
+  .loader {
+      position: absolute !important;
+      left: 45%;
+      top: 45%;
+  }
   
   .myOverviewDiv {
     width: 200px;

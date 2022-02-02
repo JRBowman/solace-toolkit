@@ -3,15 +3,17 @@
         <mat-card-title>
             OpenShift Visual System
         </mat-card-title>
-        <gojs-diagram #ocpVisual [initDiagram]='initDiagram' [linkDataArray]='state.diagramLinkData'
-            [nodeDataArray]='state.diagramNodeData' [modelData]='state.diagramModelData'
-            [skipsDiagramUpdate]='state.skipsDiagramUpdate' (modelChange)='diagramModelChange($event)'
-            [divClassName]='diagramDivClassName'>
-        </gojs-diagram>
+        <mat-spinner class="loader" *ngIf="IsLoading"></mat-spinner>
+        <mat-card-content>
+            <gojs-diagram #ocpVisual [initDiagram]='initDiagram' [linkDataArray]='state.diagramLinkData'
+                [nodeDataArray]='state.diagramNodeData' [modelData]='state.diagramModelData'
+                [skipsDiagramUpdate]='state.skipsDiagramUpdate' (modelChange)='diagramModelChange($event)'
+                [divClassName]='diagramDivClassName'>
+            </gojs-diagram>
+        </mat-card-content>
         <mat-card-actions>
-            <button mat-button (click)="Save()">Start</button>
-            <button mat-button (click)="load()">load</button>
-            <button mat-button (click)="AddDefaultNodeTypes()">AddDefaultPorts</button>
+            <button mat-button (click)="Save()">Show Logs</button>
+            <button mat-button (click)="AddDefaultNodeTypes()">Add Default Ports</button>
         </mat-card-actions>
     </mat-card>
 </section>
