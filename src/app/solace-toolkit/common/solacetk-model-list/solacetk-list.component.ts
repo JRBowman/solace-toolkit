@@ -12,7 +12,7 @@ export class SolaceTKListComponent implements OnInit {
   public dataStruct: any[] = [];
 
   @Input() moduleName: string = "Solace TK Module";
-  @Input() baseUrl: string = "http://localhost:5010/api/v1/";
+  @Input() baseUrl: string = "http://solacetk-api:8080/api/v1/";
   @Input() modelUri: string = "Controllers/movables";
 
   @Input() model!: any;
