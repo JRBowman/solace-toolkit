@@ -44,6 +44,81 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     vertical-align: bottom;
 }
 
+.character-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+  .sprite-thumb {
+      width: 64px !important;
+      height: 64px !important;
+      display: inline-block;
+      border: white 2px dotted;
+      margin-bottom: 3%;
+  }
+
+  .sprite-thumb-2col {
+    width: 192px !important;
+    height: 192px !important;
+    display: inline-block;
+    border: white 2px dotted;
+    margin-bottom: 3%;
+}
+
+.icon-sprite {
+    width: 64px !important;
+    height: 64px !important;
+    border: white 3px solid;
+    border-radius: 3px;
+}
+
+  .model-formfield {
+      margin-right: 3%;
+  }
+
+  .small-field-two-items {
+      width: 8%;
+  }
+
+  .small-field-three-items {
+    width: 16%;
+  }
+
+.two-column-selector {
+    position: fixed;
+    right: 5%;
+    top: 16%
+}
+
+  .full-height
+  {
+      height: 100%;
+  }
+
+  .align-start {
+      align-self: flex-start;
+  }
+
+  
+  .align-center {
+    align-self: center;
+}
+
+  .align-end {
+      align-self: flex-end;
+  }
+
+  .min-height-96 {
+      min-height: 96px;
+  }
+
+  .disp-flex {
+      display: flex;
+      flex-flow: wrap;
+  }
+
+
 .top-nav {
     position: sticky;
     top: 0;

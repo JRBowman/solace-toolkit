@@ -8,6 +8,11 @@ import { MarkdownService } from 'ngx-markdown';
 })
 export class AppComponent {
 
-  constructor(private markdownService: MarkdownService) { }
-  title = 'onbowman-13';
+  constructor(private markdownService: MarkdownService) {
+    setInterval(() => {
+      this.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
+    }, 1);
+   }
+  title = 'Solace Toolkit (TK) for Game Development';
+  time = new Date().toLocaleTimeString();
 }

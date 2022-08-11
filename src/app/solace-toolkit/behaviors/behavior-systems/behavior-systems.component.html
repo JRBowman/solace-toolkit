@@ -1,0 +1,67 @@
+<solacetk-model-list [(model)]="model" moduleName="Behavior Systems" modelUri="Behaviors/systems">
+    <div class="editor-content">
+
+        <div class="character-container">
+
+            <div class="disp-flex">
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)]="model.name">
+            </mat-form-field>
+
+            <div class="disp-flex">
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput #startState placeholder="Start State" [(ngModel)]="model.startState">
+                </mat-form-field>
+            </div>
+
+            <div class="disp-flex">
+                <mat-form-field class="model-formfield auto-flex">
+                    <mat-select placeholder="Behavior Type" [(ngModel)]="model.behaviorType">
+                        <mat-option *ngFor="let item of behaviorTypes" [value]="item">{{this.behavior[item]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-divider class="mb-2 mt-2"></mat-divider>
+
+            <mat-form-field class="auto-flex">
+                <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
+                    [(ngModel)]="model.description"></textarea>
+            </mat-form-field>
+
+            <mat-accordion class="auto-flex align-start full-width">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Attributes
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="full-height"></div>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Behavior Branches
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="full-height"></div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+        </div>
+
+
+    </div>
+</solacetk-model-list>

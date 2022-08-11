@@ -3,20 +3,99 @@
   <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="no-flex">onBowman</span>
+
+    <span class="no-flex mr-2">
+    <!-- <a [routerLink]="['']">Solace TK</a> -->
+    Solace TK
+  </span>
+
+  <span class="no-flex"></span>
+
+  <div class="disp-flex">
+  <button mat-button [matMenuTriggerFor]="gameCoreMenu">Game Core</button>
+  <mat-menu #gameCoreMenu="matMenu">
+      <a mat-menu-item [routerLink]="['/gamestates']">Game States</a>
+      <a mat-menu-item [routerLink]="['/timelines']">Timelines</a>
+  </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="controllerMenu">Controllers</button>
+        <mat-menu #controllerMenu="matMenu">
+            <a mat-menu-item [routerLink]="['/characters']">Characters</a>
+            <a mat-menu-item [routerLink]="['/weapons']">Weapons</a>
+            <a mat-menu-item [routerLink]="['/enemies']">Enemies</a>
+            <a mat-menu-item [routerLink]="['/objects']">Objects</a>
+            <a mat-menu-item [routerLink]="['/spawners']">Spawners</a>
+            <a mat-menu-item [routerLink]="['/particlesystems']">Particle Systems</a>
+            <a mat-menu-item [routerLink]="['/navigation']">Navigation</a>
+            <a mat-menu-item [routerLink]="['/transports']">Transports</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="behaviorMenu">Behaviors</button>
+        <mat-menu #behaviorMenu="matMenu">
+            <a mat-menu-item [routerLink]="['/behaviorsystems']">Behavior Systems</a>
+            <a mat-menu-item [routerLink]="['/branches']">Branches</a>
+            <a mat-menu-item [routerLink]="['/states']">States</a>
+            <a mat-menu-item [routerLink]="['/conditions']">Conditions</a>
+            <a mat-menu-item [routerLink]="['/animations']">Animations</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="messageMenu">Actions</button>
+        <mat-menu #messageMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/actions']">Actions</a>
+           <a mat-menu-item [routerLink]="['/events']">Events</a>
+            <a mat-menu-item [routerLink]="['/messages']">Messages</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="environmentMenu">Environments</button>
+        <mat-menu #environmentMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/resourcecollections']">Resource Collections</a>
+          <a mat-menu-item [routerLink]="['/maps']">Maps</a>
+          <a mat-menu-item [routerLink]="['/layers']">Layers</a>
+          <a mat-menu-item [routerLink]="['/tilesets']">Tile Sets</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="interfaceMenu">Interfaces</button>
+        <mat-menu #interfaceMenu="matMenu">
+            <a mat-menu-item [routerLink]="['/huds']">HUDs</a>
+            <a mat-menu-item [routerLink]="['/hudelements']">HUD Elements</a>
+            <a mat-menu-item [routerLink]="['/hudmenus']">Menus</a>
+            <a mat-menu-item [routerLink]="['/huddialogs']">Dialogs</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="soundMenu">Sounds</button>
+        <mat-menu #soundMenu="matMenu">
+            <a mat-menu-item [routerLink]="['/soundsources']">Sound Sources</a>
+            <a mat-menu-item [routerLink]="['/soundsets']">Sound Collections</a>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="effectsMenu">Effects</button>
+        <mat-menu #effectsMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/audioeffects']">Audio Effects</a>
+          <a mat-menu-item [routerLink]="['/visualeffects']">Visual Effects</a>
+            <a mat-menu-item [routerLink]="['/lights']">Lights</a>
+            <a mat-menu-item [routerLink]="['/liquids']">Liquids</a>
+            <a mat-menu-item [routerLink]="['/overlays']">Overlays</a>
+        </mat-menu>
+
+      </div>
+
   <span class="auto-flex"></span>
-  <bow-socials facebook="https://www.facebook.com/Live.JBowman" 
-    linkedin="https://www.linkedin.com/in/jrbowman13/" 
-    soundcloud="https://soundcloud.com/bowman-rh" 
-    github="https://github.com/JRBowman">
-</bow-socials>
+  <img src="../assets/soldof/images/time.PNG" class="nav-time-icon">
+  <span class="no-flex mr-2"><small>{{time}}</small></span>
+
+  <img src="../assets/soldof/images/serverconnectivity.png" class="nav-connect-icon-up">
+<!--   <bow-socials
+  linkedin="https://www.linkedin.com/in/jrbowman13/" 
+  github="https://github.com/JRBowman">
+</bow-socials> -->
 
 </mat-toolbar>
 
 <mat-drawer-container class="site-nav" autosize>
-  <mat-drawer #drawer class="site-nav-bar mat-elevation-z4" opened="true" mode="side">
+  <mat-drawer #drawer class="site-nav-bar mat-elevation-z4" opened="false" mode="side">
     <mat-nav-list>
-      <a mat-list-item class="auto-flex" [routerLink]="['/']">Introduction</a>
+      <!-- <a mat-list-item class="auto-flex" [routerLink]="['/']">Introduction</a>
       <mat-divider></mat-divider>
       <div mat-subheader>Content</div>
       <a mat-list-item class="auto-flex" [routerLink]="['/resume']">Resume / CV</a>
@@ -25,8 +104,11 @@
       <a mat-list-item class="auto-flex" [routerLink]="['/music']">Music</a>
       <a mat-list-item class="auto-flex" [routerLink]="['/videos']">Videos</a>
       <mat-divider></mat-divider>
-      <div mat-subheader>Tools</div>
-      <a mat-list-item class="auto-flex" [routerLink]="['/openshift-visual-system']">OpenShift Visual System</a>
+      <div mat-subheader>Tools</div> -->
+      <a mat-list-item class="auto-flex" [routerLink]="['/']">Home</a>
+      <mat-divider></mat-divider>
+      <!-- <a mat-list-item class="auto-flex" [routerLink]="['/openshift-visual-system']">OpenShift Visual System</a> -->
+      <a mat-list-item class="auto-flex" [routerLink]="['/wiki']">Solace TK Documentation</a>
     </mat-nav-list>
   </mat-drawer>
 

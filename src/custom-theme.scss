@@ -12,11 +12,12 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$angular-ui-primary: mat.define-palette(mat.$teal-palette);
-$angular-ui-accent: mat.define-palette(mat.$blue-gray-palette, A200, A100, A400);
+$angular-ui-primary: mat.define-palette(mat.$red-palette, A200, A100, A700);
+$angular-ui-accent: mat.define-palette(mat.$blue-grey-palette, A400, A200, A700);
+$angular-ui-download: mat.define-palette(mat.$orange-palette);
 
 // The warn palette is optional (defaults to red).
-$angular-ui-warn: mat.define-palette(mat.$red-palette);
+$angular-ui-warn: mat.define-palette(mat.$red-palette, A400, A200, A400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -25,6 +26,7 @@ $angular-ui-theme: mat.define-dark-theme((
     primary: $angular-ui-primary,
     accent: $angular-ui-accent,
     warn: $angular-ui-warn,
+    download: $angular-ui-download,
   )
 ));
 

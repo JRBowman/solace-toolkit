@@ -1,0 +1,51 @@
+<section name="Solace Toolkit" class="full-frame">
+    <mat-card>
+        <mat-card-title>
+            <mat-toolbar>Solace TK
+                <button mat-button [matMenuTriggerFor]="controllerMenu">Controllers</button>
+                    <mat-menu #controllerMenu="matMenu">
+                        <a mat-menu-item [routerLink]="['/solace-tk/characters']">Characters</a>
+                        <button mat-menu-item>Enemy</button>
+                        <button mat-menu-item>Dynamic Object</button>
+                        <button mat-menu-item>Static Object</button>
+                        <button mat-menu-item>Object Spawner</button>
+                    </mat-menu>
+                    <button mat-button [matMenuTriggerFor]="behaviorMenu">Behavior</button>
+                    <mat-menu #behaviorMenu="matMenu">
+                        <button mat-menu-item>Behavior System</button>
+                        <button mat-menu-item>Branch</button>
+                        <button mat-menu-item>State</button>
+                        <button mat-menu-item>Action</button>
+                        <button mat-menu-item>Condition</button>
+                    </mat-menu>
+                    <button mat-button [matMenuTriggerFor]="environmentMenu">Environment</button>
+                    <mat-menu #environmentMenu="matMenu">
+                        <button mat-menu-item>TileSet</button>
+                        <button mat-menu-item>RoomBuilder</button>
+                        <button mat-menu-item>ResourceCollection</button>
+                    </mat-menu>
+                    <button mat-button [matMenuTriggerFor]="soundMenu">Sound</button>
+                    <mat-menu #soundMenu="matMenu">
+                        <button mat-menu-item>SoundSource</button>
+                        <button mat-menu-item>SoundSet</button>
+                    </mat-menu>
+            </mat-toolbar>
+        </mat-card-title>
+        <mat-card-content>
+            <!-- Insert Menu Options and create Models from them: -->
+           
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</section>
+
+<div class="mt-2">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Backlog</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/backlog/ocp-visual-system.md'"></markdown>
+    </mat-expansion-panel>
+</div>

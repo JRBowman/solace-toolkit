@@ -1,28 +1,11 @@
 
 <div class="disp-flex">
   <mat-card class="auto-flex">
-    <mat-card-title>Welcome!</mat-card-title>
-    <mat-card-subtitle>
-      It's a pleasure to have you here, <i>digitally</i>.
-    </mat-card-subtitle>
     <mat-card-content>
-      <p>Hello, my name is Justin Bowman, you've found yourself at my base of operations!</p>
-      <p>Herein lies great content from my day job in Software as well as other passion-projects I fuel in my spare time!</p>
-      <p>Feel free to make yourself at home, there'll be plenty of content to look through!
-         There'll eventually be interactive experiences and games - as development progresses, of course.
-        We'll also be adding some sort of Forum and a Blog to share interesting concepts, music, software, etc.</p>
-      <small>(some of which will be created in the open on GitHub... come check out the <i>Projects</i> we've got going on and lend us a hand!)</small>
+      <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/solacetk.md'"></markdown>
     </mat-card-content>
     <mat-card-actions>
-
+      <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
     </mat-card-actions>
-  </mat-card>
-</div>
-
-<div class="disp-flex mt-2">
-  <mat-card class="auto-flex" style="width: 100%;">
-
-    <mat-card-content>
-    </mat-card-content>
   </mat-card>
 </div>
