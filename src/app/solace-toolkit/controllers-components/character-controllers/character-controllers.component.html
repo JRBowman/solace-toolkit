@@ -1,7 +1,8 @@
-<solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Character Controllers" modelUri="Controllers/movables">
+<solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Character Controllers"
+    modelUri="Controllers/movables">
 
-        <!-- <character-controller [(model)]="model" editor-content></character-controller> -->
-        <div class="editor-content">
+    <!-- <character-controller [(model)]="model" editor-content></character-controller> -->
+    <div class="editor-content">
         <mat-slide-toggle class="two-column-selector" [(ngModel)]="isTwoColumn">2-Column</mat-slide-toggle>
 
         <div class="character-container mt-2">
@@ -155,18 +156,40 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Attributes
+                            Behavior
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                        <ng-template matExpansionPanelContent>
+                            <div *ngIf="model.behaviorSystem">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <h3 matLine>{{model.behaviorSystem.name}}</h3>
+                                        <p matLine>Description: {{model.behaviorSystem.description}}</p>
+                                    </mat-list-item>
+                                </mat-list>
+                            </div>
+    
+                        </ng-template>
+
+                        
+                    <mat-action-row>
+                        <button mat-button color="primary" (click)="openBehaviorsSheet()">Add</button>
+                    </mat-action-row>
+
+<!--                         <mat-form-field class="model-formfield auto-flex">
+                            <mat-select placeholder="Controller Behavior" [(ngModel)]="model.behaviorSystemId"
+                                [value]="model.behaviorSystemId">
+                                <mat-option *ngFor="let item of behaviors" [value]="item.id">{{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
 
                 </mat-expansion-panel>
-
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Behavior
+                            Attributes
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 

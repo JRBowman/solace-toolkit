@@ -39,18 +39,33 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Attributes
+                            Behavior Branches
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                    <ng-template matExpansionPanelContent>
+
+                        <div *ngIf="model.branches">
+                            <mat-list cdkDropList (cdkDropListDropped)="dropBranches($event)">
+                                <mat-list-item cdkDrag [cdkDragData]="branch" *ngFor="let branch of model.branches">
+                                    <h3 matLine>{{branch.name}}</h3>
+                                    <p matLine>Description: {{branch.description}}</p>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+
+                    </ng-template>
+
+
+                    <mat-action-row>
+                        <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
+                    </mat-action-row>
 
                 </mat-expansion-panel>
-
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Behavior Branches
+                            Attributes
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 

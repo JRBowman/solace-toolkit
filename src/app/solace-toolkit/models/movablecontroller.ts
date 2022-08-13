@@ -1,3 +1,4 @@
+import { BehaviorSystem } from "./behaviorsystem";
 import { IModelTK } from "./imodel-tk";
 
 export class MovableController implements IModelTK {
@@ -15,6 +16,9 @@ export class MovableController implements IModelTK {
     public mapPositionY?: number = 0;
     public collisionType?: CollisionDetectionType = CollisionDetectionType.RayCast;
     public spriteUri?: string = "";
+
+    public behaviorSystemId?: string;
+    public behaviorSystem?: BehaviorSystem = new BehaviorSystem();
 
     public useFriction?: boolean = true;
     public affectedByGravity?: boolean = true;

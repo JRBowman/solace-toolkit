@@ -9,6 +9,8 @@ export class WeaponsControllersComponent implements OnInit {
 
   constructor() { }
 
+  public model: any;
+
   ngOnInit(): void {
   }
 

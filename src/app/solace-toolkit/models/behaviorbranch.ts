@@ -4,6 +4,6 @@ export class BehaviorBranch {
     public id?: string;
     public name?: string = "BehaviorBranch";
     public description?: string = "";
-    public states?: BehaviorState[];
+    public states: BehaviorState[] = [];
     public branchType?: string;
 }

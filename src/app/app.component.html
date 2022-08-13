@@ -14,7 +14,8 @@
   <div class="disp-flex">
   <button mat-button [matMenuTriggerFor]="gameCoreMenu">Game Core</button>
   <mat-menu #gameCoreMenu="matMenu">
-      <a mat-menu-item [routerLink]="['/gamestates']">Game States</a>
+      <a mat-menu-item [routerLink]="['/gamestates']">Game Systems</a>
+      <a mat-menu-item [routerLink]="['/collections']">Resource Collections</a>
       <a mat-menu-item [routerLink]="['/timelines']">Timelines</a>
   </mat-menu>
 
@@ -49,7 +50,6 @@
 
         <button mat-button [matMenuTriggerFor]="environmentMenu">Environments</button>
         <mat-menu #environmentMenu="matMenu">
-          <a mat-menu-item [routerLink]="['/resourcecollections']">Resource Collections</a>
           <a mat-menu-item [routerLink]="['/maps']">Maps</a>
           <a mat-menu-item [routerLink]="['/layers']">Layers</a>
           <a mat-menu-item [routerLink]="['/tilesets']">Tile Sets</a>

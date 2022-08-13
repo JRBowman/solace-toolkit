@@ -7,7 +7,7 @@ export class BehaviorSystem {
     public description?: string;
     public startState?: string;
     public behaviorType?: BehaviorType;
-    public branches?: BehaviorBranch[];
+    public branches: BehaviorBranch[] = [];
 }
 
 export enum BehaviorType

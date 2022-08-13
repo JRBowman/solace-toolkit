@@ -7,7 +7,16 @@ FROM node:16 as build
 WORKDIR /usr/local/app
 
 # Add the source code to app
-COPY ./ /usr/local/app/
+COPY src/ /usr/local/app/src
+COPY package.json /usr/local/app
+COPY tsconfig.app.json /usr/local/app
+COPY tsconfig.json /usr/local/app
+COPY angular.json /usr/local/app
+COPY default.conf /usr/local/app
+COPY karma.conf.js /usr/local/app
+COPY package-lock.json /usr/local/app
+COPY tsconfig.spec.json /usr/local/app
+
 
 # Install all the dependencies
 RUN npm install

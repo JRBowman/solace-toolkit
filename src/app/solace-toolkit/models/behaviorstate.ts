@@ -9,7 +9,7 @@ export class BehaviorState {
     public action?: BehaviorAction;
     public next?: BehaviorState;
 
-    public animation?: BehaviorAnimation;
+    public animations: BehaviorAnimation[] = [];
 
     public startDelay?: number = 0;
     public endDelay?: number = 0;

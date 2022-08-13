@@ -61,13 +61,16 @@ import { LiquidEffectsComponent } from './solace-toolkit/effects-components/liqu
 import { OverlayEffectsComponent } from './solace-toolkit/effects-components/overlay-effects/overlay-effects.component';
 import { VisualEffectsComponent } from './solace-toolkit/effects-components/visual-effects/visual-effects.component';
 import { EnvironmentMapLayerComponent } from './solace-toolkit/environment-components/environment-map-layer/environment-map-layer.component';
-import { EnvironmentResourcecollectionsComponent } from './solace-toolkit/environment-components/environment-resourcecollections/environment-resourcecollections.component';
+import { ResourceCollectionsComponent } from './solace-toolkit/game-components/resource-collections/resource-collections.component';
 import { EnvironmentTilesetsComponent } from './solace-toolkit/environment-components/environment-tilesets/environment-tilesets.component';
 import { GameTimelinesComponent } from './solace-toolkit/game-components/game-timelines/game-timelines.component';
 import { HudElementsComponent } from './solace-toolkit/interface-components/hud-elements/hud-elements.component';
 import { HudMenusComponent } from './solace-toolkit/interface-components/hud-menus/hud-menus.component';
 import { HudsComponent } from './solace-toolkit/interface-components/huds/huds.component';
 import { SoundSourcesComponent } from './solace-toolkit/sound-components/sound-sources/sound-sources.component';
+import { SolacetkSearchSheetComponent } from './solace-toolkit/common/solacetk-search-sheet/solacetk-search-sheet.component';
+import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
+import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +109,7 @@ import { SoundSourcesComponent } from './solace-toolkit/sound-components/sound-s
     BehaviorConditionsComponent,
     BehaviorActionsComponent,
     EnvironmentTilesetsComponent,
-    EnvironmentResourcecollectionsComponent,
+    ResourceCollectionsComponent,
     EnvironmentMapComponent,
     EnvironmentMapLayerComponent,
     SoundSetsComponent,
@@ -126,7 +129,10 @@ import { SoundSourcesComponent } from './solace-toolkit/sound-components/sound-s
     HudsComponent,
     HudElementsComponent,
     HudMenusComponent,
-    HudDialogsComponent
+    HudDialogsComponent,
+    SolacetkSearchSheetComponent,
+    BehaviorBranchesComponent,
+    ParticleSystemsComponent
   ],
   imports: [
     BrowserModule,

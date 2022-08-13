@@ -3,45 +3,17 @@
 
         <div class="character-container">
 
-            <div class="disp-flex">
-                <mat-form-field class="auto-flex model-formfield">
+                <mat-form-field class="auto-flex">
                     <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
                 </mat-form-field>
-            </div>
 
             <mat-form-field>
                 <input matInput placeholder="Name" [(ngModel)]="model.name">
             </mat-form-field>
 
-            <div class="disp-flex">
-                <mat-form-field class="model-formfield no-flex">
-                    <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
-                </mat-form-field>
-                <mat-checkbox name="loop" class="model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
-                <mat-checkbox name="invert" class="model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
-                <mat-checkbox name="mirror" [(ngModel)]="model.mirror">Mirror</mat-checkbox>
-            </div>
-
-            <div class="disp-flex">
+<!--             <div class="disp-flex">
                 <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG" alt="sprite">
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="Start Sprite Sheet" [(ngModel)]="model.beginSheetName">
-                </mat-form-field>
-            </div>
-
-            <div class="disp-flex">
-                <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG" alt="sprite">
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="Act Sprite Sheet" [(ngModel)]="model.actSheetName">
-                </mat-form-field>
-            </div>
-
-            <div class="disp-flex">
-                <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG" alt="sprite">
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="End Sprite Sheet" [(ngModel)]="model.endSheetName">
-                </mat-form-field>
-            </div>
+            </div> -->
 
             <mat-divider class="mb-2 mt-2"></mat-divider>
 
@@ -54,33 +26,60 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Start Animation Frames
+                            Start Frames
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                    <ng-template matExpansionPanelContent>
+                        <div class="disp-flex">
+                            <mat-form-field class="model-formfield no-flex">
+                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                            </mat-form-field>
+                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
+                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
+                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                        </div>
+                    </ng-template>
 
                 </mat-expansion-panel>
 
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            Act Animation Frames
+                            Act Frames
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                    <ng-template matExpansionPanelContent>
+                        <div class="disp-flex">
+                            <mat-form-field class="model-formfield no-flex">
+                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                            </mat-form-field>
+                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
+                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
+                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                        </div>
+                    </ng-template>
 
                 </mat-expansion-panel>
 
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            End Animation Frames
+                            End Frames
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                    <ng-template matExpansionPanelContent>
+                        <div class="disp-flex">
+                            <mat-form-field class="model-formfield no-flex">
+                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                            </mat-form-field>
+                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
+                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
+                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                        </div>
+                    </ng-template>
 
                 </mat-expansion-panel>
 

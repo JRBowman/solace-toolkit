@@ -23,7 +23,7 @@ import { SpawnerControllersComponent } from './solace-toolkit/controllers-compon
 import { StaticControllersComponent } from './solace-toolkit/controllers-components/static-controllers/static-controllers.component';
 import { WeaponsControllersComponent } from './solace-toolkit/controllers-components/weapons-controllers/weapons-controllers.component';
 import { EnvironmentMapLayerComponent } from './solace-toolkit/environment-components/environment-map-layer/environment-map-layer.component';
-import { EnvironmentResourcecollectionsComponent } from './solace-toolkit/environment-components/environment-resourcecollections/environment-resourcecollections.component';
+import { ResourceCollectionsComponent } from './solace-toolkit/game-components/resource-collections/resource-collections.component';
 import { EnvironmentTilesetsComponent } from './solace-toolkit/environment-components/environment-tilesets/environment-tilesets.component';
 import { SolaceToolkitComponent } from './solace-toolkit/solace-toolkit.component';
 import { SoundSourcesComponent } from './solace-toolkit/sound-components/sound-sources/sound-sources.component';
@@ -40,6 +40,8 @@ import { VisualEffectsComponent } from './solace-toolkit/effects-components/visu
 import { LightEffectsComponent } from './solace-toolkit/effects-components/light-effects/light-effects.component';
 import { LiquidEffectsComponent } from './solace-toolkit/effects-components/liquid-effects/liquid-effects.component';
 import { OverlayEffectsComponent } from './solace-toolkit/effects-components/overlay-effects/overlay-effects.component';
+import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
+import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
 
 const routes: Routes = [
   {
@@ -97,7 +99,7 @@ const routes: Routes = [
   },
   {
     path: 'particlesystems',
-    component: SpawnerControllersComponent
+    component: ParticleSystemsComponent
   },
   {
     path: 'behaviorsystems',
@@ -105,7 +107,7 @@ const routes: Routes = [
   },
   {
     path: 'branches',
-    component: BehaviorStatesComponent
+    component: BehaviorBranchesComponent
   },
   {
     path: 'states',
@@ -120,8 +122,8 @@ const routes: Routes = [
     component: EnvironmentTilesetsComponent
   },
   {
-    path: 'resourcecollections',
-    component: EnvironmentResourcecollectionsComponent
+    path: 'collections',
+    component: ResourceCollectionsComponent
   },
   {
     path: 'maps',

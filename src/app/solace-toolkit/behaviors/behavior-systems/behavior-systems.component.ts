@@ -1,5 +1,8 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorSystem, BehaviorType } from '../../models/behaviorsystem';
 
 @Component({
@@ -10,7 +13,7 @@ import { BehaviorSystem, BehaviorType } from '../../models/behaviorsystem';
 export class BehaviorSystemsComponent implements OnInit {
 
 
-constructor(private http: HttpClient) { }
+constructor(private _bottomSheet: MatBottomSheet) { }
 
 public model: BehaviorSystem = new BehaviorSystem();
 
@@ -29,6 +32,20 @@ public model: BehaviorSystem = new BehaviorSystem();
     return this.selectedBehavior;
   }
 
+  dropBranches(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.model.branches, event.previousIndex, event.currentIndex);
+  }
 
+  public openBranchesSheet()
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/states');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.branches = models;
+    });
+    
+  }
 
 }
