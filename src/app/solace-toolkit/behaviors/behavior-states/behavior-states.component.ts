@@ -17,9 +17,6 @@ export class BehaviorStatesComponent implements OnInit {
 
   public model: BehaviorState = new BehaviorState();
 
-  public animationFilter: string = "";
-  public animations: BehaviorAnimation[] = new Array();
-
   ngOnInit(): void {
 
   }
@@ -44,6 +41,18 @@ export class BehaviorStatesComponent implements OnInit {
     instance.instance.modelsSelected.subscribe((models) => 
     {
       this.model.action = models[0];
+    });
+    
+  }
+
+  public openConditionsSheet()
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/conditions');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.conditions = models;
     });
     
   }

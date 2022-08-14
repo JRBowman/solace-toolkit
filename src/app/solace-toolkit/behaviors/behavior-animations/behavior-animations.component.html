@@ -1,102 +1,85 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior Animations" modelUri="Behaviors/animations">
-    <div class="editor-content">
+    <div class="editor">
 
-        <div class="character-container">
+        <mat-accordion class="auto-flex align-start full-width">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Start Frames
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                <mat-form-field class="auto-flex">
-                    <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-                </mat-form-field>
+                <ng-template matExpansionPanelContent>
+                    <div class="disp-flex">
+                        <mat-form-field class="model-formfield no-flex">
+                            <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                        </mat-form-field>
+                        <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop
+                        </mat-checkbox>
+                        <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert
+                        </mat-checkbox>
+                        <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                    </div>
+                </ng-template>
 
-            <mat-form-field>
-                <input matInput placeholder="Name" [(ngModel)]="model.name">
-            </mat-form-field>
+            </mat-expansion-panel>
 
-<!--             <div class="disp-flex">
-                <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG" alt="sprite">
-            </div> -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Act Frames
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-            <mat-divider class="mb-2 mt-2"></mat-divider>
+                <ng-template matExpansionPanelContent>
+                    <div class="disp-flex">
+                        <mat-form-field class="model-formfield no-flex">
+                            <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                        </mat-form-field>
+                        <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop
+                        </mat-checkbox>
+                        <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert
+                        </mat-checkbox>
+                        <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                    </div>
+                </ng-template>
 
-            <mat-form-field class="auto-flex">
-                <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-                    [(ngModel)]="model.description"></textarea>
-            </mat-form-field>
+            </mat-expansion-panel>
 
-            <mat-accordion class="auto-flex align-start full-width">
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Start Frames
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        End Frames
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                    <ng-template matExpansionPanelContent>
-                        <div class="disp-flex">
-                            <mat-form-field class="model-formfield no-flex">
-                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
-                            </mat-form-field>
-                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
-                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
-                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
-                        </div>
-                    </ng-template>
+                <ng-template matExpansionPanelContent>
+                    <div class="disp-flex">
+                        <mat-form-field class="model-formfield no-flex">
+                            <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+                        </mat-form-field>
+                        <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop
+                        </mat-checkbox>
+                        <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert
+                        </mat-checkbox>
+                        <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
+                    </div>
+                </ng-template>
 
-                </mat-expansion-panel>
+            </mat-expansion-panel>
 
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Act Frames
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Attributes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                    <ng-template matExpansionPanelContent>
-                        <div class="disp-flex">
-                            <mat-form-field class="model-formfield no-flex">
-                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
-                            </mat-form-field>
-                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
-                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
-                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
-                        </div>
-                    </ng-template>
+                <div class="full-height"></div>
 
-                </mat-expansion-panel>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            End Frames
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <ng-template matExpansionPanelContent>
-                        <div class="disp-flex">
-                            <mat-form-field class="model-formfield no-flex">
-                                <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
-                            </mat-form-field>
-                            <mat-checkbox name="loop" class="auto-flex model-formfield" [(ngModel)]="model.loop">Loop</mat-checkbox>
-                            <mat-checkbox name="invert" class="auto-flex model-formfield" [(ngModel)]="model.invert">Invert</mat-checkbox>
-                            <mat-checkbox name="mirror" class="auto-flex " [(ngModel)]="model.mirror">Mirror</mat-checkbox>
-                        </div>
-                    </ng-template>
-
-                </mat-expansion-panel>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Attributes
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <div class="full-height"></div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
-
-
-        </div>
 
     </div>
 </solacetk-model-list>

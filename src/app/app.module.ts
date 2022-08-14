@@ -71,6 +71,7 @@ import { SoundSourcesComponent } from './solace-toolkit/sound-components/sound-s
 import { SolacetkSearchSheetComponent } from './solace-toolkit/common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
 import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
+import { SolacetkTagsComponent } from './solace-toolkit/common/solacetk-tags/solacetk-tags.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +133,8 @@ import { ParticleSystemsComponent } from './solace-toolkit/controllers-component
     HudDialogsComponent,
     SolacetkSearchSheetComponent,
     BehaviorBranchesComponent,
-    ParticleSystemsComponent
+    ParticleSystemsComponent,
+    SolacetkTagsComponent
   ],
   imports: [
     BrowserModule,

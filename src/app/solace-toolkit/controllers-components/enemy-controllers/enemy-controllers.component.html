@@ -1,23 +1,13 @@
-<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/enemies">
-    <div class="editor-content">
-
-        <div class="character-container">
-
+<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables" tagFilters="#enemies">
+    <div class="editor">
 
         <div class="disp-flex">
             <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
                 alt="sprite">
-            <mat-form-field class="auto-flex model-formfield">
-                <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-            </mat-form-field>
             <mat-form-field class="auto-flex">
                 <input matInput #pixelKeyColor placeholder="Pixel Color Key" [(ngModel)]="model.pixelKeyColor">
             </mat-form-field>
         </div>
-
-        <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="model.name">
-        </mat-form-field>
 
         <div class="disp-flex">
             <mat-form-field class="auto-flex model-formfield small-field-two-items">
@@ -37,10 +27,6 @@
             </mat-form-field>
         </div>
 
-        <mat-form-field>
-            <input matInput #spriteUri placeholder="Sprite URI" [(ngModel)]="model.spriteUri">
-        </mat-form-field>
-
         <div class="disp-flex">
             <mat-form-field class="model-formfield auto-flex">
                 <mat-select placeholder="Movement Type" [(ngModel)]="model.type">
@@ -54,21 +40,17 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-checkbox name="affectedByGravity" class="model-formfield"
-                [(ngModel)]="model.affectedByGravity">Affected By
+            <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield"
+                [(ngModel)]="model.affectedByGravity">
+                Affected By
                 Gravity</mat-checkbox>
-            <mat-checkbox name="useFriction" class="model-formfield" [(ngModel)]="model.useFriction">Use
+            <mat-checkbox name="useFriction" class="auto-flex model-formfield" [(ngModel)]="model.useFriction">Use
                 Friction
             </mat-checkbox>
-            <mat-checkbox name="canMove" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
+            <mat-checkbox name="canMove" class="auto-flex" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
         </div>
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
-
-        <mat-form-field class="auto-flex">
-            <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-                [(ngModel)]="model.description"></textarea>
-        </mat-form-field>
 
         <mat-accordion class="auto-flex align-start full-width">
             <mat-expansion-panel>
@@ -93,10 +75,6 @@
 
             </mat-expansion-panel>
         </mat-accordion>
-
-
-
-    </div>
 
 
     </div>

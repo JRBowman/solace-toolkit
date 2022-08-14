@@ -1,12 +1,18 @@
-<div  *ngIf="!IsLoading">
-    
+<div *ngIf="!IsLoading">
+
     <div class="disp-flex">
         <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
-        <button mat-button color="primary" class="auto-flex" (click)="Add(modelList.selectedOptions.selected)">Add Selected</button>
+        <button mat-button color="primary" class="auto-flex" (click)="Add(modelList.selectedOptions.selected)">Add
+            Selected</button>
     </div>
     <h2>{{resource}}</h2>
+
+    <div class="disp-flex">
+        <solacetk-tags [(model)]="tagFilters" (tagsChange)="filter($event)"></solacetk-tags>
+    </div>
+
     <mat-selection-list class="disp-flex" #modelList multiple>
-        <mat-list-option *ngFor="let model of models" [value]="model">
+        <mat-list-option *ngFor="let model of filteredModels" [value]="model">
             <h3 matLine>{{model.name}}</h3>
             <p matLine>Description: {{model.description}}</p>
         </mat-list-option>

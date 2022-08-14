@@ -1,111 +1,123 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states">
-    <div class="editor-content">
+    <div class="editor">
 
 
-        <div class="character-container">
-
-            <div class="disp-flex">
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-                </mat-form-field>
-            </div>
-
-            <mat-form-field>
-                <input matInput placeholder="Name" [(ngModel)]="model.name">
+        <div class="disp-flex">
+            <mat-form-field class="no-flex model-formfield">
+                <input matInput placeholder="Next State" [(ngModel)]="model.next">
             </mat-form-field>
-
-            <div class="disp-flex">
-                <mat-form-field class="no-flex model-formfield">
-                    <input matInput placeholder="Next State" [(ngModel)]="model.next">
-                </mat-form-field>
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
-                </mat-form-field>
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
-                </mat-form-field>
-                <mat-checkbox class="auto-flex" name="interruptable" [(ngModel)]="model.interruptable">Interruptable
-                </mat-checkbox>
-            </div>
-
-            <mat-divider class="mb-2 mt-2"></mat-divider>
-
-            <mat-form-field class="auto-flex">
-                <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-                    [(ngModel)]="model.description"></textarea>
+            <mat-form-field class="auto-flex model-formfield">
+                <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
             </mat-form-field>
-
-            <mat-accordion class="auto-flex align-start full-width">
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            State Animations
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <ng-template matExpansionPanelContent>
-
-                        <div *ngIf="model.animations">
-                            <mat-list cdkDropList (cdkDropListDropped)="dropAnims($event)">
-                                <mat-list-item cdkDrag [cdkDragData]="animation" *ngFor="let animation of model.animations">
-                                    <h3 matLine>{{animation.name}}</h3>
-                                    <p matLine>Description: {{animation.description}}</p>
-                                </mat-list-item>
-                            </mat-list>
-                        </div>
-
-                    </ng-template>
-
-
-                    <mat-action-row>
-                        <button mat-button color="primary" (click)="openAnimationsSheet()">Add</button>
-                    </mat-action-row>
-
-                </mat-expansion-panel>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            State Action
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    
-                    <ng-template matExpansionPanelContent>
-                        <div *ngIf="model.action">
-                            <mat-list>
-                                <mat-list-item>
-                                    <h3 matLine>{{model.action.name}}</h3>
-                                    <p matLine>Description: {{model.action.description}}</p>
-                                </mat-list-item>
-                            </mat-list>
-                        </div>
-
-
-                    </ng-template>
-
-                    <mat-action-row>
-                        <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
-                    </mat-action-row>
-
-
-                </mat-expansion-panel>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Attributes
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <div class="full-height"></div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
-
-
+            <mat-form-field class="auto-flex model-formfield">
+                <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
+            </mat-form-field>
+            <mat-checkbox class="auto-flex" name="interruptable" [(ngModel)]="model.interruptable">Interruptable
+            </mat-checkbox>
         </div>
 
+        <mat-divider class="mb-2 mt-2"></mat-divider>
+
+        <mat-accordion class="auto-flex align-start full-width">
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Conditions
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+
+                <ng-template matExpansionPanelContent>
+                    <div *ngIf="model.conditions">
+
+                        <mat-list>
+                            <mat-list-item *ngFor="let cond of model.conditions">
+                                <h3 matLine>{{cond.name}}</h3>
+                                <p matLine>Description: {{cond.description}}</p>
+                            </mat-list-item>
+                        </mat-list>
+                        
+                    </div>
+
+
+                </ng-template>
+
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openConditionsSheet()">Add</button>
+                </mat-action-row>
+
+
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        State Animations
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <ng-template matExpansionPanelContent>
+
+                    <div *ngIf="model.animations">
+                        <mat-list cdkDropList (cdkDropListDropped)="dropAnims($event)">
+                            <mat-list-item cdkDrag [cdkDragData]="animation" *ngFor="let animation of model.animations">
+                                <h3 matLine>{{animation.name}}</h3>
+                                <p matLine>Description: {{animation.description}}</p>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+
+                </ng-template>
+
+
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openAnimationsSheet()">Add</button>
+                </mat-action-row>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        State Action
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+
+                <ng-template matExpansionPanelContent>
+                    <div *ngIf="model.action">
+                        <mat-list>
+                            <mat-list-item>
+                                <h3 matLine>{{model.action.name}}</h3>
+                                <p matLine>Description: {{model.action.description}}</p>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+
+
+                </ng-template>
+
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
+                </mat-action-row>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Attributes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="full-height"></div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
 
 
     </div>

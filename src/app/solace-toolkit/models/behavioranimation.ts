@@ -10,4 +10,5 @@ export class BehaviorAnimation {
     public beginSheetName?: string;
     public actSheetName?: string;
     public endSheetName?: string;
+    public tags?: string = "";
 }

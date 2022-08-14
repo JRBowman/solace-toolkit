@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
+import { BehaviorState } from '../../models/behaviorstate';
 import { BehaviorSystem } from '../../models/behaviorsystem';
 import { MovableController, MovableControllerType, CollisionDetectionType } from '../../models/movablecontroller';
 import { SolacetkService } from '../../services/solacetk-service.service';
@@ -50,6 +51,21 @@ export class CharacterControllersComponent implements OnInit {
   public GetBehaviors(id: string): string {
     let behavior = this.behaviors.filter(x => x.id == id)[0].name;
     return behavior ?? "";
+  }
+
+
+
+  public GetStates(): BehaviorState[] {
+
+      let states: BehaviorState[] = [];
+
+      if (!this.model.behaviorSystem || !this.model.behaviorSystem.branches) return states;
+
+      this.model.behaviorSystem.branches.forEach(branch => {
+          states = [...states, ...branch.GetStates()];
+      });
+
+      return states;
   }
 
   public Create() {

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
@@ -8,12 +8,14 @@ import { SolacetkService } from '../../services/solacetk-service.service';
   templateUrl: './solacetk-list.component.html',
   styleUrls: ['./solacetk-list.component.css']
 })
-export class SolaceTKListComponent implements OnInit {
+export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public dataStruct: any[] = [];
+  public filteredData: any[] = [];
 
   @Input() moduleName: string = "Solace TK Module";
   @Input() modelUri: string = "Controllers/movables";
+  @Input() tagFilters: string = "";
 
   @Input() model!: any;
   @Output() modelChange = new EventEmitter<any>();
@@ -34,15 +36,20 @@ export class SolaceTKListComponent implements OnInit {
 
   ngOnInit(): void {
     this.moduleIcon = this.moduleName.replace(' ', '').toLowerCase() + ".png";
+    
+  }
+
+   ngAfterViewInit(): void {
     this.RefreshView();
   }
 
   public RefreshView() {
     this.IsLoading = true;
 
-    this.service.GetModels(this.modelUri + "?includeElements=true").subscribe(response => {
+    this.service.GetModels(this.modelUri, true, this.tagFilters).subscribe(response => {
       this.dataStruct = [];
       this.dataStruct = response;
+      this.filteredData = this.dataStruct;
       this.IsLoading = false;
     });
   }
@@ -65,6 +72,7 @@ export class SolaceTKListComponent implements OnInit {
     console.log(this.model);
     if (this.IsNewModel) {
       this.Create();
+      this.model.tags += this.tagFilters;
       this.service.CreateModel(this.modelUri, this.model).subscribe((response) => {
         this.model = response;
         this.modelChange.emit(this.model);
@@ -85,8 +93,17 @@ export class SolaceTKListComponent implements OnInit {
     });
   }
 
+  public DeleteModel(model: any): void {
+    this.service.DeleteModel(this.modelUri + "/" + this.model.id).subscribe((response) => {
+      this.model = response;
+      this.modelChange.emit(this.model);
+      this.IsSaving = false;
+      this.modelSaved.emit();
+    });
+  }
+
   public ExportModel() {
-    window.location.href = (this.modelUri + "/" + this.model.id + "/export");
+    window.location.href = (this.service.baseUrl + this.modelUri + "/" + this.model.id + "/export");
   }
 
   public NewModel() {
@@ -118,6 +135,17 @@ export class SolaceTKListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
 
+  }
+
+  public filter(tags: string[]): any[] {
+    console.log(tags);
+    this.filteredData = this.dataStruct.filter(model => model.tags.includes(this.tagFilters));
+    return this.filteredData;
+  }
+
+  public clickFilter(tag: string): void {
+    console.log(tag);
+    this.tagFilters = this.tagFilters + tag;
   }
 
 }

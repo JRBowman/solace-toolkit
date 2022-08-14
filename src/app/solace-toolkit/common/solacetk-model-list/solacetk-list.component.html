@@ -1,24 +1,55 @@
-        <div class="disp-flex">
-          <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
-          <h1 class="auto-flex align-center">{{moduleName}}</h1>
-        </div>
-        
+<div class="disp-flex">
+  <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
+  <h1 class="no-flex align-center mr-2">{{moduleName}}</h1>
+  <solacetk-tags class="auto-flex align-center" [(model)]="tagFilters" (tagsChange)="filter($event)"></solacetk-tags>
+</div>
+
 
 <div class="btn-hover-right" *ngIf="!IsLoading">
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
     <mat-tab label="List">
-      <mat-action-list>
 
-        <mat-list-item mat-button *ngFor='let model of dataStruct' (click)="LoadModel(model)">
+      <div class="auto-flex mt-2 mb-2" *ngFor='let model of filteredData'>
+        <mat-card>
           <!-- <img matListAvatar [src]="model.spriteUri"> -->
-          <h3 matLine>{{model.name}}</h3>
-          <p matLine>Description: {{model.description}}</p>
-        </mat-list-item>
-      </mat-action-list>
+          <mat-card-title-group class="disp-flex">
+            <div class="no-flex mr-2">
+              <mat-card-title>{{model.name}}</mat-card-title>
+              <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
+            </div>
+            <solacetk-tags class="auto-flex align-center" [(model)]="model.tags" (tagClick)="clickFilter($event)"
+              [canEdit]="false"></solacetk-tags>
+            <button class="no-flex align-center" matTooltip="Edit Model" color="primary" mat-icon-button (click)="LoadModel(model)"><mat-icon>edit_square</mat-icon></button>
+            <button class="no-flex align-center" matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)"><mat-icon>delete</mat-icon></button>
+          </mat-card-title-group>
+        </mat-card>
+      </div>
+
+
     </mat-tab>
     <mat-tab label="Editor">
 
-      <ng-content select="div"></ng-content>
+      <div *ngIf="model" class="character-container">
+
+        <mat-form-field class="auto-flex">
+          <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="model.name">
+        </mat-form-field>
+
+        <solacetk-tags [(model)]="model.tags"></solacetk-tags>
+
+        <mat-form-field class="auto-flex">
+          <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
+            [(ngModel)]="model.description"></textarea>
+        </mat-form-field>
+
+        <mat-divider class="mb-2 mt-2"></mat-divider>
+
+        <ng-content select=".editor"></ng-content>
+      </div>
 
       <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p>
     </mat-tab>
@@ -26,13 +57,16 @@
 
 
   <div class="new-button auto-flex">
-    <button *ngIf="!modelSelected" mat-fab color="primary" matTooltip="Create New Model" class="mat-elevation-z4 btn-hover-right"
-      aria-label="Add new Character Controller" (click)="NewModel()">
+
+    <ng-content select=".editor-buttons"></ng-content>
+
+    <button *ngIf="!modelSelected" mat-fab color="primary" matTooltip="Create New Model"
+      class="mat-elevation-z4 btn-hover-right" aria-label="Add new Character Controller" (click)="NewModel()">
       <mat-icon>add</mat-icon>
     </button>
 
-    <button *ngIf="modelSelected && !IsNewModel" mat-fab color="accent" matTooltip="Export Selected Model" class="mat-elevation-z4 btn-hover-right"
-      aria-label="Export Model" (click)="ExportModel()">
+    <button *ngIf="modelSelected && !IsNewModel" mat-fab color="accent" matTooltip="Export Selected Model"
+      class="mat-elevation-z4 btn-hover-right" aria-label="Export Model" (click)="ExportModel()">
       <mat-icon>download</mat-icon>
     </button>
 

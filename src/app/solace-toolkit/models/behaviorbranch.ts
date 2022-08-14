@@ -6,4 +6,10 @@ export class BehaviorBranch {
     public description?: string = "";
     public states: BehaviorState[] = [];
     public branchType?: string;
+    public tags?: string = "";
+
+
+    public GetStates(): BehaviorState[] {
+        return this.states;
+    }
 }

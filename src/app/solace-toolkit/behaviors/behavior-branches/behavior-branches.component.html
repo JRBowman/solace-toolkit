@@ -1,31 +1,11 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/branches">
-    <div class="editor-content">
+    <div class="editor">
 
-
-        <div class="character-container">
-
-            <div class="disp-flex">
-                <mat-form-field class="auto-flex model-formfield">
-                    <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-                </mat-form-field>
-            </div>
-
-            <mat-form-field>
-                <input matInput placeholder="Name" [(ngModel)]="model.name">
-            </mat-form-field>
-
-            <mat-divider class="mb-2 mt-2"></mat-divider>
-
-            <mat-form-field class="auto-flex">
-                <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-                    [(ngModel)]="model.description"></textarea>
-            </mat-form-field>
-
-            <mat-accordion>
+        <mat-accordion>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Behavior Branches
+                        Branch States
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
@@ -48,21 +28,18 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Attributes
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Attributes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                    <div class="full-height"></div>
+                <div class="full-height"></div>
 
-                </mat-expansion-panel>
+            </mat-expansion-panel>
 
-            </mat-accordion>
-
-
-        </div>
+        </mat-accordion>
 
 
 

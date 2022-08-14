@@ -1,0 +1,30 @@
+<div *ngIf="canEdit">
+    <mat-form-field class="auto-flex tags-disp-block mr-2">
+        <mat-label>Tags Selection</mat-label>
+        <mat-chip-list class="auto-flex" #chipList aria-label="Tag Selection">
+            <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+                {{tag}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+            <input class="auto-flex" placeholder="#tag..." #tagInput [formControl]="tagCrtl" [matAutocomplete]="auto"
+                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                {{tag}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+
+
+<div *ngIf="!canEdit">
+    <mat-chip-list class="auto-flex full-width" #chipList aria-label="Tag Selection">
+        <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+            <small>{{tag}}</small>
+        </mat-chip>
+    </mat-chip-list>
+</div>

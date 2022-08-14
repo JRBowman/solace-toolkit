@@ -12,21 +12,27 @@ export class SolacetkSearchSheetComponent implements OnInit {
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<SolacetkSearchSheetComponent>, private service: SolacetkService) { }
 
-  public models: any[] = new Array<any>();
-  public selectedModels: any[] = new Array<any>();
+  public models: any[] = []
+  public filteredModels: any[] = [];
+  public selectedModels: any[] = [];
   @Input() resource: string = "";
 
   public IsLoading: boolean = true;
 
   @Output() modelsSelected = new EventEmitter<any[]>();
 
+  public tagFilters: string = "";
+
   ngOnInit(): void {
     
   }
 
   public LoadData(resoureUri: string) {
+    this.selectedModels = [];
+    this.models = [];
+    this.resource = "";
     this.resource = resoureUri;
-    this.service.GetModels(resoureUri).subscribe((model) => {
+    this.service.GetModels(resoureUri, true).subscribe((model) => {
       this.models = model;
       console.log(model);
       this.IsLoading = false;
@@ -35,6 +41,9 @@ export class SolacetkSearchSheetComponent implements OnInit {
 
   public Close() {
     this._bottomSheetRef.dismiss(this.selectedModels);
+    this.selectedModels = [];
+    this.models = [];
+    this.resource = "";
   }
 
   public Add(models: MatListOption[]) {
@@ -49,6 +58,9 @@ export class SolacetkSearchSheetComponent implements OnInit {
     this.Close();
   }
 
-  
+  public filter(tags: string[]): any[] {
+    this.filteredModels = this.models.filter(model => model.tags.includes(this.tagFilters));
+    return this.filteredModels;
+  }
 
 }

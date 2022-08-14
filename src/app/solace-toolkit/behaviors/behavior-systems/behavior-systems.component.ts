@@ -39,7 +39,7 @@ public model: BehaviorSystem = new BehaviorSystem();
   public openBranchesSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/states');
+    instance.instance.LoadData('Behaviors/branches');
 
     instance.instance.modelsSelected.subscribe((models) => 
     {

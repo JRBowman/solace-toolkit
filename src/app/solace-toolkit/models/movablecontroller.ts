@@ -6,6 +6,7 @@ export class MovableController implements IModelTK {
     public id?: string;
     public name?: string = "MovableController";
     public description?: string = "A MovableController can collide and move within the game world.";
+    public tags?: string = "";
 
     public pixelKeyColor?: string = "#FFFFFF";
     public controllerData?: string[];

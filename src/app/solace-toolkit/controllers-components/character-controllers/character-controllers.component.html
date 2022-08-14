@@ -1,30 +1,83 @@
 <solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Character Controllers"
-    modelUri="Controllers/movables">
+    modelUri="Controllers/movables" tagFilters="#characters">
 
     <!-- <character-controller [(model)]="model" editor-content></character-controller> -->
-    <div class="editor-content">
+    <div class="editor">
         <mat-slide-toggle class="two-column-selector" [(ngModel)]="isTwoColumn">2-Column</mat-slide-toggle>
 
-        <div class="character-container mt-2">
+        <div *ngIf="!isTwoColumn" class="character-container">
 
-            <div *ngIf="!isTwoColumn" class="character-container">
+            <div class="disp-flex">
+                <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
+                    alt="sprite">
+                <mat-form-field class="auto-flex">
+                    <input matInput #pixelKeyColor placeholder="Pixel Color Key" [(ngModel)]="model.pixelKeyColor">
+                </mat-form-field>
+            </div>
 
-                <div class="disp-flex">
-                    <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
-                        alt="sprite">
-                    <mat-form-field class="auto-flex model-formfield">
-                        <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-                    </mat-form-field>
+            <div class="disp-flex">
+                <mat-form-field class="auto-flex model-formfield small-field-two-items">
+                    <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield small-field-two-items">
+                    <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield small-field-three-items">
+                    <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield small-field-three-items">
+                    <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
+                </mat-form-field>
+                <mat-form-field class="auto-flex small-field-three-items">
+                    <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
+                </mat-form-field>
+            </div>
+
+            <div class="disp-flex">
+                <mat-form-field class="model-formfield auto-flex">
+                    <mat-select placeholder="Movement Type" [(ngModel)]="model.type">
+                        <mat-option *ngFor="let item of movableTypes" [value]="item">{{GetMoveType(item)}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="model-formfield auto-flex">
+                    <mat-select placeholder="Collision Type" [(ngModel)]="model.collisionType">
+                        <mat-option *ngFor="let item of collidableTypes" [value]="item">{{GetCollisionType(item)}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="disp-flex align-center">
+                    <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield"
+                        [(ngModel)]="model.affectedByGravity">
+                        Affected By
+                        Gravity</mat-checkbox>
+                    <mat-checkbox name="useFriction" class="auto-flex model-formfield" [(ngModel)]="model.useFriction">
+                        Use
+                        Friction
+                    </mat-checkbox>
+                    <mat-checkbox name="canMove" class="auto-flex" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div *ngIf="isTwoColumn" class="character-container">
+            <mat-grid-list cols="2" rowHeight="6:1">
+
+                <mat-grid-tile rowspan="4">
+                    <img class="sprite-thumb-2col model-formfield no-flex"
+                        src="../../../assets/soldof/images/settings.PNG" alt="sprite">
+                </mat-grid-tile>
+
+                <mat-grid-tile>
                     <mat-form-field class="auto-flex">
                         <input matInput #pixelKeyColor placeholder="Pixel Color Key" [(ngModel)]="model.pixelKeyColor">
                     </mat-form-field>
-                </div>
+                </mat-grid-tile>
 
-                <mat-form-field>
-                    <input matInput placeholder="Name" [(ngModel)]="model.name">
-                </mat-form-field>
-
-                <div class="disp-flex">
+                <mat-grid-tile>
                     <mat-form-field class="auto-flex model-formfield small-field-two-items">
                         <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
                     </mat-form-field>
@@ -40,165 +93,95 @@
                     <mat-form-field class="auto-flex small-field-three-items">
                         <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
                     </mat-form-field>
-                </div>
+                </mat-grid-tile>
 
-                <mat-form-field>
-                    <input matInput #spriteUri placeholder="Sprite URI" [(ngModel)]="model.spriteUri">
-                </mat-form-field>
-
-                <div class="disp-flex">
+                <mat-grid-tile>
                     <mat-form-field class="model-formfield auto-flex">
-                        <mat-select placeholder="Movement Type" [(ngModel)]="model.type">
+                        <mat-select placeholder="Movement Type" [(ngModel)]="model.type" [value]="model.type">
                             <mat-option *ngFor="let item of movableTypes" [value]="item">{{GetMoveType(item)}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="model-formfield auto-flex">
+                    <mat-form-field class="auto-flex">
                         <mat-select placeholder="Collision Type" [(ngModel)]="model.collisionType">
-                            <mat-option *ngFor="let item of collidableTypes" [value]="item">{{GetCollisionType(item)}}
-                            </mat-option>
+                            <mat-option *ngFor="let item of collidableTypes" [value]="item">
+                                {{GetCollisionType(item)}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-checkbox name="affectedByGravity" class="model-formfield"
-                        [(ngModel)]="model.affectedByGravity">Affected By
-                        Gravity</mat-checkbox>
-                    <mat-checkbox name="useFriction" class="model-formfield" [(ngModel)]="model.useFriction">Use
-                        Friction
-                    </mat-checkbox>
-                    <mat-checkbox name="canMove" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <div class="disp-flex full-width align-center">
+                        <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield"
+                            [(ngModel)]="model.affectedByGravity">Affected By
+                            Gravity</mat-checkbox>
+                        <mat-checkbox name="useFriction" class="auto-flex model-formfield"
+                            [(ngModel)]="model.useFriction">Use
+                            Friction
+                        </mat-checkbox>
+                        <mat-checkbox name="auto-flex canMove" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+        </div>
+
+        <mat-divider class="mb-2 mt-2"></mat-divider>
+
+        <mat-accordion class="auto-flex align-start full-width">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Behavior
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="disp-flex">
+                    <div class="no-flex align-start model-formfield">
+                        <h4>Selected:</h4>
+                    </div>
+
+                    <ng-template matExpansionPanelContent>
+
+                        <div class="auto-flex align-start" *ngIf="model.behaviorSystem && model.behaviorSystem.name">
+                            <mat-card>
+                                <mat-card-title>{{model.behaviorSystem.name}}</mat-card-title>
+                                <mat-card-subtitle>Description: {{model.behaviorSystem.description}}</mat-card-subtitle>
+                                <mat-card-content>
+
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <mat-form-field class="auto-flex">
+                                        <mat-select placeholder="Desired State" [(ngModel)]="model.behaviorSystem.desiredState">
+                                            <mat-option *ngFor="let item of GetStates()" [value]="item">
+                                                {{item.name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+
+                    </ng-template>
                 </div>
 
 
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openBehaviorsSheet()">Add</button>
+                </mat-action-row>
 
-            </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Attributes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-            <div *ngIf="isTwoColumn" class="character-container">
-                <mat-grid-list cols="2" rowHeight="8:1">
+                <div class="full-height"></div>
 
-                    <mat-grid-tile>
-                        <mat-form-field class="auto-flex">
-                            <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-                    <mat-grid-tile>
-                        <mat-form-field class="auto-flex">
-                            <input matInput #pixelKeyColor placeholder="Pixel Color Key"
-                                [(ngModel)]="model.pixelKeyColor">
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile rowspan="3">
-                        <img class="sprite-thumb-2col model-formfield no-flex"
-                            src="../../../assets/soldof/images/settings.PNG" alt="sprite">
-                    </mat-grid-tile>
-
-                    <mat-grid-tile>
-                        <mat-form-field class="auto-flex">
-                            <input matInput placeholder="Name" [(ngModel)]="model.name">
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile>
-                        <mat-form-field class="auto-flex model-formfield small-field-two-items">
-                            <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex model-formfield small-field-two-items">
-                            <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex model-formfield small-field-three-items">
-                            <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex model-formfield small-field-three-items">
-                            <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex small-field-three-items">
-                            <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile>
-                        <mat-form-field class="model-formfield auto-flex">
-                            <mat-select placeholder="Movement Type" [(ngModel)]="model.type" [value]="model.type">
-                                <mat-option *ngFor="let item of movableTypes" [value]="item">{{GetMoveType(item)}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex">
-                            <mat-select placeholder="Collision Type" [(ngModel)]="model.collisionType">
-                                <mat-option *ngFor="let item of collidableTypes" [value]="item">
-                                    {{GetCollisionType(item)}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile>
-                        <mat-checkbox name="affectedByGravity" class="model-formfield"
-                            [(ngModel)]="model.affectedByGravity">Affected By
-                            Gravity</mat-checkbox>
-                        <mat-checkbox name="useFriction" class="model-formfield" [(ngModel)]="model.useFriction">Use
-                            Friction
-                        </mat-checkbox>
-                        <mat-checkbox name="canMove" [(ngModel)]="model.canMove">Can Move</mat-checkbox>
-                    </mat-grid-tile>
-
-                </mat-grid-list>
-            </div>
-
-            <mat-divider class="mb-2 mt-2"></mat-divider>
-
-            <mat-form-field class="auto-flex">
-                <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-                    [(ngModel)]="model.description"></textarea>
-            </mat-form-field>
-
-            <mat-accordion class="auto-flex align-start full-width">
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Behavior
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                        <ng-template matExpansionPanelContent>
-                            <div *ngIf="model.behaviorSystem">
-                                <mat-list>
-                                    <mat-list-item>
-                                        <h3 matLine>{{model.behaviorSystem.name}}</h3>
-                                        <p matLine>Description: {{model.behaviorSystem.description}}</p>
-                                    </mat-list-item>
-                                </mat-list>
-                            </div>
-    
-                        </ng-template>
-
-                        
-                    <mat-action-row>
-                        <button mat-button color="primary" (click)="openBehaviorsSheet()">Add</button>
-                    </mat-action-row>
-
-<!--                         <mat-form-field class="model-formfield auto-flex">
-                            <mat-select placeholder="Controller Behavior" [(ngModel)]="model.behaviorSystemId"
-                                [value]="model.behaviorSystemId">
-                                <mat-option *ngFor="let item of behaviors" [value]="item.id">{{item.name}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field> -->
-
-                </mat-expansion-panel>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Attributes
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <div class="full-height"></div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
-
-        </div>
     </div>
 
 </solacetk-model-list>
