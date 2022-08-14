@@ -3,9 +3,6 @@
 
 
         <div class="disp-flex">
-            <mat-form-field class="no-flex model-formfield">
-                <input matInput placeholder="Next State" [(ngModel)]="model.next">
-            </mat-form-field>
             <mat-form-field class="auto-flex model-formfield">
                 <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
             </mat-form-field>
@@ -28,27 +25,18 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-
                 <ng-template matExpansionPanelContent>
                     <div *ngIf="model.conditions">
-
-                        <mat-list>
-                            <mat-list-item *ngFor="let cond of model.conditions">
-                                <h3 matLine>{{cond.name}}</h3>
-                                <p matLine>Description: {{cond.description}}</p>
-                            </mat-list-item>
-                        </mat-list>
-                        
+                        <mat-card *ngFor="let cond of model.conditions">
+                            <mat-card-title>{{cond.name}}</mat-card-title>
+                            <mat-card-subtitle>Description: {{cond.description}}</mat-card-subtitle>
+                        </mat-card>
                     </div>
-
-
                 </ng-template>
-
+                
                 <mat-action-row>
                     <button mat-button color="primary" (click)="openConditionsSheet()">Add</button>
                 </mat-action-row>
-
-
             </mat-expansion-panel>
 
 
@@ -62,12 +50,15 @@
                 <ng-template matExpansionPanelContent>
 
                     <div *ngIf="model.animations">
-                        <mat-list cdkDropList (cdkDropListDropped)="dropAnims($event)">
-                            <mat-list-item cdkDrag [cdkDragData]="animation" *ngFor="let animation of model.animations">
-                                <h3 matLine>{{animation.name}}</h3>
-                                <p matLine>Description: {{animation.description}}</p>
-                            </mat-list-item>
-                        </mat-list>
+                        <div cdkDropList (cdkDropListDropped)="dropAnims($event)">
+                            <div *ngFor="let animation of model.animations">
+
+                                <mat-card cdkDrag [cdkDragData]="animation">
+                                    <mat-card-title>{{animation.name}}</mat-card-title>
+                                    <mat-card-subtitle>Description: {{animation.description}}</mat-card-subtitle>
+                                </mat-card>
+                            </div>
+                        </div>
                     </div>
 
                 </ng-template>
@@ -89,23 +80,39 @@
 
                 <ng-template matExpansionPanelContent>
                     <div *ngIf="model.action">
-                        <mat-list>
-                            <mat-list-item>
-                                <h3 matLine>{{model.action.name}}</h3>
-                                <p matLine>Description: {{model.action.description}}</p>
-                            </mat-list-item>
-                        </mat-list>
+                        <mat-card>
+                            <mat-card-title>{{model.action.name}}</mat-card-title>
+                            <mat-card-subtitle>Description: {{model.action.description}}</mat-card-subtitle>
+                        </mat-card>
                     </div>
-
 
                 </ng-template>
 
                 <mat-action-row>
                     <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
                 </mat-action-row>
-
-
             </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Linked State
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <div class="auto-flex align-start" *ngIf="model.next">
+                        <mat-card>
+                            <mat-card-title>{{model.next.name}}</mat-card-title>
+                            <mat-card-subtitle>Description: {{model.next.description}}</mat-card-subtitle>
+                        </mat-card>
+                    </div>
+                </ng-template>
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openNextStateSheet()">Add</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>

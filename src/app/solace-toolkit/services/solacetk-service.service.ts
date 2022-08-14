@@ -9,8 +9,8 @@ export class SolacetkService {
 
   constructor(private http: HttpClient) { }
 
-  //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
-  public baseUrl: string = "http://localhost:5010/api/v1/";
+  public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
+  //public baseUrl: string = "http://localhost:5010/api/v1/";
 
   public deepGetQuery: string = "?includeElements=true";
 

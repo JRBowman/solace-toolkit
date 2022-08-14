@@ -31,6 +31,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
 .mr-2 {
     margin-right: 2% !important;
 }
+.mr-3 {
+    margin-right: 3% !important;
+}
+.mr-4 {
+    margin-right: 4% !important;
+}
+.mr-5 {
+    margin-right: 5% !important;
+}
 
 .mt-2 {
     margin-top: 2% !important;
@@ -109,6 +118,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
       align-self: flex-end;
   }
 
+  .sol-card-chips {
+    flex-direction: row-reverse !important;
+    margin-right: 5%;
+    display: flex;
+}
+
+.text-note {
+    color: gray;
+}
+
   .min-height-96 {
       min-height: 96px;
   }
@@ -117,6 +136,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
       display: flex;
       flex-flow: wrap;
   }
+
+  #cardChips > div.mat-clip-list-wrapper {
+    flex-direction: row-reverse !important;
+}
 
 
 .top-nav {

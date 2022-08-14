@@ -18,6 +18,7 @@ export class SolacetkSearchSheetComponent implements OnInit {
   @Input() resource: string = "";
 
   public IsLoading: boolean = true;
+  public selectMultiple: boolean = true;
 
   @Output() modelsSelected = new EventEmitter<any[]>();
 
@@ -27,8 +28,9 @@ export class SolacetkSearchSheetComponent implements OnInit {
     
   }
 
-  public LoadData(resoureUri: string) {
+  public LoadData(resoureUri: string, multiple: boolean = true) {
     this.selectedModels = [];
+    this.selectMultiple = multiple;
     this.models = [];
     this.resource = "";
     this.resource = resoureUri;

@@ -22,9 +22,11 @@
 
 
 <div *ngIf="!canEdit">
-    <mat-chip-list class="auto-flex full-width" #chipList aria-label="Tag Selection">
+    <mat-chip-list #cardChips class="auto-flex full-width" #chipList aria-label="Tag Selection">
+        <div class="auto-flex sol-card-chips">
         <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
             <small>{{tag}}</small>
         </mat-chip>
+    </div>
     </mat-chip-list>
 </div>

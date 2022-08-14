@@ -57,6 +57,16 @@ export class BehaviorStatesComponent implements OnInit {
     
   }
 
+  public openNextStateSheet(): void {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/states', true);
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.next = models[0];
+    });
+  }
+
   dropAnims(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.model.animations, event.previousIndex, event.currentIndex);
   }
