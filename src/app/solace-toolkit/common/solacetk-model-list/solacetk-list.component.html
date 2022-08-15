@@ -2,7 +2,7 @@
   <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
   <h1 class="no-flex align-center mr-5">{{moduleName}}</h1>
   <solacetk-tags *ngIf="!modelSelected" class="auto-flex align-center" [(model)]="tagFilters"
-    (tagsChange)="filter($event)"></solacetk-tags>
+    (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
 </div>
 
 
@@ -15,20 +15,20 @@
 
           <mat-card-title-group class="align-center">
             <div mat-card-avatar class="no-flex align-center">
-              <h3 class="mat-card-subtitle">{{filteredData.indexOf(model)}}:</h3>
+              <h3 class="mat-card-subtitle font-small">{{filteredData.indexOf(model)}}:</h3>
             </div>
             <div class="no-flex mr-2">
-              <mat-card-title>{{model.name}}</mat-card-title>
+              <mat-card-title class="font-large">{{model.name}}</mat-card-title>
               <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
             </div>
             <solacetk-tags class="auto-flex full-width align-center" [(model)]="model.tags"
               (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
-            <button id="modelEditBtn" class="no-flex align-center" aria-label="Edit Model" title="Edit Model" matTooltip="Edit Model" color="accent" mat-icon-button
-              (click)="LoadModel(model)">
+            <button id="modelEditBtn" class="no-flex align-center" aria-label="Edit Model" title="Edit Model"
+              matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
               <mat-icon>edit_square</mat-icon>
             </button>
-            <button id="modelDeleteBtn" class="no-flex align-center" aria-label="Delete Model" title="Edit Model" matTooltip="Delete Model" color="warn" mat-icon-button
-              (click)="DeleteModel(model)">
+            <button id="modelDeleteBtn" class="no-flex align-center" aria-label="Delete Model" title="Edit Model"
+              matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-title-group>
@@ -40,26 +40,45 @@
     </mat-tab>
     <mat-tab label="Editor">
 
-      <div *ngIf="model" class="character-container">
+      <div *ngIf="model" class="character-container mt-2">
 
-        <mat-form-field class="auto-flex">
-          <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-        </mat-form-field>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{model.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Description: {{model.description}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-        <mat-form-field>
-          <input matInput placeholder="Name" [(ngModel)]="model.name">
-        </mat-form-field>
+          <div>
+            <mat-form-field class="auto-flex full-width">
+              <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
+            </mat-form-field>
 
-        <solacetk-tags [(model)]="model.tags"></solacetk-tags>
+            <solacetk-tags [(model)]="model.tags"></solacetk-tags>
 
-        <mat-form-field class="auto-flex">
-          <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
-            [(ngModel)]="model.description"></textarea>
-        </mat-form-field>
+            <mat-form-field class="auto-flex">
+              <input matInput placeholder="Name" [(ngModel)]="model.name">
+            </mat-form-field>
+
+            <mat-form-field class="auto-flex full-width">
+              <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
+                [(ngModel)]="model.description"></textarea>
+            </mat-form-field>
+
+            <h3>Properties</h3>
+            <ng-content select=".editor"></ng-content>
+            
+          </div>
+        </mat-expansion-panel>
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
-        <ng-content select=".editor"></ng-content>
+          <ng-content select=".editor-panels"></ng-content>
+
+
       </div>
 
       <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p>

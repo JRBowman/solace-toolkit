@@ -23,6 +23,8 @@ export class SolacetkTagsComponent implements OnInit {
   @Output() tagsChange = new EventEmitter<string[]>();
   @Output() tagClick = new EventEmitter<string>();
 
+  @Input() tkHeading: string = "Tags";
+
   @Input() canEdit: boolean = true;
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;

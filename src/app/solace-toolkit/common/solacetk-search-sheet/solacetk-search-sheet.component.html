@@ -8,10 +8,10 @@
     <h2>{{resource}}</h2>
 
     <div class="disp-flex">
-        <solacetk-tags [(model)]="tagFilters" (tagsChange)="filter($event)"></solacetk-tags>
+        <solacetk-tags [(model)]="tagFilters" (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
     </div>
 
-    <mat-selection-list class="disp-flex" #modelList multiple>
+    <mat-selection-list class="disp-flex" #modelList [multiple]="selectMultiple">
         <mat-list-option *ngFor="let model of filteredModels" [value]="model">
             <h3 matLine>{{model.name}}</h3>
             <p matLine>Description: {{model.description}}</p>

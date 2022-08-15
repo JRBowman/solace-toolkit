@@ -1,6 +1,6 @@
 <div *ngIf="canEdit">
     <mat-form-field class="auto-flex tags-disp-block mr-2">
-        <mat-label>Tags Selection</mat-label>
+        <mat-label>{{tkHeading}}</mat-label>
         <mat-chip-list class="auto-flex" #chipList aria-label="Tag Selection">
             <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 {{tag}}

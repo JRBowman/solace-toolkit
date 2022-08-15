@@ -1,7 +1,6 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states">
     <div class="editor">
 
-
         <div class="disp-flex">
             <mat-form-field class="auto-flex model-formfield">
                 <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
@@ -9,15 +8,16 @@
             <mat-form-field class="auto-flex model-formfield">
                 <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
             </mat-form-field>
-            <mat-checkbox class="auto-flex" name="interruptable" [(ngModel)]="model.interruptable">Interruptable
+            <mat-checkbox class="auto-flex align-center" name="interruptable" [(ngModel)]="model.interruptable">
+                Interruptable
             </mat-checkbox>
         </div>
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
+    </div>
 
+    <div class="editor-panels">
         <mat-accordion class="auto-flex align-start full-width">
-
-
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -33,7 +33,7 @@
                         </mat-card>
                     </div>
                 </ng-template>
-                
+
                 <mat-action-row>
                     <button mat-button color="primary" (click)="openConditionsSheet()">Add</button>
                 </mat-action-row>
@@ -125,7 +125,6 @@
 
             </mat-expansion-panel>
         </mat-accordion>
-
-
     </div>
+
 </solacetk-model-list>

@@ -3,21 +3,21 @@
 }
 
 .nav-time-icon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     margin-right: 8px;
 }
 
 .nav-connect-icon-up {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     color: green;
     fill: green;
 }
 
 .nav-connect-icon-down {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     color: red;
     fill: red;
 }

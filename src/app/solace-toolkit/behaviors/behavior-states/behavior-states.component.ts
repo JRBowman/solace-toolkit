@@ -59,7 +59,7 @@ export class BehaviorStatesComponent implements OnInit {
 
   public openNextStateSheet(): void {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/states', true);
+    instance.instance.LoadData('Behaviors/states', false);
 
     instance.instance.modelsSelected.subscribe((models) => 
     {

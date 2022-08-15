@@ -29,7 +29,8 @@
         </div>
 
         <div class="disp-flex">
-            <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield" [(ngModel)]="model.affectedByGravity">
+            <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield"
+                [(ngModel)]="model.affectedByGravity">
                 Affected By
                 Gravity</mat-checkbox>
             <mat-checkbox name="useFriction" class="auto-flex model-formfield" [(ngModel)]="model.useFriction">Use
@@ -40,6 +41,9 @@
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
+    </div>
+
+    <div class="editor-panels">
         <mat-accordion class="auto-flex align-start full-width">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>

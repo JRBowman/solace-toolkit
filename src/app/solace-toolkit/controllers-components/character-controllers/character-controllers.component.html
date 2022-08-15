@@ -128,6 +128,10 @@
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
+    </div>
+
+    <div class="editor-panels">
+
         <mat-accordion class="auto-flex align-start full-width">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -152,7 +156,8 @@
                                 </mat-card-content>
                                 <mat-card-actions>
                                     <mat-form-field class="auto-flex">
-                                        <mat-select placeholder="Desired State" [(ngModel)]="model.behaviorSystem.desiredState">
+                                        <mat-select placeholder="Desired State"
+                                            [(ngModel)]="model.behaviorSystem.desiredState">
                                             <mat-option *ngFor="let item of GetStates()" [value]="item">
                                                 {{item.name}}</mat-option>
                                         </mat-select>
