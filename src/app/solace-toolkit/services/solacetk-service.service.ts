@@ -9,8 +9,8 @@ export class SolacetkService {
 
   constructor(private http: HttpClient) { }
 
-  public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
-  //public baseUrl: string = "http://localhost:5010/api/v1/";
+  //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
+  public baseUrl: string = "http://localhost:5010/api/v1/";
 
   public deepGetQuery: string = "?includeElements=true";
 
@@ -20,6 +20,10 @@ export class SolacetkService {
 
   public GetModel(route: string): Observable<any> {
     return this.http.get<any>(this.baseUrl + route);
+  }
+
+  public GetData(fullPath: string): Observable<any> {
+    return this.http.get<any>(fullPath);
   }
 
   public GetModels(route: string, deepGet: boolean = false, tagFilters: string = ""): Observable<any[]> {

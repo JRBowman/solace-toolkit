@@ -1,0 +1,66 @@
+<mat-card class="mat-elevation-z0 auto-flex">
+    <mat-card-content *ngIf="render">
+        <div class="disp-flex">
+
+            <!-- Sprite Animation Preview -->
+            <div class="model-formfield no-flex">
+                <img mat-card-lg-image [class]="model ? 'sprite-thumb-2col sprite' : 'sprite-thumb-2col sprite-placeholder'" 
+                [src]="sheetName" alt="sprite">
+            </div>
+
+            <!-- Visual Frame Data -->
+            <div class="auto-flex">
+                <mat-card class="mat-elevation-z0 auto-flex">
+                    <mat-card-content *ngIf="selectedFrame.name">
+                        <mat-card-subtitle>Frame: {{selectedFrame.name}}</mat-card-subtitle>
+                        <p>Duration: {{selectedFrame.duration}}</p>
+                        <p>Size: w:{{selectedFrame.frame.w}} x h:{{selectedFrame.frame.h}}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <!-- Frame List -->
+        <div class="disp-flex">
+            <h3>Frames</h3>
+            <mat-chip-list class="auto-flex">
+                <mat-chip class="min-width-12 justify-center" *ngFor="let frame of frames" (click)="onSelect(frame)">
+                    {{frame.name}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+
+    </mat-card-content>
+
+
+    <mat-card-actions class="pos-bottom">
+        <button mat-button color="primary" (click)="aseUpload.click()">Import Aseprite</button>
+        <button mat-button color="primary" (click)="sheetUpload.click()">Import Sprite
+            Sheet</button>
+        <button mat-button color="primary" (click)="textureUpload.click()">Add Frame</button>
+        <input type="file" class="file-input" (change)="onAseSelected($event)"
+            accept=".ase,.aseprite" #aseUpload>
+        <input type="file" class="file-input" (change)="onSheetSelected($event)" accept=".png"
+            #sheetUpload>
+        <input type="file" class="file-input" (change)="onTextureSelected($event)" accept=".png"
+            #textureUpload>
+    </mat-card-actions>
+
+
+</mat-card>
+
+<mat-divider class="mb-2 mt-2"></mat-divider>
+
+<div class="disp-flex">
+    <mat-form-field class="model-formfield no-flex">
+        <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
+    </mat-form-field>
+    <mat-checkbox name="loop" class="auto-flex model-formfield align-center"
+        [(ngModel)]="model.loop">Loop
+    </mat-checkbox>
+    <mat-checkbox name="invert" class="auto-flex model-formfield align-center"
+        [(ngModel)]="model.invert">Invert
+    </mat-checkbox>
+    <mat-checkbox name="mirror" class="auto-flex align-center" [(ngModel)]="model.mirror">Mirror
+    </mat-checkbox>
+</div>

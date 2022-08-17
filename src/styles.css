@@ -60,19 +60,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
   
 
   .sprite-thumb {
-      width: 64px !important;
+      width: auto !important;
       height: 64px !important;
       display: inline-block;
       border: white 2px dotted;
       margin-bottom: 3%;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
   }
 
   .sprite-thumb-2col {
-    width: 192px !important;
+    width: auto !important;
     height: 192px !important;
-    display: inline-block;
-    border: white 2px dotted;
     margin-bottom: 3%;
+    display: inline-block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.sprite-thumb-2col.sprite-placeholder {
+    border: white 2px dotted;
+}
+.sprite-thumb-2col.sprite {
+    border: none;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .icon-sprite {
@@ -191,11 +207,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     white-space: nowrap !important;
 }
 
+.min-width-12 {
+    min-width: 10%;
+}
+
 @media screen and (max-width: 2560px) {
     .router-content {
         padding-left: 23%;
         padding-right: 23%;
         padding-top: 32px;
+    }
+
+    .min-width-12 {
+        min-width: 10%;
     }
 }
 
@@ -205,6 +229,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-right: 21%;
         padding-top: 32px;
     }
+    .min-width-12 {
+        min-width: 13%;
+    }
 }
 
 @media screen and (max-width: 1720px) {
@@ -212,6 +239,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-left: 19%;
         padding-right: 19%;
         padding-top: 32px;
+    }
+    .min-width-12 {
+        min-width: 19%;
     }
 }
 
@@ -221,6 +251,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-right: 17%;
         padding-top: 32px;
     }
+    .min-width-12 {
+        min-width: 19%;
+    }
 }
 
 @media screen and (max-width: 1440px) {
@@ -228,6 +261,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-left: 15%;
         padding-right: 15%;
         padding-top: 32px;
+    }
+    .min-width-12 {
+        min-width: 19%;
     }
 }
 
@@ -237,6 +273,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-right: 13%;
         padding-top: 32px;
     }
+    .min-width-12 {
+        min-width: 23%;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -244,6 +283,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-left: 11%;
         padding-right: 11%;
         padding-top: 32px;
+    }
+    .min-width-12 {
+        min-width: 31%;
     }
 }
 
@@ -254,6 +296,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-right: 5%;
         padding-top: 32px;
     }
+    .min-width-12 {
+        min-width: 48%;
+    }
 }
 
 /* Small Screen */
@@ -262,5 +307,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
         padding-left: 3%;
         padding-right: 3%;
         padding-top: 32px;
+    }
+    .min-width-12 {
+        min-width: 47%;
     }
 }

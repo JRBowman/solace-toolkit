@@ -72,6 +72,7 @@ import { SolacetkSearchSheetComponent } from './solace-toolkit/common/solacetk-s
 import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
 import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
 import { SolacetkTagsComponent } from './solace-toolkit/common/solacetk-tags/solacetk-tags.component';
+import { SolacetkAnimationEditorComponent } from './solace-toolkit/common/solacetk-animation-editor/solacetk-animation-editor.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { SolacetkTagsComponent } from './solace-toolkit/common/solacetk-tags/sol
     SolacetkSearchSheetComponent,
     BehaviorBranchesComponent,
     ParticleSystemsComponent,
-    SolacetkTagsComponent
+    SolacetkTagsComponent,
+    SolacetkAnimationEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorAnimation } from '../../models/behavioranimation';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MatChipSelectionChange } from '@angular/material/chips';
+import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
+import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
   selector: 'app-behavior-animations',
@@ -8,11 +11,27 @@ import { BehaviorAnimation } from '../../models/behavioranimation';
 })
 export class BehaviorAnimationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: SolacetkService) { }
 
   public model: BehaviorAnimation = new BehaviorAnimation();
 
+  public unloadModules = new EventEmitter<boolean>();
+
   ngOnInit(): void {
+    this.unloadModules.emit(false);
+
+  }
+
+  LoadAnim(): void {
+    this.unloadModules.emit(false);
+  }
+
+  CreateAnim(): void {
+
+  }
+
+  CloseAnim(): void {
+    this.unloadModules.emit(true);
   }
 
 }

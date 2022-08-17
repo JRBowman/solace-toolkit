@@ -1,0 +1,9 @@
+.pos-bottom {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 2%;
+}
+
+.file-input {
+    display: none;
+}
