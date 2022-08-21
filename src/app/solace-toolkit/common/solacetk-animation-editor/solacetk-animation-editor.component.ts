@@ -16,13 +16,17 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   @Input() unloadChange = new EventEmitter<boolean>();
 
+  @Input() showFrames: boolean = true;
+  @Input() showFileInfo: boolean = true;
+  @Input() showDataPanel: boolean = true;
+
+
   public fileName: string = "";
-  public sheetName: string = "";
+  public sheetName: string = "../../assets/soldof/images/settings.png";
+  public aseReady: boolean = false;
 
   public frames: any[] = [];
   public selectedFrame: any = {};
-
-  public render: boolean = true;
 
   public framesChange = new EventEmitter<string>();
 
@@ -32,23 +36,21 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       if (value === true) {
         this.fileName = "";
         this.selectedFrame = {};
-        this.sheetName = "";
         this.frames = [];
-        this.render = false;
-        console.log("unloading");
+        this.sheetName = "../../assets/soldof/images/settings.png";
+        console.log("unloaded...");
         return;
       }
 
-      if (this.model.name) {
-        console.log("loading");
-        this.render = true;
-        let texName = "http://localhost:5010/Ase/" + this.model.name;
+      if (this.model) {
+        let texName = "Ase/" + this.model.name;
         this.framesChange.emit(texName + ".png.json");
+        console.log("loaded");
       }
-
     });
 
     this.framesChange.subscribe((url) => {
+      console.log(url);
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
 
@@ -59,14 +61,23 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
           f.name = fr;
           this.frames.push(f);
         });
+
         this.selectedFrame = this.frames[0];
         this.model.framesJson = JSON.stringify(this.frames);
-        let texName = "http://localhost:5010/Ase/" + this.model.name;
-        this.sheetName = texName + ".gif";
+
+
+        let texName = "Ase/" + this.model.name;
+        this.sheetName = this.service.apiHost + texName + ".gif";
+        this.aseReady = true;
+
         this.modelChange.emit(this.model);
+      },
+      (error) => {
+        console.log(error);
+        this.sheetName = "../../assets/soldof/images/settings.png";
+        this.aseReady = false;
       });
     });
-
 
     this.unloadChange.emit(false);
   }

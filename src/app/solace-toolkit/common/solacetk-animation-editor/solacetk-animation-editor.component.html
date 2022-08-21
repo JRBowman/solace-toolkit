@@ -1,15 +1,15 @@
 <mat-card class="mat-elevation-z0 auto-flex">
-    <mat-card-content *ngIf="render">
+    <mat-card-content>
         <div class="disp-flex">
 
             <!-- Sprite Animation Preview -->
             <div class="model-formfield no-flex">
-                <img mat-card-lg-image [class]="model ? 'sprite-thumb-2col sprite' : 'sprite-thumb-2col sprite-placeholder'" 
+                <img mat-card-lg-image [class]="aseReady ? 'sprite-thumb-2col sprite' : 'sprite-thumb-2col sprite-placeholder'" 
                 [src]="sheetName" alt="sprite">
             </div>
 
             <!-- Visual Frame Data -->
-            <div class="auto-flex">
+            <div *ngIf="showFrames && aseReady" class="auto-flex">
                 <mat-card class="mat-elevation-z0 auto-flex">
                     <mat-card-content *ngIf="selectedFrame.name">
                         <mat-card-subtitle>Frame: {{selectedFrame.name}}</mat-card-subtitle>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Frame List -->
-        <div class="disp-flex">
+        <div *ngIf="showFrames && aseReady" class="disp-flex">
             <h3>Frames</h3>
             <mat-chip-list class="auto-flex">
                 <mat-chip class="min-width-12 justify-center" *ngFor="let frame of frames" (click)="onSelect(frame)">
@@ -51,7 +51,7 @@
 
 <mat-divider class="mb-2 mt-2"></mat-divider>
 
-<div class="disp-flex">
+<div *ngIf="showDataPanel && model" class="disp-flex">
     <mat-form-field class="model-formfield no-flex">
         <input matInput #speed placeholder="Playback Speed" [(ngModel)]="model.speed">
     </mat-form-field>

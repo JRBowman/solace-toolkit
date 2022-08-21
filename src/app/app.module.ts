@@ -10,7 +10,6 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { BowSocialsComponent } from './bow-socials/bow-socials.component';
 import { ResumeComponent } from './resume/resume.component';
 import { MusicComponent } from './music/music.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { SoftwareComponent } from './software/software.component';
 import { VideosComponent } from './videos/videos.component';
 import { ResumeSheetComponent } from './resume/resume-sheet/resume-sheet.component';
@@ -73,6 +72,12 @@ import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-b
 import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
 import { SolacetkTagsComponent } from './solace-toolkit/common/solacetk-tags/solacetk-tags.component';
 import { SolacetkAnimationEditorComponent } from './solace-toolkit/common/solacetk-animation-editor/solacetk-animation-editor.component';
+import { WorkItemComponent } from './solace-toolkit/work-components/work-item/work-item.component';
+import { WorkCommentComponent } from './solace-toolkit/work-components/work-comment/work-comment.component';
+import { ProjectsComponent } from './solace-toolkit/work-components/projects/projects.component';
+import { WorkItemSheetEditorComponent } from './solace-toolkit/work-components/work-item/work-item-sheet-editor/work-item-sheet-editor.component';
+import { ControllerComponentComponent } from './solace-toolkit/controllers-components/controller-component/controller-component.component';
+import { SolacetkAttributesPanelComponent } from './solace-toolkit/common/solacetk-attributes-panel/solacetk-attributes-panel.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +141,12 @@ import { SolacetkAnimationEditorComponent } from './solace-toolkit/common/solace
     BehaviorBranchesComponent,
     ParticleSystemsComponent,
     SolacetkTagsComponent,
-    SolacetkAnimationEditorComponent
+    SolacetkAnimationEditorComponent,
+    WorkItemComponent,
+    WorkCommentComponent,
+    WorkItemSheetEditorComponent,
+    ControllerComponentComponent,
+    SolacetkAttributesPanelComponent
   ],
   imports: [
     BrowserModule,

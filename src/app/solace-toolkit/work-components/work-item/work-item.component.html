@@ -1,0 +1,16 @@
+<mat-card class="auto-flex mb-2 bg-task-card">
+    <mat-card-content>
+        <mat-card-title class="font-medium auto-flex">{{model.name}}</mat-card-title>
+        <mat-divider matLine class="mb-2"></mat-divider>
+        <p class="font-small no-margin auto-flex" matLine>Estimate: {{model.hoursEstimate}}</p>
+        <p class="font-small no-margin auto-flex" matLine>Actual: {{model.hoursActual}}</p>
+
+
+    </mat-card-content>
+
+
+    <mat-card-actions class="pos-bottom">
+        <button color="primary" mat-button (click)="openWorkItemEditor()">Edit</button>
+    </mat-card-actions>
+
+</mat-card>

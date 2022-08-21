@@ -16,4 +16,12 @@
     margin: 8px;
 }
 
+.auto-height {
+    height: auto;
+}
+
+mat-tab-header.mat-tab-header {
+    height: 0px !important;
+}
+
 

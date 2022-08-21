@@ -1,4 +1,4 @@
-<div class="disp-flex">
+<div *ngIf="!modelSelected || !hideEditorHeading" class="disp-flex">
   <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
   <h1 class="no-flex align-center mr-5">{{moduleName}}</h1>
   <solacetk-tags *ngIf="!modelSelected" class="auto-flex align-center" [(model)]="tagFilters"
@@ -8,7 +8,7 @@
 
 <div class="btn-hover-right" *ngIf="!IsLoading">
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
-    <mat-tab label="List">
+    <mat-tab class="no-height" label="List">
 
       <div class="disp-flex auto-flex mt-2 mb-2" *ngFor='let model of filteredData'>
         <mat-card class="auto-flex">
@@ -38,11 +38,11 @@
 
 
     </mat-tab>
-    <mat-tab label="Editor">
+      <mat-tab label="Editor">
 
       <div *ngIf="model" class="character-container mt-2">
 
-        <mat-expansion-panel expanded>
+        <mat-expansion-panel [expanded]="!collapseCoreEditor">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{model.name}}

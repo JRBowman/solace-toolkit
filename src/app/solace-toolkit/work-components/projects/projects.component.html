@@ -1,0 +1,93 @@
+<solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()"
+    modelUri="Work/projects" [hideEditorHeading]="true" [collapseCoreEditor]="true">
+    <div class="editor">
+
+        <mat-divider class="mb-2 mt-2"></mat-divider>
+
+    </div>
+
+    <div class="editor-panels">
+
+        <div class="disp-flex">
+            <div class="auto-flex">
+                <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
+            </div>
+            <div class="auto-flex">
+                <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours</small></h4>
+            </div>
+            <div class="auto-flex">
+                <h4>Paid Hours: <small class="mat-card-subtitle">{{totalPaid}} Hours</small></h4>
+            </div>
+            <div class="auto-flex">
+                <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours</small></h4>
+            </div>
+        </div>
+
+    </div>
+
+</solacetk-model-list>
+
+<div *ngIf="model.id && modelLoaded" class="flex-container mb-2">
+
+    <mat-divider class="mb-2 mt-2"></mat-divider>
+
+    <div cdkDropListGroup class="horizontal-container full-width">
+
+        <mat-card cdkDropList [cdkDropListData]="backlog" (cdkDropListDropped)="drop($event, 'backlog')"
+            class="width-24 place-flex-start mr-2">
+            <mat-card-content>
+                <div class="disp-flex">
+                    <h3 class="auto-flex">Backlog</h3>
+                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New Backlog Task"
+                        (click)="AddWorkItem(0)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of backlog" [model]="workItem" (modelChange)="WorkItemUpdated($event)">
+                </work-item>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event, 'inProgress')"
+            class="width-24 place-flex-start mr-2">
+            <mat-card-content>
+                <div class="disp-flex">
+                    <h3 class="auto-flex">In-Progress</h3>
+                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New In-Progress Task"
+                        (click)="AddWorkItem(1)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of inProgress" [model]="workItem">
+                </work-item>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card cdkDropList [cdkDropListData]="review" (cdkDropListDropped)="drop($event, 'review')"
+            class="width-24 place-flex-start mr-2">
+            <mat-card-content>
+                <div class="disp-flex">
+                    <h3 class="auto-flex">Ready for Review</h3>
+                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New Review Task"
+                        (click)="AddWorkItem(2)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of review" [model]="workItem">
+                </work-item>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event, 'complete')"
+            class="width-24 place-flex-start">
+            <mat-card-content>
+                <div class="disp-flex">
+                    <h3 class="auto-flex">Complete</h3>
+                </div>
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of complete" [model]="workItem">
+                </work-item>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>

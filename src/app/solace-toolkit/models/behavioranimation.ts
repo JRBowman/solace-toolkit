@@ -1,3 +1,5 @@
+import { SoltkKeyValue } from "./soltk-key-value";
+
 export class BehaviorAnimation {
 
     public id: string = "<id>";
@@ -7,6 +9,8 @@ export class BehaviorAnimation {
     public actFrameData: BehaviorAnimationData = new BehaviorAnimationData();
     public endFrameData: BehaviorAnimationData = new BehaviorAnimationData();
     public tags: string = "";
+    public keys: SoltkKeyValue[] = [];
+    
 }
 
 export class BehaviorAnimationData {

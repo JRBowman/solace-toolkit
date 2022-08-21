@@ -12,6 +12,10 @@
   <span class="no-flex"></span>
 
   <div class="disp-flex">
+
+    <a mat-button [routerLink]="['/projects']">Projects</a>
+
+
   <button mat-button [matMenuTriggerFor]="gameCoreMenu">Game Core</button>
   <mat-menu #gameCoreMenu="matMenu">
       <a mat-menu-item [routerLink]="['/gamestates']">Game Systems</a>

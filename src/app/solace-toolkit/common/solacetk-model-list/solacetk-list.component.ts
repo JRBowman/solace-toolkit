@@ -16,6 +16,8 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() moduleName: string = "Solace TK Module";
   @Input() modelUri: string = "Controllers/movables";
   @Input() tagFilters: string = "";
+  @Input() hideEditorHeading: boolean = false;
+  @Input() collapseCoreEditor: boolean = false;
 
   @Input() model!: any;
   @Output() modelChange = new EventEmitter<any>();
@@ -55,7 +57,6 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   }
 
   public LoadModel(model: any) {
-    console.log(model);
     this.model = model;
     this.IsNewModel = false;
     this.modelSelected = true;
@@ -69,7 +70,6 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public SaveModel() {
     //this.selectedModel = model;
     this.IsSaving = true;
-    console.log(this.model);
     if (this.IsNewModel) {
       this.Create();
       this.model.tags += this.tagFilters;
@@ -119,7 +119,6 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     this.tabIndex = 0;
     this.modelSelected = false;
     this.modelClosed.emit();
-    console.log(this.model);
   }
 
   public Load(): void {
@@ -138,13 +137,11 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   }
 
   public filter(tags: string[]): any[] {
-    console.log(tags);
     this.filteredData = this.dataStruct.filter(model => model.tags.includes(this.tagFilters));
     return this.filteredData;
   }
 
   public clickFilter(tag: string): void {
-    console.log(tag);
     this.tagFilters = this.tagFilters + tag;
   }
 

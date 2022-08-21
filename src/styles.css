@@ -8,8 +8,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
 
 .router-content {
-    padding-left: 17%;
-    padding-right: 17%;
+    padding-left: 11%;
+    padding-right: 11%;
     padding-top: 32px;
 }
 
@@ -80,6 +80,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     image-rendering: crisp-edges;
 }
 
+.horizontal-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+
+    overflow-x: visible;
+    height: 100%;
+}
+
+.place-flex-start {
+    place-self: flex-start;
+}
+
+.flex-container {
+    position: relative;
+    left: -8%;
+    min-height: 800px;
+}
+
 .sprite-thumb-2col.sprite-placeholder {
     border: white 2px dotted;
 }
@@ -91,6 +111,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     justify-content: center;
 }
 
+.width-33 {
+    width: 33%;
+}
+
+.width-24 {
+    width: 24%;
+}
+
 .icon-sprite {
     width: 64px !important;
     height: 64px !important;
@@ -100,6 +128,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
 
   .model-formfield {
       margin-right: 3%;
+  }
+
+  .mini-fab-header {
+      position: relative;
+      right: 8px;
+      width: 32px;
   }
 
   .small-field-two-items {
@@ -209,6 +243,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
 
 .min-width-12 {
     min-width: 10%;
+}
+
+.pos-right {
+    position: absolute !important;
+    right: 0px;
 }
 
 @media screen and (max-width: 2560px) {

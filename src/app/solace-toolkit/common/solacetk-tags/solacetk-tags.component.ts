@@ -11,6 +11,7 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./solacetk-tags.component.css']
 })
 export class SolacetkTagsComponent implements OnInit {
+
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCrtl = new FormControl('');
   filteredTags!: Observable<string[]>;
@@ -24,7 +25,6 @@ export class SolacetkTagsComponent implements OnInit {
   @Output() tagClick = new EventEmitter<string>();
 
   @Input() tkHeading: string = "Tags";
-
   @Input() canEdit: boolean = true;
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
@@ -32,12 +32,10 @@ export class SolacetkTagsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.model.length > 0) {
-      console.log(this.model);
       this.tags = this.model.split(" ");
     }
 
     this.modelChange.subscribe((next) => {
-      console.log(this.model);
       if (this.model && this.model.length > 0) this.tags = this.model.split(" ");
     });
 
@@ -87,7 +85,6 @@ export class SolacetkTagsComponent implements OnInit {
   }
 
   public chipClick(chip: string): void {
-    console.log(chip);
     this.tagClick.emit(chip);
   }
 

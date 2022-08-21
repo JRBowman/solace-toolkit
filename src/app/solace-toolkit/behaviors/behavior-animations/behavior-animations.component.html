@@ -8,7 +8,7 @@
 
         <mat-accordion class="auto-flex align-start full-width">
 
-            <mat-expansion-panel>
+            <mat-expansion-panel [disabled]="!model.id">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Start Frames
@@ -23,7 +23,7 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel  [disabled]="!model.id">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Act Frames
@@ -38,7 +38,7 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel  [disabled]="!model.id">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         End Frames
@@ -53,16 +53,7 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Attributes
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="full-height"></div>
-
-            </mat-expansion-panel>
+            <solacetk-attributes-panel [(model)]="model.keys"></solacetk-attributes-panel>
         </mat-accordion>
 
 

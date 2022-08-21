@@ -1,0 +1,40 @@
+<div *ngIf="panelType === 'expansionpanel'">
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{panelName}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+
+            <div *ngIf="model.keys">
+                <mat-list>
+                    <div *ngFor="let key of model">
+                        <mat-list-item>
+                            <div class="no-flex align-end model-formfield">
+                                <h3 class="align-center" matLine>[{{GetKeyIndex(key)}}]:</h3>
+                            </div>
+                            <mat-form-field class="auto-flex model-formfield">
+                                <input matInput placeholder="Key" [(ngModel)]="key.key">
+                            </mat-form-field>
+                            <mat-form-field class="auto-flex">
+                                <input matInput placeholder="Data" [(ngModel)]="key.data">
+                            </mat-form-field>
+
+                        </mat-list-item>
+                        <mat-divider class="mb-2 mt-2"></mat-divider>
+                    </div>
+                </mat-list>
+            </div>
+
+        </ng-template>
+
+
+        <mat-action-row>
+            <button mat-button color="primary" (click)="AddAttribute()">Add</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+</div>

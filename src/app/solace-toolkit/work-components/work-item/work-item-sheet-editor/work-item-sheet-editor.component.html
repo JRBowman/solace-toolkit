@@ -1,0 +1,46 @@
+<div *ngIf="!IsLoading">
+    <mat-card class="mat-elevation-z0">
+        <mat-card-title class="mb-2">Edit Task</mat-card-title>
+        <mat-card-content>
+
+            <mat-form-field class="auto-flex">
+                <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
+            </mat-form-field>
+
+            <div class="disp-flex">
+                <mat-form-field class="no-flex">
+                    <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
+                </mat-form-field>
+            </div>
+
+
+            <div class="disp-flex">
+                <mat-form-field class="no-flex">
+                    <input matInput #hoursEstimate placeholder="Estimated Hours" [(ngModel)]="model.hoursEstimate">
+                </mat-form-field>
+            </div>
+
+            <div class="disp-flex">
+                <mat-form-field class="no-flex">
+                    <input matInput #hoursActual placeholder="Actul Hours Worked" [(ngModel)]="model.hoursActual">
+                </mat-form-field>
+            </div>
+
+
+            <solacetk-animation-editor [(model)]="anim" [unloadChange]="unloadModules" [showFrames]="false" [showDataPanel]="false"></solacetk-animation-editor>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <div class="disp-flex">
+                <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
+                <button mat-button color="primary" class="auto-flex" (click)="Save()">Save</button>
+            </div>
+        </mat-card-actions>
+
+
+    </mat-card>
+
+
+
+</div>

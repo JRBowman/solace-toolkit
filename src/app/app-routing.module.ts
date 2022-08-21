@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { MusicComponent } from './music/music.component';
 import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { ProjectsComponent } from './solace-toolkit/work-components/projects/projects.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SoftwareComponent } from './software/software.component';
 import { CharacterControllersComponent } from './solace-toolkit/controllers-components/character-controllers/character-controllers.component';
@@ -56,11 +56,6 @@ const routes: Routes = [
   {
     path: 'software',
     component: SoftwareComponent,
-    //canActivate: [AuthorizationGuard]
-  },
-  {
-    path: 'projects',
-    component: ProjectsComponent,
     //canActivate: [AuthorizationGuard]
   },
   {
@@ -224,6 +219,10 @@ const routes: Routes = [
   {
     path: 'overlays',
     component: OverlayEffectsComponent,
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent,
   },
 ];
 
