@@ -2,7 +2,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatChipInputEvent, MatChipSelectionChange } from '@angular/material/chips';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
 
 @Component({
@@ -16,6 +16,8 @@ export class SolacetkTagsComponent implements OnInit {
   tagCrtl = new FormControl('');
   filteredTags!: Observable<string[]>;
   tags: string[] = [];
+
+  //TODO: Update this to pull from a cache or DB for new entires and filter to a only last pick.
   allTags: string[] = ['#player', '#controller', '#core'];
 
   @Input() model: string = "";
@@ -47,22 +49,17 @@ export class SolacetkTagsComponent implements OnInit {
     this.updateTags();
   }
 
-  add(event: MatChipInputEvent): void {
+  public add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
-    if (value) {
-      this.tags.push(value);
-    }
+    if (value) this.tags.push(value);
 
-    // Clear the input value
     event.chipInput!.clear();
     this.updateTags();
-
     this.tagCrtl.setValue(null);
   }
 
-  remove(tag: string): void {
+  public remove(tag: string): void {
     const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
@@ -71,13 +68,13 @@ export class SolacetkTagsComponent implements OnInit {
     }
   }
 
-  updateTags(): void {
+  public updateTags(): void {
     this.model = this.tags.join(" ");
     this.modelChange.emit(this.model);
     this.tagsChange.emit(this.tags);
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
+  public selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
     this.tagCrtl.setValue(null);

@@ -10,7 +10,7 @@
 
 
     <mat-card-actions class="pos-bottom">
-        <button color="primary" mat-button (click)="openWorkItemEditor()">Edit</button>
+        <button *ngIf="model.tags !== '#complete'" color="primary" mat-button (click)="openWorkItemEditor()">Edit</button>
     </mat-card-actions>
 
 </mat-card>

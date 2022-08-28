@@ -53,6 +53,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       this.dataStruct = response;
       this.filteredData = this.dataStruct;
       this.IsLoading = false;
+      console.log(this.dataStruct);
     });
   }
 
@@ -68,7 +69,6 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public saveResponse: string = "";
   public IsSaving: boolean = false;
   public SaveModel() {
-    //this.selectedModel = model;
     this.IsSaving = true;
     if (this.IsNewModel) {
       this.Create();
@@ -121,20 +121,11 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     this.modelClosed.emit();
   }
 
-  public Load(): void {
-
-  }
-  public Create(): void {
-
-  }
+  public Load(): void { }
+  public Create(): void { }
   public Save(): void { }
   public Refresh(): void { }
   public Close(): void { }
-
-
-  applyFilter(filterValue: string) {
-
-  }
 
   public filter(tags: string[]): any[] {
     this.filteredData = this.dataStruct.filter(model => model.tags.includes(this.tagFilters));

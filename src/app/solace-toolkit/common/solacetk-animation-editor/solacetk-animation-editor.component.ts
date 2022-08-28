@@ -19,6 +19,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() showFrames: boolean = true;
   @Input() showFileInfo: boolean = true;
   @Input() showDataPanel: boolean = true;
+  public bgColor: string = "";
 
 
   public fileName: string = "";
@@ -80,6 +81,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.unloadChange.emit(false);
+
+    this.bgColor = this.showDataPanel ? "" : "bg-task-card";
   }
 
   ngAfterViewInit(): void {

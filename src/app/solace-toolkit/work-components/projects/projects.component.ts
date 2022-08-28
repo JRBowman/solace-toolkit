@@ -41,27 +41,22 @@ export class ProjectsComponent implements OnInit {
   ReportHours() {
     if (!this.model.workItems || this.model.workItems.length == 0) return;
 
-    let actual = 0;
-    let estimated = 0;
-    let outstanding = 0
-    let paid = 0;
+    this.totalActual = 0;
+    this.totalEstimated = 0;
+    this.totalOutstanding = 0;
+    this.totalPaid = 0;
 
     this.model.workItems.forEach((item) => {
-      actual += item.hoursActual;
-      estimated += item.hoursEstimate;
+      this.totalActual += +item.hoursActual;
+      this.totalEstimated += +item.hoursEstimate;
 
       if (item.tags.includes("#complete")) {
-        paid += item.hoursActual;
+        this.totalPaid  += +item.hoursActual;
       }
       //this.tot
     });
 
-    outstanding = actual - paid;
-
-    this.totalActual = actual;
-    this.totalEstimated = estimated;
-    this.totalOutstanding = outstanding;
-    this.totalPaid = paid;
+    this.totalOutstanding = +this.totalActual - +this.totalPaid;
 
     this.backlog = this.model.workItems.filter(x => x.tags.includes("#backlog"));
     this.inProgress = this.model.workItems.filter(x => x.tags.includes("#inProgress"));

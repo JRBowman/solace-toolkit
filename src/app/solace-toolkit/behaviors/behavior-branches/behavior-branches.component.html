@@ -14,13 +14,28 @@
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.states">
-                        <mat-list cdkDropList (cdkDropListDropped)="dropBranches($event)">
-                            <mat-list-item cdkDrag [cdkDragData]="state" *ngFor="let state of model.states">
-                                <h3 matLine>{{state.name}}</h3>
-                                <p matLine>Description: {{state.description}}</p>
-                            </mat-list-item>
-                        </mat-list>
+                    <div class="disp-flex" cdkDropList (cdkDropListDropped)="dropBranches($event)" *ngIf="model.states">
+                        <div class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
+                            <div class="auto-flex">
+                                <mat-icon class="auto-flex full-width text-center">arrow_downward</mat-icon>
+                            </div>
+                            <mat-card class="bg-task-card" cdkDrag [cdkDragData]="state">
+                                <mat-card-title-group>
+                                    <mat-card-title class="font-medium auto-flex">{{state.name}}</mat-card-title>
+                                </mat-card-title-group>
+                                <mat-card-content>
+
+                                    <mat-list *ngIf="state.conditions">
+                                        <mat-list-item *ngFor="let condition of state.conditions">
+                                            <p matLine *ngFor="let cond of condition.keys">{{cond.key}} => {{cond.data}}</p>
+                                        </mat-list-item>
+                                    </mat-list>
+
+                                    <solacetk-animation-editor [(model)]="state.animations[0].actFrameData"
+                                        [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
                     </div>
 
                 </ng-template>
@@ -31,16 +46,7 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Attributes
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="full-height"></div>
-
-            </mat-expansion-panel>
+            <solacetk-attributes-panel></solacetk-attributes-panel>
 
         </mat-accordion>
 

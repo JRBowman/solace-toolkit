@@ -1,7 +1,11 @@
+<!-- Editor Model Tags View: -->
 <div *ngIf="canEdit">
+
     <mat-form-field class="auto-flex tags-disp-block mr-2">
+
         <mat-label>{{tkHeading}}</mat-label>
         <mat-chip-list class="auto-flex" #chipList aria-label="Tag Selection">
+            
             <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 {{tag}}
                 <button matChipRemove>
@@ -11,22 +15,30 @@
             <input class="auto-flex" placeholder="#tag..." #tagInput [formControl]="tagCrtl" [matAutocomplete]="auto"
                 [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 (matChipInputTokenEnd)="add($event)">
+
         </mat-chip-list>
+
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
             <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
                 {{tag}}
             </mat-option>
         </mat-autocomplete>
+
     </mat-form-field>
+
 </div>
 
-
+<!-- Read-Only Model Tags View: -->
 <div *ngIf="!canEdit">
+
     <mat-chip-list #cardChips class="auto-flex full-width" #chipList aria-label="Tag Selection">
+
         <div class="auto-flex sol-card-chips">
-        <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
-            <small>{{tag}}</small>
-        </mat-chip>
-    </div>
+            <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+                <small>{{tag}}</small>
+            </mat-chip>
+        </div>
+        
     </mat-chip-list>
+
 </div>
