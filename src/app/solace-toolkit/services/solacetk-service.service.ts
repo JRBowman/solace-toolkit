@@ -12,7 +12,7 @@ export class SolacetkService {
   //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
   public apiVersion: string = "api/v1/";
   //public apiHost: string = "http://localhost:5010/"
-  public apiHost: string = "https://solacetk-service.bowman-dev.svc:8080/";
+  public apiHost: string = "http://solacetk-service.bowman-dev.svc:8080/";
   public baseUrl: string = this.apiHost + this.apiVersion;
 
   public deepGetQuery: string = "?includeElements=true";
