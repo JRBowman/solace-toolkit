@@ -29,6 +29,8 @@ import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+
+
 import { GitArticleComponent } from './git-article/git-article.component';
 import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
 import { GojsAngularModule } from 'gojs-angular';
@@ -78,6 +80,7 @@ import { ProjectsComponent } from './solace-toolkit/work-components/projects/pro
 import { WorkItemSheetEditorComponent } from './solace-toolkit/work-components/work-item/work-item-sheet-editor/work-item-sheet-editor.component';
 import { ControllerComponentComponent } from './solace-toolkit/controllers-components/controller-component/controller-component.component';
 import { SolacetkAttributesPanelComponent } from './solace-toolkit/common/solacetk-attributes-panel/solacetk-attributes-panel.component';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
   declarations: [
@@ -152,6 +155,7 @@ import { SolacetkAttributesPanelComponent } from './solace-toolkit/common/solace
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AuthConfigModule,
     HttpClientModule,
     GojsAngularModule,
     AllMaterialsModule,
@@ -159,7 +163,7 @@ import { SolacetkAttributesPanelComponent } from './solace-toolkit/common/solace
       loader: HttpClient
     }),
   ],
-  providers: [MarkdownService],
+  providers: [MarkdownService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

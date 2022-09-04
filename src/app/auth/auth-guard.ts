@@ -13,9 +13,11 @@ export class AuthorizationGuard implements CanActivate {
       map(({ isAuthenticated }) => {
         // allow navigation if authenticated
         if (isAuthenticated) {
+          console.log("authenticated");
           return true;
         }
 
+        console.log("not authenticated");
         // redirect if not authenticated
         return this.router.parseUrl('');
       })

@@ -4,8 +4,11 @@
     <mat-card-content>
       <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/solacetk.md'"></markdown>
     </mat-card-content>
+
     <mat-card-actions>
       <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
+      <button mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
     </mat-card-actions>
+
   </mat-card>
 </div>

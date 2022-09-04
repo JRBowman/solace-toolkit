@@ -21,10 +21,12 @@ export class MsoaUserService implements OnInit {
 
     ngOnInit()
     {
-        // if (this.oidcSecurityService.isAuthenticated())
-        // {
-        //     this.testUser = this.oidcSecurityService.getUserData();
-        // }
+        if (this.oidcSecurityService.isAuthenticated())
+        {
+            this.testUser = this.oidcSecurityService.getUserData();
+            console.log("User: ");
+            console.log(this.testUser);
+        }
     }
 
     public SetState(accessToken: string, isAuthenticated: boolean, idToken: string, userData: any) {
@@ -33,8 +35,11 @@ export class MsoaUserService implements OnInit {
         this.IdToken = idToken;
         this.AccessToken = accessToken;
 
-        let tempClaims = this.oidcSecurityService.getPayloadFromIdToken();
-        Object.keys(tempClaims).forEach(claim => this.Claims.push({key: claim, value: tempClaims[claim]}));
+        this.oidcSecurityService.getPayloadFromIdToken().subscribe(value => {
+            console.log(value);return Object.keys(value).forEach(claim => this.Claims.push({key: claim, value: value[claim]}));
+        });
+
+        
         console.log(this.testUser);
     }
 
