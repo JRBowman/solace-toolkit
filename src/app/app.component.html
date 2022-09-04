@@ -11,7 +11,7 @@
 
   <span class="no-flex"></span>
 
-  <div class="disp-flex">
+  <div *ngIf="msoaUserService.IsAuthenticated" class="disp-flex">
 
     <a mat-button [routerLink]="['/projects']">Projects</a>
 
