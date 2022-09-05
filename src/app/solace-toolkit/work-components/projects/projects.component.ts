@@ -15,6 +15,8 @@ export class ProjectsComponent implements OnInit {
 
   public model: WorkProject = new WorkProject();
 
+  public showProjectBuckets: boolean = false;
+
   public backlog: WorkItem[] = [];
   public inProgress: WorkItem[] = [];
   public review: WorkItem[] = [];
@@ -33,9 +35,18 @@ export class ProjectsComponent implements OnInit {
   ModelLoaded(): void {
     console.log(this.model);
     this.modelLoaded = true;
+    this.showProjectBuckets = true;
 
     this.ReportHours();
 
+  }
+
+  ModelClosed(): void {
+    this.backlog = [];
+    this.inProgress = [];
+    this.review = [];
+    this.complete = [];
+    this.showProjectBuckets = false;
   }
 
   ReportHours() {

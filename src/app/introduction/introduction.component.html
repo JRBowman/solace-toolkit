@@ -7,7 +7,7 @@
 
     <mat-card-actions>
       <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
-      <button mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
+      <button *ngIf="!msoaUserService.IsAuthenticated" mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
     </mat-card-actions>
 
   </mat-card>

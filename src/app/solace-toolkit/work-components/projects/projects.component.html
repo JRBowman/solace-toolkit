@@ -1,5 +1,5 @@
 <solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()"
-    modelUri="Work/projects" [hideEditorHeading]="true" [collapseCoreEditor]="true">
+    modelUri="Work/projects" (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true">
     <div class="editor">
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
@@ -28,7 +28,7 @@
 
 </solacetk-model-list>
 
-<div *ngIf="model.id && modelLoaded" class="flex-container mb-2">
+<div *ngIf="model.id && modelLoaded && showProjectBuckets" class="flex-container mb-2">
 
     <mat-divider class="mb-2 mt-2"></mat-divider>
 

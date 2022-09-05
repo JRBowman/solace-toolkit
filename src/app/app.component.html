@@ -4,92 +4,35 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-    <span class="no-flex mr-2">
+  <span class="no-flex mr-2">
     <!-- <a [routerLink]="['']">Solace TK</a> -->
     Solace TK
   </span>
+  <!-- <img src="../assets/soldof/images/serverconnectivity.png" class="nav-connect-icon-up"> -->
 
   <span class="no-flex"></span>
 
-  <div *ngIf="msoaUserService.IsAuthenticated" class="disp-flex">
+  <div *ngIf="msoaUserService.IsAuthenticated" class="auto-flex">
+    <solacetk-toolnav-extended [toolbarIntegrated]="true"></solacetk-toolnav-extended>
+  </div>
 
-    <a mat-button [routerLink]="['/projects']">Projects</a>
-
-
-  <button mat-button [matMenuTriggerFor]="gameCoreMenu">Game Core</button>
-  <mat-menu #gameCoreMenu="matMenu">
-      <a mat-menu-item [routerLink]="['/gamestates']">Game Systems</a>
-      <a mat-menu-item [routerLink]="['/collections']">Resource Collections</a>
-      <a mat-menu-item [routerLink]="['/timelines']">Timelines</a>
-  </mat-menu>
-
-
-    <button mat-button [matMenuTriggerFor]="controllerMenu">Controllers</button>
-        <mat-menu #controllerMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/characters']">Characters</a>
-            <a mat-menu-item [routerLink]="['/weapons']">Weapons</a>
-            <a mat-menu-item [routerLink]="['/enemies']">Enemies</a>
-            <a mat-menu-item [routerLink]="['/objects']">Objects</a>
-            <a mat-menu-item [routerLink]="['/spawners']">Spawners</a>
-            <a mat-menu-item [routerLink]="['/particlesystems']">Particle Systems</a>
-            <a mat-menu-item [routerLink]="['/navigation']">Navigation</a>
-            <a mat-menu-item [routerLink]="['/transports']">Transports</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="behaviorMenu">Behaviors</button>
-        <mat-menu #behaviorMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/behaviorsystems']">Behavior Systems</a>
-            <a mat-menu-item [routerLink]="['/branches']">Branches</a>
-            <a mat-menu-item [routerLink]="['/states']">States</a>
-            <a mat-menu-item [routerLink]="['/conditions']">Conditions</a>
-            <a mat-menu-item [routerLink]="['/animations']">Animations</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="messageMenu">Actions</button>
-        <mat-menu #messageMenu="matMenu">
-          <a mat-menu-item [routerLink]="['/actions']">Actions</a>
-           <a mat-menu-item [routerLink]="['/events']">Events</a>
-            <a mat-menu-item [routerLink]="['/messages']">Messages</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="environmentMenu">Environments</button>
-        <mat-menu #environmentMenu="matMenu">
-          <a mat-menu-item [routerLink]="['/maps']">Maps</a>
-          <a mat-menu-item [routerLink]="['/layers']">Layers</a>
-          <a mat-menu-item [routerLink]="['/tilesets']">Tile Sets</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="interfaceMenu">Interfaces</button>
-        <mat-menu #interfaceMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/huds']">HUDs</a>
-            <a mat-menu-item [routerLink]="['/hudelements']">HUD Elements</a>
-            <a mat-menu-item [routerLink]="['/hudmenus']">Menus</a>
-            <a mat-menu-item [routerLink]="['/huddialogs']">Dialogs</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="soundMenu">Sounds</button>
-        <mat-menu #soundMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/soundsources']">Sound Sources</a>
-            <a mat-menu-item [routerLink]="['/soundsets']">Sound Collections</a>
-        </mat-menu>
-
-        <button mat-button [matMenuTriggerFor]="effectsMenu">Effects</button>
-        <mat-menu #effectsMenu="matMenu">
-          <a mat-menu-item [routerLink]="['/audioeffects']">Audio Effects</a>
-          <a mat-menu-item [routerLink]="['/visualeffects']">Visual Effects</a>
-            <a mat-menu-item [routerLink]="['/lights']">Lights</a>
-            <a mat-menu-item [routerLink]="['/liquids']">Liquids</a>
-            <a mat-menu-item [routerLink]="['/overlays']">Overlays</a>
-        </mat-menu>
-
-      </div>
-
-  <span class="auto-flex"></span>
+  <span *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex"></span>
+  <span *ngIf="msoaUserService.IsAuthenticated" class="flexor no-flex align-center mr-2 font-small">
+    <button mat-button class="auto-flex font-small">
+      <mat-icon class="auto-flex mr-2">account_circle</mat-icon>
+      {{userName}}
+    </button>
+  </span>
   <img src="../assets/soldof/images/time.PNG" class="no-flex nav-time-icon align-center">
   <span class="no-flex align-center mr-2 font-small">{{time}}</span>
 
-  <img src="../assets/soldof/images/serverconnectivity.png" class="nav-connect-icon-up">
-<!--   <bow-socials
+  <span *ngIf="servicesConnected" class="nav-connect-icon-up">
+    <mat-icon matTooltip="Online and Connected">stream</mat-icon>
+  </span>
+  <span *ngIf="!servicesConnected" class="nav-connect-icon-down">
+    <mat-icon matTooltip="Offline">running_with_errors</mat-icon>
+  </span>
+  <!--   <bow-socials
   linkedin="https://www.linkedin.com/in/jrbowman13/" 
   github="https://github.com/JRBowman">
 </bow-socials> -->
@@ -112,10 +55,11 @@
       <a mat-list-item class="auto-flex" [routerLink]="['/']">Home</a>
       <mat-divider></mat-divider>
       <!-- <a mat-list-item class="auto-flex" [routerLink]="['/openshift-visual-system']">OpenShift Visual System</a> -->
-      <a mat-list-item class="auto-flex" [routerLink]="['/wiki']">Solace TK Documentation</a>
+      <a mat-list-item class="auto-flex" [routerLink]="['/wiki']">Documentation</a>
     </mat-nav-list>
   </mat-drawer>
 
+  
   <section class="router-content">
     <router-outlet></router-outlet>
   </section>

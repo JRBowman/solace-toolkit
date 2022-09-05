@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -17,9 +17,19 @@ export class SolacetkService {
   public baseUrl: string = this.apiHost + this.apiVersion;
 
   public deepGetQuery: string = "?includeElements=true";
+  public solTkServStatus: boolean = false;
+  public solTkAuthStatus: boolean = false;
 
   public Initialize() {
 
+  }
+
+  public CheckSolTkServices(): Observable<HttpResponse<any>> {
+    return this.http.get<HttpResponse<any>>(this.baseUrl + "Behaviors/systems");
+  }
+
+  public CheckSolTkAuth(): Observable<HttpResponse<any>> {
+    return this.http.get<HttpResponse<any>>("https://identity-dev.onbowman.com");
   }
 
   public GetModel(route: string): Observable<any> {

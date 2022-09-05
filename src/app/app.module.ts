@@ -81,6 +81,7 @@ import { WorkItemSheetEditorComponent } from './solace-toolkit/work-components/w
 import { ControllerComponentComponent } from './solace-toolkit/controllers-components/controller-component/controller-component.component';
 import { SolacetkAttributesPanelComponent } from './solace-toolkit/common/solacetk-attributes-panel/solacetk-attributes-panel.component';
 import { AuthConfigModule } from './auth/auth-config.module';
+import { SolacetkToolnavExtendedComponent } from './solace-toolkit/common/solacetk-toolnav-extended/solacetk-toolnav-extended.component';
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { AuthConfigModule } from './auth/auth-config.module';
     WorkCommentComponent,
     WorkItemSheetEditorComponent,
     ControllerComponentComponent,
-    SolacetkAttributesPanelComponent
+    SolacetkAttributesPanelComponent,
+    SolacetkToolnavExtendedComponent
   ],
   imports: [
     BrowserModule,

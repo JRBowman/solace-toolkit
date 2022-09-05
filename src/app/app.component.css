@@ -11,13 +11,17 @@
 .nav-connect-icon-up {
     width: 24px;
     height: 24px;
-    color: green;
-    fill: green;
+    color: rgb(96, 192, 64);
+    fill: rgb(96, 192, 64);
 }
 
 .nav-connect-icon-down {
     width: 24px;
     height: 24px;
-    color: red;
-    fill: red;
+    color: rgb(255, 0, 32);
+    fill: rgb(255, 0, 32);
+}
+
+.flexor {
+    display: flex !important;
 }
