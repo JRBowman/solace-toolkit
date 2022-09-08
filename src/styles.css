@@ -28,6 +28,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     width: 100% !important;
 }
 
+
+
+.new-button {
+    position: fixed;
+    right: 8%;
+    bottom: 8%;
+    width: 1%;
+}
+
+.loader {
+    position: fixed;
+    right:50%;
+    left: 50%;
+    Top: 50%;
+}
+
+.btn-hover-right {
+    margin: 8px;
+}
+
+.auto-height {
+    height: auto;
+}
+
+mat-tab-header.mat-tab-header {
+    height: 0px !important;
+}
+
+
+
+
+
+
 .mr-2 {
     margin-right: 2% !important;
 }

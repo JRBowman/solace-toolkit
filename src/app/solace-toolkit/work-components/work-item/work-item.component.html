@@ -2,15 +2,22 @@
     <mat-card-content>
         <mat-card-title class="font-medium auto-flex">{{model.name}}</mat-card-title>
         <mat-divider matLine class="mb-2"></mat-divider>
-        <p class="font-small no-margin auto-flex" matLine>Estimate: {{model.hoursEstimate}}</p>
-        <p class="font-small no-margin auto-flex" matLine>Actual: {{model.hoursActual}}</p>
+        <p class="font-small no-margin auto-flex" matLine>Estimate: {{model.hoursEstimate}} hr</p>
+        <p class="font-small no-margin auto-flex" matLine>Actual: {{model.hoursActual}} hr</p>
 
 
     </mat-card-content>
 
 
     <mat-card-actions class="pos-bottom">
-        <button *ngIf="model.tags !== '#complete'" color="primary" mat-button (click)="openWorkItemEditor()">Edit</button>
+        <div *ngIf="model.tags !== '#complete'">
+            <button color="primary" mat-button (click)="openWorkItemEditor()">Open</button>
+            <button color="primary" mat-button><mat-icon>delete</mat-icon></button>
+        </div>
+
+        <button *ngIf="model.tags === '#complete'" color="accent" mat-button
+            (click)="openWorkItemEditor()">View</button>
+
     </mat-card-actions>
 
 </mat-card>

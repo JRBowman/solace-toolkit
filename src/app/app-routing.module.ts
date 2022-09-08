@@ -43,6 +43,7 @@ import { OverlayEffectsComponent } from './solace-toolkit/effects-components/ove
 import { ParticleSystemsComponent } from './solace-toolkit/controllers-components/particle-systems/particle-systems.component';
 import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
 import { AuthorizationGuard } from './auth/auth-guard';
+import { IdentityComponent } from './identity/identity.component';
 
 const routes: Routes = [
   {
@@ -59,11 +60,11 @@ const routes: Routes = [
     component: SoftwareComponent,
     //canActivate: [AuthorizationGuard]
   },
-  // {
-  //   path: 'music',
-  //   component: MusicComponent,
-  //   //canActivate: [AuthorizationGuard]
-  // },
+  {
+    path: 'identity',
+    component: IdentityComponent,
+    canActivate: [AuthorizationGuard]
+  },
   // {
   //   path: 'videos',
   //   component: VideosComponent,

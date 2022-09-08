@@ -14,7 +14,12 @@
                 <mat-card class="mat-elevation-z0 auto-flex">
                     <mat-card-content *ngIf="selectedFrame.name">
                         <mat-card-subtitle>Frame: {{selectedFrame.name}}</mat-card-subtitle>
-                        <p>Duration: {{selectedFrame.duration}}</p>
+                        <!-- <p>Duration: {{selectedFrame.duration}}ms</p> -->
+                        <mat-form-field class="auto-flex" appearance="fill">
+                            <mat-label>Duration</mat-label>
+                            <input type="number" matInput [(ngModel)]="selectedFrame.duration" placeholder="100">
+                            <span matSuffix>ms</span>
+                          </mat-form-field>
                         <p>Size: w:{{selectedFrame.frame.w}} x h:{{selectedFrame.frame.h}}</p>
                     </mat-card-content>
                 </mat-card>

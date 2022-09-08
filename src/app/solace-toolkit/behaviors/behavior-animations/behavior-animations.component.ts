@@ -46,6 +46,10 @@ export class BehaviorAnimationsComponent implements OnInit {
     this.unloadModules.emit(true);
   }
 
+  ImportAseAnimsByTags() {
+    
+  }
+
 }
 
 export enum SolTkEditorState

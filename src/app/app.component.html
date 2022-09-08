@@ -18,19 +18,19 @@
 
   <span *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex"></span>
   <span *ngIf="msoaUserService.IsAuthenticated" class="flexor no-flex align-center mr-2 font-small">
-    <button mat-button class="auto-flex font-small">
+    <a mat-button class="auto-flex font-small" [routerLink]="['identity']">
       <mat-icon class="auto-flex mr-2">account_circle</mat-icon>
       {{userName}}
-    </button>
+    </a>
   </span>
   <img src="../assets/soldof/images/time.PNG" class="no-flex nav-time-icon align-center">
   <span class="no-flex align-center mr-2 font-small">{{time}}</span>
 
   <span *ngIf="servicesConnected" class="nav-connect-icon-up">
-    <mat-icon matTooltip="Online and Connected">stream</mat-icon>
+    <mat-icon matTooltip="Online and Connected">public</mat-icon>
   </span>
   <span *ngIf="!servicesConnected" class="nav-connect-icon-down">
-    <mat-icon matTooltip="Offline">running_with_errors</mat-icon>
+    <mat-icon matTooltip="Offline">public_off</mat-icon>
   </span>
   <!--   <bow-socials
   linkedin="https://www.linkedin.com/in/jrbowman13/" 

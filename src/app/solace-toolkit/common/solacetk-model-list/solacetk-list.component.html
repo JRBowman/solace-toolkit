@@ -38,7 +38,7 @@
 
 
     </mat-tab>
-      <mat-tab label="Editor">
+    <mat-tab label="Editor">
 
       <div *ngIf="model" class="character-container mt-2">
 
@@ -68,15 +68,15 @@
                 [(ngModel)]="model.description"></textarea>
             </mat-form-field>
 
-            <h3>Properties</h3>
+            <!-- <h3>Properties</h3> -->
             <ng-content select=".editor"></ng-content>
-            
+
           </div>
         </mat-expansion-panel>
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
-          <ng-content select=".editor-panels"></ng-content>
+        <ng-content select=".editor-panels"></ng-content>
 
 
       </div>
@@ -88,19 +88,31 @@
 
   <div class="new-button auto-flex">
 
-    <ng-content select=".editor-buttons"></ng-content>
 
-    <button *ngIf="!modelSelected" mat-fab color="primary" matTooltip="Create New Model"
-      class="mat-elevation-z4 btn-hover-right" aria-label="Add new Character Controller" (click)="NewModel()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div *ngIf="tabIndex === 0 && !modelSelected">
+      <div class="btn-hover-right">
+        <ng-content select=".list-buttons"></ng-content>
+      </div>
 
-    <button *ngIf="modelSelected && !IsNewModel" mat-fab color="accent" matTooltip="Export Selected Model"
-      class="mat-elevation-z4 btn-hover-right" aria-label="Export Model" (click)="ExportModel()">
-      <mat-icon>download</mat-icon>
-    </button>
+      <button mat-fab color="primary" matTooltip="Create New Model" class="mat-elevation-z4 auto-flex btn-hover-right"
+        aria-label="Add new Character Controller" (click)="NewModel()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+
+    </div>
+
+
 
     <div *ngIf="tabIndex === 1 && modelSelected">
+
+      <ng-content class="btn-hover-right" select=".editor-buttons"></ng-content>
+
+      <button *ngIf="!IsNewModel" mat-fab color="accent" matTooltip="Export Selected Model"
+        class="mat-elevation-z4 btn-hover-right" aria-label="Export Model" (click)="ExportModel()">
+        <mat-icon>download</mat-icon>
+      </button>
+
       <button mat-fab color="primary" matTooltip="Save Current Editor" class="mat-elevation-z4 btn-hover-right"
         aria-label="Save Current Editor Window" (click)="SaveModel()">
         <mat-icon>save</mat-icon>
