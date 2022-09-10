@@ -13,12 +13,12 @@ export class WorkItemComponent implements OnInit {
 
   @Input() model: any = {};
   @Output() modelChange = new EventEmitter<any>();
+  @Output() modelDelete = new EventEmitter<any>();
 
   ngOnInit(): void {
   }
 
-  public openWorkItemEditor()
-  {
+  public openWorkItemEditor() {
     let instance = this._bottomSheet.open(WorkItemSheetEditorComponent);
     instance.instance.LoadData(this.model);
 
@@ -28,6 +28,10 @@ export class WorkItemComponent implements OnInit {
       this.modelChange.emit(this.model);
     });
     
+  }
+
+  public deleteWorkItem(): void {
+    this.modelDelete.emit(this.model);
   }
 
 }

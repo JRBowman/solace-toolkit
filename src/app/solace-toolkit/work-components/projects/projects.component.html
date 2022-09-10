@@ -1,5 +1,5 @@
-<solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()"
-    modelUri="Work/projects" (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true">
+<solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()" modelUri="Work/projects"
+    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true">
     <div class="editor">
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
@@ -21,7 +21,9 @@
             <div class="auto-flex">
                 <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours</small></h4>
             </div>
-            <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()"><mat-icon>refresh</mat-icon></button>
+            <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
+                <mat-icon>refresh</mat-icon>
+            </button>
         </div>
 
     </div>
@@ -36,58 +38,102 @@
 
         <mat-card cdkDropList [cdkDropListData]="backlog" (cdkDropListDropped)="drop($event, 'backlog')"
             class="width-24 place-flex-start mr-2">
-            <mat-card-content>
-                <div class="disp-flex">
-                    <h3 class="auto-flex">Backlog</h3>
-                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New Backlog Task"
-                        (click)="AddWorkItem(0)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of backlog" [model]="workItem" (modelChange)="WorkItemUpdated($event)">
+            
+            <div class="disp-flex">
+                <h3 class="no-flex" [matBadge]="backlog.length" matBadgeOverlap="false">Backlog</h3>
+                <span class="auto-flex"></span>
+                <button class="no-flex align-start" mat-icon-button aria-label="New Backlog Task"
+                    (click)="AddWorkItem(0)">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button class="no-flex align-start" mat-icon-button aria-label="Collapse Backlog List"
+                    (click)="backlogCollapse = !backlogCollapse"
+                    [matTooltip]="(backlogCollapse ? 'Expand' : 'Collapse') + ' Backlog List'">
+                    <mat-icon>{{backlogCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                </button>
+            </div>
+
+            <mat-card-content [class]="backlogCollapse ? 'collapsed-cdklist' : 'normal-cdklist'">
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of backlog" [model]="workItem"
+                    (modelChange)="WorkItemUpdated($event)" (modelDelete)="DeleteWorkItem($event, backlog)">
                 </work-item>
             </mat-card-content>
+
         </mat-card>
 
         <mat-card cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event, 'inProgress')"
             class="width-24 place-flex-start mr-2">
-            <mat-card-content>
-                <div class="disp-flex">
-                    <h3 class="auto-flex">In-Progress</h3>
-                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New In-Progress Task"
-                        (click)="AddWorkItem(1)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of inProgress" [model]="workItem">
+
+            <div class="disp-flex">
+                <h3 class="no-flex" [matBadge]="inProgress.length" matBadgeOverlap="false">In-Progress</h3>
+                <span class="auto-flex"></span>
+                <button class="no-flex align-start mini-fab-header" mat-icon-button
+                    aria-label="New In-Progress Task" (click)="AddWorkItem(1)">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button class="no-flex align-start mini-fab-header" mat-icon-button
+                    aria-label="Collapse In-Progress List" (click)="inProgressCollapse = !inProgressCollapse"
+                    [matTooltip]="(inProgressCollapse ? 'Expand' : 'Collapse') + ' In-Progress List'">
+                    <mat-icon>{{inProgressCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                </button>
+            </div>
+
+            <mat-card-content [class]="inProgressCollapse ? 'collapsed-cdklist' : 'normal-cdklist'">
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of inProgress" [model]="workItem"
+                    (modelChange)="WorkItemUpdated($event)" (modelDelete)="DeleteWorkItem($event, inProgress)">
                 </work-item>
             </mat-card-content>
+
         </mat-card>
 
         <mat-card cdkDropList [cdkDropListData]="review" (cdkDropListDropped)="drop($event, 'review')"
             class="width-24 place-flex-start mr-2">
-            <mat-card-content>
-                <div class="disp-flex">
-                    <h3 class="auto-flex">Ready for Review</h3>
-                    <button class="no-flex align-start mini-fab-header" mat-button aria-label="New Review Task"
-                        (click)="AddWorkItem(2)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of review" [model]="workItem">
+
+            <div class="disp-flex">
+                <h3 class="no-flex" [matBadge]="review.length" matBadgeOverlap="false">Review</h3>
+                <span class="auto-flex"></span>
+                <button class="no-flex align-start mini-fab-header" mat-icon-button aria-label="New Review Task"
+                    (click)="AddWorkItem(2)">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button class="no-flex align-start mini-fab-header" mat-icon-button
+                    aria-label="Collapse Reivew List" (click)="reviewCollapse = !reviewCollapse"
+                    [matTooltip]="(reviewCollapse ? 'Expand' : 'Collapse') + ' Review List'">
+                    <mat-icon>{{reviewCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                </button>
+            </div>
+
+
+            <mat-card-content [class]="reviewCollapse ? 'collapsed-cdklist' : 'normal-cdklist'">
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of review" [model]="workItem"
+                    (modelChange)="WorkItemUpdated($event)" (modelDelete)="DeleteWorkItem($event, review)">
                 </work-item>
             </mat-card-content>
+
+
         </mat-card>
 
         <mat-card cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event, 'complete')"
             class="width-24 place-flex-start">
-            <mat-card-content>
-                <div class="disp-flex">
-                    <h3 class="auto-flex">Complete</h3>
-                </div>
-                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of complete" [model]="workItem">
+
+            <div class="disp-flex">
+                <h3 class="no-flex" matBadgeColor="accent" [matBadge]="complete.length" matBadgeOverlap="false">Complete</h3>
+                <span class="auto-flex"></span>
+                <button class="no-flex align-start mini-fab-header" mat-icon-button
+                    aria-label="Collapse Complete List" (click)="completeCollapse = !completeCollapse"
+                    [matTooltip]="(completeCollapse ? 'Expand' : 'Collapse') + ' Complete List'">
+                    <mat-icon>{{completeCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                </button>
+            </div>
+
+            
+            <mat-card-content [class]="completeCollapse ? 'collapsed-cdklist' : 'normal-cdklist'">
+                <work-item cdkDrag [cdkDragData]="workItem" *ngFor="let workItem of complete" [model]="workItem"
+                    (modelChange)="WorkItemUpdated($event)" (modelDelete)="DeleteWorkItem($event, complete)">
                 </work-item>
             </mat-card-content>
+
+
         </mat-card>
 
     </div>

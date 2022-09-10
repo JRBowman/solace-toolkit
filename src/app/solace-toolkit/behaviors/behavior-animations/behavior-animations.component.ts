@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatChipSelectionChange } from '@angular/material/chips';
+import { SolacetkBottomSheetComponent } from '../../common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
 import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
@@ -11,7 +13,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 })
 export class BehaviorAnimationsComponent implements OnInit {
 
-  constructor(private service: SolacetkService) { }
+  constructor(private service: SolacetkService, private _bottomSheet: MatBottomSheet) { }
 
   public model: BehaviorAnimation = new BehaviorAnimation();
 
@@ -46,8 +48,9 @@ export class BehaviorAnimationsComponent implements OnInit {
     this.unloadModules.emit(true);
   }
 
-  ImportAseAnimsByTags() {
-    
+  ImportAseAnimsByTags(): void {
+    console.log("Mass Import");
+    let instance = this._bottomSheet.open(SolacetkBottomSheetComponent);
   }
 
 }

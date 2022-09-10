@@ -84,6 +84,7 @@ import { AuthConfigModule } from './auth/auth-config.module';
 import { SolacetkToolnavExtendedComponent } from './solace-toolkit/common/solacetk-toolnav-extended/solacetk-toolnav-extended.component';
 import { SolacetkIdentityBadgeComponent } from './solace-toolkit/common/solacetk-identity-badge/solacetk-identity-badge.component';
 import { IdentityComponent } from './identity/identity.component';
+import { SolacetkBottomSheetComponent } from './solace-toolkit/common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +156,8 @@ import { IdentityComponent } from './identity/identity.component';
     SolacetkAttributesPanelComponent,
     SolacetkToolnavExtendedComponent,
     SolacetkIdentityBadgeComponent,
-    IdentityComponent
+    IdentityComponent,
+    SolacetkBottomSheetComponent
   ],
   imports: [
     BrowserModule,

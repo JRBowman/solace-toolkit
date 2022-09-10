@@ -1,0 +1,9 @@
+.normal-cdklist {
+    height: inherit;
+    overflow: hidden;
+}
+
+.collapsed-cdklist {
+    height: 96px !important;
+    overflow: hidden;
+}

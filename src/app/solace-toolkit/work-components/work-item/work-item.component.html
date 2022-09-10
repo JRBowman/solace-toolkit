@@ -10,13 +10,18 @@
 
 
     <mat-card-actions class="pos-bottom">
-        <div *ngIf="model.tags !== '#complete'">
-            <button color="primary" mat-button (click)="openWorkItemEditor()">Open</button>
-            <button color="primary" mat-button><mat-icon>delete</mat-icon></button>
-        </div>
+        <div class="flex-card-group">
+            <div *ngIf="model.tags !== '#complete'">
+                <button color="primary" class="auto-flex" mat-button (click)="openWorkItemEditor()">Open</button>
+                <button color="primary" mat-icon-button (click)="deleteWorkItem()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
 
-        <button *ngIf="model.tags === '#complete'" color="accent" mat-button
-            (click)="openWorkItemEditor()">View</button>
+            <button *ngIf="model.tags === '#complete'" color="accent" mat-button
+                (click)="openWorkItemEditor()">View</button>
+
+        </div>
 
     </mat-card-actions>
 

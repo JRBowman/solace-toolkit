@@ -1,14 +1,28 @@
 
-<div class="disp-flex">
-  <mat-card class="auto-flex">
+<div class="flex-card-group">
+  <mat-card class="auto-flex mr-2">
     <mat-card-content>
       <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/solacetk.md'"></markdown>
     </mat-card-content>
 
     <mat-card-actions>
       <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
-      <button *ngIf="!msoaUserService.IsAuthenticated" mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
     </mat-card-actions>
 
+  </mat-card>
+
+  <mat-card class="no-flex">
+    <mat-card-title-group>
+      <mat-card-title>{{msoaUserService.IsAuthenticated ? msoaUserService.testUser.name : "Authentication"}}</mat-card-title>
+      <mat-card-subtitle>SolaceTK Identity</mat-card-subtitle>
+    </mat-card-title-group>
+
+    <mat-card-content class="auto-flex">
+      <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/images/accounts.png" alt="Module Icon">
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex" mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
+    </mat-card-actions>
   </mat-card>
 </div>

@@ -28,6 +28,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     width: 100% !important;
 }
 
+.flex-card-group {
+    display: flex !important;
+    flex-direction: row;
+}
+
 
 
 .new-button {

@@ -18,9 +18,13 @@ export class ProjectsComponent implements OnInit {
   public showProjectBuckets: boolean = false;
 
   public backlog: WorkItem[] = [];
+  public backlogCollapse: boolean = false;
   public inProgress: WorkItem[] = [];
+  public inProgressCollapse: boolean = false;
   public review: WorkItem[] = [];
+  public reviewCollapse: boolean = false;
   public complete: WorkItem[] = [];
+  public completeCollapse: boolean = false;
   public modelLoaded: boolean = false;
 
   public totalEstimated: number = 0;
@@ -49,7 +53,10 @@ export class ProjectsComponent implements OnInit {
     this.showProjectBuckets = false;
   }
 
-  ReportHours() {
+  ReportHours(loadModel: boolean = false) {
+
+    if (loadModel) this.model.workItems = [...this.backlog, ...this.inProgress, ...this.review, ...this.complete];
+
     if (!this.model.workItems || this.model.workItems.length == 0) return;
 
     this.totalActual = 0;
@@ -98,18 +105,19 @@ export class ProjectsComponent implements OnInit {
         });
         break;
     }
-    //this.model.workItems.push(newItem);
-
   }
 
   dropWorkItem(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.model.workItems, event.previousIndex, event.currentIndex);
   }
 
+  // Move WorkItem to another Container:
   drop(event: CdkDragDrop<any[]>, tag: string) {
     if (event.previousContainer === event.container) {
       event.item.data.tags = "#" + tag;
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      // TODO: Add Priority to the WorkItem Model:
+      // Let Drag order become Priority
     } else {
       event.item.data.tags = "#" + tag;
       transferArrayItem(
@@ -120,8 +128,8 @@ export class ProjectsComponent implements OnInit {
       );
     }
     event.item.data = this.UpdateWorkItem(event.item.data);
-    this.model.workItems = [...this.backlog, ...this.inProgress, ...this.review, ...this.complete];
-    this.ReportHours();
+    
+    this.ReportHours(true);
   }
 
   CreateNewWorkItem(item: WorkItem): WorkItem {
@@ -136,15 +144,24 @@ export class ProjectsComponent implements OnInit {
   UpdateWorkItem(item: WorkItem): WorkItem {
     this.service.UpdateModel("Work/items/" + item.id, item).subscribe((response) => {
       console.log(response);
-      this.ReportHours();
+      this.ReportHours(true);
       return response;
     });
 
     return item;
   }
 
+  DeleteWorkItem(item: WorkItem, list: WorkItem[]): void {
+    this.service.DeleteModel("Work/items/" + item.id).subscribe((response) => {
+      console.log(item.name + "deleted...");
+      let index = list.indexOf(item);
+      list = list.splice(index, 1);
+      this.ReportHours(true);
+    });
+  }
+
   WorkItemUpdated(item: WorkItem) {
-    this.ReportHours();
+    this.ReportHours(true);
   }
 
   EditWorkItem(item: WorkItem): void {

@@ -1,0 +1,17 @@
+<div *ngIf="!IsLoading">
+
+    <div class="disp-flex">
+        <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
+        <ng-content select=".sheet-buttons"></ng-content>
+    </div>
+    <h2>{{title}}</h2>
+
+    <ng-content select=".sheet-content"></ng-content>
+
+    <!-- <mat-selection-list class="disp-flex" #modelList [multiple]="selectMultiple">
+        <mat-list-option *ngFor="let model of filteredModels" [value]="model">
+            <h3 matLine>{{model.name}}</h3>
+            <p matLine>Description: {{model.description}}</p>
+        </mat-list-option>
+    </mat-selection-list> -->
+</div>
