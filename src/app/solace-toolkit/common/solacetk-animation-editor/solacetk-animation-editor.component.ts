@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorAnimationData } from '../../models/behavioranimation';
+import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
@@ -28,6 +29,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   public frames: any[] = [];
   public selectedFrame: any = {};
+  public frameData: SoltkKeyValue[] = [];
 
   public framesChange = new EventEmitter<string>();
 
@@ -44,7 +46,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       }
 
       if (this.model) {
-        let texName = "Ase/" + this.model.name;
+        let texName = "Ase/" + this.model.name + "/" + this.model.name;
         this.framesChange.emit(texName + ".png.json");
         console.log("loaded");
       }
@@ -67,7 +69,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         this.model.framesJson = JSON.stringify(this.frames);
 
 
-        let texName = "Ase/" + this.model.name;
+        let texName = "Ase/" + this.model.name + "/" + this.model.name;
         this.sheetName = this.service.apiHost + texName + ".gif";
         this.aseReady = true;
 
@@ -90,6 +92,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   onSelect(event: any) {
     this.selectedFrame = event;
+    this.frameData = this.selectedFrame.data;
   }
 
   onAseSelected(event: any) {

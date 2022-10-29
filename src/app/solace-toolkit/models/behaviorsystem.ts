@@ -1,5 +1,7 @@
+import { ActionEvent } from "./actionevent";
 import { BehaviorBranch } from "./behaviorbranch";
 import { BehaviorState } from "./behaviorstate";
+import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorSystem {
 
@@ -10,6 +12,10 @@ export class BehaviorSystem {
     public startState?: string;
     public behaviorType?: BehaviorType;
     public branches: BehaviorBranch[] = [];
+
+    public stats: Array<SoltkKeyValue> = new Array<SoltkKeyValue>();
+
+    public events: Array<ActionEvent> = new Array<ActionEvent>();
 
     public desiredState: BehaviorState = new BehaviorState();
 }

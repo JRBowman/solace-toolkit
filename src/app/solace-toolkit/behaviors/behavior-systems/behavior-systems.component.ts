@@ -36,6 +36,18 @@ public model: BehaviorSystem = new BehaviorSystem();
     moveItemInArray(this.model.branches, event.previousIndex, event.currentIndex);
   }
 
+  public openActionsSheet()
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/actions');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.events = models;
+    });
+    
+  }
+
   public openBranchesSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);

@@ -11,9 +11,9 @@ export class SolacetkService {
 
   //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
   public apiVersion: string = "api/v1/";
-  //public apiHost: string = "http://localhost:5010/"
+  public apiHost: string = "http://localhost:5010/"
   //public apiHost: string = "https://solacetk-service.bowman-dev.svc:8080/";
-  public apiHost: string = "https://soltk-service-bowman-dev.apps.bocp.onbowman.com/";
+  //public apiHost: string = "https://soltk-service-bowman-dev.apps.bocp.onbowman.com/";
   public baseUrl: string = this.apiHost + this.apiVersion;
 
   public deepGetQuery: string = "?includeElements=true";
@@ -29,7 +29,7 @@ export class SolacetkService {
   }
 
   public CheckSolTkAuth(): Observable<HttpResponse<any>> {
-    return this.http.get<HttpResponse<any>>("https://identity-dev.onbowman.com");
+    return this.http.get<HttpResponse<any>>("https://localhost:5000");
   }
 
   public GetModel(route: string): Observable<any> {

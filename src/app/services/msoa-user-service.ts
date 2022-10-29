@@ -1,14 +1,17 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { OidcSecurityService } from "angular-auth-oidc-client";
 import { MsoaUser } from "../models/msoa-user";
+import { SolacetkService } from "../solace-toolkit/services/solacetk-service.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class MsoaUserService implements OnInit {
     constructor(private oidcSecurityService: OidcSecurityService,
-        private routerService: Router) {}
+        private routerService: Router,
+        private http: HttpClient) {}
 
     public User: MsoaUser = new MsoaUser();
     public testUser: any;
@@ -37,6 +40,10 @@ export class MsoaUserService implements OnInit {
 
         this.oidcSecurityService.getPayloadFromIdToken().subscribe(value => {
             console.log(value);return Object.keys(value).forEach(claim => this.Claims.push({key: claim, value: value[claim]}));
+        });
+
+        this.http.get("https://localhost:5000/api/v1/oidc").subscribe(response =>{
+            console.log(response);
         });
 
         

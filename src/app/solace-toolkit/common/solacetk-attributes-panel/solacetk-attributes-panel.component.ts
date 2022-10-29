@@ -12,6 +12,8 @@ export class SolacetkAttributesPanelComponent implements OnInit {
   @Input() model: SoltkKeyValue[] = [];
   @Output() modelChange = new EventEmitter<SoltkKeyValue[]>();
 
+  @Input() operatorsEnabled: boolean = false;
+
   @Input() panelName: string = "Attributes";
 
   @Input() panelType: string = "expansionpanel";

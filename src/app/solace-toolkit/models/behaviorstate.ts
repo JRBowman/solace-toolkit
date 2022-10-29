@@ -1,6 +1,7 @@
 import { BehaviorAction } from "./behavioraction";
 import { BehaviorAnimation } from "./behavioranimation";
 import { BehaviorCondition } from "./behaviorcondition";
+import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorState {
     public id?: string;
@@ -14,6 +15,10 @@ export class BehaviorState {
     public animations: BehaviorAnimation[] = [];
 
     public conditions: BehaviorCondition[] = [];
+
+    public startData: SoltkKeyValue[] = [];
+    public actData: SoltkKeyValue[] = [];
+    public endData: SoltkKeyValue[] = [];
 
     public startDelay?: number = 0;
     public endDelay?: number = 0;

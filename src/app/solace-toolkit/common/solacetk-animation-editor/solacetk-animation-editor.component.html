@@ -21,6 +21,9 @@
                             <span matSuffix>ms</span>
                           </mat-form-field>
                         <p>Size: w:{{selectedFrame.frame.w}} x h:{{selectedFrame.frame.h}}</p>
+
+                        <solacetk-attributes-panel [(model)]="frameData"></solacetk-attributes-panel>
+
                     </mat-card-content>
                 </mat-card>
             </div>

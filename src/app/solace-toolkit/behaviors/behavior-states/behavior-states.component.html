@@ -39,30 +39,45 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        State Animations
+                        Dataworks
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.animations">
-                        <div cdkDropList (cdkDropListDropped)="dropAnims($event)">
-                            <div *ngFor="let animation of model.animations">
+                    <div *ngIf="model.animations.length > 0" class="disp-flex full-width">
 
-                                <mat-card cdkDrag [cdkDragData]="animation">
-                                    <mat-card-title>{{animation.name}}</mat-card-title>
-                                    <mat-card-subtitle>Description: {{animation.description}}</mat-card-subtitle>
-                                </mat-card>
-                            </div>
+                        <!-- <div *ngIf="model.animations[0].startFrameData.enabled" class="no-flex mr-2"> -->
+                        <div class="no-flex mr-2">
+                            <h4>Start</h4>
+                            <solacetk-animation-editor [(model)]="model.animations[0].startFrameData"
+                                [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+
+                            <solacetk-attributes-panel [(model)]="model.startData"></solacetk-attributes-panel>
                         </div>
+
+                        <div class="no-flex mr-2">
+                            <h4>Act</h4>
+                            <solacetk-animation-editor [(model)]="model.animations[0].actFrameData"
+                                [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+
+                            <solacetk-attributes-panel [(model)]="model.actData"></solacetk-attributes-panel>
+                        </div>
+
+                        <div class="no-flex">
+                            <h4>End</h4>
+                            <solacetk-animation-editor [(model)]="model.animations[0].endFrameData"
+                                [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+
+                            <solacetk-attributes-panel [(model)]="model.endData"></solacetk-attributes-panel>
+                        </div>
+
                     </div>
 
                 </ng-template>
-
 
                 <mat-action-row>
                     <button mat-button color="primary" (click)="openAnimationsSheet()">Add</button>
@@ -73,7 +88,7 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        State Action
+                        Events
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 

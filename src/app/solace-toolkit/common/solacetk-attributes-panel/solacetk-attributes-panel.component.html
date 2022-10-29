@@ -19,6 +19,11 @@
                             <mat-form-field class="auto-flex model-formfield">
                                 <input matInput placeholder="Key" [(ngModel)]="key.key">
                             </mat-form-field>
+                            <div *ngIf="operatorsEnabled">
+                                <mat-form-field class="no-flex model-formfield">
+                                    <input matInput placeholder="Operator" [(ngModel)]="key.operator">
+                                </mat-form-field>
+                            </div>
                             <mat-form-field class="auto-flex">
                                 <input matInput placeholder="Data" [(ngModel)]="key.data">
                             </mat-form-field>

@@ -53,217 +53,217 @@ const routes: Routes = [
   {
     path: 'resume',
     component: ResumeComponent,
-    //canActivate: [AuthorizationGuard]
+    ////canActivate: [AuthorizationGuard]
   },
   {
     path: 'software',
     component: SoftwareComponent,
-    //canActivate: [AuthorizationGuard]
+    ////canActivate: [AuthorizationGuard]
   },
   {
     path: 'identity',
     component: IdentityComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   // {
   //   path: 'videos',
   //   component: VideosComponent,
-  //   canActivate: [AuthorizationGuard]
+  //   //canActivate: [AuthorizationGuard]
   // },
   {
     path: 'openshift-visual-system',
     component: OpenshiftVisualSystemComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'solace-tk',
     component: SolaceToolkitComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'characters',
     component: CharacterControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'enemies',
     component: EnemyControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'objects',
     component: StaticControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'spawners',
     component: SpawnerControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'particlesystems',
     component: ParticleSystemsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'behaviorsystems',
     component: BehaviorSystemsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'branches',
     component: BehaviorBranchesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'states',
     component: BehaviorStatesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'conditions',
     component: BehaviorConditionsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'tilesets',
     component: EnvironmentTilesetsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'collections',
     component: ResourceCollectionsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'maps',
     component: EnvironmentMapComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'layers',
     component: EnvironmentMapLayerComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'soundsets',
     component: SoundSetsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'soundsources',
     component: SoundSourcesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'wiki',
     component: SolacetkWikiComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'wiki/:article',
     component: SolacetkWikiComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'weapons',
     component: WeaponsControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'animations',
     component: BehaviorAnimationsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'actions',
     component: BehaviorActionsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'events',
     component: ActionEventsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'messages',
     component: ActionMessagesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'transports',
     component: TransportControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'navigation',
     component: NavigationControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'gamestates',
     component: GameStatesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'timelines',
     component: GameTimelinesComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'navigation',
     component: NavigationControllersComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'huds',
     component: HudsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'hudelements',
     component: HudElementsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'hudmenus',
     component: HudMenusComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'huddialogs',
     component: HudDialogsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'audioeffects',
     component: AudioEffectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'visualeffects',
     component: VisualEffectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'lights',
     component: LightEffectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'liquids',
     component: LiquidEffectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'overlays',
     component: OverlayEffectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
   {
     path: 'projects',
     component: ProjectsComponent,
-    canActivate: [AuthorizationGuard]
+    //canActivate: [AuthorizationGuard]
   },
 ];
 

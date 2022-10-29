@@ -16,6 +16,11 @@
 
                     <div class="disp-flex" cdkDropList (cdkDropListDropped)="dropBranches($event)" *ngIf="model.states">
                         <div class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
+                            <mat-list *ngIf="state.conditions">
+                                <mat-list-item *ngFor="let condition of state.conditions">
+                                    <p matLine *ngFor="let cond of condition.keys">{{cond.key}} => {{cond.data}}</p>
+                                </mat-list-item>
+                            </mat-list>
                             <div class="auto-flex">
                                 <mat-icon class="auto-flex full-width text-center">arrow_downward</mat-icon>
                             </div>
@@ -25,11 +30,7 @@
                                 </mat-card-title-group>
                                 <mat-card-content>
 
-                                    <mat-list *ngIf="state.conditions">
-                                        <mat-list-item *ngFor="let condition of state.conditions">
-                                            <p matLine *ngFor="let cond of condition.keys">{{cond.key}} => {{cond.data}}</p>
-                                        </mat-list-item>
-                                    </mat-list>
+
 
                                     <solacetk-animation-editor [(model)]="state.animations[0].actFrameData"
                                         [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>

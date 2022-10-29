@@ -19,6 +19,7 @@
 
     <div class="editor-panels">
         <mat-accordion class="align-start">
+
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -45,16 +46,39 @@
                 </mat-action-row>
 
             </mat-expansion-panel>
+
+            <solacetk-attributes-panel [(model)]="model.stats"></solacetk-attributes-panel>
+
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Attributes
+                        Events
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <div class="full-height"></div>
 
+                <ng-template matExpansionPanelContent>
+                    <div *ngIf="model.events">
+                        <div *ngFor="let ev of model.events">
+                            <mat-card>
+                                <mat-card-title>{{ev.name}}</mat-card-title>
+                                <mat-card-subtitle>Description: {{ev.description}}</mat-card-subtitle>
+                                <mat-card-content>
+                                    <div *ngFor="let condition of ev.conditions">
+                                        <solacetk-attributes-panel [(model)]="condition.keys"></solacetk-attributes-panel>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+
+                </ng-template>
+
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
+                </mat-action-row>
             </mat-expansion-panel>
+
         </mat-accordion>
 
     </div>

@@ -5,7 +5,8 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 @NgModule({
     imports: [AuthModule.forRoot({
         config: {
-            authority: 'https://identity-dev.onbowman.com',
+            //authority: 'https://identity-dev.onbowman.com',
+            authority: 'https://localhost:5000',
             redirectUrl: window.location.origin,
             postLogoutRedirectUri: window.location.origin,
             clientId: 'msoa-js',
@@ -13,6 +14,7 @@ import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
             responseType: 'code',
             silentRenew: true,
             useRefreshToken: true,
+            silentRenewUrl: window.location.origin + "/silent-renew.html",
             logLevel: LogLevel.Debug
         }
       })],

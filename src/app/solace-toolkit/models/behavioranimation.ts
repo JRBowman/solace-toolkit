@@ -19,6 +19,7 @@ export class BehaviorAnimationData {
     public description: string = "";
     public assemblyType: string = "";
     public tags: string = "";
+    public enabled: boolean = false;
 
     public loop: boolean = true;
     public invert: boolean = false;
