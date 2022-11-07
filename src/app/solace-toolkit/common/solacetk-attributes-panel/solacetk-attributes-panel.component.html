@@ -3,6 +3,7 @@
     <mat-expansion-panel [class]="panelClass" [style.background-color]="panelColor">
         <mat-expansion-panel-header>
             <mat-panel-title>
+                <mat-icon class="mr-2">{{panelIcon}}</mat-icon>
                 {{panelName}}
             </mat-panel-title>
         </mat-expansion-panel-header>
@@ -47,7 +48,8 @@
 </div>
 
 <div *ngIf="panelType === 'panel'">
-    <h3>{{panelName}}</h3>
+    
+    <h3><mat-icon class="mr-2">{{panelIcon}}</mat-icon>{{panelName}}</h3>
     <div *ngIf="model">
         <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
             <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">

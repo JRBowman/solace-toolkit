@@ -1,11 +1,14 @@
 <div *ngIf="panelType == 'panel'">
 
-    <h3>Messages</h3>
+    <h3><mat-icon class="mr-2">local_post_office</mat-icon>Messages</h3>
 
     <div *ngFor="let message of model">
         <mat-card class="auto-flex mb-2" [style.backgroundColor]="messageColor">
             <mat-card-title-group>
-                <mat-card-title class="auto-flex">[{{GetKeyIndex(message)}}]: {{message.name}}</mat-card-title>
+                <mat-card-title class="auto-flex">
+                    <mat-icon>local_post_office</mat-icon>
+                    [{{GetKeyIndex(message)}}]: {{message.name}}
+                </mat-card-title>
                 <button mat-icon-button class="no-flex" aria-label="Remove Message" (click)="RemoveMessage(message)">
                     <mat-icon>remove</mat-icon>
                 </button>
@@ -41,6 +44,7 @@
     <mat-expansion-panel [style.backgroundColor]="messageColor">
         <mat-expansion-panel-header>
             <mat-panel-title>
+                <mat-icon class="mr-2">local_post_office</mat-icon>
                 Messages
             </mat-panel-title>
         </mat-expansion-panel-header>
@@ -49,7 +53,10 @@
             <div *ngFor="let message of model">
                 <mat-card class="auto-flex mb-2 message-card">
                     <mat-card-title-group>
-                        <mat-card-title class="auto-flex">[{{GetKeyIndex(message)}}]: {{message.name}}</mat-card-title>
+                        <mat-card-title class="auto-flex">
+                            <mat-icon>quickreply</mat-icon>
+                            [{{GetKeyIndex(message)}}]: {{message.name}}
+                        </mat-card-title>
                         <button mat-icon-button class="no-flex" aria-label="Remove Message"
                             (click)="RemoveMessage(message)">
                             <mat-icon>remove</mat-icon>

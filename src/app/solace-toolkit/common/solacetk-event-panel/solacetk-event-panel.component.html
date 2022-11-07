@@ -5,7 +5,10 @@
     <div *ngFor="let eventTk of model">
         <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
             <mat-card-title-group>
-                <mat-card-subtitle class="auto-flex">[{{GetKeyIndex(eventTk)}}]: {{eventTk.name}}</mat-card-subtitle>
+                <mat-card-title class="auto-flex">
+                    <mat-icon class="mr-2">bolt</mat-icon>
+                    <small>[{{GetKeyIndex(eventTk)}}]:</small> {{eventTk.name}}
+                </mat-card-title>
                 <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
                     <mat-icon>remove</mat-icon>
                 </button>
@@ -45,6 +48,7 @@
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
+                <mat-icon class="mr-2">hub</mat-icon>
                 Events
             </mat-panel-title>
         </mat-expansion-panel-header>
@@ -54,7 +58,11 @@
             <div *ngFor="let eventTk of model">
                 <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
                     <mat-card-title-group>
-                        <mat-card-subtitle class="auto-flex">[{{GetKeyIndex(eventTk)}}]: {{eventTk.name}}</mat-card-subtitle>
+                        <mat-card-title class="auto-flex">
+                            <mat-icon class="mr-2">bolt</mat-icon>
+                             {{eventTk.name}}
+                             <small>[{{GetKeyIndex(eventTk)}}]</small>
+                        </mat-card-title>
                         <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
                             <mat-icon>remove</mat-icon>
                         </button>
@@ -70,7 +78,7 @@
                         </mat-form-field>
         
                         <div class="disp-flex">
-                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Conditions" panelColor="darkslategrey"
+                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelIcon="gavel" panelName="Conditions" panelColor="darkslategrey"
                                 panelType="expansionpanel" [(model)]="eventTk.condition" [operatorsEnabled]="true">
                             </solacetk-attributes-panel>
         
