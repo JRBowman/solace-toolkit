@@ -13,9 +13,9 @@ export class BehaviorSystem {
     public behaviorType?: BehaviorType;
     public branches: BehaviorBranch[] = [];
 
-    public stats: Array<SoltkKeyValue> = new Array<SoltkKeyValue>();
+    public stats: SoltkKeyValue[] = [];
 
-    public events: Array<ActionEvent> = new Array<ActionEvent>();
+    public events: ActionEvent[] = [];
 
     public desiredState: BehaviorState = new BehaviorState();
 }

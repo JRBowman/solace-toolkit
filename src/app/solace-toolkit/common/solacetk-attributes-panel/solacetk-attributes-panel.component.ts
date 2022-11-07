@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 
@@ -18,15 +19,28 @@ export class SolacetkAttributesPanelComponent implements OnInit {
 
   @Input() panelType: string = "expansionpanel";
 
+  @Input() panelColor: string = "lightslategrey";
+  @Output() panelColorChange = new EventEmitter<string>();
+
+  @Input() panelClass: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  dropConditions(event: CdkDragDrop<SoltkKeyValue[]>) {
+    moveItemInArray(this.model, event.previousIndex, event.currentIndex);
   }
 
   public AddAttribute(): void {
     if (!this.model) this.model = [];
     this.model = [...this.model, new SoltkKeyValue()];
   }
+
+  public RemoveAttribute(key: SoltkKeyValue): void {
+    this.model.splice(this.GetKeyIndex(key), 1);
+ }
 
   public GetKeyIndex(key: SoltkKeyValue): number {
     return this.model.indexOf(key);

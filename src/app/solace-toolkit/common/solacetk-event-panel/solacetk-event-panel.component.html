@@ -1,0 +1,99 @@
+<!-- <mat-card>
+        <mat-card-content> -->
+<div *ngIf="panelType == 'panel'">
+
+    <div *ngFor="let eventTk of model">
+        <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
+            <mat-card-title-group>
+                <mat-card-subtitle class="auto-flex">[{{GetKeyIndex(eventTk)}}]: {{eventTk.name}}</mat-card-subtitle>
+                <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </mat-card-title-group>
+            <mat-card-content>
+
+                <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Name" [(ngModel)]="eventTk.name">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Description" [(ngModel)]="eventTk.description">
+                </mat-form-field>
+
+                <div class="disp-flex">
+                    <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Conditions" panelColor="darkslategrey"
+                        panelType="expansionpanel" [(model)]="eventTk.condition" [operatorsEnabled]="true">
+                    </solacetk-attributes-panel>
+
+                    <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="State Data"
+                        panelType="expansionpanel" [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
+
+                    <solacetk-messages-panel class="auto-flex full-width" panelName="Messages"
+                        panelType="expansionpanel" [(model)]="eventTk.messages"></solacetk-messages-panel>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <button color="primary" mat-button (click)="AddEvent()">Add Event</button>
+
+</div>
+
+<div *ngIf="panelType == 'expansionpanel'">
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Events
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+
+        <ng-template matExpansionPanelContent>
+            <div *ngFor="let eventTk of model">
+                <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
+                    <mat-card-title-group>
+                        <mat-card-subtitle class="auto-flex">[{{GetKeyIndex(eventTk)}}]: {{eventTk.name}}</mat-card-subtitle>
+                        <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </mat-card-title-group>
+                    <mat-card-content>
+        
+                        <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Name" [(ngModel)]="eventTk.name">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Description" [(ngModel)]="eventTk.description">
+                        </mat-form-field>
+        
+                        <div class="disp-flex">
+                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Conditions" panelColor="darkslategrey"
+                                panelType="expansionpanel" [(model)]="eventTk.condition" [operatorsEnabled]="true">
+                            </solacetk-attributes-panel>
+        
+                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="State Data"
+                                panelType="expansionpanel" [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
+        
+                            <solacetk-messages-panel class="auto-flex full-width" panelName="Messages"
+                                panelType="expansionpanel" [(model)]="eventTk.messages"></solacetk-messages-panel>
+                        </div>
+        
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </ng-template>
+
+        <mat-action-row>
+            <button color="primary" mat-button (click)="AddEvent()">Add Event</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+</div>
+
+
+<!-- </mat-card-content>
+    </mat-card> -->

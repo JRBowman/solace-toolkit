@@ -3,59 +3,14 @@
         <mat-divider class="mb-2 mt-2"></mat-divider>
     </div>
 
-        
+
     <div class="editor-panels">
         <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Condition Keys
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
 
-                <ng-template matExpansionPanelContent>
-
-                    <div *ngIf="model.keys">
-                        <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
-                            <div cdkDrag [cdkDragData]="key" *ngFor="let key of model.keys">
-                                <mat-list-item>
-                                    <div class="no-flex align-end model-formfield">
-                                        <h3 matLine>[{{GetKeyIndex(key)}}]:</h3>
-                                    </div>
-                                    <mat-form-field class="auto-flex model-formfield">
-                                        <input matInput placeholder="Key" [(ngModel)]="key.key">
-                                    </mat-form-field>
-                                    <mat-form-field class="no-flex model-formfield">
-                                        <input matInput placeholder="Operator" [(ngModel)]="key.operator">
-                                    </mat-form-field>
-                                    <mat-form-field class="auto-flex">
-                                        <input matInput placeholder="Data" [(ngModel)]="key.data">
-                                    </mat-form-field>
-
-                                </mat-list-item>
-                                <mat-divider class="mb-2 mt-2"></mat-divider>
-                            </div>
-                        </mat-list>
-                    </div>
-
-                </ng-template>
-
-
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="AddCondition()">Add</button>
-                </mat-action-row>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Attributes
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="full-height"></div>
-
-            </mat-expansion-panel>
+            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Conditions"
+                panelColor="darkslategrey" panelType="expansionpanel" [(model)]="model.keys"
+                [operatorsEnabled]="true">
+            </solacetk-attributes-panel>
 
         </mat-accordion>
 

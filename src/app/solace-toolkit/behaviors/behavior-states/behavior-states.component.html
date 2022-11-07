@@ -3,11 +3,15 @@
 
         <div class="disp-flex">
             <mat-form-field class="auto-flex model-formfield">
+                <input matInput placeholder="Run Count" [(ngModel)]="model.runCount">
+            </mat-form-field>
+            <mat-form-field class="auto-flex model-formfield">
                 <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
             </mat-form-field>
             <mat-form-field class="auto-flex model-formfield">
                 <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
             </mat-form-field>
+
             <mat-checkbox class="auto-flex align-center" name="interruptable" [(ngModel)]="model.interruptable">
                 Interruptable
             </mat-checkbox>
@@ -18,7 +22,7 @@
 
     <div class="editor-panels">
         <mat-accordion class="auto-flex align-start full-width">
-            <mat-expansion-panel>
+            <mat-expansion-panel [style.background-color]="conditionsColor">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Conditions
@@ -27,7 +31,7 @@
 
                 <ng-template matExpansionPanelContent>
                     <div *ngIf="model.conditions">
-                        <mat-card *ngFor="let cond of model.conditions">
+                        <mat-card *ngFor="let cond of model.conditions" class="mb-2">
                             <mat-card-title>{{cond.name}}</mat-card-title>
                             <mat-card-subtitle>Description: {{cond.description}}</mat-card-subtitle>
                         </mat-card>
@@ -48,31 +52,41 @@
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.animations.length > 0" class="disp-flex full-width">
+                    <div *ngIf="model.animations.length > 0">
 
                         <!-- <div *ngIf="model.animations[0].startFrameData.enabled" class="no-flex mr-2"> -->
-                        <div class="no-flex mr-2">
-                            <h4>Start</h4>
-                            <solacetk-animation-editor [(model)]="model.animations[0].startFrameData"
+                        <h4>Start</h4>
+                        <div class="disp-flex mb-2">
+
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].startFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
-                            <solacetk-attributes-panel [(model)]="model.startData"></solacetk-attributes-panel>
+                            <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
+                                class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
                         </div>
 
-                        <div class="no-flex mr-2">
-                            <h4>Act</h4>
-                            <solacetk-animation-editor [(model)]="model.animations[0].actFrameData"
+                        <mat-divider class="mb-2"></mat-divider>
+
+                        <h4>Act</h4>
+                        <div class="disp-flex mb-2">
+
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].actFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
-                            <solacetk-attributes-panel [(model)]="model.actData"></solacetk-attributes-panel>
+                            <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
+                                class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
                         </div>
 
-                        <div class="no-flex">
-                            <h4>End</h4>
-                            <solacetk-animation-editor [(model)]="model.animations[0].endFrameData"
+                        <mat-divider class="mb-2"></mat-divider>
+
+                        <h4>End</h4>
+                        <div class="disp-flex">
+
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].endFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
-                            <solacetk-attributes-panel [(model)]="model.endData"></solacetk-attributes-panel>
+                            <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
+                                class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
                         </div>
 
                     </div>
@@ -85,29 +99,7 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Events
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-
-                <ng-template matExpansionPanelContent>
-                    <div *ngIf="model.action">
-                        <mat-card>
-                            <mat-card-title>{{model.action.name}}</mat-card-title>
-                            <mat-card-subtitle>Description: {{model.action.description}}</mat-card-subtitle>
-                        </mat-card>
-                    </div>
-
-                </ng-template>
-
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
-                </mat-action-row>
-            </mat-expansion-panel>
-
+            <solacetk-event-panel class="auto-flex" [(model)]="model.events"></solacetk-event-panel>
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -128,17 +120,6 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Attributes
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="full-height"></div>
-
-            </mat-expansion-panel>
         </mat-accordion>
     </div>
 

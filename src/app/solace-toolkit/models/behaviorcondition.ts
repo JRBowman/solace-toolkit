@@ -4,7 +4,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 export class BehaviorCondition implements IModelTK {
 
     public id: string = "";
-    public name?: string;
+    public name?: string = "Condition01";
     public description?: string;
     public keys: SoltkKeyValue[] = [];
     public tags?: string = "";

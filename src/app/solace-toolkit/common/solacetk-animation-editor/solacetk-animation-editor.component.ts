@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BehaviorAnimationFrame } from '../../models/behavior-animation-frame';
 import { BehaviorAnimationData } from '../../models/behavioranimation';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
@@ -28,17 +29,17 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   public aseReady: boolean = false;
 
   public frames: any[] = [];
-  public selectedFrame: any = {};
-  public frameData: SoltkKeyValue[] = [];
+  public selectedFrame: BehaviorAnimationFrame = new BehaviorAnimationFrame();
+  public selected: number = 0;
 
   public framesChange = new EventEmitter<string>();
 
   ngOnInit(): void {
 
+    this.model.frames = [];
     this.unloadChange.subscribe((value) => {
       if (value === true) {
         this.fileName = "";
-        this.selectedFrame = {};
         this.frames = [];
         this.sheetName = "../../assets/soldof/images/settings.png";
         console.log("unloaded...");
@@ -63,9 +64,19 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
           let f = data['frames'][fr];
           f.name = fr;
           this.frames.push(f);
+          if (!this.model.frames.find(x => x.frame == f)) {
+            let modelFrame = new BehaviorAnimationFrame();
+            modelFrame.name = f.name;
+            //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
+            modelFrame.duration = f.duration;
+            modelFrame.frame = f;
+            this.model.frames.push(modelFrame);
+          }
         });
 
-        this.selectedFrame = this.frames[0];
+
+
+        //this.selectedFrame = this.frames[0];
         this.model.framesJson = JSON.stringify(this.frames);
 
 
@@ -75,24 +86,25 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
         this.modelChange.emit(this.model);
       },
-      (error) => {
-        console.log(error);
-        this.sheetName = "../../assets/soldof/images/settings.png";
-        this.aseReady = false;
-      });
+        (error) => {
+          console.log(error);
+          this.sheetName = "../../assets/soldof/images/settings.png";
+          this.aseReady = false;
+        });
     });
 
     this.unloadChange.emit(false);
 
     this.bgColor = this.showDataPanel ? "" : "bg-task-card";
+
   }
 
   ngAfterViewInit(): void {
   }
 
   onSelect(event: any) {
-    this.selectedFrame = event;
-    this.frameData = this.selectedFrame.data;
+    this.selectedFrame = this.model.frames.filter(x => x.frame == event)[0];
+    this.selected = this.frames.indexOf(event);
   }
 
   onAseSelected(event: any) {
@@ -109,7 +121,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
       upload$.subscribe((response) => {
         this.frames = [];
-        this.selectedFrame = {};
+        this.selectedFrame = new BehaviorAnimationFrame();
 
         this.modelChange.emit(this.model);
         this.framesChange.emit(response.data.sheetData);

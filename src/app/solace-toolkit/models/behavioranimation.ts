@@ -1,3 +1,4 @@
+import { BehaviorAnimationFrame } from "./behavior-animation-frame";
 import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorAnimation {
@@ -20,6 +21,8 @@ export class BehaviorAnimationData {
     public assemblyType: string = "";
     public tags: string = "";
     public enabled: boolean = false;
+
+    public frames: BehaviorAnimationFrame[] = []
 
     public loop: boolean = true;
     public invert: boolean = false;

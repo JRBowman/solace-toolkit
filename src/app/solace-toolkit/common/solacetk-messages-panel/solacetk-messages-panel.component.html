@@ -1,0 +1,86 @@
+<div *ngIf="panelType == 'panel'">
+
+    <h3>Messages</h3>
+
+    <div *ngFor="let message of model">
+        <mat-card class="auto-flex mb-2" [style.backgroundColor]="messageColor">
+            <mat-card-title-group>
+                <mat-card-title class="auto-flex">[{{GetKeyIndex(message)}}]: {{message.name}}</mat-card-title>
+                <button mat-icon-button class="no-flex" aria-label="Remove Message" (click)="RemoveMessage(message)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </mat-card-title-group>
+            <mat-card-content>
+
+                <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Name" [(ngModel)]="message.name">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Description" [(ngModel)]="message.description">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
+                </mat-form-field>
+                <mat-form-field class="auto-flex model-formfield">
+                    <input matInput placeholder="Target Type" [(ngModel)]="message.targetType">
+                </mat-form-field>
+
+
+                <solacetk-attributes-panel panelName="Message Data" [(model)]="message.data" panelType="panel"
+                    [operatorsEnabled]="false"></solacetk-attributes-panel>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <button mat-button (click)="AddMessage()">Add Message</button>
+
+</div>
+
+<div *ngIf="panelType == 'expansionpanel'">
+    <mat-expansion-panel [style.backgroundColor]="messageColor">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Messages
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+            <div *ngFor="let message of model">
+                <mat-card class="auto-flex mb-2 message-card">
+                    <mat-card-title-group>
+                        <mat-card-title class="auto-flex">[{{GetKeyIndex(message)}}]: {{message.name}}</mat-card-title>
+                        <button mat-icon-button class="no-flex" aria-label="Remove Message"
+                            (click)="RemoveMessage(message)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </mat-card-title-group>
+                    <mat-card-content>
+
+                        <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Name" [(ngModel)]="message.name">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Description" [(ngModel)]="message.description">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex model-formfield">
+                            <input matInput placeholder="Target Type" [(ngModel)]="message.targetType">
+                        </mat-form-field>
+
+
+                        <solacetk-attributes-panel panelName="Message Data" [(model)]="message.data" panelType="panel"
+                            [operatorsEnabled]="false"></solacetk-attributes-panel>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-template>
+        <mat-action-row>
+            <button mat-button (click)="AddMessage()">Add Message</button>
+        </mat-action-row>
+
+    </mat-expansion-panel>
+</div>

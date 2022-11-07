@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
+import { ActionEvent } from '../../models/actionevent';
 import { BehaviorAnimation } from '../../models/behavioranimation';
 import { BehaviorState } from '../../models/behaviorstate';
 import { SolacetkService } from '../../services/solacetk-service.service';
@@ -16,6 +17,8 @@ export class BehaviorStatesComponent implements OnInit {
   constructor(private _bottomSheet: MatBottomSheet) { }
 
   public model: BehaviorState = new BehaviorState();
+
+  public conditionsColor: string = "darkslategrey";
 
   ngOnInit(): void {
 
@@ -40,7 +43,7 @@ export class BehaviorStatesComponent implements OnInit {
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.action = models[0];
+      this.model.events = models;
     });
     
   }

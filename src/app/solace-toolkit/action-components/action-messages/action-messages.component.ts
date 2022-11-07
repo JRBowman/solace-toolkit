@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Actionmessage } from '../../models/actionmessage';
+import { ActionMessage } from '../../models/actionmessage';
 
 @Component({
   selector: 'app-action-messages',
@@ -10,7 +10,9 @@ export class ActionMessagesComponent implements OnInit {
 
   constructor() { }
 
-  public model: Actionmessage = new Actionmessage();
+  public model: ActionMessage = new ActionMessage();
+
+  public messageColor: string = "mediumslateblue";
 
   ngOnInit(): void {
   }

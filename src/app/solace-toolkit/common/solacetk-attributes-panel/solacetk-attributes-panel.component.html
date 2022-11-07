@@ -1,6 +1,6 @@
 <div *ngIf="panelType === 'expansionpanel'">
 
-    <mat-expansion-panel>
+    <mat-expansion-panel [class]="panelClass" [style.background-color]="panelColor">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 {{panelName}}
@@ -9,24 +9,26 @@
 
         <ng-template matExpansionPanelContent>
 
-            <div *ngIf="model.keys">
-                <mat-list>
-                    <div *ngFor="let key of model">
+            <div *ngIf="model">
+                <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
+                    <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
                         <mat-list-item>
                             <div class="no-flex align-end model-formfield">
-                                <h3 class="align-center" matLine>[{{GetKeyIndex(key)}}]:</h3>
+                                <h3 matLine>[{{GetKeyIndex(attr)}}]:</h3>
                             </div>
                             <mat-form-field class="auto-flex model-formfield">
-                                <input matInput placeholder="Key" [(ngModel)]="key.key">
+                                <input matInput placeholder="Key" [(ngModel)]="attr.key">
                             </mat-form-field>
-                            <div *ngIf="operatorsEnabled">
-                                <mat-form-field class="no-flex model-formfield">
-                                    <input matInput placeholder="Operator" [(ngModel)]="key.operator">
-                                </mat-form-field>
-                            </div>
+                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield">
+                                <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
+                            </mat-form-field>
                             <mat-form-field class="auto-flex">
-                                <input matInput placeholder="Data" [(ngModel)]="key.data">
+                                <input matInput placeholder="Data" [(ngModel)]="attr.data">
                             </mat-form-field>
+                            <button mat-icon-button class="no-flex" aria-label="Remove Attribute"
+                                (click)="RemoveAttribute(attr)">
+                                <mat-icon>remove</mat-icon>
+                            </button>
 
                         </mat-list-item>
                         <mat-divider class="mb-2 mt-2"></mat-divider>
@@ -38,8 +40,39 @@
 
 
         <mat-action-row>
-            <button mat-button color="primary" (click)="AddAttribute()">Add</button>
+            <button mat-button (click)="AddAttribute()">Add</button>
         </mat-action-row>
     </mat-expansion-panel>
 
+</div>
+
+<div *ngIf="panelType === 'panel'">
+    <h3>{{panelName}}</h3>
+    <div *ngIf="model">
+        <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
+            <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
+                <mat-list-item>
+                    <div class="no-flex align-end model-formfield">
+                        <h3 matLine>[{{GetKeyIndex(attr)}}]:</h3>
+                    </div>
+                    <mat-form-field class="auto-flex model-formfield">
+                        <input matInput placeholder="Key" [(ngModel)]="attr.key">
+                    </mat-form-field>
+                    <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield">
+                        <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
+                    </mat-form-field>
+                    <mat-form-field class="auto-flex">
+                        <input matInput placeholder="Data" [(ngModel)]="attr.data">
+                    </mat-form-field>
+                    <button mat-icon-button class="no-flex" aria-label="Remove Attribute"
+                        (click)="RemoveAttribute(attr)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+
+                </mat-list-item>
+                <mat-divider class="mb-2 mt-2"></mat-divider>
+            </div>
+        </mat-list>
+    </div>
+    <button mat-button (click)="AddAttribute()">Add</button>
 </div>

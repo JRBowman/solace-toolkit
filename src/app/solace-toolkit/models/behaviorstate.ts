@@ -1,3 +1,4 @@
+import { ActionEvent } from "./actionevent";
 import { BehaviorAction } from "./behavioraction";
 import { BehaviorAnimation } from "./behavioranimation";
 import { BehaviorCondition } from "./behaviorcondition";
@@ -8,13 +9,13 @@ export class BehaviorState {
     public name?: string = "BehaviorState";
     public description?: string = "";
     public tags?: string = "";
-    public actionId?: string;
-    public action?: BehaviorAction;
+
     public next?: BehaviorState;
 
     public animations: BehaviorAnimation[] = [];
 
     public conditions: BehaviorCondition[] = [];
+    public events: ActionEvent[] = [];
 
     public startData: SoltkKeyValue[] = [];
     public actData: SoltkKeyValue[] = [];
@@ -24,5 +25,8 @@ export class BehaviorState {
     public endDelay?: number = 0;
     public interruptable?: boolean;
     public stateType?: string;
+    public runCount: number = 0;
+
+    public enabled: boolean = true;
 
 }

@@ -85,6 +85,9 @@ import { SolacetkToolnavExtendedComponent } from './solace-toolkit/common/solace
 import { SolacetkIdentityBadgeComponent } from './solace-toolkit/common/solacetk-identity-badge/solacetk-identity-badge.component';
 import { IdentityComponent } from './identity/identity.component';
 import { SolacetkBottomSheetComponent } from './solace-toolkit/common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
+import { SolacetkEventPanelComponent } from './solace-toolkit/common/solacetk-event-panel/solacetk-event-panel.component';
+import { SolacetkConditionsPanelComponent } from './solace-toolkit/common/solacetk-conditions-panel/solacetk-conditions-panel.component';
+import { SolacetkMessagesPanelComponent } from './solace-toolkit/common/solacetk-messages-panel/solacetk-messages-panel.component';
 
 @NgModule({
   declarations: [
@@ -157,7 +160,10 @@ import { SolacetkBottomSheetComponent } from './solace-toolkit/common/solacetk-b
     SolacetkToolnavExtendedComponent,
     SolacetkIdentityBadgeComponent,
     IdentityComponent,
-    SolacetkBottomSheetComponent
+    SolacetkBottomSheetComponent,
+    SolacetkEventPanelComponent,
+    SolacetkConditionsPanelComponent,
+    SolacetkMessagesPanelComponent
   ],
   imports: [
     BrowserModule,

@@ -24,18 +24,18 @@
 
     <button mat-button class="let-space-1" [matMenuTriggerFor]="behaviorMenu">BEHAVIORS</button>
     <mat-menu #behaviorMenu="matMenu">
-        <a mat-menu-item [routerLink]="['/behaviorsystems']">Behavior Systems</a>
-        <a mat-menu-item [routerLink]="['/branches']">Branches</a>
-        <a mat-menu-item [routerLink]="['/states']">States</a>
-        <a mat-menu-item [routerLink]="['/conditions']">Conditions</a>
-        <a mat-menu-item [routerLink]="['/animations']">Animations</a>
+        <a mat-menu-item [routerLink]="['/behaviorsystems']" style="background-color: darkturquoise;">Behavior Systems</a>
+        <a mat-menu-item [routerLink]="['/branches']" style="background-color: coral;">Branches</a>
+        <a mat-menu-item [routerLink]="['/states']" style="background-color: darkslateblue;">States</a>
+        <a mat-menu-item [routerLink]="['/conditions']" style="background-color: darkslategrey;">Conditions</a>
+        <a mat-menu-item [routerLink]="['/animations']" style="background-color: darkorange;">Animations</a>
     </mat-menu>
 
     <button mat-button class="let-space-1" [matMenuTriggerFor]="messageMenu">ACTIONS</button>
     <mat-menu #messageMenu="matMenu">
-        <a mat-menu-item [routerLink]="['/actions']">Actions</a>
-        <a mat-menu-item [routerLink]="['/events']">Events</a>
-        <a mat-menu-item [routerLink]="['/messages']">Messages</a>
+        <!-- <a mat-menu-item [routerLink]="['/actions']">Actions</a> -->
+        <a mat-menu-item [routerLink]="['/events']" style="background-color: indianred;">Events</a>
+        <a mat-menu-item [routerLink]="['/messages']" style="background-color: mediumslateblue;">Messages</a>
     </mat-menu>
 
     <button mat-button class="let-space-1" [matMenuTriggerFor]="environmentMenu">ENVIRONMENTS</button>
