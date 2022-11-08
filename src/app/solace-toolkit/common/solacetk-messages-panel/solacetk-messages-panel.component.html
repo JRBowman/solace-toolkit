@@ -7,7 +7,7 @@
             <mat-card-title-group>
                 <mat-card-title class="auto-flex">
                     <mat-icon>local_post_office</mat-icon>
-                    [{{GetKeyIndex(message)}}]: {{message.name}}
+                    [{{GetKeyIndex(message)}}] {{message.name}}
                 </mat-card-title>
                 <button mat-icon-button class="no-flex" aria-label="Remove Message" (click)="RemoveMessage(message)">
                     <mat-icon>remove</mat-icon>
@@ -55,7 +55,7 @@
                     <mat-card-title-group>
                         <mat-card-title class="auto-flex">
                             <mat-icon>quickreply</mat-icon>
-                            [{{GetKeyIndex(message)}}]: {{message.name}}
+                            [{{GetKeyIndex(message)}}] {{message.name}}
                         </mat-card-title>
                         <button mat-icon-button class="no-flex" aria-label="Remove Message"
                             (click)="RemoveMessage(message)">
