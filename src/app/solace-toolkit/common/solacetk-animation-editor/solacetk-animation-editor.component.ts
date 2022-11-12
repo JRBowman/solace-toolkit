@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorAnimationFrame } from '../../models/behavior-animation-frame';
-import { BehaviorAnimationData } from '../../models/behavioranimation';
+import { BehaviorAnimationData, BehaviorComponent } from '../../models/behavioranimation';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
@@ -32,6 +32,9 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   public selectedFrame: BehaviorAnimationFrame = new BehaviorAnimationFrame();
   public selected: number = 0;
 
+  public selectedComponent: BehaviorComponent = new BehaviorComponent();
+  public selectedCompIndex: number = 0;
+
   public framesChange = new EventEmitter<string>();
 
   ngOnInit(): void {
@@ -58,7 +61,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
 
-        if (!data) return;
+        //if (!data) return;
 
         let frames = Object.keys(data['frames']);
 
@@ -108,6 +111,32 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   onSelect(event: any) {
     this.selected = this.frames.indexOf(event);
     this.selectedFrame = this.model.frames[this.selected];
+  }
+
+  onComponentSelect(event: any) {
+    this.selectedCompIndex = this.model.components.indexOf(event);
+    this.selectedComponent = this.model.components[this.selectedCompIndex];
+  }
+
+  loadDefaultComponents()
+  {
+    if (!this.model.components) this.model.components = [];
+    this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
+    this.modelChange.emit(this.model);
+  }
+
+  addComponent()
+  {
+    if (!this.model.components) this.model.components = [];
+    this.model.components = [...this.model.components, new BehaviorComponent()];
+    this.modelChange.emit(this.model);
+  }
+
+  removeComponent(component: BehaviorComponent)
+  {
+    if (!this.model.components) this.model.components = [];
+    this.model.components.splice(this.model.components.indexOf(component), 1);
+    this.modelChange.emit(this.model);
   }
 
   onAseSelected(event: any) {

@@ -13,7 +13,7 @@ export class BehaviorState implements IModelTK {
 
     public next?: BehaviorState;
 
-    public animations: BehaviorAnimation[] = [];
+    public animation: BehaviorAnimation = new BehaviorAnimation();
 
     public conditions: BehaviorCondition[] = [];
     public events: ActionEvent[] = [];

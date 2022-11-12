@@ -36,7 +36,7 @@ export class BehaviorStatesComponent implements OnInit {
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.animations = models;
+      this.model.animation = models[0];
     });
     
   }
@@ -76,7 +76,7 @@ export class BehaviorStatesComponent implements OnInit {
   }
 
   dropAnims(event: CdkDragDrop<any[]>) {
-    moveItemInArray(this.model.animations, event.previousIndex, event.currentIndex);
+    //moveItemInArray(this.model.animations, event.previousIndex, event.currentIndex);
   }
 
 }

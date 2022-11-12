@@ -57,13 +57,12 @@
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.animations.length > 0">
-
+                    <div *ngIf="model.animation">
                         <!-- <div *ngIf="model.animations[0].startFrameData.enabled" class="no-flex mr-2"> -->
                         <h4>Start</h4>
                         <div class="disp-flex mb-2">
 
-                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].startFrameData"
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animation.startFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                             <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
@@ -75,7 +74,7 @@
                         <h4>Act</h4>
                         <div class="disp-flex mb-2">
 
-                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].actFrameData"
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animation.actFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                             <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
@@ -87,13 +86,12 @@
                         <h4>End</h4>
                         <div class="disp-flex">
 
-                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animations[0].endFrameData"
+                            <solacetk-animation-editor class="no-flex mr-2" [(model)]="model.animation.endFrameData"
                                 [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                             <solacetk-attributes-panel panelName="Stage Data" panelType="expansionpanel"
                                 class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
                         </div>
-
                     </div>
 
                 </ng-template>

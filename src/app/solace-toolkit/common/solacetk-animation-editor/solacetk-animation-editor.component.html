@@ -4,35 +4,40 @@
 
             <!-- Sprite Animation Preview -->
             <div class="model-formfield no-flex">
-                <img 
-                    [class]="aseReady ? 'sprite-thumb-2col sprite' : 'sprite-thumb-2col sprite-placeholder'"
-                    [src]="sheetName" alt="sprite">
+                <div *ngIf="showFrames">
+                    <h4>Frame: {{selectedFrame.name}}</h4>
+                    <mat-form-field class="auto-flex" appearance="fill">
+                        <mat-label>Duration</mat-label>
+                        <input type="number" matInput [(ngModel)]="model.frames[selected].duration"
+                            placeholder="100">
+                        <span matSuffix>ms</span>
+                    </mat-form-field>
+                </div>
+
+                <div class="disp-flex relative-container">
+                    <div class="auto-flex component-collider"></div>
+                    <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center' : 'sprite-thumb-2col sprite-placeholder align-center'"
+                        [src]="sheetName" alt="sprite">
+                </div>
+
             </div>
 
             <!-- Visual Frame Data -->
-            <div *ngIf="showFrames && aseReady" class="auto-flex">
-                <mat-card class="mat-elevation-z0 auto-flex">
-                    <div *ngIf="model.frames">
-                    <mat-card-content *ngIf="model.frames[selected].name">
-                        <mat-card-subtitle>Frame: {{selectedFrame.name}}</mat-card-subtitle>
-                        <!-- <p>Duration: {{selectedFrame.duration}}ms</p> -->
-                        <mat-form-field class="auto-flex" appearance="fill">
-                            <mat-label>Duration</mat-label>
-                            <input type="number" matInput [(ngModel)]="model.frames[selected].duration" placeholder="100">
-                            <span matSuffix>ms</span>
-                          </mat-form-field>
-                        <p>Size: w:{{model.frames[selected].frame.w}} x h:{{model.frames[selected].frame.h}}</p>
-
-                        <solacetk-attributes-panel [(model)]="model.frames[selected].downstreamData"></solacetk-attributes-panel>
-
-                    </mat-card-content>
-                </div>
-                </mat-card>
+            <div *ngIf="showFrames && aseReady" class="min-width-12 no-flex mr-2">
+                <solacetk-attributes-panel [panelName]="'Frame ' + selected + ' Data'" [(model)]="model.frames[selected].downstreamData">
+                </solacetk-attributes-panel>
             </div>
+
+            <!-- Visual Component Data -->
+            <div *ngIf="showFrames && model.components && aseReady" class="auto-flex ml-2">
+                <solacetk-attributes-panel panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
+                </solacetk-attributes-panel>
+            </div>
+
         </div>
 
         <!-- Frame List -->
-        <div *ngIf="showFrames && aseReady" class="disp-flex">
+        <div *ngIf="showFrames && aseReady" class="auto-flex mb-2">
             <h3>Frames</h3>
             <mat-chip-list class="auto-flex">
                 <mat-chip class="min-width-12 justify-center" *ngFor="let frame of frames" (click)="onSelect(frame)">
@@ -41,19 +46,32 @@
             </mat-chip-list>
         </div>
 
+        <!-- Components List -->
+        <div *ngIf="showFrames && aseReady" class="auto-flex mb-2">
+            <h3>Components</h3>
+            <mat-chip-list class="auto-flex">
+                <mat-chip class="min-width-12 justify-center" *ngFor="let component of model.components"
+                    (click)="onComponentSelect(component)">
+                    {{component.name}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+
+        <mat-divider class="mb-2 mt-2"></mat-divider>
+
     </mat-card-content>
 
-    <mat-card-actions class="pos-bottom">
+    <mat-card-actions class="pos-bottom mt-2">
         <div *ngIf="showDataPanel">
-
             <button mat-button color="primary" (click)="aseUpload.click()">Import Aseprite</button>
             <button mat-button color="primary" (click)="sheetUpload.click()">Import Sprite
                 Sheet</button>
             <button mat-button color="primary" (click)="textureUpload.click()">Add Frame</button>
+            <button mat-button (click)="loadDefaultComponents()">Add Default Components</button>
+            <button mat-button (click)="addComponent()">Add Component</button>
             <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite" #aseUpload>
             <input type="file" class="file-input" (change)="onSheetSelected($event)" accept=".png" #sheetUpload>
             <input type="file" class="file-input" (change)="onTextureSelected($event)" accept=".png" #textureUpload>
-
         </div>
     </mat-card-actions>
 

@@ -14,19 +14,19 @@
                 <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
                     <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
                         <mat-list-item>
-                            <div class="no-flex align-end model-formfield">
-                                <h3 matLine>[{{GetKeyIndex(attr)}}]:</h3>
+                            <div class="no-flex align-end model-formfield model-field-small ">
+                                <h4 matLine>[{{GetKeyIndex(attr)}}]:</h4>
                             </div>
-                            <mat-form-field class="auto-flex model-formfield">
+                            <mat-form-field class="auto-flex model-formfield model-field-small ">
                                 <input matInput placeholder="Key" [(ngModel)]="attr.key">
                             </mat-form-field>
-                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield">
+                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small ">
                                 <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
                             </mat-form-field>
-                            <mat-form-field class="auto-flex">
+                            <mat-form-field class="auto-flex model-field-small ">
                                 <input matInput placeholder="Data" [(ngModel)]="attr.data">
                             </mat-form-field>
-                            <button mat-icon-button class="no-flex" aria-label="Remove Attribute"
+                            <button mat-icon-button class="no-flexmodel-field-small " aria-label="Remove Attribute"
                                 (click)="RemoveAttribute(attr)">
                                 <mat-icon>remove</mat-icon>
                             </button>
@@ -54,19 +54,19 @@
         <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
             <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
                 <mat-list-item>
-                    <div class="no-flex align-end model-formfield">
-                        <h3 matLine>[{{GetKeyIndex(attr)}}]:</h3>
+                    <div class="no-flex align-end model-formfield model-field-small ">
+                        <h4 matLine>[{{GetKeyIndex(attr)}}]:</h4>
                     </div>
-                    <mat-form-field class="auto-flex model-formfield">
+                    <mat-form-field class="auto-flex model-formfield model-field-small ">
                         <input matInput placeholder="Key" [(ngModel)]="attr.key">
                     </mat-form-field>
-                    <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield">
+                    <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small ">
                         <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
                     </mat-form-field>
-                    <mat-form-field class="auto-flex">
+                    <mat-form-field class="auto-flex model-field-small ">
                         <input matInput placeholder="Data" [(ngModel)]="attr.data">
                     </mat-form-field>
-                    <button mat-icon-button class="no-flex" aria-label="Remove Attribute"
+                    <button mat-icon-button class="no-flex model-field-small " aria-label="Remove Attribute"
                         (click)="RemoveAttribute(attr)">
                         <mat-icon>remove</mat-icon>
                     </button>

@@ -170,6 +170,11 @@ mat-tab-header.mat-tab-header {
 
   .model-formfield {
       margin-right: 3%;
+      
+  }
+
+  .model-field-small {
+    font-size: small;
   }
 
   .mini-fab-header {
