@@ -21,22 +21,5 @@ export class SolacetkConditionsPanelComponent implements OnInit {
     
   }
 
-  dropConditions(event: CdkDragDrop<BehaviorCondition[]>) {
-    moveItemInArray(this.model.keys, event.previousIndex, event.currentIndex);
-  }
-
-  public AddCondition()
-  {
-    //if (!this.model.keys) this.model.keys = [];
-    this.model.keys = [...this.model.keys, new SoltkKeyValue()];
-  }
-
-  public RemoveCondition(key: SoltkKeyValue): void {
-     this.model.keys.splice(this.GetKeyIndex(key));
-  }
-
-  public GetKeyIndex(key: SoltkKeyValue): number {
-    return this.model.keys.indexOf(key);
-  }
 
 }

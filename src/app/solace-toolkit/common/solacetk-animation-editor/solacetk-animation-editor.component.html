@@ -12,6 +12,7 @@
             <!-- Visual Frame Data -->
             <div *ngIf="showFrames && aseReady" class="auto-flex">
                 <mat-card class="mat-elevation-z0 auto-flex">
+                    <div *ngIf="model.frames">
                     <mat-card-content *ngIf="model.frames[selected].name">
                         <mat-card-subtitle>Frame: {{selectedFrame.name}}</mat-card-subtitle>
                         <!-- <p>Duration: {{selectedFrame.duration}}ms</p> -->
@@ -25,6 +26,7 @@
                         <solacetk-attributes-panel [(model)]="model.frames[selected].downstreamData"></solacetk-attributes-panel>
 
                     </mat-card-content>
+                </div>
                 </mat-card>
             </div>
         </div>

@@ -12,17 +12,17 @@
                     <mat-icon>cancel</mat-icon>
                 </button>
             </mat-chip>
-            <input class="auto-flex" placeholder="#tag..." #tagInput [formControl]="tagCrtl" [matAutocomplete]="auto"
+            <input class="auto-flex" placeholder="#tag..." #tagInput [formControl]="tagCrtl"
                 [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 (matChipInputTokenEnd)="add($event)">
 
         </mat-chip-list>
 
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <!-- <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
             <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
                 {{tag}}
             </mat-option>
-        </mat-autocomplete>
+        </mat-autocomplete> -->
 
     </mat-form-field>
 
@@ -33,7 +33,7 @@
 
     <mat-chip-list #cardChips class="auto-flex full-width" #chipList aria-label="Tag Selection">
 
-        <div class="auto-flex sol-card-chips">
+        <div class="auto-flex sol-card-chips flex-flow-reverse flex-wrap-reverse">
             <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 <small>{{tag}}</small>
             </mat-chip>

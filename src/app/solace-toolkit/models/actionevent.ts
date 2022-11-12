@@ -1,8 +1,9 @@
 import { ActionMessage } from "./actionmessage";
 import { BehaviorCondition } from "./behaviorcondition";
+import { IModelTK } from "./imodel-tk";
 import { SoltkKeyValue } from "./soltk-key-value";
 
-export class ActionEvent {
+export class ActionEvent implements IModelTK {
 
     public id?: string;
     public name?: string = "ActionEvent";

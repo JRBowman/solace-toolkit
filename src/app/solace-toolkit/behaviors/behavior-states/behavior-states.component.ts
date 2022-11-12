@@ -24,6 +24,11 @@ export class BehaviorStatesComponent implements OnInit {
 
   }
 
+  public LogModel()
+  {
+    console.log(this.model);
+  }
+
   public openAnimationsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);

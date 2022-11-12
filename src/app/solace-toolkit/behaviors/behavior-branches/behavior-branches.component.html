@@ -24,7 +24,7 @@
                         <div class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
                             <mat-list *ngIf="state.conditions">
                                 <mat-list-item *ngFor="let condition of state.conditions">
-                                    <p matLine *ngFor="let cond of condition.keys">{{cond.key}} => {{cond.data}}</p>
+                                    <p matLine *ngFor="let cond of condition.conditions">{{cond.key}} => {{cond.data}}</p>
                                 </mat-list-item>
                             </mat-list>
                             <div class="auto-flex">
@@ -52,8 +52,6 @@
                     <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
                 </mat-action-row>
             </mat-expansion-panel>
-
-            <solacetk-attributes-panel></solacetk-attributes-panel>
 
         </mat-accordion>
 

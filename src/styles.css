@@ -8,8 +8,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
 
 .router-content {
-    padding-left: 11%;
-    padding-right: 11%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 32px;
 }
 
@@ -85,6 +85,10 @@ mat-tab-header.mat-tab-header {
 
 .mb-2 {
     margin-bottom: 2% !important;
+}
+
+.solace-card-panel {
+    width: 48%;
 }
 
 .img-align-bottom {
@@ -290,8 +294,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 2560px) {
     .router-content {
-        padding-left: 23%;
-        padding-right: 23%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
 
@@ -302,8 +306,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 1920px) {
     .router-content {
-        padding-left: 21%;
-        padding-right: 21%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
     .min-width-12 {
@@ -313,8 +317,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 1720px) {
     .router-content {
-        padding-left: 19%;
-        padding-right: 19%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
     .min-width-12 {
@@ -324,8 +328,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 1600px) {
     .router-content {
-        padding-left: 17%;
-        padding-right: 17%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
     .min-width-12 {
@@ -335,8 +339,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 1440px) {
     .router-content {
-        padding-left: 15%;
-        padding-right: 15%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
     .min-width-12 {
@@ -346,8 +350,8 @@ mat-tab-header.mat-tab-header {
 
 @media screen and (max-width: 1200px) {
     .router-content {
-        padding-left: 13%;
-        padding-right: 13%;
+        padding-left: 11%;
+        padding-right: 11%;
         padding-top: 32px;
     }
     .min-width-12 {
@@ -369,8 +373,8 @@ mat-tab-header.mat-tab-header {
 /* Small Screen */
 @media screen and (max-width: 768px) {
     .router-content {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 8%;
+        padding-right: 8%;
         padding-top: 32px;
     }
     .min-width-12 {

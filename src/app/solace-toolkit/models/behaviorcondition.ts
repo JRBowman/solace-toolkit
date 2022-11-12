@@ -6,6 +6,6 @@ export class BehaviorCondition implements IModelTK {
     public id: string = "";
     public name?: string = "Condition01";
     public description?: string;
-    public keys: SoltkKeyValue[] = [];
+    public conditions: SoltkKeyValue[] = [];
     public tags?: string = "";
 }

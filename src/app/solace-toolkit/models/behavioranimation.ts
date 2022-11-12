@@ -1,7 +1,8 @@
 import { BehaviorAnimationFrame } from "./behavior-animation-frame";
+import { IModelTK } from "./imodel-tk";
 import { SoltkKeyValue } from "./soltk-key-value";
 
-export class BehaviorAnimation {
+export class BehaviorAnimation implements IModelTK {
 
     public id: string = "<id>";
     public name: string = "<name>";

@@ -21,8 +21,11 @@
     </div>
 
     <div class="editor-panels">
-        <mat-accordion class="auto-flex align-start full-width">
-            <mat-expansion-panel [style.background-color]="conditionsColor">
+        <button mat-button (click)="LogModel()">Log Model</button>
+        <!-- <mat-accordion class="auto-flex align-start full-width"> -->
+
+
+            <mat-expansion-panel [style.background-color]="conditionsColor" class="mb-2">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <mat-icon class="mr-2">gavel</mat-icon>
@@ -44,7 +47,7 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel class="mb-2">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <mat-icon class="mr-2">schema</mat-icon>
@@ -101,8 +104,8 @@
 
             </mat-expansion-panel>
 
-            <solacetk-event-panel class="auto-flex" [(model)]="model.events"></solacetk-event-panel>
-
+            <solacetk-event-panel class="mb-2" [(model)]="model.events"></solacetk-event-panel>
+<!-- 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -120,9 +123,9 @@
                 <mat-action-row>
                     <button mat-button color="primary" (click)="openNextStateSheet()">Add</button>
                 </mat-action-row>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
 
-        </mat-accordion>
+        <!-- </mat-accordion> -->
     </div>
 
 </solacetk-model-list>

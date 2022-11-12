@@ -10,8 +10,8 @@
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
     <mat-tab class="no-height" label="List">
 
-      <div class="disp-flex auto-flex mt-2 mb-2" *ngFor='let model of filteredData'>
-        <mat-card class="auto-flex">
+      <div class="disp-flex mt-2 mb-2">
+        <mat-card class="width-25 mr-2 mb-2" *ngFor='let model of filteredData'>
 
           <mat-card-title-group class="align-center">
             <div mat-card-avatar class="no-flex align-center">
@@ -19,19 +19,27 @@
             </div>
             <div class="auto-flex mr-2">
               <mat-card-title class="font-large">{{model.name}}</mat-card-title>
-              <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
+              
             </div>
-            <solacetk-tags class="auto-flex full-width align-center" [(model)]="model.tags"
-              (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
-            <button id="modelEditBtn" class="no-flex align-center" aria-label="Edit Model" title="Edit Model"
+
+            <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
               matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
               <mat-icon>edit_square</mat-icon>
             </button>
-            <button id="modelDeleteBtn" class="no-flex align-center" aria-label="Delete Model" title="Edit Model"
+            <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
               matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-title-group>
+
+          <mat-card-content>
+            <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
+          </mat-card-content>
+
+          <mat-card-actions class="align-end">
+            <solacetk-tags class="auto-flex full-width align-end" [(model)]="model.tags"
+              (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
+          </mat-card-actions>
 
         </mat-card>
       </div>

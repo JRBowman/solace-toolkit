@@ -1,3 +1,11 @@
 .tags-disp-block {
     display: block;
 }
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.flex-flow-reverse {
+    flex-flow: wrap-reverse;
+}

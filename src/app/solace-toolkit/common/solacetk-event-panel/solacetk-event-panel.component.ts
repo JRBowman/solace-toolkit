@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActionEvent } from '../../models/actionevent';
+import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
   selector: 'solacetk-event-panel',
@@ -8,7 +9,7 @@ import { ActionEvent } from '../../models/actionevent';
 })
 export class SolacetkEventPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public solacetkService: SolacetkService) { }
 
   @Input() model: ActionEvent[] = [];
   @Output() modelChange: EventEmitter<ActionEvent[]> = new EventEmitter<ActionEvent[]>();
@@ -23,11 +24,17 @@ export class SolacetkEventPanelComponent implements OnInit {
   public AddEvent()
   {
     if (!this.model) this.model = [];
-    this.model = [...this.model, new ActionEvent()];
+
+    let tmpEvent = new ActionEvent();
+    this.solacetkService.CreateModel("Behaviors/events", tmpEvent).subscribe(n => tmpEvent = n);
+
+    this.model = [...this.model, tmpEvent];
+    this.modelChange.emit(this.model);
   }
 
   public RemoveEvent(key: ActionEvent): void {
     this.model.splice(this.GetKeyIndex(key), 1);
+    this.modelChange.emit(this.model);
  }
 
   public GetKeyIndex(key: ActionEvent): number {

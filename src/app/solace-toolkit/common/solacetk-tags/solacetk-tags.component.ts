@@ -18,7 +18,7 @@ export class SolacetkTagsComponent implements OnInit {
   tags: string[] = [];
 
   //TODO: Update this to pull from a cache or DB for new entires and filter to a only last pick.
-  allTags: string[] = ['#player', '#controller', '#core'];
+  allTags: string[] = [];
 
   @Input() model: string = "";
   @Output() modelChange = new EventEmitter<string>();

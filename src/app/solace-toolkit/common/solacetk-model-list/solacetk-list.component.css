@@ -20,6 +20,10 @@
     height: auto;
 }
 
+.width-25 {
+    width: 20%;
+}
+
 mat-tab-header.mat-tab-header {
     height: 0px !important;
 }

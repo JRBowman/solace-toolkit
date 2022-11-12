@@ -94,10 +94,11 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   }
 
   public DeleteModel(model: any): void {
-    this.service.DeleteModel(this.modelUri + "/" + this.model.id).subscribe((response) => {
-      this.model = response;
+    this.service.DeleteModel(this.modelUri + "/" + model.id).subscribe((response) => {
+      //this.model = response;
       this.modelChange.emit(this.model);
       this.IsSaving = false;
+      this.dataStruct.splice(this.dataStruct.indexOf(model), 1);
       this.modelSaved.emit();
     });
   }

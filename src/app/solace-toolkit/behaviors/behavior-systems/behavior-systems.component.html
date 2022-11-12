@@ -65,7 +65,7 @@
                                 <mat-card-subtitle>Description: {{ev.description}}</mat-card-subtitle>
                                 <mat-card-content>
                                     <div *ngFor="let condition of ev.conditions">
-                                        <solacetk-attributes-panel [(model)]="condition.keys"></solacetk-attributes-panel>
+                                        <solacetk-attributes-panel [(model)]="condition.conditions"></solacetk-attributes-panel>
                                     </div>
                                 </mat-card-content>
                             </mat-card>

@@ -36,7 +36,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.model.frames = [];
+    //this.model.frames = [];
     this.unloadChange.subscribe((value) => {
       if (value === true) {
         this.fileName = "";
@@ -58,12 +58,15 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
 
+        if (!data) return;
+
         let frames = Object.keys(data['frames']);
 
         frames.forEach(fr => {
           let f = data['frames'][fr];
           f.name = fr;
           this.frames.push(f);
+          if (!this.model.frames) this.model.frames = [];
           if (!this.model.frames.find(x => x.frame == f)) {
             let modelFrame = new BehaviorAnimationFrame();
             modelFrame.name = f.name;
@@ -85,12 +88,12 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         this.aseReady = true;
 
         this.modelChange.emit(this.model);
-      },
-        (error) => {
-          console.log(error);
-          this.sheetName = "../../assets/soldof/images/settings.png";
-          this.aseReady = false;
-        });
+      })
+        // (error) => {
+        //   console.log(error);
+        //   this.sheetName = "../../assets/soldof/images/settings.png";
+        //   this.aseReady = false;
+        // });
     });
 
     this.unloadChange.emit(false);
@@ -103,8 +106,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   onSelect(event: any) {
-    this.selectedFrame = this.model.frames.filter(x => x.frame == event)[0];
     this.selected = this.frames.indexOf(event);
+    this.selectedFrame = this.model.frames[this.selected];
   }
 
   onAseSelected(event: any) {

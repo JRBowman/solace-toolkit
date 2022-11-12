@@ -21,17 +21,17 @@ export class BehaviorConditionsComponent implements OnInit {
   }
 
   dropConditions(event: CdkDragDrop<BehaviorCondition[]>) {
-    moveItemInArray(this.model.keys, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.model.conditions, event.previousIndex, event.currentIndex);
   }
 
   public AddCondition()
   {
-    if (!this.model.keys) this.model.keys = [];
-    this.model.keys = [...this.model.keys, new SoltkKeyValue()];
+    if (!this.model.conditions) this.model.conditions = [];
+    this.model.conditions = [...this.model.conditions, new SoltkKeyValue()];
   }
 
   public GetKeyIndex(key: SoltkKeyValue): number {
-    return this.model.keys.indexOf(key);
+    return this.model.conditions.indexOf(key);
   }
 
 }

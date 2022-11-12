@@ -6,9 +6,12 @@
         <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
             <mat-card-title-group>
                 <mat-card-title class="auto-flex">
-                    <mat-icon class="mr-2">bolt</mat-icon>
-                    <small>[{{GetKeyIndex(eventTk)}}]</small> {{eventTk.name}}
+                    <mat-icon>bolt</mat-icon>
+                    {{eventTk.name}}
                 </mat-card-title>
+                <mat-card-subtitle>
+                    Event [{{GetKeyIndex(eventTk)}}]
+                </mat-card-subtitle>
                 <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
                     <mat-icon>remove</mat-icon>
                 </button>
@@ -45,7 +48,7 @@
 
 <div *ngIf="panelType == 'expansionpanel'">
 
-    <mat-expansion-panel>
+    <mat-expansion-panel >
         <mat-expansion-panel-header>
             <mat-panel-title>
                 <mat-icon class="mr-2">hub</mat-icon>
@@ -56,13 +59,15 @@
 
         <ng-template matExpansionPanelContent>
             <div *ngFor="let eventTk of model">
-                <mat-card class="auto-flex mb-2" [style.backgroundColor]="eventColor">
+                <mat-card class="mb-2" [style.backgroundColor]="eventColor">
                     <mat-card-title-group>
                         <mat-card-title class="auto-flex">
-                            <mat-icon class="mr-2">bolt</mat-icon>
+                            <mat-icon>bolt</mat-icon>
                              {{eventTk.name}}
-                             <small>[{{GetKeyIndex(eventTk)}}]</small>
                         </mat-card-title>
+                        <mat-card-subtitle>
+                            Event [{{GetKeyIndex(eventTk)}}]
+                        </mat-card-subtitle>
                         <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
                             <mat-icon>remove</mat-icon>
                         </button>

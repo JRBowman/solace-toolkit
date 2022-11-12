@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActionMessage } from '../../models/actionmessage';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
+import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
   selector: 'solacetk-messages-panel',
@@ -9,7 +10,7 @@ import { SoltkKeyValue } from '../../models/soltk-key-value';
 })
 export class SolacetkMessagesPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public solacetkService: SolacetkService) { }
 
   @Input() model: ActionMessage[] = [];
   @Output() modelChange = new EventEmitter<ActionMessage[]>();
@@ -24,11 +25,17 @@ export class SolacetkMessagesPanelComponent implements OnInit {
   public AddMessage()
   {
     if (!this.model) this.model = [];
-    this.model = [...this.model, new ActionMessage()];
+
+    let tmpEvent = new ActionMessage();
+    this.solacetkService.CreateModel("Behaviors/events/messages", tmpEvent).subscribe(n => tmpEvent = n);
+
+    this.model = [...this.model, tmpEvent];
+    this.modelChange.emit(this.model);
   }
 
   public RemoveMessage(key: ActionMessage): void {
     this.model.splice(this.GetKeyIndex(key), 1);
+    this.modelChange.emit(this.model);
  }
 
   public GetKeyIndex(key: ActionMessage): number {

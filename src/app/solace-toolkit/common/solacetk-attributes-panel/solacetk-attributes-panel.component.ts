@@ -33,15 +33,18 @@ export class SolacetkAttributesPanelComponent implements OnInit {
 
   dropConditions(event: CdkDragDrop<SoltkKeyValue[]>) {
     moveItemInArray(this.model, event.previousIndex, event.currentIndex);
+    this.modelChange.emit(this.model);
   }
 
   public AddAttribute(): void {
     if (!this.model) this.model = [];
     this.model = [...this.model, new SoltkKeyValue()];
+    this.modelChange.emit(this.model);
   }
 
   public RemoveAttribute(key: SoltkKeyValue): void {
     this.model.splice(this.GetKeyIndex(key), 1);
+    this.modelChange.emit(this.model);
  }
 
   public GetKeyIndex(key: SoltkKeyValue): number {
