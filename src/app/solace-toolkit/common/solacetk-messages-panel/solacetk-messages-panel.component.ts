@@ -26,11 +26,12 @@ export class SolacetkMessagesPanelComponent implements OnInit {
   {
     if (!this.model) this.model = [];
 
-    let tmpEvent = new ActionMessage();
-    this.solacetkService.CreateModel("Behaviors/events/messages", tmpEvent).subscribe(n => tmpEvent = n);
+    this.solacetkService.CreateModel("Behaviors/messages", new ActionMessage()).subscribe(n => {
+      this.model = [...this.model, n];
+      this.modelChange.emit(this.model);
+    });
 
-    this.model = [...this.model, tmpEvent];
-    this.modelChange.emit(this.model);
+
   }
 
   public RemoveMessage(key: ActionMessage): void {

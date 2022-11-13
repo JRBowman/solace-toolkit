@@ -61,7 +61,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
 
-        //if (!data) return;
+       // if (!data) return;
 
         let frames = Object.keys(data['frames']);
 

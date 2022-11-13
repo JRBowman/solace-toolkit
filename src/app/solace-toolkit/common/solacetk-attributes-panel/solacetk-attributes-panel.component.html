@@ -20,9 +20,20 @@
                             <mat-form-field class="auto-flex model-formfield model-field-small ">
                                 <input matInput placeholder="Key" [(ngModel)]="attr.key">
                             </mat-form-field>
+
                             <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small ">
-                                <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
+                                <!-- <input matInput placeholder="Operator" > -->
+                                <mat-label>Operator</mat-label>
+                                <mat-select [(ngModel)]="attr.operator">
+                                    <mat-option [value]="0">==</mat-option>
+                                    <mat-option [value]="1">!=</mat-option>
+                                    <mat-option [value]="2">gtr</mat-option>
+                                    <mat-option [value]="3">gtreql</mat-option>
+                                    <mat-option [value]="4">les</mat-option>
+                                    <mat-option [value]="5">leseql</mat-option>
+                                </mat-select>
                             </mat-form-field>
+
                             <mat-form-field class="auto-flex model-field-small ">
                                 <input matInput placeholder="Data" [(ngModel)]="attr.data">
                             </mat-form-field>

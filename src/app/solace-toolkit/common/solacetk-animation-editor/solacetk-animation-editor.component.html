@@ -4,7 +4,7 @@
 
             <!-- Sprite Animation Preview -->
             <div class="model-formfield no-flex">
-                <div *ngIf="showFrames">
+                <div *ngIf="showFrames && aseReady">
                     <h4>Frame: {{selectedFrame.name}}</h4>
                     <mat-form-field class="auto-flex" appearance="fill">
                         <mat-label>Duration</mat-label>
@@ -15,7 +15,6 @@
                 </div>
 
                 <div class="disp-flex relative-container">
-                    <div class="auto-flex component-collider"></div>
                     <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center' : 'sprite-thumb-2col sprite-placeholder align-center'"
                         [src]="sheetName" alt="sprite">
                 </div>
@@ -29,7 +28,7 @@
             </div>
 
             <!-- Visual Component Data -->
-            <div *ngIf="showFrames && model.components && aseReady" class="auto-flex ml-2">
+            <div *ngIf="showFrames && aseReady" class="auto-flex ml-2">
                 <solacetk-attributes-panel panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
                 </solacetk-attributes-panel>
             </div>

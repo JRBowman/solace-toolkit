@@ -11,6 +11,6 @@ export class ActionMessage implements IModelTK {
     public data: SoltkKeyValue[] = [];
 
     public targetName: string = "";
-    public targetType: string = "Named Target";
+    public targetType: number = 0;
 
 }

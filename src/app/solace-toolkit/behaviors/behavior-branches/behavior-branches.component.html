@@ -37,9 +37,10 @@
                                 <mat-card-content>
 
 
-
+                                    <div *ngIf="state.animation">
                                     <solacetk-animation-editor [(model)]="state.animation.actFrameData"
                                         [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                                        </div>
                                 </mat-card-content>
                             </mat-card>
                         </div>
