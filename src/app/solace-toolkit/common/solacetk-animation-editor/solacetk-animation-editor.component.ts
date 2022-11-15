@@ -61,24 +61,29 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
 
-       // if (!data) return;
+        // if (!data) return;
+        if (!this.model.frames || this.model.frames.length == 0) {
+          let frames = Object.keys(data['frames']);
 
-        let frames = Object.keys(data['frames']);
-
-        frames.forEach(fr => {
-          let f = data['frames'][fr];
-          f.name = fr;
-          this.frames.push(f);
-          if (!this.model.frames) this.model.frames = [];
-          if (!this.model.frames.find(x => x.frame == f)) {
-            let modelFrame = new BehaviorAnimationFrame();
-            modelFrame.name = f.name;
-            //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
-            modelFrame.duration = f.duration;
-            modelFrame.frame = f;
-            this.model.frames.push(modelFrame);
-          }
-        });
+          frames.forEach(fr => {
+            let f = data['frames'][fr];
+            f.name = fr;
+            this.frames.push(f);
+            if (!this.model.frames) this.model.frames = [];
+            if (!this.model.frames.find(x => x.frame == f)) {
+              let modelFrame = new BehaviorAnimationFrame();
+              modelFrame.name = f.name;
+              //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
+              modelFrame.duration = f.duration;
+              modelFrame.frame = f;
+              this.model.frames.push(modelFrame);
+            }
+          });
+        }
+        else
+        {
+          this.frames = this.model.frames;
+        }
 
 
 
@@ -92,17 +97,21 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
         this.modelChange.emit(this.model);
       })
-        // (error) => {
-        //   console.log(error);
-        //   this.sheetName = "../../assets/soldof/images/settings.png";
-        //   this.aseReady = false;
-        // });
+      // (error) => {
+      //   console.log(error);
+      //   this.sheetName = "../../assets/soldof/images/settings.png";
+      //   this.aseReady = false;
+      // });
     });
 
     this.unloadChange.emit(false);
 
     this.bgColor = this.showDataPanel ? "" : "bg-task-card";
 
+  }
+
+  public logModel() {
+    console.log(this.model);
   }
 
   ngAfterViewInit(): void {
@@ -118,22 +127,19 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     this.selectedComponent = this.model.components[this.selectedCompIndex];
   }
 
-  loadDefaultComponents()
-  {
+  loadDefaultComponents() {
     if (!this.model.components) this.model.components = [];
     this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
     this.modelChange.emit(this.model);
   }
 
-  addComponent()
-  {
+  addComponent() {
     if (!this.model.components) this.model.components = [];
     this.model.components = [...this.model.components, new BehaviorComponent()];
     this.modelChange.emit(this.model);
   }
 
-  removeComponent(component: BehaviorComponent)
-  {
+  removeComponent(component: BehaviorComponent) {
     if (!this.model.components) this.model.components = [];
     this.model.components.splice(this.model.components.indexOf(component), 1);
     this.modelChange.emit(this.model);

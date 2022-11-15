@@ -3,4 +3,6 @@ export class SoltkKeyValue {
     public key: string = "";
     public data: string = "";
     public operator: number = 0;
+
+    public static operatorValues: string[] = ["==", "!=", ">", ">=", "<", "<="]
 }

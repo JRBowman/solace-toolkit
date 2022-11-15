@@ -4,6 +4,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorBranch } from '../../models/behaviorbranch';
 import { BehaviorState } from '../../models/behaviorstate';
+import { SoltkKeyValue } from '../../models/soltk-key-value';
 
 @Component({
   selector: 'app-behavior-branches',
@@ -16,6 +17,8 @@ export class BehaviorBranchesComponent implements OnInit {
   constructor(private _bottomSheet: MatBottomSheet) { }
 
   public model: BehaviorBranch = new BehaviorBranch();
+
+  public operators: string[] = SoltkKeyValue.operatorValues;
 
   ngOnInit(): void {
   }
@@ -34,6 +37,11 @@ export class BehaviorBranchesComponent implements OnInit {
       this.model.states = models;
     });
     
+  }
+
+  public buildConditionsChips()
+  {
+
   }
 
 }

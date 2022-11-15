@@ -1,6 +1,9 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/branches">
     <div class="editor">
         <mat-divider class="mb-2 mt-2"></mat-divider>
+
+
+
     </div>
 
     <div class="editor-panels">
@@ -13,24 +16,34 @@
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title class="no-flex">
                         Branch States
                     </mat-panel-title>
+                    <mat-chip-list class="auto-flex align-start" *ngIf="model.conditions">
+                        <mat-chip *ngFor="let cond of model.conditions" style="background-color: darkslategrey;">
+                            {{cond.key}} {{operators[cond.operator]}} {{cond.data}}
+                        </mat-chip>
+                </mat-chip-list>
                 </mat-expansion-panel-header>
 
                 <ng-template matExpansionPanelContent>
 
                     <div class="disp-flex" cdkDropList (cdkDropListDropped)="dropBranches($event)" *ngIf="model.states">
-                        <div class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
-                            <mat-list *ngIf="state.conditions">
-                                <mat-list-item *ngFor="let condition of state.conditions">
-                                    <p matLine *ngFor="let cond of condition.conditions">{{cond.key}} => {{cond.data}}</p>
-                                </mat-list-item>
-                            </mat-list>
+                        <div cdkDrag [cdkDragData]="state" class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
+                            <mat-card style="background-color: slategrey;">
+                                <mat-chip-list *ngIf="state.conditions">
+                                    <div *ngFor="let condition of state.conditions">
+                                        <mat-chip *ngFor="let cond of condition.conditions"
+                                            style="background-color: darkslategrey;">
+                                            {{cond.key}} {{operators[cond.operator]}} {{cond.data}}
+                                        </mat-chip>
+                                    </div>
+                                </mat-chip-list>
+                            </mat-card>
                             <div class="auto-flex">
                                 <mat-icon class="auto-flex full-width text-center">arrow_downward</mat-icon>
                             </div>
-                            <mat-card class="bg-task-card" cdkDrag [cdkDragData]="state">
+                            <mat-card class="bg-task-card">
                                 <mat-card-title-group>
                                     <mat-card-title class="font-medium auto-flex">{{state.name}}</mat-card-title>
                                 </mat-card-title-group>
@@ -38,9 +51,9 @@
 
 
                                     <div *ngIf="state.animation">
-                                    <solacetk-animation-editor [(model)]="state.animation.actFrameData"
-                                        [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
-                                        </div>
+                                        <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                                    </div>
                                 </mat-card-content>
                             </mat-card>
                         </div>

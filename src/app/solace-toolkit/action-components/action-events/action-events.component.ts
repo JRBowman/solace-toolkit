@@ -17,6 +17,8 @@ export class ActionEventsComponent implements OnInit {
 
   public model: ActionEvent = new ActionEvent();
 
+  public operators: string[] = SoltkKeyValue.operatorValues;
+
   ngOnInit(): void {
 
   }

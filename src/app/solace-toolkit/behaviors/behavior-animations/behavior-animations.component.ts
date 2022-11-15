@@ -53,6 +53,42 @@ export class BehaviorAnimationsComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkBottomSheetComponent);
   }
 
+  importAseAnims(event: any) {
+    let files: File[] = []
+    files = event.target.files;
+    console.log(files);
+
+    if (files.length > 0) {
+      for (var x = 0; x < files.length; x++) {
+
+        let tempName = files[x].name.replace(".ase", "");
+
+        const formData = new FormData();
+        formData.append(tempName + "-act.ase", files[x]);
+        const upload$ = this.service.CreateModel("Files/ase", formData);
+  
+        upload$.subscribe((response) => {
+          console.log("Multiple File Uploads Responses");
+          console.log(response);
+        });
+
+        // Create BehaviorAnimation for Ase:
+        let tmpAnim: BehaviorAnimation = new BehaviorAnimation();
+        tmpAnim.name = tempName;
+        tmpAnim.tags = "#anim";
+
+        let animCreate = this.service.CreateModel("Behaviors/animations", tmpAnim);
+
+        animCreate.subscribe((response) => {
+          console.log(response);
+        });
+      }
+
+      this.LoadAnim();
+    }
+  }
+
+
 }
 
 export enum SolTkEditorState

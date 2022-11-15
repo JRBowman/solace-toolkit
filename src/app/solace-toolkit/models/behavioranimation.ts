@@ -5,7 +5,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorAnimation implements IModelTK {
 
-    public id: string = "<id>";
+    public id?: string;
     public name: string = "<name>";
     public description: string = "<description>";
     public startFrameData: BehaviorAnimationData = new BehaviorAnimationData();
@@ -17,7 +17,7 @@ export class BehaviorAnimation implements IModelTK {
 }
 
 export class BehaviorAnimationData implements IModelTK {
-    public id: string = "";
+    public id?: string;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";
@@ -38,7 +38,7 @@ export class BehaviorAnimationData implements IModelTK {
 }
 
 export class BehaviorComponent implements IModelTK {
-    public id: string = "";
+    public id?: string;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";

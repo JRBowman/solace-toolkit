@@ -20,10 +20,13 @@
     <div class="editor-panels">
         <mat-accordion class="align-start">
 
+            <solacetk-attributes-panel panelName="State Variables Collection" panelColor="mediumvioletred" [(model)]="model.varData"></solacetk-attributes-panel>
+
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Behavior Branching
+                        <mat-icon class="mr-2">schema</mat-icon>
+                        Behavior Works
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
@@ -46,8 +49,6 @@
                 </mat-action-row>
 
             </mat-expansion-panel>
-
-            <solacetk-attributes-panel [(model)]="model.stats"></solacetk-attributes-panel>
 
             <!-- <mat-expansion-panel>
                 <mat-expansion-panel-header>

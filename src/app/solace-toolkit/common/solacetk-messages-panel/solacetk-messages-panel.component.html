@@ -29,7 +29,15 @@
                     <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
                 </mat-form-field>
                 <mat-form-field class="auto-flex model-formfield">
-                    <input matInput placeholder="Target Type" [(ngModel)]="message.targetType">
+                    <mat-label>Target Type</mat-label>
+                    <mat-select [(ngModel)]="message.targetType">
+                        <mat-option [value]="0">Named Target</mat-option>
+                        <mat-option [value]="1">Instance Target</mat-option>
+                        <mat-option [value]="2">Collision Target</mat-option>
+                        <mat-option [value]="3">Focus Target</mat-option>
+                        <mat-option [value]="4">Message Queue</mat-option>
+                        <mat-option [value]="5">Self</mat-option>
+                    </mat-select>
                 </mat-form-field>
 
 
@@ -81,7 +89,15 @@
                             <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
                         </mat-form-field>
                         <mat-form-field class="auto-flex model-formfield">
-                            <input matInput placeholder="Target Type" [(ngModel)]="message.targetType">
+                            <mat-label>Target Type</mat-label>
+                            <mat-select [(ngModel)]="message.targetType">
+                                <mat-option [value]="0">Named Target</mat-option>
+                                <mat-option [value]="1">Instance Target</mat-option>
+                                <mat-option [value]="2">Collision Target</mat-option>
+                                <mat-option [value]="3">Focus Target</mat-option>
+                                <mat-option [value]="4">Message Queue</mat-option>
+                                <mat-option [value]="5">Self</mat-option>
+                            </mat-select>
                         </mat-form-field>
 
 

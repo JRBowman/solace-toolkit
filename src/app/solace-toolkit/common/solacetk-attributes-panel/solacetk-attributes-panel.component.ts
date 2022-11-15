@@ -26,6 +26,8 @@ export class SolacetkAttributesPanelComponent implements OnInit {
 
   @Input() panelIcon: string = "data_object";
 
+  public operators: string[] = SoltkKeyValue.operatorValues;
+
   constructor() { }
 
   ngOnInit(): void {

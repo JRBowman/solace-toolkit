@@ -161,6 +161,10 @@ mat-tab-header.mat-tab-header {
     width: 24%;
 }
 
+.file-input {
+    display: none;
+}
+
 .icon-sprite {
     width: 64px !important;
     height: 64px !important;

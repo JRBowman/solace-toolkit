@@ -13,7 +13,7 @@ export class BehaviorSystem {
     public behaviorType?: BehaviorType;
     public branches: BehaviorBranch[] = [];
 
-    public stats: SoltkKeyValue[] = [];
+    public varData: SoltkKeyValue[] = [];
 
     public events: ActionEvent[] = [];
 

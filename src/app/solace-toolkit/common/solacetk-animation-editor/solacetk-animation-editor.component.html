@@ -14,7 +14,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="disp-flex relative-container">
+                <div class="disp-flex align-center relative-container">
                     <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center' : 'sprite-thumb-2col sprite-placeholder align-center'"
                         [src]="sheetName" alt="sprite">
                 </div>
@@ -28,7 +28,7 @@
             </div>
 
             <!-- Visual Component Data -->
-            <div *ngIf="showFrames && aseReady" class="auto-flex ml-2">
+            <div *ngIf="model && showFrames && aseReady && model.components" class="auto-flex ml-2">
                 <solacetk-attributes-panel panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
                 </solacetk-attributes-panel>
             </div>
@@ -71,6 +71,8 @@
             <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite" #aseUpload>
             <input type="file" class="file-input" (change)="onSheetSelected($event)" accept=".png" #sheetUpload>
             <input type="file" class="file-input" (change)="onTextureSelected($event)" accept=".png" #textureUpload>
+
+            <button mat-button color="primary" (click)="logModel()">Log Model</button>
         </div>
     </mat-card-actions>
 

@@ -1,5 +1,5 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()" (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()"
-    modelUri="Behaviors/animations">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()"
+    (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations">
     <div class="editor">
         <mat-divider class="mb-2 mt-2"></mat-divider>
     </div>
@@ -19,12 +19,13 @@
                 <ng-template matExpansionPanelContent>
 
                     <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.startFrameData" [unloadChange]="unloadModules"></solacetk-animation-editor>
+                    <solacetk-animation-editor [(model)]="model.startFrameData" [unloadChange]="unloadModules">
+                    </solacetk-animation-editor>
                 </ng-template>
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel  [disabled]="!model.id">
+            <mat-expansion-panel [disabled]="!model.id">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <mat-icon class="mr-2">animation</mat-icon>
@@ -35,12 +36,13 @@
                 <ng-template matExpansionPanelContent>
 
                     <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.actFrameData" [unloadChange]="unloadModules"></solacetk-animation-editor>
+                    <solacetk-animation-editor [(model)]="model.actFrameData" [unloadChange]="unloadModules">
+                    </solacetk-animation-editor>
                 </ng-template>
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel  [disabled]="!model.id">
+            <mat-expansion-panel [disabled]="!model.id">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         <mat-icon class="mr-2">animation</mat-icon>
@@ -51,7 +53,8 @@
                 <ng-template matExpansionPanelContent>
 
                     <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.endFrameData" (unload)="unloadModules"></solacetk-animation-editor>
+                    <solacetk-animation-editor [(model)]="model.endFrameData" (unload)="unloadModules">
+                    </solacetk-animation-editor>
                 </ng-template>
 
             </mat-expansion-panel>
@@ -63,10 +66,12 @@
     <!-- List Buttons -->
     <div class="list-buttons">
 
-        <button mat-fab color="accent" matTooltip="Import Many Animations by Aseprite Tags" class="mat-elevation-z4 btn-hover-right"
-        aria-label="Import Many Animations by Aseprite Tags" (click)="ImportAseAnimsByTags()">
-        <mat-icon>file_open</mat-icon>
-      </button>
+        <button mat-fab color="accent" matTooltip="Import Many Animations Aseprite Files."
+            class="mat-elevation-z4 btn-hover-right" aria-label="Import Many Animations Aseprite Files."
+            (click)="aseUpload.click()">
+            <mat-icon>file_open</mat-icon>
+        </button>
+        <input type="file" class="file-input" (change)="importAseAnims($event)" accept=".ase,.aseprite" #aseUpload multiple>
 
     </div>
 

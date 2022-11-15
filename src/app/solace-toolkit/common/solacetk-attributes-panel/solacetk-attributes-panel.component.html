@@ -11,41 +11,45 @@
         <ng-template matExpansionPanelContent>
 
             <div *ngIf="model">
-                <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
-                    <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
-                        <mat-list-item>
-                            <div class="no-flex align-end model-formfield model-field-small ">
-                                <h4 matLine>[{{GetKeyIndex(attr)}}]:</h4>
+
+
+                <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
+                    <mat-card cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
+
+                        <mat-card-title-group>
+                            <div class="auto-flex model-field-small">
+                                <h4>[{{GetKeyIndex(attr)}}]:</h4>
                             </div>
-                            <mat-form-field class="auto-flex model-formfield model-field-small ">
-                                <input matInput placeholder="Key" [(ngModel)]="attr.key">
-                            </mat-form-field>
-
-                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small ">
-                                <!-- <input matInput placeholder="Operator" > -->
-                                <mat-label>Operator</mat-label>
-                                <mat-select [(ngModel)]="attr.operator">
-                                    <mat-option [value]="0">==</mat-option>
-                                    <mat-option [value]="1">!=</mat-option>
-                                    <mat-option [value]="2">gtr</mat-option>
-                                    <mat-option [value]="3">gtreql</mat-option>
-                                    <mat-option [value]="4">les</mat-option>
-                                    <mat-option [value]="5">leseql</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-
-                            <mat-form-field class="auto-flex model-field-small ">
-                                <input matInput placeholder="Data" [(ngModel)]="attr.data">
-                            </mat-form-field>
-                            <button mat-icon-button class="no-flexmodel-field-small " aria-label="Remove Attribute"
+                            <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
                                 (click)="RemoveAttribute(attr)">
                                 <mat-icon>remove</mat-icon>
                             </button>
+                        </mat-card-title-group>
 
-                        </mat-list-item>
-                        <mat-divider class="mb-2 mt-2"></mat-divider>
-                    </div>
-                </mat-list>
+                        <mat-card-content class="disp-flex">
+
+                            <mat-form-field class="auto-flex model-formfield model-field-small">
+                                <input matInput placeholder="Key" [(ngModel)]="attr.key">
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small">
+                                <!-- <input matInput placeholder="Operator" > -->
+                                <mat-label>Operator</mat-label>
+                                <mat-select [(ngModel)]="attr.operator">
+                                    <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="auto-flex model-field-small">
+                                <input matInput placeholder="Data" [(ngModel)]="attr.data">
+                            </mat-form-field>
+
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+
             </div>
 
         </ng-template>
@@ -59,8 +63,10 @@
 </div>
 
 <div *ngIf="panelType === 'panel'">
-    
-    <h3><mat-icon class="mr-2">{{panelIcon}}</mat-icon>{{panelName}}</h3>
+
+    <h3>
+        <mat-icon class="mr-2">{{panelIcon}}</mat-icon>{{panelName}}
+    </h3>
     <div *ngIf="model">
         <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
             <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
