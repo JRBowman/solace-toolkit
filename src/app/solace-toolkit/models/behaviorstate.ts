@@ -15,7 +15,7 @@ export class BehaviorState implements IModelTK {
 
     public animation: BehaviorAnimation = new BehaviorAnimation();
 
-    public conditions: BehaviorCondition[] = [];
+    public conditions: SoltkKeyValue[] = [];
     public events: ActionEvent[] = [];
 
     public startData: SoltkKeyValue[] = [];

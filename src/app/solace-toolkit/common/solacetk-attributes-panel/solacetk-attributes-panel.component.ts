@@ -13,24 +13,24 @@ export class SolacetkAttributesPanelComponent implements OnInit {
   @Input() model: SoltkKeyValue[] = [];
   @Output() modelChange = new EventEmitter<SoltkKeyValue[]>();
 
-  @Input() operatorsEnabled: boolean = false;
-
+  @Input() operatorsEnabled: boolean = true;
   @Input() panelName: string = "Attributes";
-
   @Input() panelType: string = "expansionpanel";
-
-  @Input() panelColor: string = "lightslategrey";
+  @Input() panelColor: string = "mediumvioletred";
   @Output() panelColorChange = new EventEmitter<string>();
 
   @Input() panelClass: string = "";
-
   @Input() panelIcon: string = "data_object";
 
-  public operators: string[] = SoltkKeyValue.operatorValues;
+  public operators: string[] = [];
+
+  @Input() panelMode: panelType = panelType.conditions;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (this.panelMode == panelType.conditions) this.operators = SoltkKeyValue.conditionalOperatorValues;
+    else if (this.panelMode == panelType.variables) this.operators = SoltkKeyValue.actionOperatorValues;
   }
 
   dropConditions(event: CdkDragDrop<SoltkKeyValue[]>) {
@@ -53,4 +53,9 @@ export class SolacetkAttributesPanelComponent implements OnInit {
     return this.model.indexOf(key);
   }
 
+}
+
+enum panelType{
+  conditions,
+  variables
 }

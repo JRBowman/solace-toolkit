@@ -10,8 +10,10 @@
             <div class="disp-flex">
                 <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
                     alt="sprite">
+                    
                 <mat-form-field class="auto-flex">
                     <input matInput #pixelKeyColor placeholder="Pixel Color Key" [(ngModel)]="model.pixelKeyColor">
+                    <mat-icon matSuffix [style.color]="'white'">share_location</mat-icon>
                 </mat-form-field>
             </div>
 

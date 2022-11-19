@@ -18,7 +18,8 @@ export class BehaviorBranchesComponent implements OnInit {
 
   public model: BehaviorBranch = new BehaviorBranch();
 
-  public operators: string[] = SoltkKeyValue.operatorValues;
+  public conditionalOperators: string[] = SoltkKeyValue.conditionalOperatorValues;
+  public actionOperators: string[] = SoltkKeyValue.actionOperatorValues;
 
   ngOnInit(): void {
   }

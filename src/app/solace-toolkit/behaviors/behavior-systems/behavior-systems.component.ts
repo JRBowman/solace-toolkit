@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorSystem, BehaviorType } from '../../models/behaviorsystem';
+import { SoltkKeyValue } from '../../models/soltk-key-value';
 
 @Component({
   selector: 'app-behavior-systems',
@@ -25,6 +26,8 @@ public model: BehaviorSystem = new BehaviorSystem();
   public selectedBehavior: string = "";
 
   public behavior = BehaviorType;
+
+  public operators: string[] = SoltkKeyValue.conditionalOperatorValues;
 
   public GetBehaviorType(item: string): string
   {

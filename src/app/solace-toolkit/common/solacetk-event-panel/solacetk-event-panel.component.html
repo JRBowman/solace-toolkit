@@ -27,11 +27,11 @@
                 </mat-form-field>
 
                 <div class="disp-flex">
-                    <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Conditions" panelColor="darkslategrey"
+                    <solacetk-attributes-panel class="auto-flex full-width" panelName="Conditions" panelColor="darkslategrey"
                         panelType="expansionpanel" [(model)]="eventTk.conditions" [operatorsEnabled]="true">
                     </solacetk-attributes-panel>
 
-                    <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="State Data"
+                    <solacetk-attributes-panel [panelMode]="1" class="auto-flex full-width" panelName="State Data"
                         panelType="expansionpanel" [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
 
                     <solacetk-messages-panel class="auto-flex full-width" panelName="Messages"
@@ -65,9 +65,9 @@
                             <mat-icon>bolt</mat-icon>
                              {{eventTk.name}}
                         </mat-card-title>
-                        <mat-card-subtitle>
+                        <!-- <p>
                             Event [{{GetKeyIndex(eventTk)}}]
-                        </mat-card-subtitle>
+                        </p> -->
                         <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
                             <mat-icon>remove</mat-icon>
                         </button>
@@ -87,7 +87,7 @@
                                 panelType="expansionpanel" [(model)]="eventTk.conditions" [operatorsEnabled]="true">
                             </solacetk-attributes-panel>
         
-                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="State Data"
+                            <solacetk-attributes-panel [panelMode]="1" class="auto-flex mb-2 full-width" panelName="State Data"
                                 panelType="expansionpanel" [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
         
                             <solacetk-messages-panel class="auto-flex full-width" panelName="Messages"

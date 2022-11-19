@@ -32,13 +32,50 @@
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.branches">
-                        <mat-list cdkDropList (cdkDropListDropped)="dropBranches($event)">
-                            <mat-list-item cdkDrag [cdkDragData]="branch" *ngFor="let branch of model.branches">
-                                <h3 matLine>{{branch.name}}</h3>
-                                <p matLine>Description: {{branch.description}}</p>
-                            </mat-list-item>
-                        </mat-list>
+                    <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
+
+                        <mat-card cdkDrag [cdkDragData]="branch" class="auto-flex mb-2" *ngFor="let branch of model.branches">
+
+                            <mat-card-title-group class="disp-flex">
+                                <mat-card-title class="auto-flex">{{branch.name}}</mat-card-title>
+                                <mat-chip-list>
+                                    <mat-chip *ngFor="let cond of branch.conditions" class="font-small" style="background-color: darkslategrey;">
+                                        {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+                                    </mat-chip>
+                                </mat-chip-list>
+                                <h4 class="no-flex mr-2">{{model.branches.indexOf(branch)}}</h4>
+                            </mat-card-title-group>
+
+                            <mat-card-content class="disp-flex">
+                                <div class="no-flex mr-2 width-33" *ngFor="let state of branch.states">
+                                    <mat-chip-list>
+                                        <mat-chip *ngFor="let cond of state.conditions" class="font-small" style="background-color: darkslategrey;">
+                                            {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                    <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                                    [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                                    <mat-card-subtitle>{{state.name}}</mat-card-subtitle>
+                                    <mat-chip-list>
+                                        <mat-chip *ngFor="let data of state.actData" class="font-small" style="background-color: mediumvioletred;">
+                                            {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
+                                        </mat-chip>
+                                        <mat-chip *ngFor="let data of state.startData" class="font-small" style="background-color: mediumvioletred;">
+                                            {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
+                                        </mat-chip>
+                                        <mat-chip *ngFor="let data of state.endData" class="font-small" style="background-color: mediumvioletred;">
+                                            {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </div>
+                            </mat-card-content>
+
+
+                            <mat-card-actions>
+
+                            </mat-card-actions>
+                        </mat-card>
+
                     </div>
 
                 </ng-template>

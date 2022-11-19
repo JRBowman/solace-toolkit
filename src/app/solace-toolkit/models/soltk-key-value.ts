@@ -4,5 +4,6 @@ export class SoltkKeyValue {
     public data: string = "";
     public operator: number = 0;
 
-    public static operatorValues: string[] = ["==", "!=", ">", ">=", "<", "<="]
+    public static conditionalOperatorValues: string[] = ["==", "!=", ">", ">=", "<", "<="];
+    public static actionOperatorValues: string[] = ["=>", "+=", "*=", "/=", "%=", "^="];
 }

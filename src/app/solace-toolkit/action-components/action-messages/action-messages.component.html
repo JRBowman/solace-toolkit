@@ -4,12 +4,17 @@
             <input matInput placeholder="Target Name" [(ngModel)]="model.targetName">
         </mat-form-field>
         <mat-form-field class="auto-flex model-formfield">
-            <input matInput placeholder="Target Type" [(ngModel)]="model.targetType">
+            <mat-label>Operator</mat-label>
+            <mat-select [(ngModel)]="model.targetType">
+                <mat-option *ngFor="let op of targets" [value]="targets.indexOf(op)">{{op}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
 
     <div class="editor-panels">
-        <solacetk-attributes-panel panelName="Message Data" [(model)]="model.data" panelType="expansionpanel"
-        [operatorsEnabled]="false"></solacetk-attributes-panel>
+        <solacetk-attributes-panel [panelMode]="1" panelName="Message Data" [(model)]="model.data" panelType="expansionpanel">
+
+        </solacetk-attributes-panel>
     </div>
 </solacetk-model-list>

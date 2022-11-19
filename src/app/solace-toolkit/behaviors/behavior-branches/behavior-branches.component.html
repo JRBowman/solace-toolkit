@@ -21,7 +21,7 @@
                     </mat-panel-title>
                     <mat-chip-list class="auto-flex align-start" *ngIf="model.conditions">
                         <mat-chip *ngFor="let cond of model.conditions" style="background-color: darkslategrey;">
-                            {{cond.key}} {{operators[cond.operator]}} {{cond.data}}
+                            {{cond.key}} {{conditionalOperators[cond.operator]}} {{cond.data}}
                         </mat-chip>
                 </mat-chip-list>
                 </mat-expansion-panel-header>
@@ -33,9 +33,8 @@
                             <mat-card style="background-color: slategrey;">
                                 <mat-chip-list *ngIf="state.conditions">
                                     <div *ngFor="let condition of state.conditions">
-                                        <mat-chip *ngFor="let cond of condition.conditions"
-                                            style="background-color: darkslategrey;">
-                                            {{cond.key}} {{operators[cond.operator]}} {{cond.data}}
+                                        <mat-chip style="background-color: darkslategrey;">
+                                            {{condition.key}} {{actionOperators[condition.operator]}} {{condition.data}}
                                         </mat-chip>
                                     </div>
                                 </mat-chip-list>

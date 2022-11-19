@@ -13,4 +13,6 @@ export class ActionMessage implements IModelTK {
     public targetName: string = "";
     public targetType: number = 0;
 
+    public static readonly targetTypes: string[] = ["Named Target", "Instance Target", "Collision Target", "Focus Target", "Message Queue"];
+
 }

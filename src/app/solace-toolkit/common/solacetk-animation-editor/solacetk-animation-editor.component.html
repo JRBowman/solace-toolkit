@@ -23,13 +23,13 @@
 
             <!-- Visual Frame Data -->
             <div *ngIf="showFrames && aseReady" class="min-width-12 no-flex mr-2">
-                <solacetk-attributes-panel [panelName]="'Frame ' + selected + ' Data'" [(model)]="model.frames[selected].downstreamData">
+                <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'" [(model)]="model.frames[selected].downstreamData">
                 </solacetk-attributes-panel>
             </div>
 
             <!-- Visual Component Data -->
             <div *ngIf="model && showFrames && aseReady && model.components" class="auto-flex ml-2">
-                <solacetk-attributes-panel panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
+                <solacetk-attributes-panel [panelMode]="1" panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
                 </solacetk-attributes-panel>
             </div>
 

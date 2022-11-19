@@ -1,11 +1,16 @@
 <div *ngIf="panelType === 'expansionpanel'">
 
     <mat-expansion-panel [class]="panelClass" [style.background-color]="panelColor">
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header class="auto-flex">
             <mat-panel-title>
                 <mat-icon class="mr-2">{{panelIcon}}</mat-icon>
                 {{panelName}}
             </mat-panel-title>
+            <mat-chip-list class="auto-flex align-start">
+                <mat-chip *ngFor="let cond of model" class="font-small" style="background-color: transparent;">
+                    {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+                </mat-chip>
+            </mat-chip-list>
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
@@ -20,8 +25,8 @@
                             <div class="auto-flex model-field-small">
                                 <h4>[{{GetKeyIndex(attr)}}]:</h4>
                             </div>
-                            <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
-                                (click)="RemoveAttribute(attr)">
+                            <button mat-icon-button color="primary" class="no-flex align-top"
+                                aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
                                 <mat-icon>remove</mat-icon>
                             </button>
                         </mat-card-title-group>
@@ -57,6 +62,7 @@
 
         <mat-action-row>
             <button mat-button (click)="AddAttribute()">Add</button>
+            <ng-content select=".action-row"></ng-content>
         </mat-action-row>
     </mat-expansion-panel>
 
@@ -68,6 +74,11 @@
         <mat-icon class="mr-2">{{panelIcon}}</mat-icon>{{panelName}}
     </h3>
     <div *ngIf="model">
+        <mat-chip-list class="auto-flex align-start" *ngIf="model">
+            <mat-chip *ngFor="let cond of model" class="font-small" style="background-color: transparent;">
+                {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+            </mat-chip>
+        </mat-chip-list>
         <mat-list cdkDropList (cdkDropListDropped)="dropConditions($event)">
             <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model">
                 <mat-list-item>
@@ -77,8 +88,13 @@
                     <mat-form-field class="auto-flex model-formfield model-field-small ">
                         <input matInput placeholder="Key" [(ngModel)]="attr.key">
                     </mat-form-field>
-                    <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small ">
-                        <input matInput placeholder="Operator" [(ngModel)]="attr.operator">
+                    <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small">
+                        <!-- <input matInput placeholder="Operator" > -->
+                        <mat-label>Operator</mat-label>
+                        <mat-select [(ngModel)]="attr.operator">
+                            <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <mat-form-field class="auto-flex model-field-small ">
                         <input matInput placeholder="Data" [(ngModel)]="attr.data">

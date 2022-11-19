@@ -5,7 +5,9 @@
         <div class="disp-flex">
             <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
                 alt="sprite">
+                
             <mat-form-field class="auto-flex">
+                <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">pin_drop</mat-icon>
                 <input matInput #pixelKeyColor placeholder="Pixel Color Key" [(ngModel)]="model.pixelKeyColor">
             </mat-form-field>
         </div>
@@ -31,13 +33,13 @@
         <div class="disp-flex">
             <mat-form-field class="model-formfield auto-flex">
                 <mat-select placeholder="Movement Type" [(ngModel)]="model.type">
-                    <mat-option *ngFor="let item of movableTypes" [value]="item">{{GetMoveType(item)}}
+                    <mat-option *ngFor="let item of movableTypes" [value]="movableTypes.indexOf(item)">{{GetMoveType(item)}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="model-formfield auto-flex">
                 <mat-select placeholder="Collision Type" [(ngModel)]="model.collisionType">
-                    <mat-option *ngFor="let item of collidableTypes" [value]="item">{{GetCollisionType(item)}}
+                    <mat-option *ngFor="let item of collidableTypes" [value]="collidableTypes.indexOf(item)">{{GetCollisionType(item)}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

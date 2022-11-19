@@ -2,7 +2,7 @@
     <div class="editor">
         <mat-chip-list *ngIf="model.conditions">
                 <mat-chip *ngFor="let cond of model.conditions" style="background-color: darkslategrey;">
-                    {{cond.key}} {{operators[cond.operator]}} {{cond.data}}
+                    {{cond.key}} {{conditionalOperators[cond.operator]}} {{cond.data}}
                 </mat-chip>
         </mat-chip-list>
 
@@ -16,7 +16,7 @@
                 [operatorsEnabled]="true">
             </solacetk-attributes-panel>
 
-            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="State Data"
+            <solacetk-attributes-panel [panelMode]="1" class="auto-flex mb-2 full-width" panelName="State Data"
                 panelType="expansionpanel" [(model)]="model.downstreamData"></solacetk-attributes-panel>
 
             <solacetk-messages-panel class="auto-flex full-width" panelName="Messages" panelType="expansionpanel"

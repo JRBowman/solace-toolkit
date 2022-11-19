@@ -14,6 +14,8 @@ export class ActionMessagesComponent implements OnInit {
 
   public messageColor: string = "mediumslateblue";
 
+  public targets: string[] = ActionMessage.targetTypes;
+
   ngOnInit(): void {
   }
 
