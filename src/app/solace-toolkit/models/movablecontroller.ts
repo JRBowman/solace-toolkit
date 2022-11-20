@@ -1,3 +1,4 @@
+import { BehaviorComponent } from "./behavioranimation";
 import { BehaviorSystem } from "./behaviorsystem";
 import { IModelTK } from "./imodel-tk";
 
@@ -21,6 +22,8 @@ export class MovableController implements IModelTK {
     public behaviorSystemId?: string;
     public behaviorSystem?: BehaviorSystem = new BehaviorSystem();
 
+    public components: BehaviorComponent[] = [];
+
     public useFriction?: boolean = true;
     public affectedByGravity?: boolean = true;
     public canMove?: boolean = true;
@@ -29,7 +32,6 @@ export class MovableController implements IModelTK {
     public isHit?: boolean = false;
 
     public type?: MovableControllerType = MovableControllerType.Behavior;
-
 }
 
 export enum MovableControllerType

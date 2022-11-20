@@ -41,6 +41,17 @@ export class BehaviorStatesComponent implements OnInit {
     
   }
 
+  public openEventsSheet() 
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/events');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.events = [...this.model.events, ...models];
+    });
+  }
+
   public openActionsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);

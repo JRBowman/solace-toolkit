@@ -83,12 +83,16 @@
             </ng-template>
 
             <mat-action-row>
-                <button mat-button color="primary" (click)="openAnimationsSheet()">Add</button>
+                <button mat-button color="primary" (click)="openAnimationsSheet()">Import</button>
             </mat-action-row>
 
         </mat-expansion-panel>
 
-        <solacetk-event-panel class="mb-2" [(model)]="model.events"></solacetk-event-panel>
+        <solacetk-event-panel class="mb-2" [(model)]="model.events">
+            <div class="action-row">
+                <button mat-button color="primary" (click)="openEventsSheet()">Import</button>
+            </div>
+        </solacetk-event-panel>
         <!-- 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>

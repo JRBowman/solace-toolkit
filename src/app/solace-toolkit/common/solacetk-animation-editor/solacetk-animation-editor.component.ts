@@ -21,7 +21,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() showFrames: boolean = true;
   @Input() showFileInfo: boolean = true;
   @Input() showDataPanel: boolean = true;
-  public bgColor: string = "";
+  @Input() bgColor: string = "transparent";
 
 
   public fileName: string = "";
@@ -36,6 +36,10 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   public selectedCompIndex: number = 0;
 
   public framesChange = new EventEmitter<string>();
+
+  public isPlaying: boolean = false;
+
+  private interval: any;
 
   ngOnInit(): void {
 
@@ -80,8 +84,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
             }
           });
         }
-        else
-        {
+        else {
           this.frames = this.model.frames;
         }
 
@@ -92,7 +95,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
 
         let texName = "Ase/" + this.model.name + "/" + this.model.name;
-        this.sheetName = this.service.apiHost + texName + ".gif";
+        this.sheetName = this.service.apiHost + texName + ".png";
         this.aseReady = true;
 
         this.modelChange.emit(this.model);
@@ -106,8 +109,6 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
     this.unloadChange.emit(false);
 
-    this.bgColor = this.showDataPanel ? "" : "bg-task-card";
-
   }
 
   public logModel() {
@@ -115,6 +116,32 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+  }
+
+  playAnimation() {
+
+    if (!this.model.loop && this.selected == this.model.frames.length - 1) this.selected = 0;
+    this.isPlaying = true;
+    this.animate();
+  }
+  
+  animate(){
+    let tempSpeed = this.selectedFrame.duration * this.selectedFrame.speed;
+    if (!this.isPlaying) return;
+    this.interval = setTimeout(() => {
+        if (this.selected == this.model.frames.length - 1 && !this.model.loop) this.stopAnimation();
+        if (this.isPlaying) {
+        if (this.model.loop) this.selected = (this.selected + 1) % this.model.frames.length;
+        else if (this.selected < this.model.frames.length) this.selected = this.selected + 1;
+        this.selectedFrame = this.model.frames[this.selected];
+        this.animate();
+        }
+
+    }, tempSpeed);
+  }
+
+  stopAnimation() {
+    this.isPlaying = false;
   }
 
   onSelect(event: any) {

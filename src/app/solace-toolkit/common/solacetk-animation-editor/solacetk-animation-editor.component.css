@@ -11,11 +11,8 @@
 .component-collider {
     background-color: rgb(192, 32, 64, 0.5);
     border-radius: 8px;
-    position: absolute;
-    left: 16%;
-    right: 42%;
-    bottom: 0px;
-    top: 8%;
+    position: relative;
+    left: 0px;
 }
 
 .component-ray {
@@ -30,4 +27,6 @@
 
 .relative-container {
     position: relative;
+    overflow: hidden;
+    width: 192px;
 }

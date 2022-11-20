@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
+import { BehaviorComponent } from '../../models/behavioranimation';
 import { CollisionDetectionType, MovableController, MovableControllerType } from '../../models/movablecontroller';
 
 @Component({
@@ -8,10 +11,12 @@ import { CollisionDetectionType, MovableController, MovableControllerType } from
 })
 export class EnemyControllersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _bottomSheet: MatBottomSheet) { }
 
   public model: MovableController = new MovableController();
   public worldLocation: string = "0,0,0";
+
+  public selectedComponent: BehaviorComponent = new BehaviorComponent();
 
   moveType = MovableControllerType;
   public movableTypes: string[] = [];
@@ -32,6 +37,17 @@ export class EnemyControllersComponent implements OnInit {
   public GetCollisionType(val: string): string
   {
     return CollisionDetectionType[Number.parseInt(val)];
+  }
+
+  public importBehaviorSystem()
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('Behaviors/systems');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.behaviorSystem = models[0];
+    });
   }
 
 }

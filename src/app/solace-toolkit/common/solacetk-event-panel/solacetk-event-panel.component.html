@@ -102,6 +102,7 @@
 
         <mat-action-row>
             <button color="primary" mat-button (click)="AddEvent()">Add Event</button>
+            <ng-content select=".action-row"></ng-content>
         </mat-action-row>
     </mat-expansion-panel>
 

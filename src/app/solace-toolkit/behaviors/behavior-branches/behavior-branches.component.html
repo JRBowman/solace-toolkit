@@ -30,7 +30,7 @@
 
                     <div class="disp-flex" cdkDropList (cdkDropListDropped)="dropBranches($event)" *ngIf="model.states">
                         <div cdkDrag [cdkDragData]="state" class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
-                            <mat-card style="background-color: slategrey;">
+                            <mat-card style="background-color: slategrey;" class="auto-flex">
                                 <mat-chip-list *ngIf="state.conditions">
                                     <div *ngFor="let condition of state.conditions">
                                         <mat-chip style="background-color: darkslategrey;">
