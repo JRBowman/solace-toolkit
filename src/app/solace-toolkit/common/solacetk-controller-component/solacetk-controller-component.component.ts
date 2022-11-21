@@ -13,11 +13,14 @@ export class SolacetkControllerComponentComponent implements OnInit {
   @Input() model: BehaviorComponent[] = [];
   @Output() modelChange: EventEmitter<BehaviorComponent[]> = new EventEmitter<BehaviorComponent[]>();
 
-  public selectedComponent?: BehaviorComponent;
+  @Input() selectedComponent?: BehaviorComponent;
+  @Output() selectedComponentChange: EventEmitter<BehaviorComponent> = new EventEmitter<BehaviorComponent>();
 
   @Input() panelType: string = "expansionpanel";
 
   @Input() panelColor: string = "darkgrey";
+
+  public componentTypes?: string[] = BehaviorComponent.componentTypes;
 
   ngOnInit(): void {
   }
@@ -32,6 +35,7 @@ export class SolacetkControllerComponentComponent implements OnInit {
   public onComponentSelect(event: any)
   {
     this.selectedComponent = event;
+    this.selectedComponentChange.emit(this.selectedComponent);
   }
 
 }

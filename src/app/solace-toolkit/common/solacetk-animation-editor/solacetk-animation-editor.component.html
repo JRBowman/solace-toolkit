@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z0 auto-flex" [style.backgroundColor]="bgColor">
     <mat-card-content>
-        <div class="disp-flex">
+        <div class="disp-flex" *ngIf="model">
 
             <!-- Sprite Animation Preview -->
             <div class="model-formfield no-flex">
@@ -17,6 +17,15 @@
                 <div class="disp-flex align-center relative-container">
                     <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center component-collider' : 'sprite-thumb-2col sprite-placeholder align-center component-collider'"
                         [src]="sheetName" [style.backgroundColor]="bgColor" alt="sprite" [style.left]="(selected * -192) + 'px'">
+                    <div *ngIf="model?.components && model.components.length > 0">
+                    <div class="component-visual" *ngFor="let component of model.components" [matTooltip]="component.name"
+                        [style.backgroundColor]="component.color" 
+                        [style.left]="(component.positionX * 96) + 'px'"
+                        [style.bottom]="(component.positionY * 96) + 'px'"
+                        [style.width]="(component.scaleX * 192) + 'px'"
+                        [style.height]="(component.scaleY * 192) + 'px'">
+                    </div>
+                </div>
                 </div>
 
                 <button *ngIf="!isPlaying" mat-button color="primary" (click)="playAnimation()"><mat-icon>play_arrow</mat-icon></button>
@@ -25,15 +34,16 @@
             </div>
 
             <!-- Visual Frame Data -->
-            <div *ngIf="showFrames && aseReady" class="min-width-12 auto-flex mr-2">
-                <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'" [(model)]="model.frames[selected].downstreamData">
+            <div *ngIf="showFrames && aseReady" class="auto-flex mr-2 width-33">
+                <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'" panelType="panel" [(model)]="model.frames[selected].downstreamData">
                 </solacetk-attributes-panel>
             </div>
 
             <!-- Visual Component Data -->
-            <div *ngIf="model && showFrames && aseReady && model.components" class="auto-flex ml-2">
-                <solacetk-attributes-panel [panelMode]="1" panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
-                </solacetk-attributes-panel>
+            <div *ngIf="model && showFrames && aseReady" class="no-flex ml-2 width-33">
+                <!-- <solacetk-attributes-panel [panelMode]="1" panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
+                </solacetk-attributes-panel> -->
+                <solacetk-controller-component [(model)]="model.components" [(selectedComponent)]="selectedComponent" panelColor="darkslategrey"></solacetk-controller-component>
             </div>
 
         </div>
@@ -49,7 +59,7 @@
         </div>
 
         <!-- Components List -->
-        <div *ngIf="showFrames && aseReady" class="auto-flex mb-2">
+        <!-- <div *ngIf="showFrames && aseReady" class="auto-flex mb-2">
             <h3>Components</h3>
             <mat-chip-list class="auto-flex">
                 <mat-chip class="min-width-12 justify-center" *ngFor="let component of model.components"
@@ -57,7 +67,7 @@
                     {{component.name}}
                 </mat-chip>
             </mat-chip-list>
-        </div>
+        </div> -->
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 

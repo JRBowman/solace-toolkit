@@ -13,7 +13,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   constructor(private service: SolacetkService) { }
 
-  @Input() model: BehaviorAnimationData = new BehaviorAnimationData();
+  @Input() model?: BehaviorAnimationData;
   @Output() modelChange = new EventEmitter<BehaviorAnimationData>();
 
   @Input() unloadChange = new EventEmitter<boolean>();
@@ -32,7 +32,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   public selectedFrame: BehaviorAnimationFrame = new BehaviorAnimationFrame();
   public selected: number = 0;
 
-  public selectedComponent: BehaviorComponent = new BehaviorComponent();
+  public selectedComponent?: BehaviorComponent;
   public selectedCompIndex: number = 0;
 
   public framesChange = new EventEmitter<string>();
@@ -64,6 +64,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       console.log(url);
       this.service.GetData(url).subscribe((data) => {
         //this.model = data;
+        if (!this.model) this.model = new BehaviorAnimationData();
 
         // if (!data) return;
         if (!this.model.frames || this.model.frames.length == 0) {
@@ -73,14 +74,14 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
             let f = data['frames'][fr];
             f.name = fr;
             this.frames.push(f);
-            if (!this.model.frames) this.model.frames = [];
-            if (!this.model.frames.find(x => x.frame == f)) {
+            if (this.model && !this.model?.frames) this.model.frames = [];
+            if (!this.model?.frames.find(x => x.frame == f)) {
               let modelFrame = new BehaviorAnimationFrame();
               modelFrame.name = f.name;
               //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
               modelFrame.duration = f.duration;
               modelFrame.frame = f;
-              this.model.frames.push(modelFrame);
+              this.model?.frames.push(modelFrame);
             }
           });
         }
@@ -120,22 +121,45 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   playAnimation() {
 
-    if (!this.model.loop && this.selected == this.model.frames.length - 1) this.selected = 0;
+    if (this.model && !this.model?.loop && this.selected == this.model.frames.length - 1) this.selected = 0;
     this.isPlaying = true;
     this.animate();
   }
-  
-  animate(){
+
+  private run: boolean = true;
+  animate() {
     let tempSpeed = this.selectedFrame.duration * this.selectedFrame.speed;
-    if (!this.isPlaying) return;
+    if (!this.isPlaying || !this.model) return;
     this.interval = setTimeout(() => {
-        if (this.selected == this.model.frames.length - 1 && !this.model.loop) this.stopAnimation();
-        if (this.isPlaying) {
-        if (this.model.loop) this.selected = (this.selected + 1) % this.model.frames.length;
+      if (this.isPlaying && this.model) {
+        if (this.model?.loop) this.selected = (this.selected + 1) % this.model.frames.length;
         else if (this.selected < this.model.frames.length) this.selected = this.selected + 1;
-        this.selectedFrame = this.model.frames[this.selected];
-        this.animate();
+
+        if (this.selected == this.model.frames.length - 1 && !this.model?.loop) {
+          //this.selected = 0;
+          this.run = false;
+          this.stopAnimation();
         }
+        this.selectedFrame = this.model.frames[this.selected];
+
+        // Process Components:
+        if (this.model.components && this.model.components.length > 0) {
+          this.selectedFrame.downstreamData.forEach(data => {
+
+            if (data.key.includes(".")) {
+              let keys = data.key.split(".");
+
+              let component = this.model?.components.find(x => x.name == keys[0]) as any;
+
+              if (component) component[keys[1]] = data.data;
+            }
+          });
+        }
+
+
+        this.animate();
+
+      }
 
     }, tempSpeed);
   }
@@ -145,31 +169,55 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   onSelect(event: any) {
-    this.selected = this.frames.indexOf(event);
-    this.selectedFrame = this.model.frames[this.selected];
+    if (this.model) {
+      this.selected = this.frames.indexOf(event);
+      this.selectedFrame = this.model.frames[this.selected];
+
+      // Process Components:
+      if (this.model.components && this.model.components.length > 0) {
+        this.selectedFrame.downstreamData.forEach(data => {
+
+          if (data.key.includes(".")) {
+            let keys = data.key.split(".");
+
+            let component = this.model?.components.find(x => x.name == keys[0]) as any;
+
+            if (component) component[keys[1]] = data.data;
+          }
+        });
+      }
+    }
   }
 
   onComponentSelect(event: any) {
-    this.selectedCompIndex = this.model.components.indexOf(event);
-    this.selectedComponent = this.model.components[this.selectedCompIndex];
+    if (this.model) {
+      this.selectedCompIndex = this.model.components.indexOf(event);
+      this.selectedComponent = this.model.components[this.selectedCompIndex];
+    }
   }
 
   loadDefaultComponents() {
-    if (!this.model.components) this.model.components = [];
-    this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
-    this.modelChange.emit(this.model);
+    if (this.model) {
+      if (!this.model.components) this.model.components = [];
+      this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
+      this.modelChange.emit(this.model);
+    }
   }
 
   addComponent() {
-    if (!this.model.components) this.model.components = [];
-    this.model.components = [...this.model.components, new BehaviorComponent()];
-    this.modelChange.emit(this.model);
+    if (this.model) {
+      if (!this.model.components) this.model.components = [];
+      this.model.components = [...this.model.components, new BehaviorComponent()];
+      this.modelChange.emit(this.model);
+    }
   }
 
   removeComponent(component: BehaviorComponent) {
-    if (!this.model.components) this.model.components = [];
-    this.model.components.splice(this.model.components.indexOf(component), 1);
-    this.modelChange.emit(this.model);
+    if (this.model) {
+      if (!this.model.components) this.model.components = [];
+      this.model.components.splice(this.model.components.indexOf(component), 1);
+      this.modelChange.emit(this.model);
+    }
   }
 
   onAseSelected(event: any) {
@@ -181,7 +229,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.fileName = file.name;
       this.sheetName = "";
       const formData = new FormData();
-      formData.append(this.model.name + ".ase", file);
+      formData.append(this.model?.name + ".ase", file);
       const upload$ = this.service.CreateModel("Files/ase", formData);
 
       upload$.subscribe((response) => {

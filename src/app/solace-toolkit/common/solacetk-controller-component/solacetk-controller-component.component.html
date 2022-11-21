@@ -12,16 +12,16 @@
         <ng-template matExpansionPanelContent>
 
             <div class="disp-flex">
-                <div class="auto-flex">
-                    <!-- <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                <!-- <div class="auto-flex"> -->
+                <!-- <solacetk-animation-editor [(model)]="state.animation.actFrameData"
                     [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
-                </div>
-                <div class="auto-flex width-33">
+                <!-- </div> -->
+                <div class="auto-flex">
                     <div class="mb-2">
                         <mat-chip-list class="auto-flex">
                             <mat-chip class="min-width-12 justify-center" *ngFor="let component of model"
                                 (click)="onComponentSelect(component)">
-                                {{component.name}}
+                                {{component.name}} - <mat-slide-toggle [(ngModel)]="component.enabled"></mat-slide-toggle>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
@@ -29,61 +29,86 @@
 
                     <mat-card *ngIf="selectedComponent">
 
-                        <mat-form-field class="auto-flex full-width">
+                        <mat-form-field class="disp-flex auto-flex">
                             <input matInput disabled placeholder="Id" [(ngModel)]="selectedComponent.id">
                         </mat-form-field>
 
-                        <solacetk-tags [(model)]="selectedComponent.tags"></solacetk-tags>
+                        <div class="disp-flex">
+                            <mat-form-field class="auto-flex mr-2">
+                                <input matInput placeholder="Name" [(ngModel)]="selectedComponent.name">
+                            </mat-form-field>
+
+                            <mat-form-field class="no-flex width-33">
+                                <input matInput type="color" placeholder="Color" [(ngModel)]="selectedComponent.color">
+                            </mat-form-field>
+                        </div>
 
                         <mat-form-field class="auto-flex">
-                            <input matInput placeholder="Name" [(ngModel)]="selectedComponent.name">
+                            <!-- <input matInput placeholder="Operator" > -->
+                            <mat-label>Types</mat-label>
+                            <mat-select [(ngModel)]="selectedComponent.componentType">
+                                <mat-option *ngFor="let comp of componentTypes" [value]="componentTypes?.indexOf(comp)">
+                                    {{comp}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
 
-                        <mat-form-field class="auto-flex full-width">
+
+
+                        <div class="disp-flex">
+
+                            <div class="disp-flex mr-2">
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #positionX placeholder="PositionX"
+                                        [(ngModel)]="selectedComponent.positionX">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #positionY placeholder="PositionY"
+                                        [(ngModel)]="selectedComponent.positionY">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #positionZ placeholder="PositionZ"
+                                        [(ngModel)]="selectedComponent.positionZ">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="disp-flex mr-2">
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #scaleX placeholder="ScaleX" [(ngModel)]="selectedComponent.scaleX">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #scaleY placeholder="ScaleY" [(ngModel)]="selectedComponent.scaleY">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #scaleZ placeholder="ScaleZ" [(ngModel)]="selectedComponent.scaleZ">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="disp-flex mr-2">
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #rotationX placeholder="Rotation X"
+                                        [(ngModel)]="selectedComponent.rotationX">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #rotationY placeholder="Rotation Y"
+                                        [(ngModel)]="selectedComponent.rotationY">
+                                </mat-form-field>
+                                <mat-form-field class="no-flex width-33">
+                                    <input matInput #rotationZ placeholder="Rotation Z"
+                                        [(ngModel)]="selectedComponent.rotationZ">
+                                </mat-form-field>
+                            </div>
+
+                            <solacetk-tags [(model)]="selectedComponent.tags"></solacetk-tags>
+
+                        </div>
+
+                        <mat-form-field class="auto-flex">
                             <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
                                 [(ngModel)]="selectedComponent.description"></textarea>
                         </mat-form-field>
 
-                        <div class="disp-flex">
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #positionX placeholder="Position X"
-                                    [(ngModel)]="selectedComponent.positionX">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #positionY placeholder="Position Y"
-                                    [(ngModel)]="selectedComponent.positionY">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #positionZ placeholder="Position Z"
-                                    [(ngModel)]="selectedComponent.positionZ">
-                            </mat-form-field>
 
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #scaleX placeholder="Scale X" [(ngModel)]="selectedComponent.scaleX">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #scaleY placeholder="Scale Y" [(ngModel)]="selectedComponent.scaleY">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex">
-                                <input matInput #scaleZ placeholder="Scale Z" [(ngModel)]="selectedComponent.scaleZ">
-                            </mat-form-field>
-
-                        </div>
-
-                        <div class="disp-flex">
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #rotationX placeholder="Rotation X"
-                                    [(ngModel)]="selectedComponent.rotationX">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex model-formfield">
-                                <input matInput #rotationY placeholder="Rotation Y"
-                                    [(ngModel)]="selectedComponent.rotationY">
-                            </mat-form-field>
-                            <mat-form-field class="auto-flex">
-                                <input matInput #rotationZ placeholder="Rotation Z"
-                                    [(ngModel)]="selectedComponent.rotationZ">
-                            </mat-form-field>
-                        </div>
 
                     </mat-card>
                 </div>

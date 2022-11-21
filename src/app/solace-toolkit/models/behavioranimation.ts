@@ -1,3 +1,4 @@
+import { withRouterConfig } from "@angular/router";
 import { BehaviorStatesComponent } from "../behaviors/behavior-states/behavior-states.component";
 import { BehaviorAnimationFrame } from "./behavior-animation-frame";
 import { IModelTK } from "./imodel-tk";
@@ -8,9 +9,9 @@ export class BehaviorAnimation implements IModelTK {
     public id?: string;
     public name: string = "<name>";
     public description: string = "<description>";
-    public startFrameData: BehaviorAnimationData = new BehaviorAnimationData();
-    public actFrameData: BehaviorAnimationData = new BehaviorAnimationData();
-    public endFrameData: BehaviorAnimationData = new BehaviorAnimationData();
+    public startFrameData?: BehaviorAnimationData;
+    public actFrameData?: BehaviorAnimationData;
+    public endFrameData?: BehaviorAnimationData;
     public tags: string = "";
     public keys: SoltkKeyValue[] = [];
     
@@ -49,9 +50,9 @@ export class BehaviorComponent implements IModelTK {
     public positionY: number = 0;
     public positionZ: number = 0;
 
-    public scaleX: number = 0;
-    public scaleY: number = 0;
-    public scaleZ: number = 0;
+    public scaleX: number = 1;
+    public scaleY: number = 1;
+    public scaleZ: number = 1;
 
     public rotationX: number = 0;
     public rotationY: number = 0;
@@ -60,6 +61,8 @@ export class BehaviorComponent implements IModelTK {
     public enabled: boolean = true;
 
     public componentData: SoltkKeyValue[] = [];
+
+    public color?: string = "white";
 
 
     // Defines Type of Component to create:

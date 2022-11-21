@@ -30,3 +30,13 @@
     overflow: hidden;
     width: 192px;
 }
+
+.component-visual {
+    background-color: crimson;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 0px;
+    left: 25%;
+    width: 55%;
+    height: 67%;
+}
