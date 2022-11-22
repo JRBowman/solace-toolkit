@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiHost: "http://msoa-arranger.bowman-prod.svc:8080/",
+  apiHost: "https://msoa-arranger-bowman-prod.apps.bocp.onbowman.com/",
   identityHost: "https://identity-svc.onbowman.com"
 };
