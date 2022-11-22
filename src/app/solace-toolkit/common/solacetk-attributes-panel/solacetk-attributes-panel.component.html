@@ -22,22 +22,22 @@
                     <mat-card cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
 
                         <mat-card-title-group>
-                            <div class="auto-flex model-field-small">
-                                <h4>[{{GetKeyIndex(attr)}}]:</h4>
-                            </div>
-                            <button mat-icon-button color="primary" class="no-flex align-top"
-                                aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
-                                <mat-icon>remove</mat-icon>
-                            </button>
+
+
                         </mat-card-title-group>
 
                         <mat-card-content class="disp-flex">
 
-                            <mat-form-field class="auto-flex model-formfield model-field-small">
+
+                            <div class="no-flex model-field-small mr-2">
+                                <h4>[{{GetKeyIndex(attr)}}]:</h4>
+                            </div>
+
+                            <mat-form-field class="auto-flex model-field-small width-5 mr-2">
                                 <input matInput placeholder="Key" [(ngModel)]="attr.key">
                             </mat-form-field>
 
-                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-formfield model-field-small">
+                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-field-small mr-2 width-5-min">
                                 <!-- <input matInput placeholder="Operator" > -->
                                 <mat-label>Operator</mat-label>
                                 <mat-select [(ngModel)]="attr.operator">
@@ -46,9 +46,14 @@
                                 </mat-select>
                             </mat-form-field>
 
-                            <mat-form-field class="auto-flex model-field-small">
+                            <mat-form-field class="auto-flex model-field-small width-5">
                                 <input matInput placeholder="Data" [(ngModel)]="attr.data">
                             </mat-form-field>
+
+                            <button mat-icon-button color="primary" class="no-flex align-top"
+                            aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
 
                         </mat-card-content>
                     </mat-card>
@@ -89,10 +94,10 @@
                         <div class="no-flex align-end font-small">
                             <h4 matLine>[{{GetKeyIndex(attr)}}]:</h4>
                         </div>
-                        <mat-form-field class="auto-flex font-small">
+                        <mat-form-field class="auto-flex font-small width-33">
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small">
+                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small width-33">
                             <!-- <input matInput placeholder="Operator" > -->
                             <mat-label>Operator</mat-label>
                             <mat-select [(ngModel)]="attr.operator">
@@ -100,7 +105,7 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <mat-form-field class="auto-flex font-small">
+                        <mat-form-field class="auto-flex font-small width-33">
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
                         <button mat-icon-button class="no-flex font-small" aria-label="Remove Attribute"
