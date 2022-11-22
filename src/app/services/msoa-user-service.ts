@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { OidcSecurityService } from "angular-auth-oidc-client";
+import { environment } from "src/environments/environment";
 import { MsoaUser } from "../models/msoa-user";
 import { SolacetkService } from "../solace-toolkit/services/solacetk-service.service";
 
@@ -42,7 +43,7 @@ export class MsoaUserService implements OnInit {
             console.log(value);return Object.keys(value).forEach(claim => this.Claims.push({key: claim, value: value[claim]}));
         });
 
-        this.http.get("https://localhost:5000/api/v1/oidc").subscribe(response =>{
+        this.http.get(environment.identityHost + "/api/v1/oidc").subscribe(response =>{
             console.log(response);
         });
 
