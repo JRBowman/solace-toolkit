@@ -41,6 +41,10 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   private interval: any;
 
+
+  public frameWidth: number = 192;
+  public zoomFactor: number = 4;
+
   ngOnInit(): void {
 
     //this.model.frames = [];
@@ -63,11 +67,13 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     this.framesChange.subscribe((url) => {
       console.log(url);
       this.service.GetData(url).subscribe((data) => {
+
+        if (!data) return;
         //this.model = data;
-        if (!this.model) this.model = new BehaviorAnimationData();
+        //if (!this.model) this.model = data;
 
         // if (!data) return;
-        if (!this.model.frames || this.model.frames.length == 0) {
+        if (!this.model?.frames || this.model.frames.length == 0) {
           let frames = Object.keys(data['frames']);
 
           frames.forEach(fr => {
@@ -81,21 +87,22 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
               //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
               modelFrame.duration = f.duration;
               modelFrame.frame = f;
+              this.frameWidth = (f.sourceSize.w * this.zoomFactor);
               this.model?.frames.push(modelFrame);
             }
           });
         }
         else {
-          this.frames = this.model.frames;
+          this.frames = this.model?.frames ?? [];
         }
 
 
 
         //this.selectedFrame = this.frames[0];
-        this.model.framesJson = JSON.stringify(this.frames);
+        if (this.model) this.model.framesJson = JSON.stringify(this.frames);
 
 
-        let texName = "Ase/" + this.model.name + "/" + this.model.name;
+        let texName = "Ase/" + this.model?.name + "/" + this.model?.name;
         this.sheetName = this.service.apiHost + texName + ".png";
         this.aseReady = true;
 

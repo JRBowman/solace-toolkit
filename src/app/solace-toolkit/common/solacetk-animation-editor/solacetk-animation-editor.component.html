@@ -27,18 +27,18 @@
                 </div>
 
                 <div class="disp-flex align-center relative-container">
-                    <div class="sprite auto-flex sprite-frame">
+                    <div class="sprite no-flex sprite-frame" [style.width]="frameWidth + 'px'">
                         <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center component-collider' : 'sprite-thumb-2col sprite-placeholder align-center component-collider'"
                             [src]="sheetName" [style.backgroundColor]="bgColor" alt="sprite"
-                            [style.left]="(selected * -192) + 'px'">
+                            [style.left]="(selected * -(frameWidth)) + 'px'">
                     </div>
                     <div *ngIf="model.components && model.components.length > 0">
                         <div class="component-visual" *ngFor="let component of model.components"
                             [matTooltip]="component.name" [style.backgroundColor]="component.color"
                             [style.left]="(component.positionX * 96) + 'px'"
                             [style.bottom]="(component.positionY * 96) + 'px'"
-                            [style.width]="(component.scaleX * 192) + 'px'"
-                            [style.height]="(component.scaleY * 192) + 'px'">
+                            [style.width]="(component.scaleX * frameWidth) + 'px'"
+                            [style.height]="(component.scaleY * frameWidth) + 'px'">
                         </div>
                     </div>
                 </div>
