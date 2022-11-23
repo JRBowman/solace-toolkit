@@ -4,7 +4,7 @@
         <div class="disp-flex mb-2" *ngIf="model">
 
             <!-- Frame List -->
-            <div class="no-flex mr-2 width-6">
+            <div *ngIf="showFrames" class="no-flex mr-2 width-6">
                 <h3>Frames</h3>
                 <mat-chip-list class="no-flex">
                     <mat-chip class="min-width-12 justify-center" *ngFor="let frame of frames"
