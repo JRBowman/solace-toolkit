@@ -42,7 +42,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   private interval: any;
 
 
-  public frameWidth: number = 192;
+  public spriteWidth: number = 192;
+  public spriteHeight: number = 192;
   public zoomFactor: number = 4;
 
   ngOnInit(): void {
@@ -87,7 +88,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
               //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
               modelFrame.duration = f.duration;
               modelFrame.frame = f;
-              this.frameWidth = (f.sourceSize.w * this.zoomFactor);
+              //this.frameWidth = (f.sourceSize.w * this.zoomFactor);
               this.model?.frames.push(modelFrame);
             }
           });
