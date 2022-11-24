@@ -21,19 +21,20 @@
                         <mat-chip-list class="auto-flex">
                             <mat-chip class="min-width-12 justify-center" *ngFor="let component of model"
                                 (click)="onComponentSelect(component)">
-                                {{component.name}} - <mat-slide-toggle [(ngModel)]="component.enabled"></mat-slide-toggle>
+                                {{component.name}} - <mat-slide-toggle [(ngModel)]="component.enabled">
+                                </mat-slide-toggle>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
 
 
                     <mat-card *ngIf="selectedComponent">
-
-                        <mat-form-field class="disp-flex auto-flex">
-                            <input matInput disabled placeholder="Id" [(ngModel)]="selectedComponent.id">
-                        </mat-form-field>
-
                         <div class="disp-flex">
+
+                            <mat-form-field class="no-flex width-33">
+                                <input matInput disabled placeholder="Id" [(ngModel)]="selectedComponent.id">
+                            </mat-form-field>
+
                             <mat-form-field class="auto-flex mr-2">
                                 <input matInput placeholder="Name" [(ngModel)]="selectedComponent.name">
                             </mat-form-field>
@@ -41,17 +42,17 @@
                             <mat-form-field class="no-flex width-33">
                                 <input matInput type="color" placeholder="Color" [(ngModel)]="selectedComponent.color">
                             </mat-form-field>
-                        </div>
 
-                        <mat-form-field class="auto-flex">
-                            <!-- <input matInput placeholder="Operator" > -->
-                            <mat-label>Types</mat-label>
-                            <mat-select [(ngModel)]="selectedComponent.componentType">
-                                <mat-option *ngFor="let comp of componentTypes" [value]="componentTypes?.indexOf(comp)">
-                                    {{comp}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                            <mat-form-field class="auto-flex">
+                                <!-- <input matInput placeholder="Operator" > -->
+                                <mat-label>Types</mat-label>
+                                <mat-select [(ngModel)]="selectedComponent.componentType">
+                                    <mat-option *ngFor="let comp of componentTypes" [value]="componentTypes?.indexOf(comp)">
+                                        {{comp}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
 
 
 
@@ -88,7 +89,7 @@
                                 <mat-form-field class="no-flex width-33">
                                     <input matInput #rotationX placeholder="Rotation X"
                                         [(ngModel)]="selectedComponent.rotationX" type="number">
-                                        <mat-icon matSuffix>export</mat-icon>
+                                    <mat-icon matSuffix>export</mat-icon>
                                 </mat-form-field>
                                 <mat-form-field class="no-flex width-33">
                                     <input matInput #rotationY placeholder="Rotation Y"
@@ -103,11 +104,11 @@
                             <solacetk-tags [(model)]="selectedComponent.tags"></solacetk-tags>
 
                         </div>
-
+<!-- 
                         <mat-form-field class="auto-flex">
                             <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
                                 [(ngModel)]="selectedComponent.description"></textarea>
-                        </mat-form-field>
+                        </mat-form-field> -->
 
 
 
@@ -119,7 +120,7 @@
 
         <mat-action-row>
             <button mat-button color="primary" (click)="addComponent()">Add</button>
-            
+
         </mat-action-row>
 
     </mat-expansion-panel>
