@@ -64,7 +64,6 @@ export class BehaviorComponent implements IModelTK {
 
     public color?: string = "white";
 
-
     // Defines Type of Component to create:
     public componentType: string = "";
     public static readonly componentTypes?: string[] = ["SpriteRenderer", "RayCastPoint", 
@@ -75,14 +74,14 @@ export class BehaviorComponent implements IModelTK {
     public static readonly defaultComponents: BehaviorComponent[] = [
         {
           name: "BodyCollider",
-          positionX: 0,
+          positionX: 0.5,
           positionY: 0,
           positionZ: 0,
           rotationX: 0,
           rotationY: 0,
           rotationZ: 0,
-          scaleX: 1,
-          scaleY: 1,
+          scaleX: 0.5,
+          scaleY: 0.75,
           scaleZ: 0,
           componentType: "CollisionController",
           tags: "",
@@ -94,14 +93,14 @@ export class BehaviorComponent implements IModelTK {
         },
         {
           name: "RightRay",
-          positionX: 0,
+          positionX: 0.33,
           positionY: 0,
           positionZ: 0,
           rotationX: 0,
           rotationY: 0,
           rotationZ: 0,
-          scaleX: 1,
-          scaleY: 1,
+          scaleX: 0.1,
+          scaleY: 0.75,
           scaleZ: 0,
           componentType: "CollisionController",
           tags: "",
@@ -113,14 +112,14 @@ export class BehaviorComponent implements IModelTK {
         },
         {
           name: "LeftRay",
-          positionX: 0,
+          positionX: 1.5,
           positionY: 0,
           positionZ: 0,
           rotationX: 0,
           rotationY: 0,
           rotationZ: 0,
-          scaleX: 1,
-          scaleY: 1,
+          scaleX: 0.1,
+          scaleY: 0.75,
           scaleZ: 0,
           componentType: "CollisionController",
           tags: "",
@@ -132,14 +131,14 @@ export class BehaviorComponent implements IModelTK {
         },
         {
           name: "TopRay",
-          positionX: 0,
-          positionY: 0,
+          positionX: 0.5,
+          positionY: 1.5,
           positionZ: 0,
           rotationX: 0,
           rotationY: 0,
           rotationZ: 0,
-          scaleX: 1,
-          scaleY: 1,
+          scaleX: 0.5,
+          scaleY: 0.75,
           scaleZ: 0,
           componentType: "CollisionController",
           tags: "",
@@ -151,14 +150,14 @@ export class BehaviorComponent implements IModelTK {
         },
         {
           name: "BottomRay",
-          positionX: 0,
+          positionX: 0.5,
           positionY: 0,
           positionZ: 0,
           rotationX: 0,
           rotationY: 0,
           rotationZ: 0,
-          scaleX: 1,
-          scaleY: 1,
+          scaleX: 0.5,
+          scaleY: 0.1,
           scaleZ: 0,
           componentType: "CollisionController",
           tags: "",
@@ -169,4 +168,17 @@ export class BehaviorComponent implements IModelTK {
           id: ""
         }
       ];
+
+      public static getStateValues(model: BehaviorComponent): SoltkKeyValue[] {
+        return [{ key: model.name + ".enabled", data: model.enabled.toString(), operator: 0 },
+        { key: model.name + ".positionX", data: model.positionX.toString(), operator: 0 },
+        { key: model.name + ".positionY", data: model.positionY.toString(), operator: 0 },
+        { key: model.name + ".positionZ", data: model.positionZ.toString(), operator: 0 },
+        { key: model.name + ".scaleX", data: model.scaleX.toString(), operator: 0 },
+        { key: model.name + ".scaleY", data: model.scaleY.toString(), operator: 0 },
+        { key: model.name + ".scaleZ", data: model.scaleZ.toString(), operator: 0 },
+        { key: model.name + ".rotationX", data: model.rotationX.toString(), operator: 0 },
+        { key: model.name + ".rotationY", data: model.rotationY.toString(), operator: 0 },
+        { key: model.name + ".rotationZ", data: model.rotationZ.toString(), operator: 0 }];
+      }
 }

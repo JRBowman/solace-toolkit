@@ -123,6 +123,30 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     console.log(this.model);
   }
 
+  public addComponentToFrame() {
+
+    if (this.selectedComponent) {
+      console.log("Adding components to frame:");
+      let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
+      console.log(componentData);
+      let ind = 0;
+      //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
+      componentData.forEach(pair => {
+        if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
+          // Doesn't Exist, add it:
+          this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
+        }
+        // Data already exists
+        else {
+          this.selectedFrame.downstreamData[ind].data = pair.data;
+        }
+      });
+      this.modelChange.emit(this.model);
+    }
+
+    
+  }
+
   ngAfterViewInit(): void {
   }
 
@@ -135,7 +159,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   private run: boolean = true;
   animate() {
-    let tempSpeed = this.selectedFrame.duration * this.selectedFrame.speed;
+    let tempSpeed = this.selectedFrame.duration * (this.model?.speed ?? 1);
     if (!this.isPlaying || !this.model) return;
     this.interval = setTimeout(() => {
       if (this.isPlaying && this.model) {
