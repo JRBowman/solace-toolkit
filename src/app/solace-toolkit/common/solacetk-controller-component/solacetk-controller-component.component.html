@@ -87,15 +87,16 @@
                             <div class="disp-flex mr-2">
                                 <mat-form-field class="no-flex width-33">
                                     <input matInput #rotationX placeholder="Rotation X"
-                                        [(ngModel)]="selectedComponent.rotationX">
+                                        [(ngModel)]="selectedComponent.rotationX" type="number">
+                                        <mat-icon matSuffix>export</mat-icon>
                                 </mat-form-field>
                                 <mat-form-field class="no-flex width-33">
                                     <input matInput #rotationY placeholder="Rotation Y"
-                                        [(ngModel)]="selectedComponent.rotationY">
+                                        [(ngModel)]="selectedComponent.rotationY" type="number">
                                 </mat-form-field>
                                 <mat-form-field class="no-flex width-33">
                                     <input matInput #rotationZ placeholder="Rotation Z"
-                                        [(ngModel)]="selectedComponent.rotationZ">
+                                        [(ngModel)]="selectedComponent.rotationZ" type="number">
                                 </mat-form-field>
                             </div>
 
@@ -118,6 +119,7 @@
 
         <mat-action-row>
             <button mat-button color="primary" (click)="addComponent()">Add</button>
+            
         </mat-action-row>
 
     </mat-expansion-panel>
