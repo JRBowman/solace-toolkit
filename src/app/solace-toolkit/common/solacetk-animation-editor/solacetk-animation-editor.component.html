@@ -112,7 +112,7 @@
             <div class="no-flex gap-1"></div>
 
             <!-- Visual Component Data -->
-            <div class="no-flex width-5">
+            <div *ngIf="showFrames && aseReady" class="no-flex width-5">
                 <!-- <solacetk-attributes-panel [panelMode]="1" panelColor="teal" [panelName]="model.components[selectedCompIndex].name + ' Data'" [(model)]="model.components[selectedCompIndex].componentData">
                                                 </solacetk-attributes-panel> -->
                 <solacetk-controller-component [(model)]="model.components" [(selectedComponent)]="selectedComponent"

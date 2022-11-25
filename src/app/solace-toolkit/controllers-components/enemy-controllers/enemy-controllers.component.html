@@ -75,17 +75,36 @@
                     <div *ngIf="model.behaviorSystem">
                         <mat-card>
                             <mat-card-title>{{model.behaviorSystem.name}}</mat-card-title>
+                            <mat-card-content>
+                                <div class="disp-flex">
+                                    <solacetk-attributes-panel [panelMode]="1" panelName="Test Data"
+                                        panelType="expansionpanel" class="no-flex width-33 mt-2" [(model)]="testStateData">
+                                    </solacetk-attributes-panel>
+
+                                    <div class="gap-1"></div>
+
+                                    <div *ngIf="testSelectedState" class="width-2">
+                                        <solacetk-animation-editor [(model)]="testSelectedState.animation.actFrameData"
+                                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                                    </div>
+                                </div>
+                            </mat-card-content>
                         </mat-card>
                     </div>
                 </ng-template>
 
                 <mat-action-row>
                     <button mat-button color="primary" (click)="importBehaviorSystem()">Select</button>
+                    <button mat-icon-button matTooltip="Select State" color="primary" class="no-flex"
+                    (click)="selectState()">
+                    <mat-icon>sync_alt</mat-icon>
+                </button>
                 </mat-action-row>
 
             </mat-expansion-panel>
 
-            <solacetk-controller-component [(model)]="model.components" panelColor="darkslategrey"></solacetk-controller-component>
+            <solacetk-controller-component [(model)]="model.components" panelColor="darkslategrey">
+            </solacetk-controller-component>
 
 
         </mat-accordion>
