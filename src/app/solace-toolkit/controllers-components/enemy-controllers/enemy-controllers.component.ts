@@ -1,5 +1,5 @@
 import { outputAst } from '@angular/compiler';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorComponent } from '../../models/behavioranimation';
@@ -7,6 +7,7 @@ import { BehaviorBranch } from '../../models/behaviorbranch';
 import { BehaviorState } from '../../models/behaviorstate';
 import { CollisionDetectionType, MovableController, MovableControllerType } from '../../models/movablecontroller';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
+import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
   selector: 'app-enemy-controllers',
@@ -15,7 +16,7 @@ import { SoltkKeyValue } from '../../models/soltk-key-value';
 })
 export class EnemyControllersComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet, private service: SolacetkService) { }
 
   public model: MovableController = new MovableController();
   public worldLocation: string = "0,0,0";
@@ -32,13 +33,17 @@ export class EnemyControllersComponent implements OnInit {
 
   public testStateData: SoltkKeyValue[] = [];
   public testStateDataChange = new EventEmitter<SoltkKeyValue[]>();
-  
+
   public testSelectedState?: BehaviorState;
   @Output() testSelectedStateChange = new EventEmitter<BehaviorState>();
 
+  public profileUrl: string = "";
+
 
   public selectedBranch?: BehaviorBranch;
+
   ngOnInit(): void {
+
     this.movableTypes = Object.keys(this.moveType).filter(f => !isNaN(Number(f)));
     this.collidableTypes = Object.keys(this.collidableType).filter(f => !isNaN(Number(f)));
 
@@ -47,10 +52,15 @@ export class EnemyControllersComponent implements OnInit {
     });
   }
 
-  public selectState()
+  public loadEditor()
   {
+    this.profileUrl = this.service.apiHost + "Ase/" + this.model.name + "/" + this.model.name + ".png";
+    console.log("Model Loaded");
+  }
+
+  public selectState() {
     // If a State is Selected - wait till it's conditions no longer apply:
-    if (this.testSelectedState && this.validateConditions(this.testSelectedState.conditions)) return; 
+    if (this.testSelectedState && this.validateConditions(this.testSelectedState.conditions)) return;
 
     // No State, find the first valid Branch:
     if (!(this.selectedBranch = this.model.behaviorSystem?.branches.find(x => this.validateConditions(x.conditions)))) return;
@@ -64,8 +74,7 @@ export class EnemyControllersComponent implements OnInit {
   }
 
   private condResults: number = 0;
-  public validateConditions(conditions: SoltkKeyValue[]): boolean
-  {
+  public validateConditions(conditions: SoltkKeyValue[]): boolean {
     conditions.forEach(condition => {
       if (this.testStateData.findIndex(x => x.key == condition.key && x.data == condition.data) > -1) this.condResults++;
     });
@@ -80,26 +89,44 @@ export class EnemyControllersComponent implements OnInit {
       console.log("result found!");
       return true;
     }
-    
+
   }
 
-  public GetMoveType(val: string): string
-  {
+  public importSprite(): void {
+
+  }
+
+  onTextureSelected(event: any) {
+
+    if (this.model.id && this.model.name) {
+      const file: File = event.target.files[0];
+
+      if (file) {
+
+        const formData = new FormData();
+
+        formData.append(this.model.name + ".png", file);
+
+        const upload$ = this.service.CreateModel("Files/ase", formData);
+
+        upload$.subscribe();
+      }
+    }
+  }
+
+  public GetMoveType(val: string): string {
     return MovableControllerType[Number.parseInt(val)];
   }
 
-  public GetCollisionType(val: string): string
-  {
+  public GetCollisionType(val: string): string {
     return CollisionDetectionType[Number.parseInt(val)];
   }
 
-  public importBehaviorSystem()
-  {
+  public importBehaviorSystem() {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/systems');
 
-    instance.instance.modelsSelected.subscribe((models) => 
-    {
+    instance.instance.modelsSelected.subscribe((models) => {
       this.model.behaviorSystem = models[0];
     });
   }

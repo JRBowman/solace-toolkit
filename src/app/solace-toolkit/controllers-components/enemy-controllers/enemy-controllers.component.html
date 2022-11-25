@@ -1,35 +1,34 @@
-<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables"
+<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables" (modelLoaded)="loadEditor()"
     tagFilters="#enemies">
     <div class="editor">
 
         <div class="disp-flex">
-            <img class="sprite-thumb model-formfield no-flex" src="../../../assets/soldof/images/settings.PNG"
+            <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl"
                 alt="sprite">
 
-            <mat-form-field class="auto-flex">
-                <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">pin_drop
-                </mat-icon>
-                <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
-                    [(ngModel)]="model.pixelKeyColor">
-            </mat-form-field>
-        </div>
-
-        <div class="disp-flex">
-            <mat-form-field class="auto-flex model-formfield small-field-two-items">
-                <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
-            </mat-form-field>
-            <mat-form-field class="auto-flex model-formfield small-field-two-items">
-                <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
-            </mat-form-field>
-            <mat-form-field class="auto-flex model-formfield small-field-three-items">
-                <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
-            </mat-form-field>
-            <mat-form-field class="auto-flex model-formfield small-field-three-items">
-                <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
-            </mat-form-field>
-            <mat-form-field class="auto-flex small-field-three-items">
-                <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
-            </mat-form-field>
+                <div class="disp-flex">
+                    <mat-form-field class="no-flex width-10 mr-2">
+                        <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">pin_drop
+                        </mat-icon>
+                        <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
+                            [(ngModel)]="model.pixelKeyColor">
+                    </mat-form-field>
+                    <mat-form-field class="no-flex width-10 mr-2">
+                        <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
+                    </mat-form-field>
+                    <mat-form-field class="no-flex width-10 mr-2">
+                        <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
+                    </mat-form-field>
+                    <mat-form-field class="no-flex width-10 mr-2">
+                        <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
+                    </mat-form-field>
+                    <mat-form-field class="no-flex width-10 mr-2">
+                        <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
+                    </mat-form-field>
+                    <mat-form-field class="no-flex width-10">
+                        <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
+                    </mat-form-field>
+                </div>
         </div>
 
         <div class="disp-flex">
@@ -58,8 +57,14 @@
             <mat-checkbox name="canMove" class="auto-flex align-center" [(ngModel)]="model.canMove">Can Move
             </mat-checkbox>
         </div>
+        
+    </div>
 
-        <mat-divider class="mb-2 mt-2"></mat-divider>
+    
+
+    <div class="editor-actions">
+        <button mat-button (click)="textureUpload.click()" color="primary">Import profile Sprite</button>
+        <input type="file" class="file-input" (change)="onTextureSelected($event)" accept=".png" #textureUpload>
     </div>
 
     <div class="editor-panels">
