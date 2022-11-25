@@ -2,7 +2,7 @@ import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
-import { BehaviorComponent } from '../../models/behavioranimation';
+import { BehaviorAnimation, BehaviorAnimationData, BehaviorComponent } from '../../models/behavioranimation';
 import { BehaviorBranch } from '../../models/behaviorbranch';
 import { BehaviorState } from '../../models/behaviorstate';
 import { CollisionDetectionType, MovableController, MovableControllerType } from '../../models/movablecontroller';
@@ -42,6 +42,8 @@ export class EnemyControllersComponent implements OnInit {
 
   public selectedBranch?: BehaviorBranch;
 
+  public selectedAnimationData?: BehaviorAnimationData;
+
   ngOnInit(): void {
 
     this.movableTypes = Object.keys(this.moveType).filter(f => !isNaN(Number(f)));
@@ -70,13 +72,33 @@ export class EnemyControllersComponent implements OnInit {
     console.log("State Found");
 
     // Notify of Changes:
+    this.selectedAnimationData = this.testSelectedState.animation.actFrameData;
     this.testSelectedStateChange.emit(this.testSelectedState);
   }
 
   private condResults: number = 0;
   public validateConditions(conditions: SoltkKeyValue[]): boolean {
     conditions.forEach(condition => {
-      if (this.testStateData.findIndex(x => x.key == condition.key && x.data == condition.data) > -1) this.condResults++;
+      // Check by Condition Operator:
+      if (condition.operator == 0){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data == condition.data) > -1) this.condResults++;
+      }
+      else if (condition.operator == 1){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data != condition.data) > -1) this.condResults++;
+      }
+      else if (condition.operator == 2){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data > condition.data) > -1) this.condResults++;
+      }
+      else if (condition.operator == 3){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data >= condition.data) > -1) this.condResults++;
+      }
+      else if (condition.operator == 4){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data < condition.data) > -1) this.condResults++;
+      }
+      else if (condition.operator == 5){
+        if (this.testStateData.findIndex(x => x.key == condition.key && x.data <= condition.data) > -1) this.condResults++;
+      }
+
     });
 
     if (this.condResults != conditions.length) {

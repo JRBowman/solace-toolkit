@@ -57,7 +57,7 @@
             <mat-checkbox name="canMove" class="auto-flex align-center" [(ngModel)]="model.canMove">Can Move
             </mat-checkbox>
         </div>
-        
+
     </div>
 
     
@@ -92,7 +92,7 @@
 
                                     <div *ngIf="testSelectedState" class="auto-flex width-2">
                                         <h3>{{selectedBranch?.name ?? 'Branch'}} >> {{testSelectedState.name}}</h3>
-                                        <solacetk-animation-editor [(model)]="testSelectedState.animation.actFrameData"
+                                        <solacetk-animation-editor [(model)]="selectedAnimationData"
                                             [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
                                     </div>
                                 </div>
