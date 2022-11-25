@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { BehaviorComponent } from '../../models/behavioranimation';
@@ -21,6 +22,7 @@ export class EnemyControllersComponent implements OnInit {
 
   public selectedComponent: BehaviorComponent = new BehaviorComponent();
 
+
   moveType = MovableControllerType;
   public movableTypes: string[] = [];
 
@@ -30,10 +32,12 @@ export class EnemyControllersComponent implements OnInit {
 
   public testStateData: SoltkKeyValue[] = [];
   public testStateDataChange = new EventEmitter<SoltkKeyValue[]>();
+  
   public testSelectedState?: BehaviorState;
+  @Output() testSelectedStateChange = new EventEmitter<BehaviorState>();
 
 
-  private _selectedBranch?: BehaviorBranch;
+  public selectedBranch?: BehaviorBranch;
   ngOnInit(): void {
     this.movableTypes = Object.keys(this.moveType).filter(f => !isNaN(Number(f)));
     this.collidableTypes = Object.keys(this.collidableType).filter(f => !isNaN(Number(f)));
@@ -49,14 +53,34 @@ export class EnemyControllersComponent implements OnInit {
     if (this.testSelectedState && this.validateConditions(this.testSelectedState.conditions)) return; 
 
     // No State, find the first valid Branch:
-    if (!(this._selectedBranch = this.model.behaviorSystem?.branches.find(x => this.validateConditions(x.conditions)))) return;
+    if (!(this.selectedBranch = this.model.behaviorSystem?.branches.find(x => this.validateConditions(x.conditions)))) return;
+    console.log("Branch Found");
 
-    if (!(this.testSelectedState = this._selectedBranch.states.find(x => this.validateConditions(x.conditions)))) return;
+    if (!(this.testSelectedState = this.selectedBranch.states.find(x => this.validateConditions(x.conditions)))) return;
+    console.log("State Found");
+
+    // Notify of Changes:
+    this.testSelectedStateChange.emit(this.testSelectedState);
   }
 
+  private condResults: number = 0;
   public validateConditions(conditions: SoltkKeyValue[]): boolean
   {
-    return true;
+    conditions.forEach(condition => {
+      if (this.testStateData.findIndex(x => x.key == condition.key && x.data == condition.data) > -1) this.condResults++;
+    });
+
+    if (this.condResults != conditions.length) {
+      this.condResults = 0;
+      console.log("no result");
+      return false;
+    }
+    else {
+      this.condResults = 0;
+      console.log("result found!");
+      return true;
+    }
+    
   }
 
   public GetMoveType(val: string): string

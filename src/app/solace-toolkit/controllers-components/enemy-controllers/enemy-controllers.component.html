@@ -77,13 +77,16 @@
                             <mat-card-title>{{model.behaviorSystem.name}}</mat-card-title>
                             <mat-card-content>
                                 <div class="disp-flex">
-                                    <solacetk-attributes-panel [panelMode]="1" panelName="Test Data"
-                                        panelType="expansionpanel" class="no-flex width-33 mt-2" [(model)]="testStateData">
-                                    </solacetk-attributes-panel>
+                                    <div class="no-flex width-33 mt-2 mr-2">
+                                        <solacetk-attributes-panel [panelMode]="1" panelName="Test Data"
+                                            panelType="expansionpanel" [(model)]="testStateData">
+                                        </solacetk-attributes-panel>
+                                    </div>
 
                                     <div class="gap-1"></div>
 
-                                    <div *ngIf="testSelectedState" class="width-2">
+                                    <div *ngIf="testSelectedState" class="auto-flex width-2">
+                                        <h3>{{selectedBranch?.name ?? 'Branch'}} >> {{testSelectedState.name}}</h3>
                                         <solacetk-animation-editor [(model)]="testSelectedState.animation.actFrameData"
                                             [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
                                     </div>
@@ -96,9 +99,9 @@
                 <mat-action-row>
                     <button mat-button color="primary" (click)="importBehaviorSystem()">Select</button>
                     <button mat-icon-button matTooltip="Select State" color="primary" class="no-flex"
-                    (click)="selectState()">
-                    <mat-icon>sync_alt</mat-icon>
-                </button>
+                        (click)="selectState()">
+                        <mat-icon>sync_alt</mat-icon>
+                    </button>
                 </mat-action-row>
 
             </mat-expansion-panel>
