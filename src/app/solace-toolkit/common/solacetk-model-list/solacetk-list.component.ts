@@ -16,7 +16,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() moduleName: string = "Solace TK Module";
   @Input() modelUri: string = "Controllers/movables";
   @Input() tagFilters: string = "";
-  @Input() hideEditorHeading: boolean = false;
+  @Input() hideEditorHeading: boolean = true;
   @Input() collapseCoreEditor: boolean = false;
 
   @Input() model!: any;
