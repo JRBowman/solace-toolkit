@@ -1,0 +1,26 @@
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'solacetk-panel',
+  templateUrl: './solacetk-panel.component.html',
+  styleUrls: ['./solacetk-panel.component.css']
+})
+export class SolacetkPanelComponent implements OnInit {
+
+  constructor() { }
+
+  @Input() panelType: string = "panel";
+  @Input() panelIcon: string = "hub";
+  @Input() panelName: string = "Panel";
+
+  @Input() unitWidth: string = "auto";
+  @Input() unitHeight: string = "auto";
+
+  @Input() panelColor: string = "darkslategrey";
+
+  // ---
+
+  ngOnInit(): void {
+  }
+
+}

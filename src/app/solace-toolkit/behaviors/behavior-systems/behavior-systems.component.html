@@ -53,9 +53,9 @@
                                             {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
                                         </mat-chip>
                                     </mat-chip-list>
-                                    <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                                    <solacetk-animation-editor [panelName]="state?.name ?? 'Anim Data'" [(model)]="state.animation.actFrameData"
                                     [showDataPanel]="false" [showFrames]="false" bgColor="coral"></solacetk-animation-editor>
-                                    <mat-card-subtitle>{{state.name}}</mat-card-subtitle>
+                                    <!-- <mat-card-subtitle>{{state.name}}</mat-card-subtitle> -->
                                     <mat-chip-list>
                                         <mat-chip *ngFor="let data of state.actData" class="font-small" style="background-color: mediumvioletred;">
                                             {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}

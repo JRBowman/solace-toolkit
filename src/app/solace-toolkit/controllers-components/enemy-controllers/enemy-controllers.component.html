@@ -1,34 +1,34 @@
-<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables" (modelLoaded)="loadEditor()"
-    tagFilters="#enemies">
+<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables"
+    (modelLoaded)="loadEditor()" tagFilters="#enemies">
     <div class="editor">
 
         <div class="disp-flex">
-            <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl"
-                alt="sprite">
+            <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl" alt="sprite">
 
-                <div class="disp-flex">
-                    <mat-form-field class="no-flex width-10 mr-2">
-                        <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">pin_drop
-                        </mat-icon>
-                        <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
-                            [(ngModel)]="model.pixelKeyColor">
-                    </mat-form-field>
-                    <mat-form-field class="no-flex width-10 mr-2">
-                        <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
-                    </mat-form-field>
-                    <mat-form-field class="no-flex width-10 mr-2">
-                        <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
-                    </mat-form-field>
-                    <mat-form-field class="no-flex width-10 mr-2">
-                        <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
-                    </mat-form-field>
-                    <mat-form-field class="no-flex width-10 mr-2">
-                        <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
-                    </mat-form-field>
-                    <mat-form-field class="no-flex width-10">
-                        <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
-                    </mat-form-field>
-                </div>
+            <div class="disp-flex">
+                <mat-form-field class="no-flex width-10 mr-2">
+                    <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">
+                        pin_drop
+                    </mat-icon>
+                    <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
+                        [(ngModel)]="model.pixelKeyColor">
+                </mat-form-field>
+                <mat-form-field class="no-flex width-10 mr-2">
+                    <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
+                </mat-form-field>
+                <mat-form-field class="no-flex width-10 mr-2">
+                    <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
+                </mat-form-field>
+                <mat-form-field class="no-flex width-10 mr-2">
+                    <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
+                </mat-form-field>
+                <mat-form-field class="no-flex width-10 mr-2">
+                    <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
+                </mat-form-field>
+                <mat-form-field class="no-flex width-10">
+                    <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
+                </mat-form-field>
+            </div>
         </div>
 
         <div class="disp-flex">
@@ -60,7 +60,7 @@
 
     </div>
 
-    
+
 
     <div class="editor-actions">
         <button mat-button (click)="textureUpload.click()" color="primary">Import profile Sprite</button>
@@ -68,54 +68,59 @@
     </div>
 
     <div class="editor-panels">
-        <mat-accordion class="auto-flex align-start full-width">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Behavior
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
 
-                <ng-template matExpansionPanelContent>
-                    <div *ngIf="model.behaviorSystem">
-                        <mat-card>
-                            <mat-card-title>{{model.behaviorSystem.name}}</mat-card-title>
-                            <mat-card-content>
-                                <div class="disp-flex">
-                                    <div class="no-flex width-33 mt-2 mr-2">
-                                        <solacetk-attributes-panel [panelMode]="1" panelName="Test Data"
-                                            panelType="expansionpanel" [(model)]="testStateData">
-                                        </solacetk-attributes-panel>
-                                    </div>
+        <!-- <mat-accordion class="auto-flex align-start full-width"> -->
+        <mat-expansion-panel class="no-flex">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Behavior
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-                                    <div class="gap-1"></div>
-
-                                    <div *ngIf="testSelectedState" class="auto-flex width-2">
-                                        <h3>{{selectedBranch?.name ?? 'Branch'}} >> {{testSelectedState.name}}</h3>
-                                        <solacetk-animation-editor [(model)]="selectedAnimationData"
-                                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
-                                    </div>
+            <ng-template matExpansionPanelContent>
+                <div *ngIf="model.behaviorSystem">
+                    <mat-card>
+                        <mat-card-title>{{model.behaviorSystem.name}}</mat-card-title>
+                        <mat-card-content>
+                            <div class="disp-flex">
+                                <div class="no-flex width-33 min-width-5 mt-2 mr-2">
+                                    <solacetk-attributes-panel [panelMode]="1" panelName="Test Data"
+                                        panelType="expansionpanel" [(model)]="testStateData">
+                                    </solacetk-attributes-panel>
                                 </div>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
-                </ng-template>
 
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="importBehaviorSystem()">Select</button>
-                    <button mat-icon-button matTooltip="Select State" color="primary" class="no-flex"
-                        (click)="selectState()">
-                        <mat-icon>sync_alt</mat-icon>
-                    </button>
-                </mat-action-row>
+                                <div class="gap-1"></div>
 
-            </mat-expansion-panel>
+                                <div *ngIf="testSelectedState" class="auto-flex width-2">
+                                    <h3>{{selectedBranch?.name ?? 'Branch'}} >> {{testSelectedState.name}}</h3>
+                                    <solacetk-animation-editor [(model)]="selectedAnimationData" [showDataPanel]="false"
+                                        [showFrames]="false"></solacetk-animation-editor>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </ng-template>
 
-            <solacetk-controller-component [(model)]="model.components" panelColor="darkslategrey">
+            <mat-action-row>
+                <button mat-button color="primary" (click)="importBehaviorSystem()">Select</button>
+                <button mat-icon-button matTooltip="Select State" color="primary" class="no-flex"
+                    (click)="selectState()">
+                    <mat-icon>sync_alt</mat-icon>
+                </button>
+            </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <div class="gap-1"></div>
+
+        <div class="no-flex width-2 min-width-6">
+            <solacetk-controller-component [(model)]="model.components" panelColor="darkslategrey" panelType="panel">
             </solacetk-controller-component>
+        </div>
 
 
-        </mat-accordion>
+        <!-- </mat-accordion> -->
 
 
     </div>

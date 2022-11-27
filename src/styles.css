@@ -313,6 +313,31 @@ mat-tab-header.mat-tab-header {
 
 .gap-1 {
     width: 1%;
+    height: 8px;
+}
+
+.min-width-1 {
+    min-width: 64px;
+}
+
+.min-width-2 {
+    min-width: 128px;
+}
+
+.min-width-3 {
+    min-width: 192px;
+}
+
+.min-width-4 {
+    min-width: 256px;
+}
+
+.min-width-5 {
+    min-width: 320px;
+}
+
+.min-width-6 {
+    min-width: 384px;
 }
 
 .auto-flex {

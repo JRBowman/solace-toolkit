@@ -22,6 +22,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() showFileInfo: boolean = true;
   @Input() showDataPanel: boolean = true;
   @Input() bgColor: string = "transparent";
+  @Input() panelName: string = "Animation Data";
 
 
   public fileName: string = "";

@@ -11,7 +11,7 @@
     <mat-tab class="no-height" label="List">
 
       <div class="disp-flex mt-2 mb-2">
-        <mat-card class="width-25 mr-2 mb-2" *ngFor='let model of filteredData'>
+        <mat-card class="width-25 min-width-4 mr-2 mb-2" *ngFor='let model of filteredData'>
 
           <mat-card-title-group class="align-center">
             <div mat-card-avatar class="no-flex align-center">
@@ -19,7 +19,7 @@
             </div>
             <div class="auto-flex mr-2">
               <mat-card-title class="font-large">{{model.name}}</mat-card-title>
-              
+
             </div>
 
             <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
@@ -46,11 +46,12 @@
 
 
     </mat-tab>
+
     <mat-tab label="Editor">
 
-      <div *ngIf="model" class="character-container mt-2">
+      <div *ngIf="model" class="character-container disp-flex mt-2">
 
-        <mat-expansion-panel [expanded]="!collapseCoreEditor">
+        <mat-expansion-panel [expanded]="!collapseCoreEditor" class="no-flex width-5 min-width-4">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="mr-2">workspaces</mat-icon>
@@ -88,10 +89,13 @@
 
         </mat-expansion-panel>
 
-        <mat-divider class="mb-2 mt-2"></mat-divider>
+        <div class="gap-1"></div>
 
-        <ng-content select=".editor-panels"></ng-content>
+        <!-- <mat-divider class="mb-2 mt-2"></mat-divider> -->
 
+        <div class="auto-flex width-2">
+          <ng-content select=".editor-panels"></ng-content>
+        </div>
 
       </div>
 
