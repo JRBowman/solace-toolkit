@@ -42,19 +42,11 @@
                             <div class="auto-flex">
                                 <mat-icon class="auto-flex full-width text-center">arrow_downward</mat-icon>
                             </div>
-                            <mat-card class="bg-task-card">
-                                <mat-card-title-group>
-                                    <mat-card-title class="font-medium auto-flex">{{state.name}}</mat-card-title>
-                                </mat-card-title-group>
-                                <mat-card-content>
 
-
-                                    <div *ngIf="state.animation">
-                                        <solacetk-animation-editor [(model)]="state.animation.actFrameData"
-                                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
-                                    </div>
-                                </mat-card-content>
-                            </mat-card>
+                            <div *ngIf="state.name && state.animation">
+                                <solacetk-animation-editor [panelName]="state.name" [(model)]="state.animation.actFrameData"
+                                    [showDataPanel]="false" [showFrames]="false" bgColor="darkorange"></solacetk-animation-editor>
+                            </div>
                         </div>
                     </div>
 

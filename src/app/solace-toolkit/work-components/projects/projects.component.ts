@@ -32,6 +32,8 @@ export class ProjectsComponent implements OnInit {
   public totalPaid: number = 0;
   public totalOutstanding: number = 0;
 
+  public projectBillable: boolean = true;
+
   ngOnInit(): void {
 
   }
@@ -53,6 +55,10 @@ export class ProjectsComponent implements OnInit {
     this.showProjectBuckets = false;
   }
 
+
+  public totalTasks: number = 0;
+  public totalReview: number = 0;
+  public totalCompleted: number = 0;
   ReportHours(loadModel: boolean = false) {
 
     if (loadModel) this.model.workItems = [...this.backlog, ...this.inProgress, ...this.review, ...this.complete];
@@ -73,6 +79,10 @@ export class ProjectsComponent implements OnInit {
       }
       //this.tot
     });
+
+    this.totalTasks = this.model.workItems.length;
+    this.totalReview = Math.round(((this.review.length) / this.totalTasks) * 100);
+    this.totalCompleted = Math.round(((this.complete.length) / this.totalTasks) * 100);
 
     this.totalOutstanding = +this.totalActual - +this.totalPaid;
 

@@ -94,8 +94,7 @@
                                 <div class="gap-1"></div>
 
                                 <div *ngIf="testSelectedState" class="auto-flex width-2">
-                                    <h3>{{selectedBranch?.name ?? 'Branch'}} >> {{testSelectedState.name}}</h3>
-                                    <solacetk-animation-editor [(model)]="selectedAnimationData" [showDataPanel]="false"
+                                    <solacetk-animation-editor [panelName]="(selectedBranch?.name ?? 'Branch') + ' -> ' + testSelectedState.name" [(model)]="selectedAnimationData" [showDataPanel]="false"
                                         [showFrames]="false"></solacetk-animation-editor>
                                 </div>
                             </div>

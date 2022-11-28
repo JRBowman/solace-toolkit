@@ -29,6 +29,8 @@ export class SolacetkAttributesPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.panelType = "expansionpanel";
     if (this.panelMode == panelType.conditions) this.operators = SoltkKeyValue.conditionalOperatorValues;
     else if (this.panelMode == panelType.variables) this.operators = SoltkKeyValue.actionOperatorValues;
   }

@@ -30,7 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
 
 .flex-card-group {
     display: flex !important;
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 
 
@@ -127,7 +127,7 @@ mat-tab-header.mat-tab-header {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
 
-
+    width: fit-content !important;
     overflow-x: visible;
     height: 100%;
 }
@@ -138,7 +138,6 @@ mat-tab-header.mat-tab-header {
 
 .flex-container {
     position: relative;
-    left: -8%;
     min-height: 800px;
 }
 

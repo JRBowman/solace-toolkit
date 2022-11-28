@@ -1,6 +1,12 @@
 <mat-card class="auto-flex mb-2 bg-task-card">
-    <mat-card-content>
+
+
+    <mat-card-title-group>
         <mat-card-title class="font-medium auto-flex">{{model.name}}</mat-card-title>
+    </mat-card-title-group>
+
+    <mat-card-content>
+
         <mat-divider matLine class="mb-2"></mat-divider>
         <p class="font-small no-margin auto-flex" matLine>Estimate: {{model.hoursEstimate}} hr</p>
         <p class="font-small no-margin auto-flex" matLine>Actual: {{model.hoursActual}} hr</p>
@@ -12,17 +18,17 @@
     <mat-card-actions class="pos-bottom">
         <div class="flex-card-group">
             <div *ngIf="model.tags !== '#complete'">
-                <button color="primary" class="auto-flex" mat-button (click)="openWorkItemEditor()">Open</button>
+                <button color="accent" mat-icon-button (click)="openWorkItemEditor()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button *ngIf="model.tags === '#complete'" color="accent" mat-button
+                    (click)="openWorkItemEditor()">View</button>
                 <button color="primary" mat-icon-button (click)="deleteWorkItem()">
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
-
-            <button *ngIf="model.tags === '#complete'" color="accent" mat-button
-                (click)="openWorkItemEditor()">View</button>
-
         </div>
-
     </mat-card-actions>
 
 </mat-card>

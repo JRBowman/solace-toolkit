@@ -1,79 +1,133 @@
-<div *ngIf="panelType === 'expansionpanel'">
+<solacetk-panel [panelName]="panelName" [panelIcon]="panelIcon" [panelColor]="panelColor" [panelType]="panelType">
 
-    <mat-expansion-panel [class]="panelClass" [style.background-color]="panelColor">
-        <mat-expansion-panel-header class="auto-flex">
-            <mat-panel-title>
-                <mat-icon class="mr-2">{{panelIcon}}</mat-icon>
-                {{panelName}}
-            </mat-panel-title>
-            <mat-chip-list class="auto-flex align-start">
-                <mat-chip *ngFor="let cond of model" class="font-small" style="background-color: transparent;">
-                    {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
-                </mat-chip>
-            </mat-chip-list>
-        </mat-expansion-panel-header>
+    <div class="panel-content">
 
-        <ng-template matExpansionPanelContent>
-
-            <div *ngIf="model">
+        <div *ngIf="model">
 
 
-                <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
-                    <mat-card cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
+            <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
+                <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
 
-                        <mat-card-title-group>
-
-
-                        </mat-card-title-group>
-
-                        <mat-card-content class="disp-flex">
+                    <div class="disp-flex">
 
 
-                            <div class="no-flex model-field-small mr-2">
-                                <h4>[{{GetKeyIndex(attr)}}]:</h4>
-                            </div>
+                        <div class="no-flex model-field-small mr-2">
+                            <h4>[{{GetKeyIndex(attr)}}]:</h4>
+                        </div>
 
-                            <mat-form-field class="auto-flex model-field-small width-5 mr-2">
-                                <input matInput placeholder="Key" [(ngModel)]="attr.key">
-                            </mat-form-field>
+                        <mat-form-field class="auto-flex model-field-small width-5 mr-2">
+                            <input matInput placeholder="Key" [(ngModel)]="attr.key">
+                        </mat-form-field>
 
-                            <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-field-small mr-2 width-5-min">
-                                <!-- <input matInput placeholder="Operator" > -->
-                                <mat-label>Operator</mat-label>
-                                <mat-select [(ngModel)]="attr.operator">
-                                    <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-field-small mr-2 width-5-min">
+                            <mat-label>Operator</mat-label>
+                            <mat-select [(ngModel)]="attr.operator">
+                                <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                            <mat-form-field class="auto-flex model-field-small width-5">
-                                <input matInput placeholder="Data" [(ngModel)]="attr.data">
-                            </mat-form-field>
+                        <mat-form-field class="auto-flex model-field-small width-5">
+                            <input matInput placeholder="Data" [(ngModel)]="attr.data">
+                        </mat-form-field>
 
-                            <button mat-icon-button color="primary" class="no-flex align-top"
-                            aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
+                        <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
+                            (click)="RemoveAttribute(attr)">
                             <mat-icon>remove</mat-icon>
                         </button>
 
-                        </mat-card-content>
-                    </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel-actions">
+
+        <button mat-button (click)="AddAttribute()">Add</button>
+        <ng-content select=".action-row"></ng-content>
+
+    </div>
+
+
+
+    <!-- <div *ngIf="panelType === 'expansionpanel'">
+
+        <mat-expansion-panel [class]="panelClass" [style.background-color]="panelColor">
+            <mat-expansion-panel-header class="auto-flex">
+                <mat-panel-title>
+                    <mat-icon class="mr-2">{{panelIcon}}</mat-icon>
+                    {{panelName}}
+                </mat-panel-title>
+                <mat-chip-list class="auto-flex align-start">
+                    <mat-chip *ngFor="let cond of model" class="font-small" style="background-color: transparent;">
+                        {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+
+                <div *ngIf="model">
+
+
+                    <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
+                        <mat-card cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2"
+                            style="margin: 0;">
+
+                            <mat-card-title-group>
+
+
+                            </mat-card-title-group>
+
+                            <mat-card-content class="disp-flex">
+
+
+                                <div class="no-flex model-field-small mr-2">
+                                    <h4>[{{GetKeyIndex(attr)}}]:</h4>
+                                </div>
+
+                                <mat-form-field class="auto-flex model-field-small width-5 mr-2">
+                                    <input matInput placeholder="Key" [(ngModel)]="attr.key">
+                                </mat-form-field>
+
+                                <mat-form-field *ngIf="operatorsEnabled"
+                                    class="no-flex model-field-small mr-2 width-5-min">
+                                    <mat-label>Operator</mat-label>
+                                    <mat-select [(ngModel)]="attr.operator">
+                                        <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="auto-flex model-field-small width-5">
+                                    <input matInput placeholder="Data" [(ngModel)]="attr.data">
+                                </mat-form-field>
+
+                                <button mat-icon-button color="primary" class="no-flex align-top"
+                                    aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+
                 </div>
 
-
-            </div>
-
-        </ng-template>
+            </ng-template>
 
 
-        <mat-action-row>
-            <button mat-button (click)="AddAttribute()">Add</button>
-            <ng-content select=".action-row"></ng-content>
-        </mat-action-row>
-    </mat-expansion-panel>
+            <mat-action-row>
 
-</div>
+            </mat-action-row>
+        </mat-expansion-panel>
 
-<div *ngIf="panelType === 'panel'">
+    </div> -->
+
+    <!-- <div *ngIf="panelType === 'panel'">
 
     <mat-card *ngIf="model" class="auto-flex" [style.backgroundColor]="panelColor">
 
@@ -98,7 +152,6 @@
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
                         <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small width-33">
-                            <!-- <input matInput placeholder="Operator" > -->
                             <mat-label>Operator</mat-label>
                             <mat-select [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
@@ -123,4 +176,6 @@
 
     </mat-card>
     <button mat-button (click)="AddAttribute()">Add</button>
-</div>
+</div> -->
+
+</solacetk-panel>
