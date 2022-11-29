@@ -20,6 +20,9 @@ export class SolacetkService {
   public solTkServStatus: boolean = false;
   public solTkAuthStatus: boolean = false;
 
+  public screenWidth: any;
+  public screenHeight: any;
+
   public Initialize() {
 
   }

@@ -1,65 +1,83 @@
 <solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()"
     (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations">
     <div class="editor">
-        <mat-divider class="mb-2 mt-2"></mat-divider>
+        
     </div>
 
     <div class="editor-panels">
 
-        <mat-accordion class="auto-flex align-start full-width">
+        <!-- <mat-accordion class="auto-flex align-start full-width"> -->
+        <div class="disp-flex">
+            <div class="auto-flex width-2">
+                <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="mr-2">animation</mat-icon>
+                            Start Frames
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-            <mat-expansion-panel [disabled]="!model.id">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-icon class="mr-2">animation</mat-icon>
-                        Start Frames
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
 
-                <ng-template matExpansionPanelContent>
+                        <!-- Frames Content: -->
+                        <solacetk-animation-editor [(model)]="model.startFrameData" [unloadChange]="unloadModules">
+                        </solacetk-animation-editor>
+                    </ng-template>
 
-                    <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.startFrameData" [unloadChange]="unloadModules">
-                    </solacetk-animation-editor>
-                </ng-template>
+                </mat-expansion-panel>
 
-            </mat-expansion-panel>
+                <div class="gap-1"></div>
 
-            <mat-expansion-panel [disabled]="!model.id">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-icon class="mr-2">animation</mat-icon>
-                        Act Frames
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+                <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="mr-2">animation</mat-icon>
+                            Act Frames
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-                <ng-template matExpansionPanelContent>
+                    <ng-template matExpansionPanelContent>
 
-                    <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.actFrameData" [unloadChange]="unloadModules">
-                    </solacetk-animation-editor>
-                </ng-template>
+                        <!-- Frames Content: -->
+                        <solacetk-animation-editor [(model)]="model.actFrameData" [unloadChange]="unloadModules">
+                        </solacetk-animation-editor>
 
-            </mat-expansion-panel>
+                    </ng-template>
 
-            <mat-expansion-panel [disabled]="!model.id">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-icon class="mr-2">animation</mat-icon>
-                        End Frames
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+                </mat-expansion-panel>
 
-                <ng-template matExpansionPanelContent>
+                <div class="gap-1"></div>
 
-                    <!-- Frames Content: -->
-                    <solacetk-animation-editor [(model)]="model.endFrameData" (unload)="unloadModules">
-                    </solacetk-animation-editor>
-                </ng-template>
+                <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="mr-2">animation</mat-icon>
+                            End Frames
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-            </mat-expansion-panel>
+                    <ng-template matExpansionPanelContent>
 
-        </mat-accordion>
+                        <!-- Frames Content: -->
+                        <solacetk-animation-editor [(model)]="model.endFrameData" (unload)="unloadModules">
+                        </solacetk-animation-editor>
+                    </ng-template>
+
+                </mat-expansion-panel>
+                <div class="no-flex gap-1"></div>
+            </div>
+
+            <div class="no-flex gap-1"></div>
+
+            <!-- Visual Component Data -->
+            <div *ngIf="model.actFrameData" class="no-flex width-5 min-width-5">
+                <solacetk-controller-component [(model)]="model.actFrameData.components" panelColor="darkslategrey">
+                </solacetk-controller-component>
+            </div>
+
+        </div>
+
+        <!-- </mat-accordion> -->
 
     </div>
 
@@ -71,7 +89,8 @@
             (click)="aseUpload.click()">
             <mat-icon>file_open</mat-icon>
         </button>
-        <input type="file" class="file-input" (change)="importAseAnims($event)" accept=".ase,.aseprite" #aseUpload multiple>
+        <input type="file" class="file-input" (change)="importAseAnims($event)" accept=".ase,.aseprite" #aseUpload
+            multiple>
 
     </div>
 

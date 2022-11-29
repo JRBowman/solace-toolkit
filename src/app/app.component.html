@@ -13,7 +13,9 @@
   <span class="no-flex"></span>
 
   <!-- <div *ngIf="msoaUserService.IsAuthenticated" class="auto-flex"> -->
-    <solacetk-toolnav-extended [toolbarIntegrated]="true"></solacetk-toolnav-extended>
+    <div *ngIf="soltkService.screenWidth > 990">
+    <solacetk-toolnav-extended [toolbarIntegrated]="true" class="full-width"></solacetk-toolnav-extended>
+  </div>
   <!-- </div> -->
 
   <span *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex"></span>

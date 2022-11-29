@@ -12,8 +12,8 @@
             <div *ngIf="showFrames" class="no-flex width-8">
                 <h3>Frames</h3>
                 <mat-chip-list class="no-flex">
-                    <mat-chip class="min-width-12 width-4 justify-center font-small" *ngFor="let frame of frames"
-                        (click)="onSelect(frame)"
+                    <mat-chip class="min-width-12 width-4 justify-center font-small soltk-chip"
+                        *ngFor="let frame of frames" (click)="onSelect(frame)"
                         [style.background-color]="selectedFrame == frame ? 'mediumvioletred' : 'cadetblue'">
                         {{frame.name}}
                     </mat-chip>
@@ -43,7 +43,7 @@
                 </div>
 
                 <mat-divider></mat-divider>
-                <div class="disp-flex no-flex mt-2">
+                <div *ngIf="showFrames && aseReady" class="disp-flex auto-flex mt-2">
 
                     <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
                         (click)="playAnimation()">
@@ -53,59 +53,78 @@
                         <mat-icon>stop</mat-icon>
                     </button>
 
-                    <mat-divider [vertical]="true" class="mr-2 ml-2"></mat-divider>
+                    <div class="gap-1 no-flex"></div>
 
-                    <div *ngIf="showFrames && aseReady" class="disp-flex no-flex">
-                        <!-- <h4>Frame: {{selectedFrame.name}}</h4> -->
-                        <mat-form-field class="no-flex width-6 mr-2">
-                            <mat-label>Duration</mat-label>
-                            <input type="number" matInput [(ngModel)]="model.frames[selected].duration"
-                                placeholder="100">
-                            <span matSuffix>ms</span>
-                        </mat-form-field>
+                    <mat-divider [vertical]="true"></mat-divider>
 
-                        <mat-divider [vertical]="true" class="mr-2 ml-2"></mat-divider>
+                    <div class="gap-1 no-flex"></div>
 
-                        <mat-form-field class="no-flex width-6 mr-2">
-                            <mat-label>Sprite Width</mat-label>
-                            <input type="number" matInput [(ngModel)]="spriteWidth" placeholder="192">
-                            <span matSuffix>px</span>
-                        </mat-form-field>
+                    <!-- <h4>Frame: {{selectedFrame.name}}</h4> -->
+                    <mat-form-field class="no-flex width-6">
+                        <mat-label>Duration</mat-label>
+                        <input type="number" matInput [(ngModel)]="model.frames[selected].duration" placeholder="100">
+                        <span matSuffix>ms</span>
+                    </mat-form-field>
 
-                        <mat-form-field class="no-flex width-6 mr-2">
-                            <mat-label>Sprite Height</mat-label>
-                            <input type="number" matInput [(ngModel)]="spriteHeight" placeholder="192">
-                            <span matSuffix>px</span>
-                        </mat-form-field>
+                    <div class="gap-1 no-flex"></div>
 
-                        <mat-form-field class="no-flex width-6 mr-2">
-                            <mat-label>Zoom Scale</mat-label>
-                            <input type="number" matInput [(ngModel)]="zoomFactor" placeholder="4">
-                            <span matSuffix>x</span>
-                        </mat-form-field>
+                    <mat-divider [vertical]="true"></mat-divider>
 
-                        <mat-divider [vertical]="true" class="no-flex mr-2 ml-2"></mat-divider>
-                    </div>
+                    <div class="gap-1 no-flex"></div>
+
+                    <mat-form-field class="no-flex width-6">
+                        <mat-label>Sprite Width</mat-label>
+                        <input type="number" matInput [(ngModel)]="spriteWidth" placeholder="192">
+                        <span matSuffix>px</span>
+                    </mat-form-field>
+
+                    <div class="gap-1 no-flex"></div>
+
+                    <mat-form-field class="no-flex width-6">
+                        <mat-label>Sprite Height</mat-label>
+                        <input type="number" matInput [(ngModel)]="spriteHeight" placeholder="192">
+                        <span matSuffix>px</span>
+                    </mat-form-field>
+
+                    <div class="gap-1 no-flex"></div>
+
+                    <mat-form-field class="no-flex width-6">
+                        <mat-label>Zoom Scale</mat-label>
+                        <input type="number" matInput [(ngModel)]="zoomFactor" placeholder="4">
+                        <span matSuffix>x</span>
+                    </mat-form-field>
+
+                    <div class="gap-1 no-flex"></div>
+                    <mat-divider [vertical]="true"></mat-divider>
+                    <div class="gap-1 no-flex"></div>
+
+                    <mat-form-field class="no-flex width-6">
+                        <mat-label>Speed</mat-label>
+                        <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
+                        <span matSuffix>x</span>
+                    </mat-form-field>
 
 
 
                     <!-- <div class="auto-flex"></div> -->
 
-                    <button mat-icon-button matTooltip="Sync Component State" color="primary" class="no-flex"
+                    <!-- <button mat-icon-button matTooltip="Sync Component State" color="primary" class="no-flex"
                         (click)="addComponentToFrame()">
                         <mat-icon>sync_alt</mat-icon>
-                    </button>
+                    </button> -->
 
                 </div>
                 <mat-divider class="mb-2"></mat-divider>
 
-                <div class="disp-flex auto-flex" *ngIf="model && showFrames && aseReady">
-                    <!-- Visual Frame Data -->
-                    <div class="auto-flex">
-                        <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'"
-                            panelType="expansionpanel" [(model)]="model.frames[selected].downstreamData">
-                        </solacetk-attributes-panel>
-                    </div>
+                <div class="disp-flex" *ngIf="model && showFrames && aseReady">
+
+                </div>
+
+                <!-- Visual Frame Data -->
+                <div class="auto-flex">
+                    <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'"
+                        panelType="expansionpanel" [(model)]="model.frames[selected].downstreamData">
+                    </solacetk-attributes-panel>
                 </div>
 
             </div>
@@ -119,7 +138,6 @@
                 </solacetk-controller-component>
             </div> -->
 
-
         </div>
 
     </div>
@@ -129,15 +147,15 @@
     <!-- </mat-card-content> -->
 
     <!-- <mat-card-actions class="pos-bottom mt-2"> -->
-    <div class="panel-actions">
-        <div *ngIf="showDataPanel">
-            <button mat-button color="primary" (click)="aseUpload.click()">Import Aseprite</button>
-            <button mat-button color="primary" (click)="sheetUpload.click()">Import Sprite
+    <div class="panel-actions disp-flex">
+        <div *ngIf="showDataPanel" class="disp-flex">
+            <button mat-button color="primary" class="no-flex" (click)="aseUpload.click()">Import Aseprite</button>
+            <button mat-button color="primary" class="no-flex" (click)="sheetUpload.click()">Import Sprite
                 Sheet</button>
-            <button mat-button color="primary" (click)="textureUpload.click()">Add Frame</button>
-            <button mat-button (click)="loadDefaultComponents()">Add Default Components</button>
-            <button mat-button (click)="addComponent()">Add Component</button>
-            <button mat-button color="primary" (click)="logModel()">Log Model</button>
+            <button mat-button color="primary" class="no-flex" (click)="textureUpload.click()">Add Frame</button>
+            <!-- <button mat-button class="auto-flex" (click)="loadDefaultComponents()">Add Default Components</button>
+            <button mat-button class="auto-flex" (click)="addComponent()">Add Component</button> -->
+            <button mat-button class="no-flex" color="primary" (click)="logModel()">Log Model</button>
             <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite" #aseUpload>
             <input type="file" class="file-input" (change)="onSheetSelected($event)" accept=".png" #sheetUpload>
             <input type="file" class="file-input" (change)="onTextureSelected($event)" accept=".png" #textureUpload>

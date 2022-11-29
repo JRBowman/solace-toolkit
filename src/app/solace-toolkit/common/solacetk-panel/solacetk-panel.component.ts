@@ -13,8 +13,8 @@ export class SolacetkPanelComponent implements OnInit {
   @Input() panelIcon: string = "hub";
   @Input() panelName: string = "Panel";
 
-  @Input() unitWidth: string = "auto";
-  @Input() unitHeight: string = "auto";
+  @Input() unitWidth: any = "auto";
+  @Input() unitHeight: any = "auto";
 
   @Input() panelColor: string = "darkslategrey";
 

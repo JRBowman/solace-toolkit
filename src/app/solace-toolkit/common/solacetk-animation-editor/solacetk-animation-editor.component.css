@@ -45,3 +45,7 @@
     width: 55%;
     height: 67%;
 }
+
+.soltk-chip {
+    overflow: hidden;
+}

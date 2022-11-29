@@ -1,4 +1,4 @@
-<mat-card class="auto-flex" [style.backgroundColor]="panelColor" [style.width]="unitWidth" [style.height]="unitHeight">
+<mat-card class="auto-flex" [style.backgroundColor]="panelColor" [style.width]="unitWidth ? (unitWidth * 64) + 'px' : 'auto'" [style.height]="unitHeight ? (unitHeight * 64) + 'px' : 'auto'">
 
     <mat-card-title-group>
         <mat-icon class="mr-2">{{panelIcon}}</mat-icon>

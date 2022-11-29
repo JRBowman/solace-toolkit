@@ -10,6 +10,7 @@
     right:50%;
     left: 50%;
     Top: 50%;
+    z-index: 1000;
 }
 
 .btn-hover-right {
