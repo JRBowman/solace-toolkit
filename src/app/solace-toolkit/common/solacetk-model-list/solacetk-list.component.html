@@ -11,37 +11,40 @@
     <mat-tab class="no-height" label="List">
 
       <div class="disp-flex mt-2 mb-2">
-        <mat-card class="width-25 min-width-4 mr-2 mb-2" *ngFor='let model of filteredData'>
+        <div *ngFor='let model of filteredData' class="no-flex width-25 min-width-4 full-height">
+          <mat-card class="auto-flex width-25 min-width-4 ">
 
-          <mat-card-title-group class="align-center">
-            <div mat-card-avatar class="no-flex align-center">
-              <h3 class="mat-card-subtitle font-small">{{filteredData.indexOf(model)}}:</h3>
-            </div>
-            <div class="auto-flex mr-2">
-              <mat-card-title class="font-large">{{model.name}}</mat-card-title>
+            <mat-card-title-group class="align-center">
+              <div mat-card-avatar class="no-flex align-center">
+                <h3 class="mat-card-subtitle font-small">{{filteredData.indexOf(model)}}:</h3>
+              </div>
+              <div class="auto-flex mr-2">
+                <mat-card-title class="font-large">{{model.name}}</mat-card-title>
 
-            </div>
+              </div>
 
-            <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
-              matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
-              <mat-icon>edit_square</mat-icon>
-            </button>
-            <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
-              matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-card-title-group>
+              <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
+                matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
+                <mat-icon>edit_square</mat-icon>
+              </button>
+              <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
+                matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-title-group>
 
-          <mat-card-content>
-            <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
-          </mat-card-content>
+            <mat-card-content>
+              <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
+            </mat-card-content>
 
-          <mat-card-actions class="align-end">
-            <solacetk-tags class="auto-flex full-width align-end" [(model)]="model.tags"
-              (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
-          </mat-card-actions>
+            <mat-card-actions class="align-end">
+              <solacetk-tags class="auto-flex full-width align-end" [(model)]="model.tags"
+                (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
+            </mat-card-actions>
 
-        </mat-card>
+          </mat-card>
+          <div class="gap-1 no-flex"></div>
+        </div>
       </div>
 
 
