@@ -43,15 +43,16 @@
                 </div>
 
                 <mat-divider></mat-divider>
-                <div *ngIf="showFrames && aseReady" class="disp-flex auto-flex mt-2">
 
-                    <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
-                        (click)="playAnimation()">
-                        <mat-icon>play_arrow</mat-icon>
-                    </button>
-                    <button *ngIf="isPlaying" mat-icon-button color="primary" class="no-flex" (click)="stopAnimation()">
-                        <mat-icon>stop</mat-icon>
-                    </button>
+                <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
+                (click)="playAnimation()">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button *ngIf="isPlaying" mat-icon-button color="primary" class="no-flex" (click)="stopAnimation()">
+                <mat-icon>stop</mat-icon>
+            </button>
+
+                <div *ngIf="showFrames && aseReady" class="disp-flex auto-flex mt-2">
 
                     <div class="gap-1 no-flex"></div>
 
@@ -121,7 +122,7 @@
                 </div>
 
                 <!-- Visual Frame Data -->
-                <div class="auto-flex">
+                <div class="auto-flex" *ngIf="showFrames">
                     <solacetk-attributes-panel [panelMode]="1" [panelName]="'Frame ' + selected + ' Data'"
                         panelType="expansionpanel" [(model)]="model.frames[selected].downstreamData">
                     </solacetk-attributes-panel>
