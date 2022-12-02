@@ -10,8 +10,8 @@
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
     <mat-tab class="no-height" label="List">
 
-      <div class="disp-flex mt-2 mb-2">
-        <div *ngFor='let model of filteredData' class="no-flex min-width-4">
+      <div class="disp-flex mt-2">
+        <div *ngFor='let model of filteredData' class="no-flex width-33 min-width-4 disp-flex">
           <mat-card class="auto-flex min-width-4">
 
             <mat-card-title-group class="align-center">
@@ -20,7 +20,6 @@
               </div>
               <div class="auto-flex mr-2">
                 <mat-card-title class="font-large">{{model.name}}</mat-card-title>
-
               </div>
 
               <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"

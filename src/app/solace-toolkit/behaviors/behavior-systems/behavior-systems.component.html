@@ -2,12 +2,6 @@
     <div class="editor">
 
         <div class="disp-flex">
-            <!-- <mat-form-field class="model-formfield auto-flex">
-                <mat-select placeholder="Behavior Type" [(ngModel)]="model.behaviorType">
-                    <mat-option *ngFor="let item of behaviorTypes" [value]="item">{{this.behavior[item]}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field> -->
             <mat-form-field class="auto-flex">
                 <input matInput #startState placeholder="Start State" [(ngModel)]="model.startState">
             </mat-form-field>
@@ -18,10 +12,12 @@
     </div>
 
     <div class="editor-panels">
-        <mat-accordion class="align-start">
+        <!-- <mat-accordion class="align-start"> -->
 
             <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
                 panelColor="mediumvioletred" [(model)]="model.varData"></solacetk-attributes-panel>
+
+            <div class="no-flex gap-1"></div>
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -52,12 +48,12 @@
                             <mat-card-content class="disp-flex">
                                 <div *ngFor="let state of branch.states">
                                     <div class="no-flex width-33 min-width-4">
-                                        <mat-chip-list class="mb-2">
+                                        <!-- <mat-chip-list class="mb-2">
                                             <mat-chip *ngFor="let cond of state.conditions" class="font-small"
                                                 style="background-color: darkslategrey;">
                                                 {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
                                             </mat-chip>
-                                        </mat-chip-list>
+                                        </mat-chip-list> -->
                                         <solacetk-animation-editor [panelName]="state?.name ?? 'Anim Data'"
                                             [(model)]="state.animation.actFrameData" [showDataPanel]="false"
                                             [showFrames]="false" bgColor="darkcyan"></solacetk-animation-editor>
@@ -98,39 +94,11 @@
 
             </mat-expansion-panel>
 
-            <!-- <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Events
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-
-                <ng-template matExpansionPanelContent>
-                    <div *ngIf="model.events">
-                        <div *ngFor="let ev of model.events">
-                            <mat-card>
-                                <mat-card-title>{{ev.name}}</mat-card-title>
-                                <mat-card-subtitle>Description: {{ev.description}}</mat-card-subtitle>
-                                <mat-card-content>
-                                    <div *ngFor="let condition of ev.conditions">
-                                        <solacetk-attributes-panel [(model)]="condition.conditions"></solacetk-attributes-panel>
-                                    </div>
-                                </mat-card-content>
-                            </mat-card>
-                        </div>
-                    </div>
-
-                </ng-template>
-
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="openActionsSheet()">Add</button>
-                </mat-action-row>
-            </mat-expansion-panel> -->
+            <div class="no-flex gap-1"></div>
 
             <solacetk-event-panel class="mb-2" [(model)]="model.events"></solacetk-event-panel>
 
-        </mat-accordion>
+        <!-- </mat-accordion> -->
 
     </div>
 </solacetk-model-list>
