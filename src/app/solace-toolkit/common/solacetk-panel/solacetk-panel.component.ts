@@ -11,10 +11,12 @@ export class SolacetkPanelComponent implements OnInit {
 
   @Input() panelType: string = "panel";
   @Input() panelIcon: string = "hub";
-  @Input() panelName: string = "Panel";
+  @Input() panelName: string = "panel";
 
   @Input() unitWidth: any = "auto";
   @Input() unitHeight: any = "auto";
+
+  @Input() fontSize: string = "normal";
 
   @Input() panelColor: string = "darkslategrey";
 

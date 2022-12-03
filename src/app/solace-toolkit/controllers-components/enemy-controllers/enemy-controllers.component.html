@@ -4,8 +4,8 @@
 
         <div class="disp-flex">
             <div class="auto-flex align-center" style="text-align: justify;">
-            <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl" alt="sprite">
-        </div>
+                <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl" alt="sprite">
+            </div>
 
             <div class="disp-flex">
                 <mat-form-field class="no-flex width-10 mr-2">
@@ -93,9 +93,39 @@
 
                                 <div class="gap-1"></div>
 
+                                <!-- List Branches / States Details: -->
+                                <div class="disp-flex auto-flex">
+                                    <div class="disp-flex auto-flex" *ngFor="let branch of model.behaviorSystem.branches">
+                                        <solacetk-panel [unitWidth]="2" [panelName]="branch.name ?? 'unidentified'"
+                                            fontSize="small" panelType="panel"
+                                            [panelColor]="selectedBranch == branch ? 'lightcoral' : 'coral'">
+                                            <div class="panel-content">
+
+                                                <!-- List States Details: -->
+                                                <!-- <div *ngIf="selectedBranch == branch"> -->
+                                                <div *ngFor="let state of branch.states">
+                                                    <solacetk-panel [unitHeight]="0.5"
+                                                        [panelName]="state.name ?? 'unidentified'" fontSize="small" panelType="panel"
+                                                        [panelColor]="testSelectedState == state ? 'cyan' : 'darkcyan'">
+
+                                                    </solacetk-panel>
+                                                    <div class="gap-1 no-flex"></div>
+                                                </div>
+
+
+                                            </div>
+                                        </solacetk-panel>
+                                        <div class="gap-1 no-flex"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="disp-flex">
                                 <div *ngIf="testSelectedState" class="auto-flex width-2">
-                                    <solacetk-animation-editor [panelName]="(selectedBranch?.name ?? 'Branch') + ' -> ' + testSelectedState.name" [(model)]="selectedAnimationData" [showDataPanel]="false"
-                                        [showFrames]="false"></solacetk-animation-editor>
+                                    <solacetk-animation-editor
+                                        [panelName]="(selectedBranch?.name ?? 'Branch') + ' -> ' + testSelectedState.name"
+                                        [(model)]="selectedAnimationData" [showDataPanel]="false" [showFrames]="false">
+                                    </solacetk-animation-editor>
                                 </div>
                             </div>
                         </mat-card-content>
