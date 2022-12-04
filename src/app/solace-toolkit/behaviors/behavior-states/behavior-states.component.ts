@@ -18,7 +18,7 @@ export class BehaviorStatesComponent implements OnInit {
 
   public model: BehaviorState = new BehaviorState();
 
-  public conditionsColor: string = "darkslategrey";
+  public conditionsColor: string = "#006064";
 
   ngOnInit(): void {
 

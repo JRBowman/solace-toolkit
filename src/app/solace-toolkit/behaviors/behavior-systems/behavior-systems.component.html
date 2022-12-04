@@ -15,7 +15,7 @@
         <!-- <mat-accordion class="align-start"> -->
 
             <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
-                panelColor="mediumvioletred" [(model)]="model.varData"></solacetk-attributes-panel>
+                panelColor="#4a148c" [(model)]="model.varData"></solacetk-attributes-panel>
 
             <div class="no-flex gap-1"></div>
 
@@ -32,13 +32,13 @@
                     <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
 
                         <mat-card cdkDrag [cdkDragData]="branch" class="auto-flex mb-2"
-                            *ngFor="let branch of model.branches" style="background-color: coral;">
+                            *ngFor="let branch of model.branches" style="background-color: #ad1457;">
 
                             <mat-card-title-group class="disp-flex">
                                 <mat-card-title class="auto-flex">{{branch.name}}</mat-card-title>
                                 <mat-chip-list>
                                     <mat-chip *ngFor="let cond of branch.conditions" class="font-small"
-                                        style="background-color: darkslategrey;">
+                                        style="background-color: #006064;">
                                         {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
                                     </mat-chip>
                                 </mat-chip-list>
@@ -47,7 +47,7 @@
 
                             <mat-card-content class="disp-flex">
                                 <div *ngFor="let state of branch.states">
-                                    <div class="no-flex width-33 min-width-4">
+                                    <div class="disp-flex min-width-4">
                                         <!-- <mat-chip-list class="mb-2">
                                             <mat-chip *ngFor="let cond of state.conditions" class="font-small"
                                                 style="background-color: darkslategrey;">
@@ -56,7 +56,10 @@
                                         </mat-chip-list> -->
                                         <solacetk-animation-editor [panelName]="state?.name ?? 'Anim Data'"
                                             [(model)]="state.animation.actFrameData" [showDataPanel]="false"
-                                            [showFrames]="false" bgColor="darkcyan"></solacetk-animation-editor>
+                                            [showFrames]="false" bgColor="#009688"></solacetk-animation-editor>
+                                        
+                                        <div class="no-flex gap-1"></div>
+
                                         <!-- <mat-card-subtitle>{{state.name}}</mat-card-subtitle> -->
                                         <mat-chip-list>
                                             <mat-chip *ngFor="let data of state.actData" class="font-small"
@@ -72,8 +75,9 @@
                                                 {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
                                             </mat-chip>
                                         </mat-chip-list>
+                                        
                                     </div>
-                                    <div class="no-flex gap-1"></div>
+                                    
                                 </div>
                             </mat-card-content>
                             <mat-card-actions>

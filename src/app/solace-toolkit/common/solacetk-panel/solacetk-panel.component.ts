@@ -18,7 +18,7 @@ export class SolacetkPanelComponent implements OnInit {
 
   @Input() fontSize: string = "normal";
 
-  @Input() panelColor: string = "darkslategrey";
+  @Input() panelColor: string = "#006064";
 
   // ---
 

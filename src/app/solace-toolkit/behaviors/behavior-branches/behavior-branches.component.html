@@ -7,12 +7,14 @@
     </div>
 
     <div class="editor-panels">
-        <mat-accordion>
+        <!-- <mat-accordion> -->
 
             <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelName="Branch Conditions"
-                panelColor="darkslategrey" panelType="expansionpanel" panelIcon="gavel" [(model)]="model.conditions"
+                panelColor="#006064" panelType="expansionpanel" panelIcon="gavel" [(model)]="model.conditions"
                 [operatorsEnabled]="true">
             </solacetk-attributes-panel>
+
+            <div class="gap-1 no-flex"></div>
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -20,7 +22,7 @@
                         Branch States
                     </mat-panel-title>
                     <mat-chip-list class="auto-flex align-start" *ngIf="model.conditions">
-                        <mat-chip *ngFor="let cond of model.conditions" style="background-color: darkslategrey;">
+                        <mat-chip *ngFor="let cond of model.conditions" style="background-color: #006064;">
                             {{cond.key}} {{conditionalOperators[cond.operator]}} {{cond.data}}
                         </mat-chip>
                 </mat-chip-list>
@@ -30,10 +32,10 @@
 
                     <div class="disp-flex" cdkDropList (cdkDropListDropped)="dropBranches($event)" *ngIf="model.states">
                         <div cdkDrag [cdkDragData]="state" class="place-flex-start mb-2 mr-2" *ngFor="let state of model.states">
-                            <mat-card style="background-color: slategrey;" class="auto-flex">
+                            <mat-card style="background-color: #009688;" class="auto-flex">
                                 <mat-chip-list *ngIf="state.conditions">
                                     <div *ngFor="let condition of state.conditions">
-                                        <mat-chip style="background-color: darkslategrey;">
+                                        <mat-chip style="background-color: #006064;">
                                             {{condition.key}} {{actionOperators[condition.operator]}} {{condition.data}}
                                         </mat-chip>
                                     </div>
@@ -45,7 +47,7 @@
 
                             <div *ngIf="state.name && state.animation">
                                 <solacetk-animation-editor [panelName]="state.name" [(model)]="state.animation.actFrameData"
-                                    [showDataPanel]="false" [showFrames]="false" bgColor="darkorange"></solacetk-animation-editor>
+                                    [showDataPanel]="false" [showFrames]="false" bgColor="#009688"></solacetk-animation-editor>
                             </div>
                         </div>
                     </div>
@@ -57,8 +59,9 @@
                     <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
                 </mat-action-row>
             </mat-expansion-panel>
+            <div class="gap-1 no-flex"></div>
 
-        </mat-accordion>
+        <!-- </mat-accordion> -->
 
 
 
