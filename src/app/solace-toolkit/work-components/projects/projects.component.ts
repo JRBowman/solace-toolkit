@@ -32,6 +32,12 @@ export class ProjectsComponent implements OnInit {
   public totalPaid: number = 0;
   public totalOutstanding: number = 0;
 
+  public totalEstimatedDays: number = 0;
+  public totalActualDays: number = 0;
+  public totalOutstandingDays: number = 0;
+
+  public averageWorkHours: number = 7;
+
   public projectBillable: boolean = true;
 
   ngOnInit(): void {
@@ -85,6 +91,10 @@ export class ProjectsComponent implements OnInit {
     this.totalCompleted = Math.round(((this.complete.length) / this.totalTasks) * 100);
 
     this.totalOutstanding = +this.totalActual - +this.totalPaid;
+
+    this.totalEstimatedDays = Math.round(this.totalEstimated / this.averageWorkHours);
+    this.totalActualDays = Math.round(this.totalActual / this.averageWorkHours);
+    this.totalOutstandingDays = Math.round(this.totalOutstanding / this.averageWorkHours);
 
     this.backlog = this.model.workItems.filter(x => x.tags.includes("#backlog"));
     this.inProgress = this.model.workItems.filter(x => x.tags.includes("#inProgress"));

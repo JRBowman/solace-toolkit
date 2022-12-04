@@ -1,13 +1,13 @@
 <div *ngIf="model.id && modelLoaded && showProjectBuckets">
     <div *ngIf="!projectBillable" class="disp-flex">
         <div class="auto-flex">
-            <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
+            <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours ({{totalEstimatedDays}} Days)</small></h4>
         </div>
         <div class="auto-flex">
-            <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours</small></h4>
+            <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours ({{totalActualDays}} Days)</small></h4>
         </div>
         <div class="auto-flex">
-            <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalEstimated - totalActual}} Hours</small></h4>
+            <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours ({{totalOutstandingDays}} Days)</small></h4>
         </div>
         <div class="auto-flex">
             <h4>Staged: <small class="mat-card-subtitle">{{totalReview}}%</small></h4>

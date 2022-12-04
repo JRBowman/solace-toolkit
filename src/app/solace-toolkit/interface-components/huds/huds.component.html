@@ -1,9 +1,38 @@
-<solacetk-model-list [(model)]="model" moduleName="HUD Interfaces" modelUri="Interfaces/huds">
+<solacetk-model-list [(model)]="model" moduleName="HUD Interfaces" modelUri="Core/resourcecollections">
     <div class="editor">
 
     </div>
 
     <div class="editor-panels">
+
+        <div class="disp-flex">
+            <solacetk-panel [unitHeight]="11" class="auto-flex" panelColor="dimgray" panelName="Scene"
+                panelIcon="branding_watermark">
+
+                <div class="panel-content">
+
+                </div>
+
+            </solacetk-panel>
+
+            <div class="gap-1 no-flex"></div>
+
+            <solacetk-panel panelColor="indigo" panelName="HUD Elements" panelIcon="settop_component">
+
+                <div class="panel-content">
+
+                </div>
+
+                <div class="panel-actions">
+                    <button mat-icon-button color="primary">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+
+            </solacetk-panel>
+
+        </div>
+
 
     </div>
 </solacetk-model-list>

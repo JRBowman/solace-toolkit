@@ -1,8 +1,43 @@
-<solacetk-model-list [(model)]="model" moduleName="Environment Maps" modelUri="Environment/maps">
+<solacetk-model-list [(model)]="model" moduleName="Environment Maps" modelUri="Core/resourcecollections">
+
     <div class="editor">
 
     </div>
 
     <div class="editor-panels">
+        <div class="disp-flex">
+            <solacetk-panel [unitHeight]="9" class="auto-flex" panelColor="#222034" panelName="Map Viewer"
+                panelIcon="branding_watermark">
+
+                <div class="panel-content">
+
+                </div>
+
+                <div class="panel-actions">
+                    <button mat-icon-button matTooltip="Import Aseprite File">
+                        <mat-icon>upload</mat-icon>
+                    </button>
+                </div>
+
+            </solacetk-panel>
+
+            <div class="gap-1 no-flex"></div>
+
+            <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
+
+                <div class="panel-content">
+
+                </div>
+
+                <div class="panel-actions">
+                    <button mat-icon-button matTooltip="Add Layer to Map" color="primary">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+
+            </solacetk-panel>
+
+        </div>
     </div>
+
 </solacetk-model-list>

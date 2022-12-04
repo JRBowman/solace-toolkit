@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hudelement } from '../../models/hudelement';
+import { HudElement } from '../../models/hudelement';
 
 @Component({
   selector: 'app-hud-elements',
@@ -10,7 +10,7 @@ export class HudElementsComponent implements OnInit {
 
   constructor() { }
 
-  public model: Hudelement = new Hudelement();
+  public model: HudElement = new HudElement();
 
   ngOnInit(): void {
   }
