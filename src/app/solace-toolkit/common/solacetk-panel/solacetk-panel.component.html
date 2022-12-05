@@ -7,7 +7,7 @@
         </mat-card-title-group>
 
         <mat-card-content [style.width]="unitWidth ? (unitWidth * 64) + 'px' : 'auto'"
-            [style.height]="unitHeight ? (unitHeight * 64) + 'px' : 'auto'">
+            [style.height]="unitHeight ? (unitHeight * 64) + 'px' : 'auto'" [style.overflow]="overflowMethod">
 
             <ng-content select=".panel-content"></ng-content>
 

@@ -1,0 +1,32 @@
+<solacetk-panel-list [fontSize]="fontSize" [unitWidth]="unitWidth" [unitHeight]="unitHeight" [panelName]="panelName"
+    [panelIcon]="panelIcon" [panelColor]="panelColor" [panelType]="panelType" [overflowMethod]="overflowMethod"
+    [(model)]="model" [(selectedInstance)]="selectedInstance">
+
+    <div class="instance-editor">
+
+        <div class="disp-flex">
+
+            <mat-form-field class="auto-flex">
+                <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
+            </mat-form-field>
+
+            <mat-form-field class="auto-flex">
+                <input matInput placeholder="Name" [(ngModel)]="selectedInstance.name">
+            </mat-form-field>
+
+            <mat-form-field class="auto-flex">
+                <input matInput placeholder="LayerName" [(ngModel)]="selectedInstance.layerName">
+            </mat-form-field>
+
+            <mat-form-field class="auto-flex">
+                <input matInput type="number" placeholder="LayerOrder" [(ngModel)]="selectedInstance.layerOrder">
+            </mat-form-field>
+
+        </div>
+
+        <solacetk-attributes-panel panelName="Layer Data" panelType="expansionpanel"
+                panelColor="#4a148c" [(model)]="selectedInstance.layerData"></solacetk-attributes-panel>
+
+    </div>
+
+</solacetk-panel-list>

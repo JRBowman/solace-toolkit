@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EnvironmentMap } from '../../models/environment-map';
+import { EnvironmentMapLayer } from '../../models/environment-map-layer';
+import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
   selector: 'app-environment-map',
@@ -7,11 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnvironmentMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private soltkService: SolacetkService) { }
 
-  public model: any;
+  public model: EnvironmentMap = new EnvironmentMap();
+
+  public selectedLayer: EnvironmentMapLayer = new EnvironmentMapLayer();
+
+
+  public profileUrl: string = "";
 
   ngOnInit(): void {
+  }
+
+  loadEditor()
+  {
+    this.profileUrl = this.soltkService.apiHost + "Ase/" + this.model.name + "-act/" + this.model.name + "-act.png";
+  }
+
+  public logModel()
+  {
+    console.log(this.model);
   }
 
 }

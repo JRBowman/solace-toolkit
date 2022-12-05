@@ -91,6 +91,8 @@ import { SolacetkMessagesPanelComponent } from './solace-toolkit/common/solacetk
 import { SolaceControllerComponentComponent } from './solace-toolkit/common/solace-controller-component/solace-controller-component.component';
 import { SolacetkControllerComponentComponent } from './solace-toolkit/common/solacetk-controller-component/solacetk-controller-component.component';
 import { SolacetkPanelComponent } from './solace-toolkit/common/solacetk-panel/solacetk-panel.component';
+import { SolacetkPanelListComponent } from './solace-toolkit/common/solacetk-panel-list/solacetk-panel-list.component';
+import { MapLayersPanelComponent } from './solace-toolkit/environment-components/map-layers-panel/map-layers-panel.component';
 
 @NgModule({
   declarations: [
@@ -169,7 +171,9 @@ import { SolacetkPanelComponent } from './solace-toolkit/common/solacetk-panel/s
     SolacetkMessagesPanelComponent,
     SolaceControllerComponentComponent,
     SolacetkControllerComponentComponent,
-    SolacetkPanelComponent
+    SolacetkPanelComponent,
+    SolacetkPanelListComponent,
+    MapLayersPanelComponent
   ],
   imports: [
     BrowserModule,

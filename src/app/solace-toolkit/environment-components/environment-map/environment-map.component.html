@@ -1,4 +1,5 @@
-<solacetk-model-list [(model)]="model" moduleName="Environment Maps" modelUri="Core/resourcecollections">
+<solacetk-model-list [(model)]="model" moduleName="Environment Maps" modelUri="Core/resourcecollections"
+    (modelLoaded)="loadEditor()">
 
     <div class="editor">
 
@@ -10,12 +11,18 @@
                 panelIcon="branding_watermark">
 
                 <div class="panel-content">
-
+                    <div class="auto-flex align-center map-container">
+                        <img cdkDrag class="sprite-thumb-2col sprite map-layer auto-flex" [src]="profileUrl"
+                            alt="map layer">
+                    </div>
                 </div>
 
                 <div class="panel-actions">
                     <button mat-icon-button matTooltip="Import Aseprite File">
                         <mat-icon>upload</mat-icon>
+                    </button>
+                    <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
+                        Log
                     </button>
                 </div>
 
@@ -23,19 +30,25 @@
 
             <div class="gap-1 no-flex"></div>
 
-            <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
+            <div class="no-flex width-33">
+            <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers" panelColor="mediumseagreen"
+                overflowMethod="inherit" [(model)]="model.layers" [(selectedInstance)]="selectedLayer">
+            </map-layers-panel>
+        </div>
+
+            <!-- <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
 
                 <div class="panel-content">
 
                 </div>
 
                 <div class="panel-actions">
-                    <button mat-icon-button matTooltip="Add Layer to Map" color="primary">
+                    <button mat-icon-button matTooltip="Add Layer to Map" color="primary" (click)="addLayer()">
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>
 
-            </solacetk-panel>
+            </solacetk-panel> -->
 
         </div>
     </div>

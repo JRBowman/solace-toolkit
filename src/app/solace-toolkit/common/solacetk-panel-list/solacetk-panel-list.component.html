@@ -1,0 +1,69 @@
+<solacetk-panel [fontSize]="fontSize" [unitWidth]="unitWidth" [unitHeight]="unitHeight" [panelName]="panelName"
+    [panelIcon]="panelIcon" [panelColor]="panelColor" [panelType]="panelType" [overflowMethod]="overflowMethod">
+
+    <div class="panel-content">
+
+        <div class="disp-flex">
+            <div class="auto-flex">
+                <div class="mb-2">
+                    <mat-chip-list class="auto-flex">
+                        <mat-chip class="min-width-12 justify-center" *ngFor="let instance of model"
+                            (click)="onInstanceSelect(instance)">
+                            {{instance.name}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+
+
+                <mat-card *ngIf="selectedInstance">
+                    <div class="disp-flex">
+                        <mat-slide-toggle [(ngModel)]="selectedInstance.enabled">
+                        </mat-slide-toggle>
+                    </div>
+
+                    <mat-card-content>
+                        <ng-content select=".instance-editor"></ng-content>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-actions">
+        <button mat-button color="primary" (click)="addInstance()">Add</button>
+    </div>
+
+    <div class="expansionpanel-content">
+        <div class="disp-flex">
+            <div class="auto-flex">
+                <div class="mb-2">
+                    <mat-chip-list class="auto-flex">
+                        <mat-chip class="min-width-12 justify-center" *ngFor="let instance of model"
+                            (click)="onInstanceSelect(instance)">
+                            {{instance.name}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+
+
+                <mat-card *ngIf="selectedInstance">
+                    <div class="disp-flex">
+                        <mat-slide-toggle [(ngModel)]="selectedInstance.enabled">
+                        </mat-slide-toggle>
+                    </div>
+
+                    <mat-card-content>
+                        <ng-content select=".instance-editor"></ng-content>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="expansionpanel-actions">
+        <button mat-button color="primary" (click)="addInstance()">Add</button>
+    </div>
+
+</solacetk-panel>
