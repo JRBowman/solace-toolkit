@@ -1,9 +1,9 @@
 .map-container {
-    overflow: hidden;
+    position: relative;
 }
 
 .map-layer {
-    width: 100% !important;
-    height: 100% !important;
-    position: relative;
+    width: auto !important;
+    height: 576px !important;
+    position: absolute;
 }

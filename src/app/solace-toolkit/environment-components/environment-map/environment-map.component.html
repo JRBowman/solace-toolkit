@@ -2,7 +2,7 @@
     (modelLoaded)="loadEditor()">
 
     <div class="editor">
-
+        <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl" alt="map layer">
     </div>
 
     <div class="editor-panels">
@@ -11,19 +11,34 @@
                 panelIcon="branding_watermark">
 
                 <div class="panel-content">
-                    <div class="auto-flex align-center map-container">
-                        <img cdkDrag class="sprite-thumb-2col sprite map-layer auto-flex" [src]="profileUrl"
-                            alt="map layer">
+                    <div class="disp-flex">
+                        <div class="auto-flex align-center map-container full-height" [style.transform]="scaleXY">
+                            <img cdkDrag class="sprite-thumb-2col sprite map-layer auto-flex" [src]="profileUrl"
+                                alt="map layer">
+                        </div>
                     </div>
                 </div>
 
                 <div class="panel-actions">
-                    <button mat-icon-button matTooltip="Import Aseprite File">
-                        <mat-icon>upload</mat-icon>
-                    </button>
-                    <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
-                        Log
-                    </button>
+                    <div class="disp-flex">
+                        <button mat-icon-button matTooltip="Import Aseprite File">
+                            <mat-icon>upload</mat-icon>
+                        </button>
+
+                        <mat-slider class="no-flex" max="5" min="0.1" step="0.1" showTickMarks="true"
+                            [(value)]="mapscale" (valueChange)="changeScale($event)">
+                            <input matSliderThumb [(ngModel)]="mapscale">
+                        </mat-slider>
+                        <div class="auto-flex align-end">
+                            <h4><small>Scale:</small> {{mapscale}}</h4>
+                        </div>
+
+                        <div class="gap-1 auto-flex"></div>
+
+                        <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
+                            Log
+                        </button>
+                    </div>
                 </div>
 
             </solacetk-panel>
@@ -31,10 +46,11 @@
             <div class="gap-1 no-flex"></div>
 
             <div class="no-flex width-33">
-            <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers" panelColor="mediumseagreen"
-                overflowMethod="inherit" [(model)]="model.layers" [(selectedInstance)]="selectedLayer">
-            </map-layers-panel>
-        </div>
+                <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers"
+                    panelColor="mediumseagreen" overflowMethod="inherit" [(model)]="model.layers"
+                    [(selectedInstance)]="selectedLayer">
+                </map-layers-panel>
+            </div>
 
             <!-- <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
 
