@@ -2,7 +2,7 @@
     (modelLoaded)="loadEditor()">
 
     <div class="editor">
-        <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl" alt="map layer">
+        <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl + '.png'" alt="map layer">
     </div>
 
     <div class="editor-panels">
@@ -11,10 +11,12 @@
                 panelIcon="branding_watermark">
 
                 <div class="panel-content">
-                    <div class="disp-flex">
-                        <div class="auto-flex align-center map-container full-height" [style.transform]="scaleXY">
-                            <img cdkDrag class="sprite-thumb-2col sprite map-layer auto-flex" [src]="profileUrl"
+                    <div class="disp-flex" [style.transform]="scaleXY">
+                        <div cdkDrag class="auto-flex align-center map-container full-height">
+                            <div *ngFor="let layer of model.layers">
+                            <img class="sprite-thumb-2col sprite map-layer auto-flex" *ngIf="layer.enabled" [src]="profileUrl + '-' + layer.name + '.png'" 
                                 alt="map layer">
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ export class EnvironmentMapLayer {
     public description?: string = "";
     public tags?: string = "";
 
+    public enabled: boolean = true;
+
     // Layer Data:
     public layerOrder: number = 0;
     public layerData: SoltkKeyValue[] = [];
