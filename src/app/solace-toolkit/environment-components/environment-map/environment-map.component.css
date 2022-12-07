@@ -7,3 +7,10 @@
     height: 576px !important;
     position: absolute;
 }
+
+.background-grid {
+    height: 576px;
+    position: absolute;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+}

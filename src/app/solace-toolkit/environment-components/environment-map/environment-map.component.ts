@@ -26,6 +26,7 @@ export class EnvironmentMapComponent implements OnInit {
 
   public profileUrl: string = "";
   public layerDataUrl: string = "";
+  public gridUrl: string = this.soltkService.apiHost + "Ase/grid-tile/grid-tile.png";
 
   ngOnInit(): void {
 

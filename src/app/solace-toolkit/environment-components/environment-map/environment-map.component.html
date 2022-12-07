@@ -14,8 +14,11 @@
                     <div class="disp-flex" [style.transform]="scaleXY">
                         <div cdkDrag class="auto-flex align-center map-container full-height">
                             <div *ngFor="let layer of model.layers">
-                            <img class="sprite-thumb-2col sprite map-layer auto-flex" *ngIf="layer.enabled" [src]="profileUrl + '-' + layer.name + '.png'" 
-                                alt="map layer">
+                            <img class="sprite-thumb-2col sprite map-layer auto-flex" *ngIf="layer.enabled" 
+                            [src]="profileUrl + '-' + layer.name + '.png'" alt="map layer">
+                            </div>
+                            <div class="background-grid sprite auto-flex full-height full-width" [style.background]="'url(' + gridUrl + ')'">
+
                             </div>
                         </div>
                     </div>

@@ -90,7 +90,8 @@ export class ProjectsComponent implements OnInit {
     this.totalReview = Math.round(((this.review.length) / this.totalTasks) * 100);
     this.totalCompleted = Math.round(((this.complete.length) / this.totalTasks) * 100);
 
-    this.totalOutstanding = +this.totalActual - +this.totalPaid;
+    if (this.projectBillable) this.totalOutstanding = +this.totalActual - +this.totalPaid;
+    else this.totalOutstanding = Math.round(this.totalEstimated - this.totalActual);
 
     this.totalEstimatedDays = Math.round(this.totalEstimated / this.averageWorkHours);
     this.totalActualDays = Math.round(this.totalActual / this.averageWorkHours);
