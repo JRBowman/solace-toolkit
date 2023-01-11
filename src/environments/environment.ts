@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiHost: "http://localhost:5010/",
-  apiHost: "https://msoa-arranger-bowman-prod.apps.bocp.onbowman.com/",
+  apiHost: "http://localhost:5010/",
+  //apiHost: "https://msoa-arranger-bowman-prod.apps.bocp.onbowman.com/",
   identityHost: "https://identity-svc.onbowman.com"
 };
 

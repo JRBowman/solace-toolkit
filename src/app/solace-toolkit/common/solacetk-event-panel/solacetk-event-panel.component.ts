@@ -25,7 +25,7 @@ export class SolacetkEventPanelComponent implements OnInit {
   {
     if (!this.model) this.model = [];
 
-    this.solacetkService.CreateModel("Behaviors/events", new ActionEvent()).subscribe(n => {
+    this.solacetkService.CreateModel("Events", new ActionEvent()).subscribe(n => {
       this.model = [...this.model, n];
       this.modelChange.emit(this.model);
     });
