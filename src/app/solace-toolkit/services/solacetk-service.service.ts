@@ -28,7 +28,7 @@ export class SolacetkService {
   }
 
   public CheckSolTkServices(): Observable<HttpResponse<any>> {
-    return this.http.get<HttpResponse<any>>(this.baseUrl + "Behaviors/systems");
+    return this.http.get<HttpResponse<any>>(this.baseUrl + "BehaviorSystems");
   }
 
   public CheckSolTkAuth(): Observable<HttpResponse<any>> {
