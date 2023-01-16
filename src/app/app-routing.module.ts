@@ -1,13 +1,10 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IntroductionComponent } from './introduction/introduction.component';
-import { MusicComponent } from './music/music.component';
 import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
 import { ProjectsComponent } from './solace-toolkit/work-components/projects/projects.component';
-import { ResumeComponent } from './resume/resume.component';
 import { SoftwareComponent } from './software/software.component';
 import { CharacterControllersComponent } from './solace-toolkit/controllers-components/character-controllers/character-controllers.component';
-import { VideosComponent } from './videos/videos.component';
 import { EnvironmentMapComponent } from './solace-toolkit/environment-components/environment-map/environment-map.component';
 import { SoundSetsComponent } from './solace-toolkit/sound-components/sound-sets/sound-sets.component';
 import { SolacetkWikiComponent } from './solace-toolkit/common/solacetk-wiki/solacetk-wiki.component';
@@ -51,11 +48,6 @@ const routes: Routes = [
     component: IntroductionComponent
   },
   {
-    path: 'resume',
-    component: ResumeComponent,
-    ////canActivate: [AuthorizationGuard]
-  },
-  {
     path: 'software',
     component: SoftwareComponent,
     ////canActivate: [AuthorizationGuard]
@@ -65,11 +57,6 @@ const routes: Routes = [
     component: IdentityComponent,
     //canActivate: [AuthorizationGuard]
   },
-  // {
-  //   path: 'videos',
-  //   component: VideosComponent,
-  //   //canActivate: [AuthorizationGuard]
-  // },
   {
     path: 'openshift-visual-system',
     component: OpenshiftVisualSystemComponent,
