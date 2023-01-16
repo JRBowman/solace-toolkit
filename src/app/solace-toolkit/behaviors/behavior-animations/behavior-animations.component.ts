@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatChipSelectionChange } from '@angular/material/chips';
+import { MatLegacyChipSelectionChange as MatChipSelectionChange } from '@angular/material/legacy-chips';
 import { SolacetkBottomSheetComponent } from '../../common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
 import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
 import { SolacetkService } from '../../services/solacetk-service.service';

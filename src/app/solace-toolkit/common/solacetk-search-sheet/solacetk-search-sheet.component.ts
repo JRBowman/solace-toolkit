@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { MatListOption } from '@angular/material/list';
+import { MatLegacyListOption as MatListOption } from '@angular/material/legacy-list';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
