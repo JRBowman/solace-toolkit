@@ -25,9 +25,9 @@
 
                 <ng-template matExpansionPanelContent>
 
-                    <div *ngIf="model.branches">
+                    <div *ngIf="model.behaviors">
                         <mat-list cdkDropList (cdkDropListDropped)="dropBranches($event)">
-                            <mat-list-item cdkDrag [cdkDragData]="branch" *ngFor="let branch of model.branches">
+                            <mat-list-item cdkDrag [cdkDragData]="branch" *ngFor="let branch of model.behaviors">
                                 <h3 matLine>{{branch.name}}</h3>
                                 <p matLine>Description: {{branch.description}}</p>
                             </mat-list-item>

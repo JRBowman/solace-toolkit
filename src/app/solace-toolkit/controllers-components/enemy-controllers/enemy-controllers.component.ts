@@ -65,14 +65,14 @@ export class EnemyControllersComponent implements OnInit {
     if (this.testSelectedState && this.validateConditions(this.testSelectedState.conditions)) return;
 
     // No State, find the first valid Branch:
-    if (!(this.selectedBranch = this.model.behaviorSystem?.branches.find(x => this.validateConditions(x.conditions)))) return;
+    //if (!(this.selectedBranch = this.model.behaviorSystem?.branches.find(x => this.validateConditions(x.conditions)))) return;
     console.log("Branch Found");
 
-    if (!(this.testSelectedState = this.selectedBranch.states.find(x => this.validateConditions(x.conditions)))) return;
+    //if (!(this.testSelectedState = this.selectedBranch.states.find(x => this.validateConditions(x.conditions)))) return;
     console.log("State Found");
 
     // Notify of Changes:
-    this.selectedAnimationData = this.testSelectedState.animation.actFrameData;
+    //this.selectedAnimationData = this.testSelectedState.animation.actFrameData;
     this.testSelectedStateChange.emit(this.testSelectedState);
   }
 

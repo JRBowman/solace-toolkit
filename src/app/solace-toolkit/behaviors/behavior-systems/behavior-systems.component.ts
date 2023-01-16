@@ -36,7 +36,7 @@ public model: BehaviorSystem = new BehaviorSystem();
   }
 
   dropBranches(event: CdkDragDrop<any[]>) {
-    moveItemInArray(this.model.branches, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.model.behaviors, event.previousIndex, event.currentIndex);
   }
 
   public openActionsSheet()
@@ -54,11 +54,11 @@ public model: BehaviorSystem = new BehaviorSystem();
   public openBranchesSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/branches');
+    instance.instance.LoadData('Behaviors/states');
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.branches = models;
+      this.model.behaviors = models;
     });
     
   }

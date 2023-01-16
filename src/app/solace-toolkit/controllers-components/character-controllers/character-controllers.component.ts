@@ -59,11 +59,11 @@ export class CharacterControllersComponent implements OnInit {
 
       let states: BehaviorState[] = [];
 
-      if (!this.model.behaviorSystem || !this.model.behaviorSystem.branches) return states;
+      // if (!this.model.behaviorSystem || !this.model.behaviorSystem.branches) return states;
 
-      this.model.behaviorSystem.branches.forEach(branch => {
-          states = [...states, ...branch.GetStates()];
-      });
+      // this.model.behaviorSystem.branches.forEach(branch => {
+      //     states = [...states, ...branch.GetStates()];
+      // });
 
       return states;
   }

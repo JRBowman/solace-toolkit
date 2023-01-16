@@ -95,15 +95,13 @@
 
                                 <!-- List Branches / States Details: -->
                                 <div class="disp-flex">
-                                    <div class="disp-flex auto-flex"
+                                    <!-- <div class="disp-flex auto-flex"
                                         *ngFor="let branch of model.behaviorSystem.branches">
                                         <solacetk-panel [panelName]="branch.name ?? 'unidentified'" fontSize="small"
                                             panelType="panel"
                                             [panelColor]="selectedBranch == branch ? 'lightcoral' : 'coral'">
                                             <div class="panel-content">
 
-                                                <!-- List States Details: -->
-                                                <!-- <div *ngIf="selectedBranch == branch"> -->
                                                 <div *ngFor="let state of branch.states">
                                                     <solacetk-panel [unitHeight]="0.5"
                                                         [panelName]="state.name ?? 'unidentified'" fontSize="small"
@@ -118,7 +116,7 @@
                                             </div>
                                         </solacetk-panel>
                                         <div class="gap-1 no-flex"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>

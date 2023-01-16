@@ -24,6 +24,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() bgColor: string = "transparent";
   @Input() panelName: string = "Animation Data";
 
+  @Input() modelName: string = "";
+
 
   public fileName: string = "";
   public sheetName: string = "../../assets/soldof/images/settings.png";
@@ -60,7 +62,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       }
 
       if (this.model) {
-        let texName = "Ase/" + this.model.name + "/" + this.model.name;
+        let texName = "Ase/" + this.modelName + "/" + this.model.name;
         this.framesChange.emit(texName + ".png.json");
         console.log("loaded");
       }
@@ -104,7 +106,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         if (this.model) this.model.framesJson = JSON.stringify(this.frames);
 
 
-        let texName = "Ase/" + this.model?.name + "/" + this.model?.name;
+        let texName = "Ase/" + this.modelName + "/" + this.model?.name;
         this.sheetName = this.service.apiHost + texName + ".png";
         this.aseReady = true;
 

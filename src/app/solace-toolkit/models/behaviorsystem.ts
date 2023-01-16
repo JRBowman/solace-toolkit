@@ -11,13 +11,13 @@ export class BehaviorSystem {
     public tags?: string = "";
     public startState?: string;
     public behaviorType?: BehaviorType;
-    public branches: BehaviorBranch[] = [];
+    public behaviors: BehaviorState[] = [];
 
     public varData: SoltkKeyValue[] = [];
 
     public events: ActionEvent[] = [];
 
-    public desiredState: BehaviorState = new BehaviorState();
+    //public desiredState: BehaviorState = new BehaviorState();
 }
 
 export enum BehaviorType

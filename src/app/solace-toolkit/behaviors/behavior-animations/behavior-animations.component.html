@@ -20,7 +20,7 @@
                     <ng-template matExpansionPanelContent>
 
                         <!-- Frames Content: -->
-                        <solacetk-animation-editor [(model)]="model.startFrameData" [unloadChange]="unloadModules">
+                        <solacetk-animation-editor [(model)]="model.startFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
                         </solacetk-animation-editor>
                     </ng-template>
 
@@ -39,7 +39,7 @@
                     <ng-template matExpansionPanelContent>
 
                         <!-- Frames Content: -->
-                        <solacetk-animation-editor [(model)]="model.actFrameData" [unloadChange]="unloadModules">
+                        <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
                         </solacetk-animation-editor>
 
                     </ng-template>
@@ -59,7 +59,7 @@
                     <ng-template matExpansionPanelContent>
 
                         <!-- Frames Content: -->
-                        <solacetk-animation-editor [(model)]="model.endFrameData" (unload)="unloadModules">
+                        <solacetk-animation-editor [(model)]="model.endFrameData" [modelName]="model.name" (unload)="unloadModules">
                         </solacetk-animation-editor>
                     </ng-template>
 

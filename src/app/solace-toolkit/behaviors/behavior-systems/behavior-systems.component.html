@@ -18,21 +18,30 @@
                 panelColor="#4a148c" [(model)]="model.varData"></solacetk-attributes-panel>
 
             <div class="no-flex gap-1"></div>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <mat-icon class="mr-2">schema</mat-icon>
+            Behavior Works
+        </mat-panel-title>
+    </mat-expansion-panel-header>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-icon class="mr-2">schema</mat-icon>
-                        Behavior Works
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
 
-                <ng-template matExpansionPanelContent>
+        <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
 
-                    <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
 
-                        <mat-card cdkDrag [cdkDragData]="branch" class="auto-flex mb-2"
-                            *ngFor="let branch of model.branches" style="background-color: #ad1457;">
+            <div class="disp-flex auto-flex">
+                <div class="disp-flex no-flex width-5" *ngFor="let behavior of model.behaviors">
+                        <solacetk-animation-editor [panelName]="behavior?.name ?? 'Anim Data'"
+                            [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
+                            bgColor="#009688"></solacetk-animation-editor>
+                    <div class="no-flex gap-1"></div>
+                </div>
+            </div>
+
+                        <!-- <mat-card cdkDrag [cdkDragData]="branch" class="no-flex mb-2"
+                            *ngFor="let branch of model.behaviors" style="background-color: #ad1457;">
 
                             <mat-card-title-group class="disp-flex">
                                 <mat-card-title class="auto-flex">{{branch.name}}</mat-card-title>
@@ -42,35 +51,28 @@
                                         {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
                                     </mat-chip>
                                 </mat-chip-list>
-                                <h4 class="no-flex mr-2">{{model.branches.indexOf(branch)}}</h4>
+                                <h4 class="no-flex mr-2">{{model.behaviors.indexOf(branch)}}</h4>
                             </mat-card-title-group>
 
-                            <mat-card-content class="disp-flex">
+                            <mat-card-content >
                                 <div *ngFor="let state of branch.states">
                                     <div class="disp-flex min-width-4">
-                                        <!-- <mat-chip-list class="mb-2">
-                                            <mat-chip *ngFor="let cond of state.conditions" class="font-small"
-                                                style="background-color: darkslategrey;">
-                                                {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
-                                            </mat-chip>
-                                        </mat-chip-list> -->
-                                        <solacetk-animation-editor [panelName]="state?.name ?? 'Anim Data'"
-                                            [(model)]="state.animation.actFrameData" [showDataPanel]="false"
+                                        <solacetk-animation-editor [panelName]="branch?.name ?? 'Anim Data'"
+                                            [(model)]="branch.animation.actFrameData" [showDataPanel]="false"
                                             [showFrames]="false" bgColor="#009688"></solacetk-animation-editor>
                                         
                                         <div class="no-flex gap-1"></div>
 
-                                        <!-- <mat-card-subtitle>{{state.name}}</mat-card-subtitle> -->
                                         <mat-chip-list>
-                                            <mat-chip *ngFor="let data of state.actData" class="font-small"
+                                            <mat-chip *ngFor="let data of branch.actData" class="font-small"
                                                 style="background-color: mediumvioletred;">
                                                 {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
                                             </mat-chip>
-                                            <mat-chip *ngFor="let data of state.startData" class="font-small"
+                                            <mat-chip *ngFor="let data of branch.startData" class="font-small"
                                                 style="background-color: mediumvioletred;">
                                                 {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
                                             </mat-chip>
-                                            <mat-chip *ngFor="let data of state.endData" class="font-small"
+                                            <mat-chip *ngFor="let data of branch.endData" class="font-small"
                                                 style="background-color: mediumvioletred;">
                                                 {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
                                             </mat-chip>
@@ -83,7 +85,7 @@
                             <mat-card-actions>
 
                             </mat-card-actions>
-                        </mat-card>
+                        </mat-card> -->
 
                     </div>
 

@@ -19,7 +19,7 @@ export class GameStatesComponent implements OnInit {
   }
 
   dropBranches(event: CdkDragDrop<any[]>) {
-    moveItemInArray(this.model.branches, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.model.behaviors, event.previousIndex, event.currentIndex);
   }
 
   public openBranchesSheet()
@@ -29,7 +29,7 @@ export class GameStatesComponent implements OnInit {
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.branches = models;
+      this.model.behaviors = models;
     });
     
   }
