@@ -13,6 +13,8 @@ export class StoryCard implements IModelTK {
     public duration: number = 0;
     public endTime: number = 0;
 
+    public order: number = 0;
+
     public conditions: SoltkKeyValue[] = [];
     public downstreamData: SoltkKeyValue[] = [];
 

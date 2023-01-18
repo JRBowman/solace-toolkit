@@ -15,8 +15,15 @@ export class GameTimelinesComponent implements OnInit {
   public model: Timeline = new Timeline();
 
   ngOnInit(): void {
+
   }
 
+  public timelineLoaded() 
+  {
+    this.model.storyCards.forEach(e => {
+      e.order = this.model.storyCards.indexOf(e);
+    }); 
+  }
 
   public openCardsSheet() 
   {
