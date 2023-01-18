@@ -1,0 +1,17 @@
+.relative-container {
+    position: relative;
+    overflow: inherit;
+    width: 16px !important;
+}
+
+.sprite-frame {
+    overflow: hidden;
+}
+
+.component-visual {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 16px;
+    height: 100%;
+}

@@ -1,22 +1,22 @@
 <!-- Editor Model Tags View: -->
 <div *ngIf="canEdit">
 
-    <mat-form-field class="auto-flex tags-disp-block mr-2">
+    <mat-form-field class="auto-flex font-small tags-disp-block">
 
-        <mat-label>{{tkHeading}}</mat-label>
-        <mat-chip-list class="auto-flex" #chipList aria-label="Tag Selection">
+        <mat-label class="font-small">{{tkHeading}}</mat-label>
+        <mat-chip-grid class="auto-flex font-small" #chipList aria-label="Tag Selection">
             
-            <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+            <mat-chip class="font-small" *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 {{tag}}
                 <button matChipRemove>
                     <mat-icon>cancel</mat-icon>
                 </button>
             </mat-chip>
-            <input class="auto-flex" placeholder="#tag..." #tagInput [formControl]="tagCrtl"
+            <input class="auto-flex font-small" placeholder="#tag..." #tagInput [formControl]="tagCrtl"
                 [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 (matChipInputTokenEnd)="add($event)">
 
-        </mat-chip-list>
+        </mat-chip-grid>
 
         <!-- <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
             <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
@@ -31,14 +31,14 @@
 <!-- Read-Only Model Tags View: -->
 <div *ngIf="!canEdit">
 
-    <mat-chip-list #cardChips class="auto-flex full-width" #chipList aria-label="Tag Selection">
+    <mat-chip-set #cardChips class="auto-flex font-small full-width" #chipList aria-label="Tag Selection">
 
         <div class="auto-flex sol-card-chips flex-flow-reverse flex-wrap-reverse">
-            <mat-chip mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+            <mat-chip class="font-small" mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 <small>{{tag}}</small>
             </mat-chip>
         </div>
         
-    </mat-chip-list>
+    </mat-chip-set>
 
 </div>

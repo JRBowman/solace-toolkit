@@ -9,27 +9,31 @@
         <div class="disp-flex mb-2" *ngIf="model">
 
             <!-- Frame List -->
-            <div *ngIf="showFrames" class="no-flex width-8">
+            <!-- <div *ngIf="showFrames" class="no-flex width-8">
                 <h3>Frames</h3>
-                <mat-chip-list class="no-flex">
+                <mat-chip-set class="no-flex">
                     <mat-chip class="min-width-12 width-4 justify-center font-small soltk-chip"
                         *ngFor="let frame of frames" (click)="onSelect(frame)"
                         [style.background-color]="selectedFrame == frame ? 'mediumvioletred' : 'cadetblue'">
                         {{frame.name}}
                     </mat-chip>
-                </mat-chip-list>
-            </div>
+                </mat-chip-set>
+            </div> -->
 
             <div class="no-flex gap-1"></div>
 
             <!-- Sprite Animation Preview -->
             <div class="auto-flex">
 
-                <div class="disp-flex align-center relative-container">
-                    <div class="sprite no-flex sprite-frame" [style.width]="spriteWidth + 'px'">
-                        <img [class]="aseReady ? 'sprite-thumb-2col sprite align-center component-collider' : 'sprite-thumb-2col sprite-placeholder align-center component-collider'"
+                <div class="disp-flex auto-flex">
+
+                    <div class="auto-flex"></div>
+
+                <div class="disp-flex auto-flex align-center relative-container" [style.height]="(spriteHeight * zoomFactor) + 'px'" [style.width]="(spriteWidth * zoomFactor) + 'px'">
+                    <div class="sprite no-flex sprite-frame" [style.width]="(spriteWidth * zoomFactor) + 'px'">
+                        <img [class]="aseReady ? 'sprite sprite-perfect align-center component-collider' : 'sprite-placeholder sprite-perfect align-center component-collider'"
                             [src]="sheetName" [style.backgroundColor]="bgColor" alt="sprite"
-                            [style.left]="(selected * -(spriteWidth)) + 'px'" [style.height]="spriteHeight + 'px'">
+                            [style.left]="(selected * -(spriteWidth * zoomFactor)) + 'px'" [style.height]="(spriteHeight * zoomFactor) + 'px'">
                     </div>
                     <div *ngIf="model.components && model.components.length > 0">
                         <div class="component-visual" *ngFor="let component of model.components" cdkDrag
@@ -42,7 +46,72 @@
                     </div>
                 </div>
 
+                <div *ngIf="showFrames && aseReady" class="min-width-2 width-6 no-flex">
+
+                    <!-- <div class="gap-1 no-flex"></div> -->
+    
+                    <div class="auto-flex full-width">
+                        <mat-checkbox name="loop" class="auto-flex align-center" [(ngModel)]="model.loop">
+                            Loop
+                        </mat-checkbox>
+                        <mat-checkbox name="invert" class="auto-flex align-center"
+                            [(ngModel)]="model.invert">Invert
+                        </mat-checkbox>
+                        <mat-checkbox name="mirror" class="auto-flex align-center" [(ngModel)]="model.mirror">Mirror
+                        </mat-checkbox>
+                    </div>
+    
+                    <!-- <div class="no-flex"></div> -->
+    
+                    <!-- <h4>Frame: {{selectedFrame.name}}</h4> -->
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Frame Name</mat-label>
+                        <input type="text" matInput [(ngModel)]="model.frames[selected].name">
+                    </mat-form-field>
+
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Duration</mat-label>
+                        <input type="number" matInput [(ngModel)]="model.frames[selected].duration" placeholder="100">
+                        <span matTextSuffix>ms</span>
+                    </mat-form-field>
+    
+                    <!-- <div class="no-flex"></div> -->
+    
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Sprite Width</mat-label>
+                        <input type="number" matInput [(ngModel)]="spriteWidth" placeholder="192">
+                        <span matTextSuffix>px</span>
+                    </mat-form-field>
+    
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Sprite Height</mat-label>
+                        <input type="number" matInput [(ngModel)]="spriteHeight" placeholder="192">
+                        <span matTextSuffix>px</span>
+                    </mat-form-field>
+    
+                    <!-- <div class="no-flex"></div> -->
+    
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Zoom Scale</mat-label>
+                        <input type="number" matInput [(ngModel)]="zoomFactor" placeholder="4">
+                        <span matTextSuffix>x</span>
+                    </mat-form-field>
+    
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Speed</mat-label>
+                        <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
+                        <span matTextSuffix>x</span>
+                    </mat-form-field>
+    
+                </div>
+
+            </div>
+
                 <mat-divider></mat-divider>
+
+                <div class="gap-1 no-flex"></div>
+
+                <div class="disp-flex auto-flex">
 
                 <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex" (click)="playAnimation()">
                     <mat-icon>play_arrow</mat-icon>
@@ -50,6 +119,18 @@
                 <button *ngIf="isPlaying" mat-icon-button color="primary" class="no-flex" (click)="stopAnimation()">
                     <mat-icon>stop</mat-icon>
                 </button>
+
+                <div class="gap-1 no-flex"></div>
+
+                    <mat-chip-set class="auto-flex">
+                        <mat-chip class="width-4 justify-center font-xsmall soltk-chip"
+                            *ngFor="let frame of frames" (click)="onSelect(frame)"
+                            [style.background-color]="selectedFrame == frame ? 'mediumvioletred' : 'cadetblue'">
+                            {{frames.indexOf(frame)}}
+                        </mat-chip>
+                    </mat-chip-set>
+
+                </div>
 
                             <!-- Visual Frame Data -->
             <div class="auto-flex" *ngIf="showFrames">
@@ -62,59 +143,6 @@
 
             <div class="gap-1 no-flex"></div>
 
-            <div *ngIf="showFrames && aseReady" class="no-flex width-5">
-
-                <div class="gap-1 no-flex"></div>
-
-                <div class="auto-flex full-width">
-                    <mat-checkbox name="loop" class="auto-flex model-formfield align-center" [(ngModel)]="model.loop">
-                        Loop
-                    </mat-checkbox>
-                    <mat-checkbox name="invert" class="auto-flex model-formfield align-center"
-                        [(ngModel)]="model.invert">Invert
-                    </mat-checkbox>
-                    <mat-checkbox name="mirror" class="auto-flex align-center" [(ngModel)]="model.mirror">Mirror
-                    </mat-checkbox>
-                </div>
-
-                <div class="no-flex"></div>
-
-                <!-- <h4>Frame: {{selectedFrame.name}}</h4> -->
-                <mat-form-field class="auto-flex full-width">
-                    <mat-label>Duration</mat-label>
-                    <input type="number" matInput [(ngModel)]="model.frames[selected].duration" placeholder="100">
-                    <span matSuffix>ms</span>
-                </mat-form-field>
-
-                <div class="no-flex"></div>
-
-                <mat-form-field class="auto-flex full-width">
-                    <mat-label>Sprite Width</mat-label>
-                    <input type="number" matInput [(ngModel)]="spriteWidth" placeholder="192">
-                    <span matSuffix>px</span>
-                </mat-form-field>
-
-                <mat-form-field class="auto-flex full-width">
-                    <mat-label>Sprite Height</mat-label>
-                    <input type="number" matInput [(ngModel)]="spriteHeight" placeholder="192">
-                    <span matSuffix>px</span>
-                </mat-form-field>
-
-                <div class="no-flex"></div>
-
-                <mat-form-field class="auto-flex full-width">
-                    <mat-label>Zoom Scale</mat-label>
-                    <input type="number" matInput [(ngModel)]="zoomFactor" placeholder="4">
-                    <span matSuffix>x</span>
-                </mat-form-field>
-
-                <mat-form-field class="auto-flex full-width">
-                    <mat-label>Speed</mat-label>
-                    <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
-                    <span matSuffix>x</span>
-                </mat-form-field>
-
-            </div>
             <mat-divider class="mb-2"></mat-divider>
 
             <div class="disp-flex" *ngIf="model && showFrames && aseReady">

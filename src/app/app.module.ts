@@ -1,18 +1,13 @@
 import { NgModule, SecurityContext } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule, MarkdownService, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IntroductionComponent } from './introduction/introduction.component';
-import { BowSocialsComponent } from './bow-socials/bow-socials.component';
-import { ResumeComponent } from './resume/resume.component';
-import { MusicComponent } from './music/music.component';
 import { SoftwareComponent } from './software/software.component';
-import { VideosComponent } from './videos/videos.component';
-import { ResumeSheetComponent } from './resume/resume-sheet/resume-sheet.component';
 import { IconAzuredevopsComponent } from './common/icon-azuredevops/icon-azuredevops.component';
 import { IconDynamicsvgComponent } from './common/icon-dynamicsvg/icon-dynamicsvg.component';
 import { IconFacebookComponent } from './common/icon-facebook/icon-facebook.component';
@@ -32,7 +27,6 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 
 
 import { GitArticleComponent } from './git-article/git-article.component';
-import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
 import { GojsAngularModule } from 'gojs-angular';
 import { SolaceToolkitComponent } from './solace-toolkit/solace-toolkit.component';
 import { SolaceTKListComponent } from './solace-toolkit/common/solacetk-model-list/solacetk-list.component';
@@ -93,18 +87,16 @@ import { SolacetkControllerComponentComponent } from './solace-toolkit/common/so
 import { SolacetkPanelComponent } from './solace-toolkit/common/solacetk-panel/solacetk-panel.component';
 import { SolacetkPanelListComponent } from './solace-toolkit/common/solacetk-panel-list/solacetk-panel-list.component';
 import { MapLayersPanelComponent } from './solace-toolkit/environment-components/map-layers-panel/map-layers-panel.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { SolacetkStorycardComponent } from './solace-toolkit/common/solacetk-storycard/solacetk-storycard.component';
+import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroductionComponent,
-    BowSocialsComponent,
-    ResumeComponent,
-    MusicComponent,
     ProjectsComponent,
     SoftwareComponent,
-    VideosComponent,
-    ResumeSheetComponent,
     GitProjectCardComponent,
     IconAzuredevopsComponent,
     IconDynamicsvgComponent,
@@ -114,9 +106,7 @@ import { MapLayersPanelComponent } from './solace-toolkit/environment-components
     IconLinkedinComponent,
     IconOpenshiftComponent,
     IconSoundcloudComponent,
-    SafeurlPipe,
     GitArticleComponent,
-    OpenshiftVisualSystemComponent,
     SolaceToolkitComponent,
     BehaviorSystemsComponent,
     CharacterControllersComponent,
@@ -173,7 +163,10 @@ import { MapLayersPanelComponent } from './solace-toolkit/environment-components
     SolacetkControllerComponentComponent,
     SolacetkPanelComponent,
     SolacetkPanelListComponent,
-    MapLayersPanelComponent
+    MapLayersPanelComponent,
+    SafeurlPipe,
+    SolacetkStorycardComponent,
+    StoryCardsComponent
   ],
   imports: [
     BrowserModule,

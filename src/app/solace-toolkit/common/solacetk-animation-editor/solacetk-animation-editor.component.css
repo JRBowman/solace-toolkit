@@ -36,6 +36,15 @@
     width: 192px;
 }
 
+.sprite-perfect {
+    width: auto !important;
+    /* margin-bottom: 3%; */
+    display: inline-block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
 .component-visual {
     background-color: crimson;
     opacity: 0.5;

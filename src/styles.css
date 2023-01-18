@@ -161,7 +161,7 @@ mat-tab-header.mat-tab-header {
 }
 
 .file-input {
-    display: none;
+    display: none !important;
 }
 
 .icon-sprite {
@@ -262,6 +262,10 @@ mat-tab-header.mat-tab-header {
     z-index: 20;
 }
 
+.width-95 {
+    width: 95%;
+}
+
 .width-2 {
     width: 50%;
 }
@@ -315,6 +319,11 @@ mat-tab-header.mat-tab-header {
     height: 8px;
 }
 
+.gap-2 {
+    width: 2%;
+    height: 16px;
+}
+
 .min-width-1 {
     min-width: 64px;
 }
@@ -348,19 +357,19 @@ mat-tab-header.mat-tab-header {
 }
 
 .font-xsmall {
-    font-size: x-small;
+    font-size: x-small !important;
 }
 
 .font-small {
-    font-size: small;
+    font-size: small !important;
 }
 
 .font-medium {
-    font-size: medium;
+    font-size: medium !important;
 }
 
 .font-large {
-    font-size: large;
+    font-size: large !important;
 }
 
 .disp-flex {

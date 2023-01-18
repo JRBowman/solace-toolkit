@@ -1,0 +1,25 @@
+<solacetk-model-list [(model)]="model" moduleName="Story Cards" modelUri="StoryCards">
+
+    <div class="editor">
+
+    </div>
+
+    <div class="editor-panels">
+
+        <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+            panelType="expansionpanel" [(model)]="model.conditions" [operatorsEnabled]="true">
+        </solacetk-attributes-panel>
+
+        <solacetk-attributes-panel [panelMode]="1" panelName="Story Data" panelType="expansionpanel" class="auto-flex"
+            [(model)]="model.downstreamData"></solacetk-attributes-panel>
+
+        <solacetk-event-panel class="mb-2" [(model)]="model.events">
+        </solacetk-event-panel>
+
+        <!-- <solacetk-storycard [(model)]="model" panelType="panel">
+
+        </solacetk-storycard> -->
+
+    </div>
+
+</solacetk-model-list>

@@ -1,9 +1,9 @@
 <solacetk-model-list [(model)]="model" moduleName="Action Messages" modelUri="Events/messages">
     <div class="editor">
-        <mat-form-field class="auto-flex model-formfield">
+        <mat-form-field class="auto-flex font-small model-formfield">
             <input matInput placeholder="Target Name" [(ngModel)]="model.targetName">
         </mat-form-field>
-        <mat-form-field class="auto-flex model-formfield">
+        <mat-form-field class="auto-flex font-small model-formfield">
             <mat-label>Operator</mat-label>
             <mat-select [(ngModel)]="model.targetType">
                 <mat-option *ngFor="let op of targets" [value]="targets.indexOf(op)">{{op}}

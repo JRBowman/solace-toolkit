@@ -45,8 +45,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   private interval: any;
 
 
-  public spriteWidth: number = 192;
-  public spriteHeight: number = 192;
+  public spriteWidth: number = 48;
+  public spriteHeight: number = 48;
   public zoomFactor: number = 4;
 
   ngOnInit(): void {

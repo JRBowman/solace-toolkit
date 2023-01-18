@@ -1,6 +1,6 @@
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { MatLegacySliderChange as MatSliderChange } from '@angular/material/legacy-slider';
+import { MatSliderChange } from '@angular/material/slider';
 import { EnvironmentMap } from '../../models/environment-map';
 import { EnvironmentMapLayer } from '../../models/environment-map-layer';
 import { SolacetkService } from '../../services/solacetk-service.service';

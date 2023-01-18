@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { Timeline } from '../../models/timeline';
 
 @Component({
@@ -8,11 +10,23 @@ import { Timeline } from '../../models/timeline';
 })
 export class GameTimelinesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _bottomSheet: MatBottomSheet) { }
 
   public model: Timeline = new Timeline();
 
   ngOnInit(): void {
+  }
+
+
+  public openCardsSheet() 
+  {
+    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
+    instance.instance.LoadData('StoryCards');
+
+    instance.instance.modelsSelected.subscribe((models) => 
+    {
+      this.model.storyCards = [...this.model.storyCards, ...models];
+    });
   }
 
 }

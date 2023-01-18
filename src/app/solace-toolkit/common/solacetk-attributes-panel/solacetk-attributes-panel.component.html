@@ -15,11 +15,11 @@
                             <h4>[{{GetKeyIndex(attr)}}]:</h4>
                         </div>
 
-                        <mat-form-field class="auto-flex model-field-small width-5 mr-2">
+                        <mat-form-field class="auto-flex font-small model-field-small width-5 mr-2">
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
 
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-field-small mr-2 width-5-min">
+                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small model-field-small mr-2 width-5-min">
                             <mat-label>Operator</mat-label>
                             <mat-select [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
@@ -27,7 +27,7 @@
                             </mat-select>
                         </mat-form-field>
 
-                        <mat-form-field class="auto-flex model-field-small width-5">
+                        <mat-form-field class="auto-flex font-small model-field-small width-5">
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
 
@@ -64,11 +64,11 @@
                             <h4>[{{GetKeyIndex(attr)}}]:</h4>
                         </div>
 
-                        <mat-form-field class="auto-flex model-field-small width-5 mr-2">
+                        <mat-form-field class="auto-flex font-small model-field-small width-5 mr-2">
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
 
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex model-field-small mr-2 width-5-min">
+                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small model-field-small mr-2 width-5-min">
                             <mat-label>Operator</mat-label>
                             <mat-select [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
@@ -76,7 +76,7 @@
                             </mat-select>
                         </mat-form-field>
 
-                        <mat-form-field class="auto-flex model-field-small width-5">
+                        <mat-form-field class="auto-flex font-small model-field-small width-5">
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
 

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({

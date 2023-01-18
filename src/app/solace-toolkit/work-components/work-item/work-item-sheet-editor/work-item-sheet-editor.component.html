@@ -3,25 +3,25 @@
         <mat-card-title class="mb-2">Edit Task</mat-card-title>
         <mat-card-content>
 
-            <mat-form-field class="auto-flex">
+            <mat-form-field class="auto-flex font-small">
                 <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
             </mat-form-field>
 
             <div class="disp-flex">
-                <mat-form-field class="no-flex">
+                <mat-form-field class="no-flex font-small">
                     <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
                 </mat-form-field>
             </div>
 
 
             <div class="disp-flex">
-                <mat-form-field class="no-flex">
+                <mat-form-field class="no-flex font-small">
                     <input matInput #hoursEstimate placeholder="Estimated Hours" [(ngModel)]="model.hoursEstimate">
                 </mat-form-field>
             </div>
 
             <div class="disp-flex">
-                <mat-form-field class="no-flex">
+                <mat-form-field class="no-flex font-small">
                     <input matInput #hoursActual placeholder="Actul Hours Worked" [(ngModel)]="model.hoursActual">
                 </mat-form-field>
             </div>

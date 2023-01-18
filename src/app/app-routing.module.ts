@@ -1,7 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { IntroductionComponent } from './introduction/introduction.component';
-import { OpenshiftVisualSystemComponent } from './openshift-visual-system/openshift-visual-system.component';
 import { ProjectsComponent } from './solace-toolkit/work-components/projects/projects.component';
 import { SoftwareComponent } from './software/software.component';
 import { CharacterControllersComponent } from './solace-toolkit/controllers-components/character-controllers/character-controllers.component';
@@ -41,6 +39,8 @@ import { ParticleSystemsComponent } from './solace-toolkit/controllers-component
 import { BehaviorBranchesComponent } from './solace-toolkit/behaviors/behavior-branches/behavior-branches.component';
 import { AuthorizationGuard } from './auth/auth-guard';
 import { IdentityComponent } from './identity/identity.component';
+import { RouterModule, Routes } from '@angular/router';
+import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 
 const routes: Routes = [
   {
@@ -55,11 +55,6 @@ const routes: Routes = [
   {
     path: 'identity',
     component: IdentityComponent,
-    //canActivate: [AuthorizationGuard]
-  },
-  {
-    path: 'openshift-visual-system',
-    component: OpenshiftVisualSystemComponent,
     //canActivate: [AuthorizationGuard]
   },
   {
@@ -105,11 +100,6 @@ const routes: Routes = [
   {
     path: 'states',
     component: BehaviorStatesComponent,
-    //canActivate: [AuthorizationGuard]
-  },
-  {
-    path: 'conditions',
-    component: BehaviorConditionsComponent,
     //canActivate: [AuthorizationGuard]
   },
   {
@@ -252,6 +242,10 @@ const routes: Routes = [
     component: ProjectsComponent,
     //canActivate: [AuthorizationGuard]
   },
+  {
+    path: 'storycards',
+    component: StoryCardsComponent
+  }
 ];
 
 @NgModule({

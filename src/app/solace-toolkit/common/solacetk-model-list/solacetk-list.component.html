@@ -8,15 +8,16 @@
 
 <div class="btn-hover-right" *ngIf="!IsLoading">
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
-    <mat-tab class="no-height" label="List">
+    <mat-tab [labelClass]="'file-input'">
 
       <div class="disp-flex mt-2">
         <div *ngFor='let model of filteredData' class="no-flex width-33 min-width-4 disp-flex">
           <mat-card class="auto-flex min-width-4 mb-2">
 
             <mat-card-title-group class="align-center">
-              <div mat-card-avatar class="no-flex align-center">
-                <h3 class="mat-card-subtitle font-small">{{filteredData.indexOf(model)}}:</h3>
+              <div mat-card-avatar class="no-flex disp-flex align-center">
+                <div class="gap-1 auto-flex"></div>
+                <h3 class="mat-card-subtitle auto-flex font-small">{{filteredData.indexOf(model)}}:</h3>
               </div>
               <div class="auto-flex mr-2">
                 <mat-card-title class="font-large">{{model.name}}</mat-card-title>
@@ -50,11 +51,11 @@
 
     </mat-tab>
 
-    <mat-tab label="Editor">
+    <mat-tab class="full-height" [labelClass]="'file-input'">
 
-      <div *ngIf="model" class="character-container disp-flex mt-2">
+      <div *ngIf="model" class="mt-2">
 
-        <mat-expansion-panel [expanded]="!collapseCoreEditor" class="no-flex width-5 min-width-5">
+        <mat-expansion-panel [expanded]="!collapseCoreEditor" class="auto-flex">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="mr-2">workspaces</mat-icon>
@@ -66,20 +67,20 @@
           </mat-expansion-panel-header>
 
           <div>
-            <mat-form-field class="auto-flex full-width">
+            <mat-form-field appearance="outline" class="auto-flex font-small full-width" disabled>
               <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
             </mat-form-field>
 
-            <solacetk-tags [(model)]="model.tags"></solacetk-tags>
-
-            <mat-form-field class="auto-flex">
+            <mat-form-field class="auto-flex full-width font-small">
               <input matInput placeholder="Name" [(ngModel)]="model.name">
             </mat-form-field>
 
-            <mat-form-field class="auto-flex full-width">
+            <mat-form-field class="auto-flex font-small full-width">
               <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
                 [(ngModel)]="model.description"></textarea>
             </mat-form-field>
+
+            <solacetk-tags class="full-width" [(model)]="model.tags"></solacetk-tags>
 
             <!-- <h3>Properties</h3> -->
             <ng-content select=".editor"></ng-content>
@@ -92,11 +93,13 @@
 
         </mat-expansion-panel>
 
-        <div class="gap-1"></div>
+        <div class="gap-2"></div>
 
-        <!-- <mat-divider class="mb-2 mt-2"></mat-divider> -->
+        <mat-divider></mat-divider>
 
-        <div class="auto-flex width-2">
+        <div class="gap-2"></div>
+
+        <div class="auto-flex full-height">
           <ng-content select=".editor-panels"></ng-content>
         </div>
 

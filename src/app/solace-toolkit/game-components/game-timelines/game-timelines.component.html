@@ -1,10 +1,55 @@
-<solacetk-model-list [(model)]="model" moduleName="Timelines" modelUri="Core/timelines">
+<solacetk-model-list [(model)]="model" moduleName="Timelines" modelUri="Timelines">
+
     <div class="editor">
 
     </div>
 
+    <div class="editor-actions">
+        <button mat-button color="primary" (click)="openCardsSheet()">Add Story Card</button>
+    </div>
+
     <div class="editor-panels">
 
+        <!-- <div class="full-width disp-flex"> -->
+
+        <div class="no-flex width-33 " *ngFor="let storyCard of model.storyCards">
+
+            <!-- <div class="disp-flex no-flex align-center relative-container">
+                        <mat-icon>event</mat-icon>
+                    </div> -->
+
+            <div class="disp-flex auto-flex">
+                <div class="auto-flex">
+                    <svg width="16px" height="100%">
+
+                        <line x1="8" y1="0" x2="8" y2="46%" style="stroke: white; stroke-width: 3px;" />
+                        <circle cx="8" cy="50%" r="6" stroke="white" stroke-width="3" fill="none" />
+                        <line x1="8" y1="54%" x2="8" y2="100%" style="stroke: white; stroke-width: 3px;" />
+                    </svg>
+                </div>
+
+                <div class="gap-1 no-flex"></div>
+
+                <solacetk-storycard class="auto-flex width-95" [model]="storyCard" panelType="panel" [readonly]="true">
+                </solacetk-storycard>
+            </div>
+
+            <div class="gap-1 no-flex"></div>
+
+            <!-- <div class="min-width-1 no-flex">
+                    <svg width="8px" height="100%">
+
+                        <line x1="4" y1="0" x2="4" y2="100%" style="stroke: white; stroke-width: 3px;" />
+                    </svg>
+                </div> -->
+
+            <!-- <div class="gap-1 no-flex"></div> -->
+
+
+
+        </div>
+        <!-- </div> -->
 
     </div>
+
 </solacetk-model-list>
