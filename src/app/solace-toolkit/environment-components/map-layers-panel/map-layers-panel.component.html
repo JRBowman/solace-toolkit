@@ -7,18 +7,22 @@
         <div class="disp-flex">
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Id</mat-label>
                 <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
             </mat-form-field>
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" [(ngModel)]="selectedInstance.name">
             </mat-form-field>
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Layer Name</mat-label>
                 <input matInput placeholder="LayerName" [(ngModel)]="selectedInstance.layerName">
             </mat-form-field>
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Layer Order</mat-label>
                 <input matInput type="number" placeholder="LayerOrder" [(ngModel)]="selectedInstance.layerOrder">
             </mat-form-field>
 

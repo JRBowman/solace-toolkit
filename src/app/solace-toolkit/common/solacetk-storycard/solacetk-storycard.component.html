@@ -21,12 +21,14 @@
 
             <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
             <mat-form-field *ngIf="!readonly" class="auto-flex full-width font-small">
+                <mat-label>Name</mat-label>
                 <input class="full-width" matInput placeholder="Name" [(ngModel)]="model.name">
             </mat-form-field>
 
             <div class="gap-1 no-flex"></div>
 
             <mat-form-field *ngIf="!readonly" class="auto-flex full-width font-small">
+                <mat-label>Description</mat-label>
                 <textarea class="panel-textarea" #description matInput placeholder="Description" [(ngModel)]="model.description"></textarea>
             </mat-form-field>
 

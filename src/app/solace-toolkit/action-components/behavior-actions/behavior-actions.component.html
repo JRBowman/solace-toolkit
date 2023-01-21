@@ -5,17 +5,20 @@
 
             <div class="disp-flex">
                 <mat-form-field class="auto-flex font-small model-formfield">
+                    <mat-label>Id</mat-label>
                     <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
                 </mat-form-field>
             </div>
 
             <mat-form-field class="font-small">
+                <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" [(ngModel)]="model.name">
             </mat-form-field>
 
             <mat-divider class="mb-2 mt-2"></mat-divider>
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Description</mat-label>
                 <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
                     [(ngModel)]="model.description"></textarea>
             </mat-form-field>

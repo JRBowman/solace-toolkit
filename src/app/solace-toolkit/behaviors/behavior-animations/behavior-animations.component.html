@@ -28,7 +28,7 @@
 
                 <div class="gap-1"></div>
 
-                <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
+                <!-- <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <mat-icon class="mr-2">animation</mat-icon>
@@ -38,13 +38,17 @@
 
                     <ng-template matExpansionPanelContent>
 
-                        <!-- Frames Content: -->
                         <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
                         </solacetk-animation-editor>
 
                     </ng-template>
 
-                </mat-expansion-panel>
+                </mat-expansion-panel> -->
+
+                
+                        <!-- Frames Content: -->
+                        <solacetk-animation-editor *ngIf="model.id" [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
+                        </solacetk-animation-editor>
 
                 <div class="gap-1"></div>
 

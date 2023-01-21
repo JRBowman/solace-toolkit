@@ -68,14 +68,17 @@
 
           <div>
             <mat-form-field appearance="outline" class="auto-flex font-small full-width" disabled>
+              <mat-label>Id</mat-label>
               <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
             </mat-form-field>
 
             <mat-form-field class="auto-flex full-width font-small">
+              <mat-label>Name</mat-label>
               <input matInput placeholder="Name" [(ngModel)]="model.name">
             </mat-form-field>
 
             <mat-form-field class="auto-flex font-small full-width">
+              <mat-label>Description</mat-label>
               <textarea matInput #description class="min-height-96 full-width" placeholder="Description"
                 [(ngModel)]="model.description"></textarea>
             </mat-form-field>

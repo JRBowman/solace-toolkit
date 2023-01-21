@@ -4,11 +4,13 @@
         <mat-card-content>
 
             <mat-form-field class="auto-flex font-small">
+                <mat-label>Id</mat-label>
                 <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
             </mat-form-field>
 
             <div class="disp-flex">
                 <mat-form-field class="no-flex font-small">
+                    <mat-label>Task Name</mat-label>
                     <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
                 </mat-form-field>
             </div>
@@ -16,12 +18,14 @@
 
             <div class="disp-flex">
                 <mat-form-field class="no-flex font-small">
+                    <mat-label>Est. Hours</mat-label>
                     <input matInput #hoursEstimate placeholder="Estimated Hours" [(ngModel)]="model.hoursEstimate">
                 </mat-form-field>
             </div>
 
             <div class="disp-flex">
                 <mat-form-field class="no-flex font-small">
+                    <mat-label>Actual Hours</mat-label>
                     <input matInput #hoursActual placeholder="Actul Hours Worked" [(ngModel)]="model.hoursActual">
                 </mat-form-field>
             </div>
