@@ -19,30 +19,33 @@
                     </div> -->
 
             <div class="disp-flex auto-flex">
-                <div class="width-15 no-flex">
+                <div class="width-15 min-width-1 no-flex">
                     <svg width="100%" height="100%">
 
                         <line *ngIf="storyCard.order != 0" x1="50%" y1="0" x2="50%" y2="45%" style="stroke: white; stroke-width: 3px;" />
                         <line x1="50%" y1="50%" x2="100%" y2="50%" style="stroke: white; stroke-width: 3px;" />
                         <line *ngIf="storyCard.order != model.storyCards.length - 1" x1="50%" y1="55%" x2="50%" y2="100%" style="stroke: white; stroke-width: 3px;" />
-                        <circle cx="50%" cy="50%" r="16" stroke="white" stroke-width="2" fill="coral" />
-                        <text class="align-center full-width auto-flex" x="43.5%" y="52%" fill="white" style="text-align: center;">{{storyCard.order}}</text>
-                       
+                        <circle cx="50%" cy="50%" r="16" stroke="white" stroke-width="2" fill="coral"></circle>
+
+                        <text x="46.5%" y="52%" fill="white" style="text-align: center; vertical-align: center; width: 32px;">{{storyCard.order}}</text>
                     </svg>
                 </div>
 
                 <!-- <div class="gap-1 no-flex"></div> -->
 
-                <solacetk-storycard class="no-flex width-33" [model]="storyCard" panelType="panel" [readonly]="true">
+                <solacetk-storycard class="auto-flex min-width-5 width-33" [model]="storyCard" panelType="panel" [readonly]="true">
                 </solacetk-storycard>
+
+                <div class="gap-1 auto-flex"></div>
             </div>
 
             <!-- Add this to a disp-flex and add an SVG to join the lines. -->
-            <div class="disp-flex width-15 no-flex">
+            <div class="disp-flex width-15 min-width-1 no-flex">
                     <svg width="100%" height="48px">
                         <line *ngIf="storyCard.order != model.storyCards.length - 1" x1="50%" y1="0" x2="50%" y2="100%" style="stroke: white; stroke-width: 3px;" />
                         <circle *ngIf="storyCard.order != model.storyCards.length - 1" 
                         cx="50%" cy="55%" r="5" stroke="white" stroke-width="2" fill="white" />
+                        <text *ngIf="storyCard.order != model.storyCards.length - 1" x="75%" y="65%" fill="white">{{storyCard.duration}}</text>
                     </svg>
                 <!-- <div class="gap-1 no-flex"></div> -->
             </div>

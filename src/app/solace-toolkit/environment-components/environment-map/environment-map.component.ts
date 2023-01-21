@@ -35,8 +35,8 @@ export class EnvironmentMapComponent implements OnInit {
   private layersCount = 0;
   loadEditor()
   {
-    this.profileUrl = this.soltkService.apiHost + "Ase/" + this.model.name + "-act/" + this.model.name + "-act";
-    this.layerDataUrl = "Ase/" + this.model.name + "-act/" + this.model.name + ".json";
+    this.profileUrl = this.soltkService.apiHost + "Ase/" + this.model.name + "/" + this.model.name;
+    this.layerDataUrl = "Ase/" + this.model.name + "/" + this.model.name + ".json";
     this.layersCount = 0;
     this.soltkService.GetData(this.layerDataUrl).subscribe((data) => {
       console.log(data);
@@ -85,26 +85,24 @@ export class EnvironmentMapComponent implements OnInit {
     console.log(this.model);
   }
 
+public fileName: string = "";
   public onAseSelected(event: any) {
 
     const file: File = event.target.files[0];
 
-    // if (file) {
+    if (file) {
 
-    //   this.fileName = file.name;
-    //   this.sheetName = "";
-    //   const formData = new FormData();
-    //   formData.append(this.model?.name + ".ase", file);
-    //   const upload$ = this.service.CreateModel("Files/ase", formData);
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append(this.model?.name + ".ase", file);
+      const upload$ = this.soltkService.CreateModel("Files/ase", formData);
 
-    //   upload$.subscribe((response) => {
-    //     this.frames = [];
-    //     this.selectedFrame = new BehaviorAnimationFrame();
+      upload$.subscribe((response) => {
+        this.model = new EnvironmentMap();
 
-    //     this.modelChange.emit(this.model);
-    //     this.framesChange.emit(response.data.sheetData);
-    //   });
-    // }
+        //this.modelChange.emit(this.model);
+      });
+    }
   }
 
 }

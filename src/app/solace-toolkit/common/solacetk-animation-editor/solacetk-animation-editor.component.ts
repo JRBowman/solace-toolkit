@@ -151,6 +151,28 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     
   }
 
+  public onGetStateData(event: SoltkKeyValue[])
+  {
+    // if (this.selectedComponent) {
+      console.log("Adding components to frame:");
+      //let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
+      //console.log(componentData);
+      let ind = 0;
+      //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
+      event.forEach(pair => {
+        if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
+          // Doesn't Exist, add it:
+          this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
+        }
+        // Data already exists
+        else {
+          this.selectedFrame.downstreamData[ind].data = pair.data;
+        }
+      });
+      this.modelChange.emit(this.model);
+    // }
+  }
+
   ngAfterViewInit(): void {
   }
 

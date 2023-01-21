@@ -57,18 +57,22 @@
             <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
                 <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
 
-                    <div class="disp-flex">
+                    <div class="disp-flex full-width">
 
 
-                        <div class="no-flex model-field-small mr-2">
+                        <div class="no-flex font-small align-center">
                             <h4>[{{GetKeyIndex(attr)}}]:</h4>
                         </div>
 
-                        <mat-form-field class="auto-flex font-small model-field-small width-5 mr-2">
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-form-field class="auto-flex font-small width-5">
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
 
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small model-field-small mr-2 width-5-min">
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small width-8">
                             <mat-label>Operator</mat-label>
                             <mat-select [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
@@ -76,9 +80,13 @@
                             </mat-select>
                         </mat-form-field>
 
-                        <mat-form-field class="auto-flex font-small model-field-small width-5">
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-form-field class="auto-flex font-small width-5">
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
+
+                        <div class="gap-1 no-flex"></div>
 
                         <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
                             (click)="RemoveAttribute(attr)">

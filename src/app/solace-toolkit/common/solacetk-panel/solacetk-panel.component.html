@@ -1,10 +1,12 @@
 <div *ngIf="panelType == 'panel'">
     <mat-card class="auto-flex" [style.fontSize]="fontSize" [style.backgroundColor]="panelColor">
 
-        <mat-card-title-group>
-            <mat-icon [style.fontSize]="fontSize" class="mr-2">{{panelIcon}}</mat-icon>
+        <mat-card-header>
+            <div mat-card-avatar class="width-1">
+                <mat-icon [style.fontSize]="fontSize">{{panelIcon}}</mat-icon>
+            </div>
             <mat-card-title [style.fontSize]="fontSize">{{panelName}}</mat-card-title>
-        </mat-card-title-group>
+        </mat-card-header>
 
         <mat-card-content [style.width]="unitWidth ? (unitWidth * 64) + 'px' : 'auto'"
             [style.height]="unitHeight ? (unitHeight * 64) + 'px' : 'auto'" [style.overflow]="overflowMethod">
@@ -27,17 +29,22 @@
     <mat-expansion-panel class="mat-elevation-z0" [style.backgroundColor]="panelColor" [style.fontSize]="fontSize">
         <mat-expansion-panel-header>
             <mat-panel-title [style.fontSize]="fontSize">
-                <mat-icon class="mr-2">{{panelIcon}}</mat-icon>
-                {{panelName}}
+                <div class="disp-flex full-width">
+                    <mat-icon class="align-center" [style.fontSize]="fontSize">{{panelIcon}}</mat-icon>
+                    <div class="gap-2 no-flex"></div>
+                    <div class="align-center auto-flex">{{panelName}}</div>
+                </div>
             </mat-panel-title>
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
+            <ng-content select=".panel-content"></ng-content>
             <ng-content select=".expansionpanel-content"></ng-content>
         </ng-template>
 
 
         <mat-action-row>
+            <ng-content select=".panel-actions"></ng-content>
             <ng-content select=".expansionpanel-actions"></ng-content>
         </mat-action-row>
 

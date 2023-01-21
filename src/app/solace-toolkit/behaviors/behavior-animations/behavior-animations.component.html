@@ -70,10 +70,11 @@
             <div class="no-flex gap-1"></div>
 
             <!-- Visual Component Data -->
-            <div *ngIf="model.actFrameData" class="no-flex width-5 min-width-5">
-                <solacetk-controller-component [(model)]="model.actFrameData.components" panelColor="#006064">
+            <!-- <div *ngIf="model.actFrameData" class="no-flex width-5 min-width-5">
+                <solacetk-controller-component [(model)]="model.actFrameData.components" panelColor="#006064"
+                        (getStateData)="onGetStateData($event)">
                 </solacetk-controller-component>
-            </div>
+            </div> -->
 
         </div>
 

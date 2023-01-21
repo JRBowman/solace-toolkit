@@ -27,8 +27,6 @@
 
 .relative-container {
     position: relative;
-    overflow: inherit;
-    width: 192px;
 }
 
 .sprite-frame {
@@ -43,6 +41,11 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+}
+
+.relative-input {
+    position: absolute;
+    bottom: 0;
 }
 
 .component-visual {

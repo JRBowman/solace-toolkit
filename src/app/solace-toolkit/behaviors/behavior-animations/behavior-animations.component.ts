@@ -4,6 +4,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatLegacyChipSelectionChange as MatChipSelectionChange } from '@angular/material/legacy-chips';
 import { SolacetkBottomSheetComponent } from '../../common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
 import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
+import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
@@ -52,6 +53,22 @@ export class BehaviorAnimationsComponent implements OnInit {
     console.log("Mass Import");
     let instance = this._bottomSheet.open(SolacetkBottomSheetComponent);
   }
+
+  // public onGetStateData(event: SoltkKeyValue[]) {
+  //   console.log(event);
+  //   let ind = 0;
+  //     //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
+  //     event.forEach(pair => {
+  //       if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
+  //         // Doesn't Exist, add it:
+  //         this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
+  //       }
+  //       // Data already exists
+  //       else {
+  //         this.selectedFrame.downstreamData[ind].data = pair.data;
+  //       }
+  //     });
+  // }
 
   importAseAnims(event: any) {
     let files: File[] = []

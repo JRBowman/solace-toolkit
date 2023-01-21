@@ -23,7 +23,7 @@ export class SolacetkControllerComponentComponent implements OnInit {
 
   public componentTypes?: string[] = BehaviorComponent.componentTypes;
 
-  @Input() getStateData: EventEmitter<SoltkKeyValue[]> = new EventEmitter<SoltkKeyValue[]>();
+  @Output() getStateData: EventEmitter<SoltkKeyValue[]> = new EventEmitter<SoltkKeyValue[]>();
 
   ngOnInit(): void {
   }
@@ -60,7 +60,6 @@ export class SolacetkControllerComponentComponent implements OnInit {
 
     console.log(resultKeyValues);
     this.getStateData.emit(resultKeyValues);
-    this.getStateData.next(resultKeyValues);
 
 
 
