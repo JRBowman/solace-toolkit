@@ -13,8 +13,8 @@
 
     <mat-selection-list class="disp-flex" #modelList [multiple]="selectMultiple">
         <mat-list-option *ngFor="let model of filteredModels" [value]="model">
-            <h3 matLine>{{model.name}}</h3>
-            <p matLine>Description: {{model.description}}</p>
+            <span matListItemTitle>{{model.name}}</span>
+            <span matListItemLine>Description: {{model.description}}</span>
         </mat-list-option>
     </mat-selection-list>
 </div>
