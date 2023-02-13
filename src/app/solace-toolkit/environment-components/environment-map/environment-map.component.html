@@ -22,7 +22,7 @@
             <solacetk-panel [unitHeight]="12" class="auto-flex full-width" panelColor="#222034" panelName="Map Viewer"
                 panelIcon="branding_watermark">
 
-                <div class="panel-content full-height map-panel relative-container" style="height: 98%;">
+                <div class="panel-content full-height map-panel relative-container" style="height: 98%; background-color: rgb(24 23 36);">
 
                     <!-- <div class="full-height full-width" [style.paddingBottom]="((mapHeight - 32)) + 'px'"
                         [style.marginTop]="-((mapHeight - 16)) + 'px'" [style.marginLeft]="-((mapWidth - 16)) + 'px'"
@@ -46,8 +46,7 @@
                                 <div *ngIf="selectedMode">
                                     <div matRipple class="background-grid" *ngFor="let tile of tiles"
                                         [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
-                                        (click)="SelectCell(tile)"
-                                        [class.gridSelected]="tile.selected"
+                                        (click)="SelectCell(tile)" [class.gridSelected]="tile.selected"
                                         [style.backgroundColor]="tile.groupColorKey" style="opacity: 0.667;"
                                         [matTooltip]="(tile.name ?? 'Cell') +  ' - [' + tile.x + ', ' + tile.y + ']'">
 
@@ -143,7 +142,7 @@
                 <solacetk-panel class="auto-flex width-2" panelColor="#5c6b8a" panelName="Cell" panelIcon="table_view">
                     <div class="panel-content">
 
-                        <div class="disp-flex" *ngIf="selectedCell">
+                        <div class="" *ngIf="selectedCell">
 
                             <!-- <mat-form-field class="auto-flex font-small">
                                 <mat-label>Group</mat-label>
@@ -177,6 +176,13 @@
                                 </mat-form-field>
                             </div>
 
+                            <!-- <div class="disp-flex"> -->
+                                <mat-form-field class="auto-flex font-small">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Name" [(ngModel)]="selectedCell.name">
+                                </mat-form-field>
+                            <!-- </div> -->
+
                             <!-- Cell Data: -->
                             <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1"
                                 [panelName]="selectedCell.name + ' Data'" panelType="expansionpanel"
@@ -184,6 +190,9 @@
                             </solacetk-attributes-panel>
 
                             <div class="gap-1 no-flex"></div>
+
+                            <solacetk-event-panel [(model)]="selectedCell.events"></solacetk-event-panel>
+
 
                         </div>
 
@@ -205,20 +214,6 @@
                 <div class="panel-actions">
                 </div>
             </solacetk-panel>
-
-            <!-- <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
-
-                <div class="panel-content">
-
-                </div>
-
-                <div class="panel-actions">
-                    <button mat-icon-button matTooltip="Add Layer to Map" color="primary" (click)="addLayer()">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-
-            </solacetk-panel> -->
 
         </div>
     </div>

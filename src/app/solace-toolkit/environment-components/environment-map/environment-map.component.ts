@@ -104,7 +104,7 @@ export class EnvironmentMapComponent implements OnInit {
 
       for (let y = 0; y < this.tilesY; y++) {
         for (let x = 0; x < this.tilesX; x++) {
-          this.tiles = [...this.tiles, {x: x, y: y, data:[]}];
+          this.tiles = [...this.tiles, {id: 0, x: x, y: y, data:[], name: "Cell"}];
         }
       }
 

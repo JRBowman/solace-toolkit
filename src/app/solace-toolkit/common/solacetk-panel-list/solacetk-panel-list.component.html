@@ -16,12 +16,21 @@
 
 
                 <mat-card *ngIf="selectedInstance">
-                    <div class="disp-flex">
+                    <!-- <div class="disp-flex">
                         <mat-slide-toggle [(ngModel)]="selectedInstance.enabled">
                         </mat-slide-toggle>
-                    </div>
+                    </div> -->
 
                     <mat-card-content>
+                        <div class="disp-flex">
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Id</mat-label>
+                                <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-slide-toggle matTooltip="Enabled" class="disp-flex auto-flex align-center" style="justify-content: center;" [(ngModel)]="selectedInstance.enabled">
+                            </mat-slide-toggle>
+                        </div>
                         <ng-content select=".instance-editor"></ng-content>
                     </mat-card-content>
 
@@ -48,12 +57,17 @@
 
 
                 <mat-card *ngIf="selectedInstance">
-                    <div class="disp-flex">
-                        <mat-slide-toggle [(ngModel)]="selectedInstance.enabled">
-                        </mat-slide-toggle>
-                    </div>
 
                     <mat-card-content>
+                        <div class="disp-flex">
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Id</mat-label>
+                                <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
+                            </mat-form-field>
+                            <div class="gap1 no-flex"></div>
+                            <mat-slide-toggle matTooltip="Enabled" class="auto-flex align-center" [(ngModel)]="selectedInstance.enabled">
+                            </mat-slide-toggle>
+                        </div>
                         <ng-content select=".instance-editor"></ng-content>
                     </mat-card-content>
 
