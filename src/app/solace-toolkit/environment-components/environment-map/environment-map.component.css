@@ -1,16 +1,57 @@
 .map-container {
     position: relative;
+    width: fit-content;
+    height: fit-content;
 }
 
 .map-layer {
     width: auto !important;
-    height: 576px !important;
     position: absolute;
+    image-rendering: pixelated;
 }
 
 .background-grid {
-    height: 576px;
+    height: 14px;
+    width: 14px;
     position: absolute;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     image-rendering: pixelated;
+
+    border-width: 0.1em;
+    border-style: dotted;
+    border-bottom-style: hidden;
+    border-right-style: hidden;
+
+}
+
+.gridSelected {
+    background-color: white;
+    border-style: solid;
+    border-color: gold;
+    filter: drop-shadow(1px 4px 2px black);
+}
+
+.relative-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.relative-input {
+    position: absolute;
+}
+
+.background-grid:hover {
+    background-color: rgba(128, 128, 128);
+    border-style: solid;
+}
+
+.background-grid:active{
+    background-color: rgba(64, 128, 128);
+}
+
+.map-panel {
+    border-style: inset;
+    border-width: 5px;
+    border-color: lightslategrey;
+    border-radius: 5px;
 }

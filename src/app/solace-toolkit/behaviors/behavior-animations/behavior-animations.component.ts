@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatLegacyChipSelectionChange as MatChipSelectionChange } from '@angular/material/legacy-chips';
 import { SolacetkBottomSheetComponent } from '../../common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
 import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
+import { BehaviorState } from '../../models/behaviorstate';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
@@ -47,6 +47,20 @@ export class BehaviorAnimationsComponent implements OnInit {
   CloseAnim(): void {
     this.editorState = SolTkEditorState.List;
     this.unloadModules.emit(true);
+  }
+
+  CreateState(): void {
+    let state = new BehaviorState();
+    state.animation.id = this.model.id;
+    state.description = this.model.description;
+    state.name = this.model.name;
+    state.runCount = 1;
+    state.interruptable = true;
+    state.tags = this.model.tags;
+
+    this.service.CreateModel("Behaviors/States", state).subscribe(x => {
+      console.log(x);
+    });
   }
 
   ImportAseAnimsByTags(): void {

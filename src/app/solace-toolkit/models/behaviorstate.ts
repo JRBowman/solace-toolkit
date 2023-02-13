@@ -22,8 +22,8 @@ export class BehaviorState implements IModelTK {
     public actData: SoltkKeyValue[] = [];
     public endData: SoltkKeyValue[] = [];
 
-    public startDelay?: number = 0;
-    public endDelay?: number = 0;
+    public startDelay?: string = "0";
+    public endDelay?: string = "0";
     public interruptable?: boolean;
     public stateType?: string;
     public runCount: number = 0;

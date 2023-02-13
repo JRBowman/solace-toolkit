@@ -5,45 +5,121 @@
         <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl + '.png'" alt="map layer">
     </div>
 
+    <div class="editor-actions">
+        <div class="disp-flex auto-flex">
+            <button mat-icon-button matTooltip="Import Aseprite File" (click)="textureUpload.click()">
+                <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite"
+                #textureUpload>
+        </div>
+    </div>
+
     <div class="editor-panels">
-        <div class="disp-flex">
-            <solacetk-panel [unitHeight]="9" class="auto-flex" panelColor="#222034" panelName="Map Viewer"
+        <div class="auto-flex">
+
+            <!-- Map Viewer Panel: -->
+            <solacetk-panel [unitHeight]="12" class="auto-flex full-width" panelColor="#222034" panelName="Map Viewer"
                 panelIcon="branding_watermark">
 
-                <div class="panel-content">
-                    <div class="disp-flex" [style.transform]="scaleXY">
-                        <div cdkDrag class="auto-flex align-center map-container full-height">
-                            <div *ngFor="let layer of model.layers">
-                            <img class="sprite-thumb-2col sprite map-layer auto-flex" *ngIf="layer.enabled" 
-                            [src]="profileUrl + '-' + layer.name + '.png'" alt="map layer">
-                            </div>
-                            <div class="background-grid sprite auto-flex full-height full-width" [style.background]="'url(' + gridUrl + ')'">
+                <div class="panel-content full-height map-panel relative-container" style="height: 98%;">
 
+                    <!-- <div class="full-height full-width" [style.paddingBottom]="((mapHeight - 32)) + 'px'"
+                        [style.marginTop]="-((mapHeight - 16)) + 'px'" [style.marginLeft]="-((mapWidth - 16)) + 'px'"
+                        [style.transform]="'scale(' + mapscale + ',' + mapscale + ')'"> -->
+
+                    <div class="scroll-view full-height full-width" [style.transformOrigin]="'center'"
+                        [style.transform]="mapscale > 1 ? 'scale(' + mapscale + ',' + mapscale + ')' : 'scale(1,1)'">
+
+                        <div class="relative-input" cdkDrag cdkDragBoundary=".scroll-view"
+                            [cdkDragFreeDragPosition]="mapDragPos" [style.width]="mapWidth" [style.height]="mapHeight">
+
+                            <div class="align-center">
+                                <div *ngFor="let layer of model.layers">
+                                    <img class="sprite map-layer auto-flex" *ngIf="layer.enabled"
+                                        [src]="profileUrl + '-' + layer.name + '-0.png'" alt="map layer"
+                                        [style.height]="mapHeight">
+                                </div>
+
+                                <!-- Tile / Cell -->
+                                <!-- [style.background]="'url(' + gridUrl + ')'" -->
+                                <div *ngIf="selectedMode">
+                                    <div matRipple class="background-grid" *ngFor="let tile of tiles"
+                                        [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
+                                        (click)="SelectCell(tile)"
+                                        [class.gridSelected]="tile.selected"
+                                        [style.backgroundColor]="tile.groupColorKey" style="opacity: 0.667;"
+                                        [matTooltip]="(tile.name ?? 'Cell') +  ' - [' + tile.x + ', ' + tile.y + ']'">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <small class="relative-input font-large"
+                        style="right: 16px; bottom: 24px; color: darkgray; text-shadow: 1px 2px 4px #000000c7;">x{{mapscale}}</small>
+
+                    <!-- mat-elevation-z2 -->
+                    <div class="relative-input mat-elevation-z4"
+                        style="bottom: 8px; left: 12%; right: 12%; background-color: #2f4f4fd2; border-radius: 32px; padding-left: 16px; padding-right: 16px;">
+
+                        <div class="disp-flex auto-flex">
+                            <mat-slider class="auto-flex" max="16" min="0.25" step="0.25" showTickMarks="true">
+                                <input matSliderThumb [(ngModel)]="mapscale">
+                            </mat-slider>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="panel-actions">
-                    <div class="disp-flex">
-                        <button mat-icon-button matTooltip="Import Aseprite File">
-                            <mat-icon>upload</mat-icon>
-                        </button>
+                <div class="panel-actions full-width">
 
-                        <mat-slider class="no-flex" max="5" min="0.1" step="0.1" showTickMarks="true"
-                            (valueChange)="changeScale($event)">
-                            <input matSliderThumb [(ngModel)]="mapscale">
-                        </mat-slider>
-                        
-                        <div class="auto-flex align-end">
-                            <h4><small>Scale:</small> {{mapscale}}</h4>
+                    <div class="disp-flex auto-flex">
+
+                        <div class="disp-flex auto-flex" *ngIf="selectedMode == 'chunk'">
+                            <button mat-icon-button matTooltip="Create Chunk from Selected" (click)="CreateChunk()">
+                                <mat-icon>dataset_linked</mat-icon>
+                            </button>
+
+                            <div class="gap-1 no-flex"></div>
+
+                            <mat-form-field class="no-flex width-5">
+                                <mat-icon matPrefix class="align-center" [style.color]="chunkColor">
+                                    radar
+                                </mat-icon>
+                                <mat-label>Group</mat-label>
+                                <input matInput #chunkPixelColor placeholder="Chunk Color" type="color"
+                                    [(ngModel)]="chunkColor">
+                            </mat-form-field>
+
                         </div>
 
                         <div class="gap-1 auto-flex"></div>
 
-                        <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
-                            Log
+                        <button mat-icon-button matTooltip="Center Map" (click)="CenterMap()">
+                            <mat-icon>center_focus_strong</mat-icon>
                         </button>
+
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-button-toggle-group class="full-height" [(ngModel)]="selectedMode">
+                            <mat-button-toggle value="view" aria-label="View Mode">
+                                <mat-icon>preview</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle value="cell" aria-label="Cell Mode">
+                                <mat-icon>table_view</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle value="chunk" aria-label="Chunk Mode">
+                                <mat-icon>dataset</mat-icon>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+
+
+
+                        <!-- <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
+                            Log
+                        </button> -->
                     </div>
                 </div>
 
@@ -51,12 +127,84 @@
 
             <div class="gap-1 no-flex"></div>
 
-            <div class="no-flex width-33">
-                <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers"
-                    panelColor="mediumseagreen" overflowMethod="inherit" [(model)]="model.layers"
-                    [(selectedInstance)]="selectedLayer">
-                </map-layers-panel>
+            <div class="disp-flex">
+
+                <!-- Map Layers Panel: -->
+                <div class="auto-flex width-33">
+                    <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers"
+                        panelColor="mediumseagreen" overflowMethod="inherit" [(model)]="model.layers"
+                        [(selectedInstance)]="selectedLayer">
+                    </map-layers-panel>
+                </div>
+
+                <div class="gap-1 no-flex"></div>
+
+                <!-- Selected Cell Panel: -->
+                <solacetk-panel class="auto-flex width-2" panelColor="#5c6b8a" panelName="Cell" panelIcon="table_view">
+                    <div class="panel-content">
+
+                        <div class="disp-flex" *ngIf="selectedCell">
+
+                            <!-- <mat-form-field class="auto-flex font-small">
+                                <mat-label>Group</mat-label>
+                                <input matInput placeholder="Group" [(ngModel)]="selectedCell.group">
+                            </mat-form-field> -->
+
+                            <!-- Cell Model: -->
+                            <div class="disp-flex">
+                                <mat-form-field class="no-flex font-small width-8">
+                                    <mat-label>Id</mat-label>
+                                    <input matInput placeholder="Id" [(ngModel)]="selectedCell.id" disabled>
+                                </mat-form-field>
+                                <div class="gap-1 no-flex"></div>
+                                <mat-form-field class="no-flex font-small width-8">
+                                    <mat-label>PosX</mat-label>
+                                    <input matInput placeholder="Position X" [(ngModel)]="selectedCell.x" disabled>
+                                </mat-form-field>
+                                <div class="gap-1 no-flex"></div>
+                                <mat-form-field class="no-flex font-small width-8">
+                                    <mat-label>PosY</mat-label>
+                                    <input matInput placeholder="Position Y" [(ngModel)]="selectedCell.y" disabled>
+                                </mat-form-field>
+                                <div class="gap-1 no-flex"></div>
+                                <mat-form-field class="auto-flex">
+                                    <mat-icon matPrefix class="align-center" [style.color]="selectedCell.groupColorKey">
+                                        radar
+                                    </mat-icon>
+                                    <mat-label>Group</mat-label>
+                                    <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
+                                        [(ngModel)]="selectedCell.groupColorKey">
+                                </mat-form-field>
+                            </div>
+
+                            <!-- Cell Data: -->
+                            <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1"
+                                [panelName]="selectedCell.name + ' Data'" panelType="expansionpanel"
+                                [(model)]="selectedCell.downstreamData">
+                            </solacetk-attributes-panel>
+
+                            <div class="gap-1 no-flex"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="panel-actions">
+                        <button mat-icon-button matTooltip="Save Cell Data" (click)="CenterMap()">
+                            <mat-icon>save</mat-icon>
+                        </button>
+                    </div>
+                </solacetk-panel>
             </div>
+
+            <div class="gap-1 no-flex"></div>
+
+            <!-- Tileset Editor: -->
+            <solacetk-panel class="auto-flex width-2" panelColor="#5c6b8a" panelName="Tile Set" panelIcon="grid_view">
+                <div class="panel-content">
+                </div>
+                <div class="panel-actions">
+                </div>
+            </solacetk-panel>
 
             <!-- <solacetk-panel panelColor="mediumseagreen" panelName="Map Layers" panelIcon="layers">
 
