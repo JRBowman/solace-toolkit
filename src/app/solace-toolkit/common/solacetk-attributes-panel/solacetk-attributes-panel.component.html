@@ -6,39 +6,47 @@
 
 
             <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
-                <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
+                <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" style="margin: 0;">
 
-                    <div class="disp-flex">
-
-
-                        <div class="no-flex model-field-small mr-2">
-                            <h4>[{{GetKeyIndex(attr)}}]:</h4>
+                    <div class="disp-flex full-width">
+                        <div class="no-flex font-small align-center">
+                            <p>{{GetKeyIndex(attr)}}:</p>
                         </div>
+                        <div class="gap-1 auto-flex"></div>
+                        <button mat-icon-button color="primary" class="no-flex font-small align-top" aria-label="Remove Attribute"
+                        (click)="RemoveAttribute(attr)">
+                        <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
 
-                        <mat-form-field class="auto-flex font-small model-field-small width-5 mr-2">
-                            <mat-label>Key</mat-label>
+                    <div class="disp-flex full-width">
+
+                        <mat-form-field class="auto-flex font-small width-33">
+                            <mat-label class="font-small">Key</mat-label>
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
 
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small model-field-small mr-2 width-5-min">
-                            <mat-label>Operator</mat-label>
-                            <mat-select [(ngModel)]="attr.operator">
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-form-field *ngIf="operatorsEnabled" class="auto-flex font-small width-5">
+                            <mat-label class="font-small">Operator</mat-label>
+                            <mat-select class="font-small" [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
 
-                        <mat-form-field class="auto-flex font-small model-field-small width-5">
-                            <mat-label>Data</mat-label>
+                        <div class="gap-1 no-flex"></div>
+
+                        <mat-form-field class="auto-flex font-small width-33">
+                            <mat-label class="font-small">Data</mat-label>
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
 
-                        <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
-                            (click)="RemoveAttribute(attr)">
-                            <mat-icon>remove</mat-icon>
-                        </button>
-
                     </div>
+
+                    <mat-divider></mat-divider>
+                    <div class="gap-1 no-flex"></div>
                 </div>
             </div>
         </div>
@@ -57,27 +65,31 @@
 
 
             <div cdkDropList (cdkDropListDropped)="dropConditions($event)">
-                <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" class="mb-2" style="margin: 0;">
+                <div cdkDrag [cdkDragData]="attr" *ngFor="let attr of model" style="margin: 0;">
+                    
+                    <div class="disp-flex full-width">
+                        <div class="no-flex font-small align-center">
+                            <p>{{GetKeyIndex(attr)}}:</p>
+                        </div>
+                        <div class="gap-1 auto-flex"></div>
+                        <button mat-icon-button color="primary" class="no-flex font-small align-top" aria-label="Remove Attribute"
+                        (click)="RemoveAttribute(attr)">
+                        <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
 
                     <div class="disp-flex full-width">
 
-
-                        <div class="no-flex font-small align-center">
-                            <h4>[{{GetKeyIndex(attr)}}]:</h4>
-                        </div>
-
-                        <div class="gap-1 no-flex"></div>
-
-                        <mat-form-field class="auto-flex font-small width-5">
-                            <mat-label>Key</mat-label>
+                        <mat-form-field class="auto-flex font-small width-33">
+                            <mat-label class="font-small">Key</mat-label>
                             <input matInput placeholder="Key" [(ngModel)]="attr.key">
                         </mat-form-field>
 
                         <div class="gap-1 no-flex"></div>
 
-                        <mat-form-field *ngIf="operatorsEnabled" class="no-flex font-small width-8">
-                            <mat-label>Operator</mat-label>
-                            <mat-select [(ngModel)]="attr.operator">
+                        <mat-form-field *ngIf="operatorsEnabled" class="auto-flex font-small width-5">
+                            <mat-label class="font-small">Operator</mat-label>
+                            <mat-select class="font-small" [(ngModel)]="attr.operator">
                                 <mat-option *ngFor="let op of operators" [value]="operators.indexOf(op)">{{op}}
                                 </mat-option>
                             </mat-select>
@@ -85,19 +97,14 @@
 
                         <div class="gap-1 no-flex"></div>
 
-                        <mat-form-field class="auto-flex font-small width-5">
-                            <mat-label>Data</mat-label>
+                        <mat-form-field class="auto-flex font-small width-33">
+                            <mat-label class="font-small">Data</mat-label>
                             <input matInput placeholder="Data" [(ngModel)]="attr.data">
                         </mat-form-field>
-
-                        <div class="gap-1 no-flex"></div>
-
-                        <button mat-icon-button color="primary" class="no-flex align-top" aria-label="Remove Attribute"
-                            (click)="RemoveAttribute(attr)">
-                            <mat-icon>remove</mat-icon>
-                        </button>
-
                     </div>
+
+                    <mat-divider></mat-divider>
+                    <div class="gap-1 no-flex"></div>
                 </div>
             </div>
         </div>

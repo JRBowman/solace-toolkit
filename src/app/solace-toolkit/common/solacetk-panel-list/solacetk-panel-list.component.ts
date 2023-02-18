@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatChipListboxChange } from '@angular/material/chips';
 
 @Component({
   selector: 'solacetk-panel-list',
@@ -28,6 +29,8 @@ export class SolacetkPanelListComponent implements OnInit {
   @Input() selectedInstance: any = {};
   @Output() selectedInstanceChange = new EventEmitter<any>();
 
+  public showEditor: boolean = false;
+
   ngOnInit(): void {
   }
 
@@ -40,7 +43,15 @@ export class SolacetkPanelListComponent implements OnInit {
 
   public onInstanceSelect(instance: any){
     this.selectedInstance = instance;
+    this.showEditor = true;
     this.selectedInstanceChange.emit(this.selectedInstance);
+  }
+
+  public onInstanceChange(event: MatChipListboxChange) {
+    if (!event || event.value == undefined) {
+      this.onInstanceSelect(null);
+      this.showEditor = false;
+    }
   }
 
 }

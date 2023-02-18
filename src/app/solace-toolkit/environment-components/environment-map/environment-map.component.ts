@@ -99,12 +99,27 @@ export class EnvironmentMapComponent implements OnInit {
 
       this.tilesX = (data.meta.size.w / 16) ?? 16;
       this.tilesY = (data.meta.size.h / 16) ?? 16;
-      this.mapHeight = data.meta.size.h;
-      this.mapWidth = data.meta.size.w
+      this.mapHeight = data.meta.size.h ?? 384;
+      this.mapWidth = data.meta.size.w ?? 384;
 
       for (let y = 0; y < this.tilesY; y++) {
         for (let x = 0; x < this.tilesX; x++) {
-          this.tiles = [...this.tiles, {id: 0, x: x, y: y, data:[], name: "Cell"}];
+          let tile = {id: 0, x: x, y: y, data:[], name: "Cell", groupColorKey: ""};
+
+          // use Slice Data:
+          if (data.meta.slices) {
+            let slices: any[] = [];
+            slices = [...slices, ...data.meta.slices];
+            slices.forEach(slice => {
+              if (slice.keys[0].bounds.x == (x * 16) 
+                  && slice.keys[0].bounds.y == (y * 16)) {
+                    tile.name = slice.name;
+                    tile.groupColorKey = slice.color;
+              }
+            });
+          }
+
+          this.tiles = [...this.tiles, tile];
         }
       }
 

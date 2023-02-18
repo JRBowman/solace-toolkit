@@ -22,7 +22,7 @@
             <solacetk-panel [unitHeight]="12" class="auto-flex full-width" panelColor="#222034" panelName="Map Viewer"
                 panelIcon="branding_watermark">
 
-                <div class="panel-content full-height map-panel relative-container" style="height: 98%; background-color: rgb(24 23 36);">
+                <div class="panel-content full-height map-panel relative-container mat-elevation-z4" style="height: 98%; background-color: rgb(24 23 36);">
 
                     <!-- <div class="full-height full-width" [style.paddingBottom]="((mapHeight - 32)) + 'px'"
                         [style.marginTop]="-((mapHeight - 16)) + 'px'" [style.marginLeft]="-((mapWidth - 16)) + 'px'"
@@ -31,19 +31,21 @@
                     <div class="scroll-view full-height full-width" [style.transformOrigin]="'center'"
                         [style.transform]="mapscale > 1 ? 'scale(' + mapscale + ',' + mapscale + ')' : 'scale(1,1)'">
 
-                        <div class="relative-input" cdkDrag cdkDragBoundary=".scroll-view"
+                        <div class="relative-input mat-elevation-z4" cdkDrag cdkDragBoundary=".scroll-view"
                             [cdkDragFreeDragPosition]="mapDragPos" [style.width]="mapWidth" [style.height]="mapHeight">
 
-                            <div class="align-center">
+                            <!-- <div class="align-center"> -->
+                                <!-- <div class="mat-elevation-z4" [style.height]="mapHeight" [style.width]="mapWidth"> -->
                                 <div *ngFor="let layer of model.layers">
                                     <img class="sprite map-layer auto-flex" *ngIf="layer.enabled"
                                         [src]="profileUrl + '-' + layer.name + '-0.png'" alt="map layer"
                                         [style.height]="mapHeight">
                                 </div>
+                            <!-- </div> -->
 
                                 <!-- Tile / Cell -->
                                 <!-- [style.background]="'url(' + gridUrl + ')'" -->
-                                <div *ngIf="selectedMode">
+                                <div *ngIf="selectedMode" class="full-width full-height">
                                     <div matRipple class="background-grid" *ngFor="let tile of tiles"
                                         [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
                                         (click)="SelectCell(tile)" [class.gridSelected]="tile.selected"
@@ -52,7 +54,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
 
@@ -129,7 +131,7 @@
             <div class="disp-flex">
 
                 <!-- Map Layers Panel: -->
-                <div class="auto-flex width-33">
+                <div class="no-flex width-5">
                     <map-layers-panel fontSize="medium" panelName="Map Layers" panelIcon="layers"
                         panelColor="mediumseagreen" overflowMethod="inherit" [(model)]="model.layers"
                         [(selectedInstance)]="selectedLayer">
@@ -139,7 +141,7 @@
                 <div class="gap-1 no-flex"></div>
 
                 <!-- Selected Cell Panel: -->
-                <solacetk-panel class="auto-flex width-2" panelColor="#5c6b8a" panelName="Cell" panelIcon="table_view">
+                <solacetk-panel class="auto-flex width-2" panelColor="#606080" panelName="Cell" panelIcon="table_view">
                     <div class="panel-content">
 
                         <div class="" *ngIf="selectedCell">
@@ -152,33 +154,33 @@
                             <!-- Cell Model: -->
                             <div class="disp-flex">
                                 <mat-form-field class="no-flex font-small width-8">
-                                    <mat-label>Id</mat-label>
+                                    <mat-label class="font-small">Id</mat-label>
                                     <input matInput placeholder="Id" [(ngModel)]="selectedCell.id" disabled>
                                 </mat-form-field>
                                 <div class="gap-1 no-flex"></div>
                                 <mat-form-field class="no-flex font-small width-8">
-                                    <mat-label>PosX</mat-label>
+                                    <mat-label class="font-small">PosX</mat-label>
                                     <input matInput placeholder="Position X" [(ngModel)]="selectedCell.x" disabled>
                                 </mat-form-field>
                                 <div class="gap-1 no-flex"></div>
                                 <mat-form-field class="no-flex font-small width-8">
-                                    <mat-label>PosY</mat-label>
+                                    <mat-label class="font-small">PosY</mat-label>
                                     <input matInput placeholder="Position Y" [(ngModel)]="selectedCell.y" disabled>
                                 </mat-form-field>
                                 <div class="gap-1 no-flex"></div>
-                                <mat-form-field class="auto-flex">
+                                <mat-form-field class="auto-flex font-small">
                                     <mat-icon matPrefix class="align-center" [style.color]="selectedCell.groupColorKey">
                                         radar
                                     </mat-icon>
-                                    <mat-label>Group</mat-label>
-                                    <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
-                                        [(ngModel)]="selectedCell.groupColorKey">
+                                    <mat-label class="font-small">Group</mat-label>
+                                    <input matInput #groupColorKey placeholder="Group Color Key" type="color"
+                                        [(ngModel)]="selectedCell.groupColorKey" [value]="selectedCell.groupColorKey">
                                 </mat-form-field>
                             </div>
 
                             <!-- <div class="disp-flex"> -->
                                 <mat-form-field class="auto-flex font-small">
-                                    <mat-label>Name</mat-label>
+                                    <mat-label class="font-small">Name</mat-label>
                                     <input matInput placeholder="Name" [(ngModel)]="selectedCell.name">
                                 </mat-form-field>
                             <!-- </div> -->
@@ -208,7 +210,7 @@
             <div class="gap-1 no-flex"></div>
 
             <!-- Tileset Editor: -->
-            <solacetk-panel class="auto-flex width-2" panelColor="#5c6b8a" panelName="Tile Set" panelIcon="grid_view">
+            <solacetk-panel class="auto-flex width-2" panelColor="#c08060" panelName="Tile Set" panelIcon="grid_view">
                 <div class="panel-content">
                 </div>
                 <div class="panel-actions">
