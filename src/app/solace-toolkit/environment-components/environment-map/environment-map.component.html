@@ -74,7 +74,7 @@
                     </div>
 
                     <!-- Relative Map Layers Panel: -->
-                    <div class="relative-input width-8" style="right: 8px; top: 8px;">
+                    <div class="relative-input width-8 min-width-3" style="right: 8px; top: 8px;">
                         <!-- <map-layers-panel fontSize="small" panelName="Map Layers" panelIcon="layers"
                             panelColor="#208060E0" [(model)]="model.layers" panelType="expansionpanel"
                             [(selectedInstance)]="selectedLayer">
@@ -84,7 +84,7 @@
                             <div class="expansionpanel-content">
                                 <mat-chip-listbox multiple="true" style="place-content: space-evenly;">
                                     <mat-chip-option [selected]="instance.enabled"
-                                        class="font-xsmall auto-flex min-width-1" *ngFor="let instance of model.layers"
+                                        class="font-xsmall auto-flex full-width" *ngFor="let instance of model.layers"
                                         (click)="instance.enabled = !instance.enabled">
                                         {{instance.name}}
                                     </mat-chip-option>
