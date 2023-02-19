@@ -11,8 +11,8 @@
 }
 
 .background-grid {
-    height: 14px;
-    width: 14px;
+    height: 15px;
+    width: 15px;
     position: absolute;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -29,7 +29,7 @@
     margin-top: -1px; */
     /* margin-right: 2px; */
     border-width: 0.1em;
-    padding: 1px;
+
 }
 
 .gridSelected {
@@ -37,7 +37,8 @@
     border-width: 0.1em;
     border-style: solid;
     border-color: rgba(235, 34, 124, 1);
-    padding: 0;
+    height: 14px;
+    width: 14px;
     /* opacity: 1 !important; */
     /* filter: drop-shadow(1px 4px 2px black); */
 }
@@ -55,7 +56,8 @@
     opacity: 0.75 !important;
     background-color: rgba(255, 255, 255, 0.5);
     border-style: solid;
-    padding: 0;
+    height: 14px;
+    width: 14px;
 }
 
 .gridCell:active{
