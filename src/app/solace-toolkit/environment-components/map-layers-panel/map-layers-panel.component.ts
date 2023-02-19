@@ -23,6 +23,8 @@ export class MapLayersPanelComponent implements OnInit {
 
   @Input() overflowMethod: string = "hidden";
 
+  @Input() showActions: boolean = false;
+
   @Input() model: EnvironmentMapLayer[] = [];
   @Output() modelChange = new EventEmitter<EnvironmentMapLayer[]>();
 

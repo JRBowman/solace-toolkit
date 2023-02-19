@@ -1,24 +1,25 @@
 <solacetk-panel [fontSize]="fontSize" [unitWidth]="unitWidth" [unitHeight]="unitHeight" [panelName]="panelName"
     [panelIcon]="panelIcon" [panelColor]="panelColor" [panelType]="panelType" [overflowMethod]="overflowMethod">
 
-    <div class="panel-content">
+    <div class="panel-content" *ngIf="panelType == 'panel'">
 
         <!-- <div class="disp-flex"> -->
-            <div>
+        <div>
             <div class="full-width">
-                    <!-- <mat-chip-set class="auto-flex">
+                <!-- <mat-chip-set class="auto-flex">
                         <mat-chip class="min-width-1 font-xsmall justify-center" *ngFor="let instance of model"
                             (click)="onInstanceSelect(instance)">
                             <span [style.textAlign]="'center'">{{instance.name}}</span>
                         </mat-chip>
                     </mat-chip-set> -->
 
-                    <!-- Chip List Box! -->
-                    <mat-chip-listbox (change)="onInstanceChange($event)">
-                        <mat-chip-option class="font-xsmall" *ngFor="let instance of model" (click)="onInstanceSelect(instance)">
-                            {{instance.name}}
-                        </mat-chip-option>
-                    </mat-chip-listbox>
+                <!-- Chip List Box! -->
+                <mat-chip-listbox (change)="onInstanceChange($event)" style="place-content: space-evenly;">
+                    <mat-chip-option class="font-xsmall auto-flex min-width-1" *ngFor="let instance of model"
+                        (click)="onInstanceSelect(instance)">
+                        {{instance.name}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
 
                 <div class="gap-1 no-flex"></div>
 
@@ -34,7 +35,8 @@
                                 <h4>Id: {{selectedInstance.id}}</h4>
                             </div>
                             <div class="gap-1 auto-flex"></div>
-                            <mat-slide-toggle matTooltip="Enabled" class="disp-flex auto-flex align-start" style="justify-content: end;" [(ngModel)]="selectedInstance.enabled">
+                            <mat-slide-toggle matTooltip="Enabled" class="disp-flex auto-flex align-start"
+                                style="justify-content: end;" [(ngModel)]="selectedInstance.enabled">
                             </mat-slide-toggle>
                         </div>
                         <ng-content select=".instance-editor"></ng-content>
@@ -45,33 +47,43 @@
         </div>
     </div>
 
-    <div class="panel-actions">
+    <div class="panel-actions" *ngIf="showActions && panelType == 'panel'">
         <button mat-button (click)="addInstance()">Add</button>
     </div>
 
-    <div class="expansionpanel-content">
+    <div class="expansionpanel-content" *ngIf="panelType == 'expansionpanel'">
         <div class="disp-flex">
             <div class="auto-flex">
-                <div class="mb-2">
-                    <mat-chip-set class="auto-flex">
+                <!-- <mat-chip-set class="auto-flex">
                         <mat-chip class="min-width-12 justify-center" *ngFor="let instance of model"
                             (click)="onInstanceSelect(instance)">
                             {{instance.name}}
                         </mat-chip>
-                    </mat-chip-set>
-                </div>
+                    </mat-chip-set> -->
+                <!-- Chip List Box! -->
+                <mat-chip-listbox (change)="onInstanceChange($event)" style="place-content: space-evenly;">
+                    <mat-chip-option class="font-xsmall auto-flex min-width-1" *ngFor="let instance of model"
+                        (click)="onInstanceSelect(instance)">
+                        {{instance.name}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+
+                <div class="gap-1 no-flex"></div>
 
 
-                <mat-card *ngIf="selectedInstance">
-
+                <mat-card *ngIf="selectedInstance && showEditor">
                     <mat-card-content>
                         <div class="disp-flex">
-                            <mat-form-field class="auto-flex font-small">
-                                <mat-label>Id</mat-label>
-                                <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
-                            </mat-form-field>
-                            <div class="gap1 no-flex"></div>
-                            <mat-slide-toggle matTooltip="Enabled" class="auto-flex align-center" [(ngModel)]="selectedInstance.enabled">
+                            <!-- <mat-form-field class="no-flex font-xsmall width-2">
+                                                    <mat-label class="font-small">Id</mat-label>
+                                                    <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
+                                                </mat-form-field> -->
+                            <div class="no-flex font-small">
+                                <h4>Id: {{selectedInstance.id}}</h4>
+                            </div>
+                            <div class="gap-1 auto-flex"></div>
+                            <mat-slide-toggle matTooltip="Enabled" class="disp-flex auto-flex align-start"
+                                style="justify-content: end;" [(ngModel)]="selectedInstance.enabled">
                             </mat-slide-toggle>
                         </div>
                         <ng-content select=".instance-editor"></ng-content>
@@ -82,7 +94,7 @@
         </div>
     </div>
 
-    <div class="expansionpanel-actions">
+    <div class="expansionpanel-actions" *ngIf="showActions && panelType == 'expansionpanel'">
         <button mat-button (click)="addInstance()">Add</button>
     </div>
 

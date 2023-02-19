@@ -29,6 +29,8 @@ export class SolacetkPanelListComponent implements OnInit {
   @Input() selectedInstance: any = {};
   @Output() selectedInstanceChange = new EventEmitter<any>();
 
+  @Input() showActions: boolean = false;
+
   public showEditor: boolean = false;
 
   ngOnInit(): void {

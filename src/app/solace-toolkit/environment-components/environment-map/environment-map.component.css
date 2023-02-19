@@ -24,11 +24,22 @@
 
 }
 
+.gridCell {
+    /* margin-left: -1px;
+    margin-top: -1px; */
+    /* margin-right: 2px; */
+    border-width: 0.1em;
+    padding: 1px;
+}
+
 .gridSelected {
-    background-color: white;
+    /* background-color: white; */
+    border-width: 0.1em;
     border-style: solid;
-    border-color: gold;
-    filter: drop-shadow(1px 4px 2px black);
+    border-color: rgba(235, 34, 124, 1);
+    padding: 0;
+    /* opacity: 1 !important; */
+    /* filter: drop-shadow(1px 4px 2px black); */
 }
 
 .relative-container {
@@ -40,13 +51,15 @@
     position: absolute;
 }
 
-.background-grid:hover {
-    background-color: rgba(128, 128, 128);
+.gridCell:hover {
+    opacity: 0.75 !important;
+    background-color: rgba(255, 255, 255, 0.5);
     border-style: solid;
+    padding: 0;
 }
 
-.background-grid:active{
-    background-color: rgba(64, 128, 128);
+.gridCell:active{
+    background-color: rgba(64, 128, 128, 0.5);
 }
 
 .map-panel {

@@ -1,5 +1,6 @@
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MatSliderChange } from '@angular/material/slider';
 import { EnvironmentMap } from '../../models/environment-map';
 import { EnvironmentMapLayer } from '../../models/environment-map-layer';
@@ -34,6 +35,10 @@ export class EnvironmentMapComponent implements OnInit {
   public mapDragPos = {x: 0, y: 0};
 
   public selectedMode: string = "view";
+  public selectedModeChange = new EventEmitter<string>();
+
+  public showCellColors: boolean = true;
+
 
   // Cell Mode:
   public selectedCell: any = null;
@@ -48,7 +53,7 @@ export class EnvironmentMapComponent implements OnInit {
   public gridUrl: string = this.soltkService.apiHost + "Ase/grid-tile/grid-tile.png";
 
   ngOnInit(): void {
-
+    //this.selectedModeChange.subscribe(x => this.ModeChange(x));
   }
 
   CenterMap(): void {
@@ -75,6 +80,38 @@ export class EnvironmentMapComponent implements OnInit {
       this.selectedCell.selected = true;
       // TODO: Logic for clicking and selecting a Cell (load its Model into the Cell Editor):
     }
+  }
+
+  ModeChange(nextMode: MatButtonToggleChange): void {
+    console.log("Mode Change: " + nextMode.value);
+    if (this.selectedMode != nextMode.value) {
+      this.DeselectCells();
+      if (nextMode.value == 'chunk') this.showCellColors = true;
+      this.selectedMode = nextMode.value;
+    }
+  }
+
+  public DeselectCells(): void {
+
+      // Null Selected Cell:
+      if (this.selectedCell) {
+        this.selectedCell.selected = false;
+        this.selectedCell = null;
+      }
+
+      // Deselect Groups:
+      if (this.selectedCells && this.selectedCells.length > 0) {
+        this.selectedCells.forEach(cell => {
+          cell.selected = false;
+        });
+        this.selectedCells = new Array<any>();
+      }
+  }
+
+  public ClearChunk(): void {
+    this.selectedCells.forEach(cell => {
+      cell.groupColorKey = "";
+    });
   }
 
   // Chunk Mode:
