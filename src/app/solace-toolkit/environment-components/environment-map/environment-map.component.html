@@ -45,12 +45,12 @@
 
                             <!-- Tile / Cell -->
                             <!-- [style.background]="'url(' + gridUrl + ')'" -->
-                            <div *ngIf="selectedMode" class="full-width full-height">
+                            <div *ngIf="selectedMode && showGrid" class="full-width full-height">
                                 <div matRipple class="gridCell background-grid" *ngFor="let tile of tiles"
                                     [style.backgroundColor]="showCellColors ? tile.groupColorKey : ''"
                                     [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
-                                    (click)="SelectCell(tile)" style="opacity: 0.667;" [class.mat-elevation-z2]="tile.selected"
-                                    [class.gridSelected]="tile.selected"
+                                    (click)="SelectCell(tile)" [style.opacity]="chunkOpacity"
+                                    [class.mat-elevation-z2]="tile.selected" [class.gridSelected]="tile.selected"
                                     [matTooltip]="(tile.name ?? 'Cell') +  ' - [' + tile.x + ', ' + tile.y + ']'">
                                 </div>
                             </div>
@@ -124,7 +124,13 @@
 
                         </div>
                         <div class="panel-actions disp-flex full-width" *ngIf="selectedCell">
+                            
                             <div class="gap-1 auto-flex"></div>
+
+                            <mat-slide-toggle matTooltip="Enabled" class="no-flex align-center" [(ngModel)]="selectedCell.enabled">
+                            </mat-slide-toggle>
+
+                            <div class="gap-2 no-flex"></div>
 
                             <mat-form-field class="no-flex font-small align-center"
                                 style="opacity: 0; width: 0; height: 0;">
@@ -157,10 +163,40 @@
 
                     <div class="disp-flex auto-flex">
 
-                        <button mat-icon-button matTooltip="Toggle Cell/Chunk Colors"
-                            (click)="showCellColors = !showCellColors">
-                            <mat-icon>invert_colors</mat-icon>
+                        <!-- <button mat-icon-button matTooltip="View Settings" [matMenuTriggerFor]="gridMenu">
+                            <mat-icon>display_settings</mat-icon>
+                        </button> -->
+
+                        <!-- <mat-menu #gridMenu="matMenu" yPosition="above">
+                            <button mat-menu-item (click)="showCellColors = !showCellColors">
+                                <mat-icon>{{showCellColors ? 'visibility_off' : 'visibility_on'}}</mat-icon>
+                                Toggle Chunks
+                            </button>
+                            <button mat-menu-item (click)="showGrid = !showGrid">
+                                <mat-icon>{{showGrid ? 'grid_off' : 'grid_on'}}</mat-icon>
+                                Toggle Grid
+                            </button>
+                        </mat-menu> -->
+
+                        <div class="gap-1 no-flex"></div>
+
+                        <button mat-icon-button color="accent" matTooltip="Toggle Grid" 
+                            (click)="showGrid = !showGrid">
+                            <mat-icon>{{showGrid ? 'grid_off' : 'grid_on'}}</mat-icon>
                         </button>
+
+                        <div class="gap-1 no-flex"></div>
+
+                        <button mat-icon-button color="accent" matTooltip="Toggle Chunks" 
+                        (click)="showCellColors = !showCellColors">
+                        <mat-icon>{{showCellColors ? 'visibility_off' : 'visibility_on'}}</mat-icon>
+                    </button>
+
+                    <div class="gap-1 no-flex"></div>
+
+                        <mat-slider class="no-flex width-8" max="1" min="0" step="0.01" showTickMarks="true">
+                            <input matSliderThumb [(ngModel)]="chunkOpacity">
+                        </mat-slider>
 
                         <div class="gap-1 no-flex"></div>
 
@@ -193,12 +229,18 @@
 
                                 <button *ngIf="selectedCells && selectedCells.length > 0" mat-icon-button
                                     matTooltip="Create Chunk from Selected" (click)="CreateChunk()">
-                                    <mat-icon [style.color]="chunkColor">dataset_linked</mat-icon>
+                                    <mat-icon [style.color]="chunkColor">link_on</mat-icon>
                                 </button>
+
+                                <div class="gap-2 no-flex"></div>
+
+                                <mat-divider vertical="true"></mat-divider>
+
+                                <div class="gap-2 no-flex"></div>
 
                                 <button *ngIf="selectedCells && selectedCells.length > 0" mat-icon-button
                                     matTooltip="Clear Chunk from Selected" (click)="ClearChunk()">
-                                    <mat-icon [style.color]="'#c06020'">check_box_outline_blank</mat-icon>
+                                    <mat-icon [style.color]="'#c06020'">link_off</mat-icon>
                                 </button>
                             </div>
 

@@ -39,12 +39,15 @@ export class EnvironmentMapComponent implements OnInit {
 
   public showCellColors: boolean = true;
 
+  public showGrid: boolean = true;
+
 
   // Cell Mode:
   public selectedCell: any = null;
 
   // Chunk Mode:
   public chunkColor: string = "#fffff";
+  public chunkOpacity: number = 0.667;
   public selectedCells: Array<any> = new Array<any>();
 
 
@@ -141,7 +144,7 @@ export class EnvironmentMapComponent implements OnInit {
 
       for (let y = 0; y < this.tilesY; y++) {
         for (let x = 0; x < this.tilesX; x++) {
-          let tile = {id: 0, x: x, y: y, data:[], name: "Cell", groupColorKey: ""};
+          let tile = {id: 0, x: x, y: y, data:[], name: "Cell", groupColorKey: "", enabled: false};
 
           // use Slice Data:
           if (data.meta.slices) {
@@ -152,6 +155,7 @@ export class EnvironmentMapComponent implements OnInit {
                   && slice.keys[0].bounds.y == (y * 16)) {
                     tile.name = slice.name;
                     tile.groupColorKey = slice.color;
+                    if (tile.groupColorKey != "") tile.enabled = true;
               }
             });
           }
