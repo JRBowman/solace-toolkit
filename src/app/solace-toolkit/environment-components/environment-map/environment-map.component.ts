@@ -40,6 +40,7 @@ export class EnvironmentMapComponent implements OnInit {
   public showCellColors: boolean = true;
 
   public showGrid: boolean = true;
+  public showScale: boolean = true;
 
 
   // Cell Mode:

@@ -23,7 +23,6 @@
 
                 <div class="gap-1 no-flex"></div>
 
-
                 <mat-card *ngIf="selectedInstance && showEditor">
                     <mat-card-content>
                         <div class="disp-flex">
@@ -32,14 +31,14 @@
                                 <input matInput disabled placeholder="Id" [(ngModel)]="selectedInstance.id">
                             </mat-form-field> -->
                             <div class="no-flex font-small">
-                                <h4>Id: {{selectedInstance.id}}</h4>
+                                <h4>Id: {{selectedInstance.id ?? 0}}</h4>
                             </div>
                             <div class="gap-1 auto-flex"></div>
                             <mat-slide-toggle matTooltip="Enabled" class="disp-flex auto-flex align-start"
                                 style="justify-content: end;" [(ngModel)]="selectedInstance.enabled">
                             </mat-slide-toggle>
                         </div>
-                        <ng-content select=".instance-editor"></ng-content>
+                        <!-- <ng-content select=".instance-editor"></ng-content> -->
                     </mat-card-content>
 
                 </mat-card>
