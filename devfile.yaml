@@ -13,7 +13,7 @@ projects:
   - name: solacetk
     git:
       checkoutFrom:
-        revision: devfilev2
+        revision: main
       remotes:
         origin: https://onbowman@dev.azure.com/onbowman/solace-toolkit/_git/solace-toolkit
 components:
