@@ -46,8 +46,8 @@
                             <!-- Tile / Cell -->
                             <!-- [style.background]="'url(' + gridUrl + ')'" -->
                             <div *ngIf="selectedMode && showGrid" class="full-width full-height">
-                                <div matRipple class="gridCell background-grid" *ngFor="let tile of tiles"
-                                    [style.backgroundColor]="showCellColors ? tile.groupColorKey : ''"
+                                <div matRipple class="gridCell background-grid" *ngFor="let tile of model.cells"
+                                    [style.backgroundColor]="showCellColors ? tile.colorKey : ''"
                                     [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
                                     (click)="SelectCell(tile)" [style.opacity]="chunkOpacity"
                                     [class.mat-elevation-z2]="tile.selected" [class.gridSelected]="tile.selected"
@@ -137,16 +137,16 @@
 
                             <mat-form-field class="no-flex font-small align-center"
                                 style="opacity: 0; width: 0; height: 0;">
-                                <mat-icon matPrefix class="align-center" [style.color]="selectedCell.groupColorKey">
+                                <mat-icon matPrefix class="align-center" [style.color]="selectedCell.colorKey">
                                     radar
                                 </mat-icon>
                                 <mat-label class="font-small">Group</mat-label>
                                 <input matInput #groupColorKey placeholder="Group Color Key" type="color"
-                                    [(ngModel)]="selectedCell.groupColorKey" [value]="selectedCell.groupColorKey">
+                                    [(ngModel)]="selectedCell.colorKey" [value]="selectedCell.colorKey">
                             </mat-form-field>
 
                             <button mat-icon-button matTooltip="Set Group Key" (click)="groupColorKey.click()">
-                                <mat-icon [style.color]="selectedCell.groupColorKey">
+                                <mat-icon [style.color]="selectedCell.colorKey">
                                     radar
                                 </mat-icon>
                             </button>
@@ -271,9 +271,9 @@
 
 
 
-                        <!-- <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
+                        <button mat-button matTooltip="Log Model to Console" (click)="logModel()">
                             Log
-                        </button> -->
+                        </button>
                     </div>
                 </div>
 
@@ -335,12 +335,12 @@
                             <!-- Cell Data: -->
                             <solacetk-attributes-panel class="auto-flex" [panelMode]="1"
                                 [panelName]="selectedCell.name + ' Data'" panelType="expansionpanel"
-                                [(model)]="selectedCell.downstreamData">
+                                [(model)]="selectedCell.activeData">
                             </solacetk-attributes-panel>
 
                             <div class="gap-1 no-flex"></div>
 
-                            <solacetk-event-panel [(model)]="selectedCell.events"></solacetk-event-panel>
+                            <solacetk-event-panel [(model)]="selectedCell.activeEvents"></solacetk-event-panel>
 
 
                         </div>
@@ -360,16 +360,16 @@
 
                         <mat-form-field class="no-flex font-small align-center"
                             style="opacity: 0; width: 0; height: 0;">
-                            <mat-icon matPrefix class="align-center" [style.color]="selectedCell.groupColorKey">
+                            <mat-icon matPrefix class="align-center" [style.color]="selectedCell.colorKey">
                                 radar
                             </mat-icon>
                             <mat-label class="font-small">Group</mat-label>
                             <input matInput #selectedGroupColorKey placeholder="Group Color Key" type="color"
-                                [(ngModel)]="selectedCell.groupColorKey" [value]="selectedCell.groupColorKey">
+                                [(ngModel)]="selectedCell.colorKey" [value]="selectedCell.colorKey">
                         </mat-form-field>
 
                         <button mat-icon-button matTooltip="Set Group Key" (click)="selectedGroupColorKey.click()">
-                            <mat-icon [style.color]="selectedCell.groupColorKey">
+                            <mat-icon [style.color]="selectedCell.colorKey">
                                 radar
                             </mat-icon>
                         </button>
@@ -396,13 +396,6 @@
 
             <div class="gap-1 no-flex"></div>
 
-            <!-- Tileset Editor: -->
-            <solacetk-panel class="auto-flex width-2" panelColor="#c08060" panelName="Tile Set" panelIcon="grid_view">
-                <div class="panel-content">
-                </div>
-                <div class="panel-actions">
-                </div>
-            </solacetk-panel>
 
         </div>
     </div>

@@ -1,8 +1,27 @@
-<solacetk-model-list [(model)]="model" moduleName="Tile Sets" modelUri="Environment/tilesets">
+<solacetk-model-list [(model)]="model" moduleName="Tile Sets" modelUri="Environments/TileSets" (modelLoaded)="loadEditor()">
     <div class="editor">
+        <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl + '.png'" alt="map layer">
+    </div>
 
+    <div class="editor-actions">
+        <div class="disp-flex auto-flex">
+            <button mat-icon-button matTooltip="Import Aseprite File" (click)="textureUpload.click()">
+                <mat-icon>upload</mat-icon>
+            </button>
+            <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite"
+                #textureUpload>
+        </div>
     </div>
 
     <div class="editor-panels">
+
+            <!-- Tileset Editor: -->
+            <solacetk-panel class="auto-flex width-2" panelColor="#c08060" panelName="Tile Set" panelIcon="grid_view">
+                <div class="panel-content">
+                </div>
+                <div class="panel-actions">
+                </div>
+            </solacetk-panel>
+
     </div>
 </solacetk-model-list>

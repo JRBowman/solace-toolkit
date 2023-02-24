@@ -4,6 +4,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MatSliderChange } from '@angular/material/slider';
 import { EnvironmentMap } from '../../models/environment-map';
 import { EnvironmentMapLayer } from '../../models/environment-map-layer';
+import { MapCell } from '../../models/map-cell';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class EnvironmentMapComponent implements OnInit {
 
   public scaleXY = 'scale(' + this.mapscale + ',' + this.mapscale + ')';
 
-  public tiles: any[] = [];
+  //public tiles: MapCell[] = [];
 
   public tilesX: number = 16;
   public tilesY: number = 16;
@@ -32,7 +33,7 @@ export class EnvironmentMapComponent implements OnInit {
   public mapHeight: number = 192;
   public mapWidth: number = 192;
 
-  public mapDragPos = {x: 0, y: 0};
+  public mapDragPos = { x: 0, y: 0 };
 
   public selectedMode: string = "view";
   public selectedModeChange = new EventEmitter<string>();
@@ -62,13 +63,13 @@ export class EnvironmentMapComponent implements OnInit {
 
   CenterMap(): void {
     if (this.mapscale > 1) {
-      this.mapDragPos = {x: (window.innerWidth / 2) - this.mapWidth, y: (window.innerHeight / 2)  - this.mapHeight};
+      this.mapDragPos = { x: (window.innerWidth / 2) - this.mapWidth, y: (window.innerHeight / 2) - this.mapHeight };
     }
     else if (this.mapscale = 1) {
-      this.mapDragPos = {x: (window.innerWidth / (2 * this.mapscale) - this.mapWidth), y: (window.innerHeight / (2 * this.mapscale)  - this.mapHeight)};
+      this.mapDragPos = { x: (window.innerWidth / (2 * this.mapscale) - this.mapWidth), y: (window.innerHeight / (2 * this.mapscale) - this.mapHeight) };
     }
     else if (this.mapscale < 1) {
-      this.mapDragPos = {x: 0, y: 0};
+      this.mapDragPos = { x: 0, y: 0 };
     }
   }
 
@@ -78,7 +79,7 @@ export class EnvironmentMapComponent implements OnInit {
       else this.selectedCells.push(tile);
       tile.selected = !tile.selected;
     }
-    if (this.selectedMode == 'cell') { 
+    if (this.selectedMode == 'cell') {
       if (this.selectedCell && this.selectedCell != tile) this.selectedCell.selected = false;
       this.selectedCell = tile;
       this.selectedCell.selected = true;
@@ -97,19 +98,19 @@ export class EnvironmentMapComponent implements OnInit {
 
   public DeselectCells(): void {
 
-      // Null Selected Cell:
-      if (this.selectedCell) {
-        this.selectedCell.selected = false;
-        this.selectedCell = null;
-      }
+    // Null Selected Cell:
+    if (this.selectedCell) {
+      this.selectedCell.selected = false;
+      this.selectedCell = null;
+    }
 
-      // Deselect Groups:
-      if (this.selectedCells && this.selectedCells.length > 0) {
-        this.selectedCells.forEach(cell => {
-          cell.selected = false;
-        });
-        this.selectedCells = new Array<any>();
-      }
+    // Deselect Groups:
+    if (this.selectedCells && this.selectedCells.length > 0) {
+      this.selectedCells.forEach(cell => {
+        cell.selected = false;
+      });
+      this.selectedCells = new Array<any>();
+    }
   }
 
   public ClearChunk(): void {
@@ -119,54 +120,69 @@ export class EnvironmentMapComponent implements OnInit {
   }
 
   // Chunk Mode:
-  public CreateChunk()
-  {
+  public CreateChunk() {
     this.selectedCells.forEach(cell => {
       cell.groupColorKey = this.chunkColor;
     });
   }
 
   private layersCount = 0;
-  loadEditor()
-  {
+  loadEditor() {
     this.profileUrl = this.soltkService.apiHost + "Ase/" + this.model.name + "/" + this.model.name;
     this.layerDataUrl = "Ase/" + this.model.name + "/" + this.model.name + ".json";
     this.layersCount = 0;
     this.soltkService.GetData(this.layerDataUrl).subscribe((data) => {
       console.log(data);
-      if (!this.model.layers) this.model.layers = [];
+      //if (!this.model.layers) this.model.layers = [];
 
-      if (!data.meta.layers) return;
+      console.log(this.model);
 
       this.tilesX = (data.meta.size.w / 16) ?? 16;
       this.tilesY = (data.meta.size.h / 16) ?? 16;
       this.mapHeight = data.meta.size.h ?? 384;
       this.mapWidth = data.meta.size.w ?? 384;
 
+      // Cells
       for (let y = 0; y < this.tilesY; y++) {
         for (let x = 0; x < this.tilesX; x++) {
-          let tile = {id: 0, x: x, y: y, data:[], name: "Cell", groupColorKey: "", enabled: false};
 
-          // use Slice Data:
-          if (data.meta.slices) {
-            let slices: any[] = [];
-            slices = [...slices, ...data.meta.slices];
-            slices.forEach(slice => {
-              if (slice.keys[0].bounds.x == (x * 16) 
+          // Early exit when model data already exsists for this coordinate:
+          if (this.model.cells.findIndex(cell => cell.x == x && cell.y == y) == -1) {
+            console.log("Cell Not Found...");
+            let tile = new MapCell();
+            tile.id = 0;
+            tile.x = x;
+            tile.y = y;
+            tile.name = "Cell";
+
+            // use Slice Data:
+            if (data.meta.slices) {
+              let slices: any[] = [];
+              slices = [...slices, ...data.meta.slices];
+              slices.forEach(slice => {
+                if (slice.keys[0].bounds.x == (x * 16)
                   && slice.keys[0].bounds.y == (y * 16)) {
-                    tile.name = slice.name;
-                    tile.groupColorKey = slice.color;
-                    if (tile.groupColorKey != "") tile.enabled = true;
-              }
-            });
-          }
+                  tile.name = slice.name;
+                  tile.colorKey = slice.color;
+                  if (tile.colorKey != "") tile.enabled = true;
+                }
+              });
+            }
 
-          this.tiles = [...this.tiles, tile];
+            //this.tiles = [...this.tiles, tile];
+            this.model.cells = [...this.model.cells, tile];
+          }
+          else {
+            console.log("Cell Found...");
+          }
         }
       }
 
 
-      for (let i = 0; i < data.meta.layers.length; i ++) {
+      // Layers:
+      if (this.model.layers.length > 0 || !data.meta.layers) return;
+
+      for (let i = 0; i < data.meta.layers.length; i++) {
         let mLayer = new EnvironmentMapLayer();
         mLayer.layerName = data.meta.layers[i].name;
         mLayer.name = data.meta.layers[i].name;
@@ -184,30 +200,29 @@ export class EnvironmentMapComponent implements OnInit {
     console.log(this.mapscale);
   }
 
-  public logModel()
-  {
+  public logModel() {
     // Setup Layers from model.name + .json:
-    this.layerDataUrl = "Ase/" + this.model.name + "/" + this.model.name + ".json";
-    this.soltkService.GetData(this.layerDataUrl).subscribe((data) => {
-      console.log(data);
-      if (!this.model.layers) this.model.layers = [];
+    // this.layerDataUrl = "Ase/" + this.model.name + "/" + this.model.name + ".json";
+    // this.soltkService.GetData(this.layerDataUrl).subscribe((data) => {
+    //   console.log(data);
+    //   if (!this.model.layers) this.model.layers = [];
 
-      if (!data.meta.layers) return;
+    //   if (!data.meta.layers) return;
 
-      for (let i = 0; i < data.meta.layers.length; i ++) {
-        let mLayer = new EnvironmentMapLayer();
-        mLayer.layerName = data.meta.layers[i].name;
-        mLayer.name = data.meta.layers[i].name;
-        mLayer.layerOrder = this.layersCount;
-        this.layersCount++;
-        this.model.layers.push(mLayer);
-      };
-    });
+    //   for (let i = 0; i < data.meta.layers.length; i++) {
+    //     let mLayer = new EnvironmentMapLayer();
+    //     mLayer.layerName = data.meta.layers[i].name;
+    //     mLayer.name = data.meta.layers[i].name;
+    //     mLayer.layerOrder = this.layersCount;
+    //     this.layersCount++;
+    //     this.model.layers.push(mLayer);
+    //   };
+    // });
 
     console.log(this.model);
   }
 
-public fileName: string = "";
+  public fileName: string = "";
   public onAseSelected(event: any) {
 
     const file: File = event.target.files[0];

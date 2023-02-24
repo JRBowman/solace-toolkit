@@ -13,7 +13,7 @@ projects:
   - name: solacetk
     git:
       checkoutFrom:
-        revision: main
+        revision: master
       remotes:
         origin: https://dev.azure.com/onbowman/solace-toolkit/_git/solace-toolkit
 components:
@@ -21,15 +21,15 @@ components:
       endpoints:
         - name: http
           targetPort: 4200
-      image: registry.access.redhat.com/ubi8/nodejs-16:latest
+      image: registry.access.redhat.com/ubi8/nodejs-18:latest
       volumeMounts:
         - name: npm
           path: /home/user/.npm
       memoryLimit: 1024Mi
       mountSources: true
       sourceMapping: /projects
-      command: ['tail']
-      args: ['-f', '/dev/null']
+      # command: ['tail']
+      # args: ['-f', '/dev/null']
     name: runtime
   - name: npm
     volume:
