@@ -8,4 +8,6 @@ export class MapTileset {
 
     // TileSet Data:
     public tiles: MapTile[] = [];
+
+    public tileSize: number = 16;
 }

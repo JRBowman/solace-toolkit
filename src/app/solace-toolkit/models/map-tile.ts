@@ -13,8 +13,8 @@ export class MapTile {
     public type: TileType = TileType.Sprite;
     public mode: TileTransformMode = TileTransformMode.None;
 
-    public lX: number = 0;
-    public lY: number = 0;
+    public lx: number = 0;
+    public ly: number = 0;
     public width: number = 16;
     public height: number = 16;
 
