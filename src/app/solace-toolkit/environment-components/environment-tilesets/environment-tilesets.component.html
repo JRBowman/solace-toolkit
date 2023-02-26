@@ -17,9 +17,9 @@
     <div class="editor-panels">
 
         <!-- Tileset Editor: -->
-        <solacetk-panel class="auto-flex" unitHeight="8" panelColor="#c08060" panelName="Tile Set"
+        <solacetk-panel class="auto-flex full-height" unitHeight="8" panelColor="#c08060" panelName="Tile Set"
             panelIcon="grid_view">
-            <div class="panel-content disp-flex auto-flex full-height">
+            <div class="panel-content disp-flex no-flex full-height">
 
                 <mat-chip-listbox class="no-flex full-height width-5" aria-label="Color selection"
                     aria-orientation="vertical" style="overflow-y: auto;" multiple="false" selectable="true">
@@ -33,12 +33,13 @@
                 <div class="gap-1 no-flex"></div>
 
                 <!-- Tile Editor -->
-                <solacetk-panel class="auto-flex full-height width-2" panelName="Tile Editor">
+                <solacetk-panel class="auto-flex full-height width-2" panelName="Tile Editor" panelColor="#608080">
 
                     <!-- Tile Fields: -->
-                    <div class="panel-content disp-flex">
+                    <div class="panel-content auto-flex">
 
-                        <div class="auto-flex width-33">
+                        <div class="disp-flex auto-flex">
+                            <div class="auto-flex width-2">
                             <div class="disp-flex auto-flex">
                                 <mat-form-field class="no-flex font-small width-5">
                                     <mat-label class="font-small">Location X</mat-label>
@@ -86,7 +87,7 @@
 
                             </div>
                             <div class="disp-flex auto-flex">
-                                
+
 
                                 <!-- <div class="disp-flex"> -->
                                 <mat-form-field class="auto-flex font-small">
@@ -96,50 +97,37 @@
 
                                 <div class="gap-1 no-flex"></div>
                             </div>
-                        </div>
+                            </div>
 
-                        <div class="auto-flex disp-flex width-2">
 
-                            <div class="gap-1 auto-flex"></div>
+                            <div class="gap-1 no-flex"></div>
 
                             <!-- Tile Texture Viewer: -->
                             <div class="map-panel relative-container no-flex mat-elevation-z2"
-                                    style="height: 128px; width: 128px;">
-                                    <div class="relative-input" style="transform: scale(8);">
-                                        <img class="sprite map-layer auto-flex" [src]="profileUrl + '.png'"
-                                            alt="map layer" [style.left]="-(selectedTile.lx) + 'px'"
-                                            [style.top]="-(selectedTile.ly) + 'px'" [style.height]="textureHeight">
-                                    </div>
+                                style="height: 128px; width: 128px;">
+                                <div class="relative-input" style="transform: scale(8);">
+                                    <img class="sprite map-layer auto-flex" [src]="profileUrl + '.png'" alt="map layer"
+                                        [style.left]="-(selectedTile.lx) + 'px'" [style.top]="-(selectedTile.ly) + 'px'"
+                                        [style.height]="textureHeight">
+                                </div>
 
-                                    <!-- <h4 class="relative-input" style="bottom: 0px; left: 8px;">{{'[' + selectedTile.x +
+                                <!-- <h4 class="relative-input" style="bottom: 0px; left: 8px;">{{'[' + selectedTile.x +
                                         ',' + selectedTile. + ']'}}</h4> -->
-                                </div>
 
-                                <div class="gap-1 auto-flex"></div>
+                                <div class="gap-1 no-flex"></div>
 
-                                <!-- Tile Rule Grid: -->
-                                <div *ngIf="selectedTile" class="full-width full-height">
-                                    <!-- <div matRipple class="gridCell background-grid" *ngFor="let tile of model.tiles"
-                                        [style.backgroundColor]="showCellColors ? tile.colorKey : ''"
-                                        [style.left]="tile.x * 16 + 'px'" [style.top]="tile.y * 16 + 'px'"
-                                        (click)="SelectCell(tile)" [style.opacity]="chunkOpacity"
-                                        [class.mat-elevation-z2]="tile.selected" [class.gridSelected]="tile.selected"
-                                        [matTooltip]="(tile.name ?? 'Cell') +  ' - [' + tile.x + ', ' + tile.y + ']'">
-                                    </div> -->
-                                </div>
-
+                            </div>
                         </div>
-
-
-
-
 
                     </div>
 
-                    <!-- Tile Rules: -->
-
-
                 </solacetk-panel>
+
+                <div class="gap-1 no-flex"></div>
+
+                <!-- Tile Rules: -->
+                <solacetk-tile-rule-editor class="no-flex full-height width-4" [(model)]="selectedTile.rules"
+                    [tile]="selectedTile"></solacetk-tile-rule-editor>
 
             </div>
             <div class="panel-actions">

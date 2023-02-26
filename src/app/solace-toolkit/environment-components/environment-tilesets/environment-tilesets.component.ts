@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { MapTile } from '../../models/map-tile';
+import { MapTileRule } from '../../models/map-tile-rule';
 import { MapTileset } from '../../models/map-tileset';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
@@ -24,8 +25,14 @@ export class EnvironmentTilesetsComponent implements OnInit {
   public textureWidth: number = 192;
 
   // Tile Rule Grid:
-  
-
+  public ruleEditorTiles: MapTileRule[] = [];
+  // # of Tiles in Dimension:
+  // public ruleEditorWidth: number = 3;
+  // public ruleEditorHeight: number = 3;
+  // public midHeight: number = 2;
+  // public midWidth: number = 2;
+  // public ruleEditorScale: number = 2;
+  // public ruleEditorTileSize: number = 16;
 
   ngOnInit(): void {
   }
@@ -63,12 +70,53 @@ export class EnvironmentTilesetsComponent implements OnInit {
         });
       }
 
+      // Load Rule Editor:
+      this.model.tiles.forEach(tile => {
+        
+
+
+
+        
+       
+
+        //let rules: MapTileRule[] = [];
+
+        // Create Editor Tiles first (not enabled):
+        // Use Editor Dimensions:
+        // for (let y = -(this.midHeight); y < this.midHeight + 1; y++) {
+        //   for (let x = -(this.midWidth); x < this.midWidth + 1; x++) {
+        //     var rule = new MapTileRule();
+        //     rule.vx = x;
+        //     rule.vy = y;
+
+        //     // Tile Rule Exists - Merge Data:
+        //     if ((exTile = tile.rules.findIndex(r => r.vx == x && r.vy == y)) >= 0) {
+        //       rule = tile.rules[exTile];
+              
+        //     }
+        //     // Merge Existing Tiles into Editor:
+        //     tile.rules = [...tile.rules, rule];
+        //   }
+        // }
+
+        // Merge Existing Tiles into Editor:
+        //tile.rules
+
+      });
+
     });
+
+
   }
 
   public selectTile(tile: MapTile): void {
     this.selectedTile = tile;
     console.log("tile selected!");
+  }
+
+  private loadRules(): MapTileRule[] {
+
+    return [];
   }
 
 

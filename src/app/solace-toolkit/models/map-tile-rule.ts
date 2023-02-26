@@ -1,6 +1,6 @@
 export class MapTileRule {
     public id?: string;
-    public name?: string = "Map";
+    public name?: string;
     public description?: string = "";
     public tags?: string = "";
 
@@ -10,6 +10,15 @@ export class MapTileRule {
 
     public direction: RuleDirection = RuleDirection.None;
     public checkType: RuleCheckType = RuleCheckType.Empty;
+
+    // Postion Vector:
+    public vx: number = 0;
+    public vy: number = 0;
+    public vm: number = 1;
+
+    public enabled: boolean = false;
+
+    public static readonly checkTypes: string[] = ["Empty", "Any", "This", "NotThis", "Named", "Key", "Disabled"];
 }
 
 export enum RuleDirection
@@ -31,6 +40,8 @@ export enum RuleCheckType
     Empty,
     Any,
     This,
+    NotThis,
     Named,
-    Key
+    Key,
+    Disabled
 }
