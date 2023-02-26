@@ -9,7 +9,7 @@ export class MapTileRule {
     public priority: number = 0;
 
     public direction: RuleDirection = RuleDirection.None;
-    public checkType: RuleCheckType = RuleCheckType.Empty;
+    public checkType: RuleCheckType = RuleCheckType.Disabled;
 
     // Postion Vector:
     public vx: number = 0;
@@ -37,11 +37,11 @@ export enum RuleDirection
 
 export enum RuleCheckType
 { 
+    Disabled,
     Empty,
     Any,
     This,
     NotThis,
     Named,
-    Key,
-    Disabled
+    Key
 }

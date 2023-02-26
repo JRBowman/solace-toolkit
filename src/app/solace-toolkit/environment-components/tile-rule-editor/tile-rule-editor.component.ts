@@ -22,6 +22,8 @@ export class TileRuleEditorComponent implements OnInit {
   public ruleEditorScale: number = 2;
   public ruleEditorTileSize: number = 16;
 
+  public ruleColorKey: string = "";
+
   public selectedRule: MapTileRule = new MapTileRule();
 
   public checkTypes: string[] = MapTileRule.checkTypes;

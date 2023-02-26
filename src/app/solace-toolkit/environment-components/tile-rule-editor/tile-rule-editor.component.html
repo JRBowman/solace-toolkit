@@ -1,4 +1,4 @@
-<solacetk-panel panelName="Rule Editor" class="full-width auto-flex" panelColor="#c04848">
+<solacetk-panel panelName="Rule Editor" class="full-width auto-flex" fontSize="small" panelColor="#c04848">
 
     <div class="panel-content">
 
@@ -18,13 +18,15 @@
                         [style.backgroundColor]="rule.checkType == 4 ? rule.colorKey : ''"
                         [class.gridSelected]="rule == selectedRule" [style.left]="(rule.vx) * ruleEditorTileSize + 'px'"
                         [style.top]="(rule.vy) * ruleEditorTileSize + 'px'" (click)="selectedRule = rule">
-                        <mat-icon class="font-small" *ngIf="(rule.vx == 0 && rule.vy == 0)">adjust</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 1">help</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 2"
-                            [style.color]="tile.colorKey">adjust</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 3">cancel</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 4">verified</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 5">invert_colors</mat-icon>
+                        <mat-icon class="font-small" *ngIf="(rule.vx == 0 && rule.vy == 0)" [style.background-color]="tile.colorKey">adjust</mat-icon>
+                        <mat-icon class="font-small" style="opacity: 0.25;" *ngIf="rule.checkType == 0">block</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 1">do_not_disturb_on</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 2">help</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 3"
+                            [style.background-color]="tile.colorKey">adjust</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 4">cancel</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 5">input</mat-icon>
+                        <mat-icon class="font-small" *ngIf="rule.checkType == 6" [style.background-color]="rule.colorKey">invert_colors</mat-icon>
                     </div>
                 </div>
             </div>
@@ -72,29 +74,36 @@
         <!-- <div class="gap-1 auto-flex"></div> -->
 
         <!-- Rule Check Type Options: -->
-        <div class="disp-flex auto-flex">
+        <div class="disp-flex auto-flex" style="transform: scale(0.9);">
             <!-- <div class="gap-1 no-flex"></div> -->
-
-            <button mat-icon-button (click)="selectedRule.checkType = 1">
+            <button mat-icon-button matTooltip="Disabled / Don't Care" style="background-color: #ff80489e;" (click)="selectedRule.checkType = 0">
+                <mat-icon>block</mat-icon>
+            </button>
+            <div class="gap-1 no-flex"></div>
+            <button mat-icon-button matTooltip="Empty" style="background-color: #49316a9e;" (click)="selectedRule.checkType = 1">
+                <mat-icon>do_not_disturb_on</mat-icon>
+            </button>
+            <div class="gap-1 no-flex"></div>
+            <button mat-icon-button matTooltip="Any or Null" style="background-color: #ff10609e;" (click)="selectedRule.checkType = 2">
                 <mat-icon>help</mat-icon>
             </button>
             <div class="gap-1 no-flex"></div>
-            <button mat-icon-button (click)="selectedRule.checkType = 2">
-                <mat-icon>adjust</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button (click)="selectedRule.checkType = 3">
-                <mat-icon>cancel</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button (click)="selectedRule.checkType = 4">
-                <mat-icon>verified</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button (click)="selectedRule.checkType = 5">
+            <button mat-icon-button [style.background-color]="selectedRule.colorKey != '' ? selectedRule.colorKey : '#3036409e'" matTooltip="Tile Color Key" (click)="selectedRule.checkType = 6; groupColorKey.click();">
                 <mat-icon>invert_colors</mat-icon>
             </button>
             <div class="gap-1 no-flex"></div>
+            <button mat-icon-button matTooltip="This" [style.background-color]="tile.colorKey != '' ? tile.colorKey : '#3036409e'" (click)="selectedRule.checkType = 3">
+                <mat-icon>adjust</mat-icon>
+            </button>
+            <div class="gap-1 no-flex"></div>
+            <button mat-icon-button style="background-color: #ff1f1f9e;" matTooltip="Not This or Null" (click)="selectedRule.checkType = 4">
+                <mat-icon>cancel</mat-icon>
+            </button>
+            <div class="gap-1 no-flex"></div>
+            <button mat-icon-button style="background-color: #3155af9e;" matTooltip="Named Tile" (click)="selectedRule.checkType = 5">
+                <mat-icon>input</mat-icon>
+            </button>
+            <!-- <div class="gap-1 no-flex"></div> -->
 
             <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
                 <mat-icon matPrefix class="align-center" [style.color]="selectedRule.colorKey">
@@ -105,11 +114,11 @@
                     [value]="selectedRule.colorKey">
             </mat-form-field>
 
-            <button mat-icon-button matTooltip="Set Color Key" (click)="groupColorKey.click()">
+            <!-- <button mat-icon-button matTooltip="Set Color Key" (click)="groupColorKey.click()">
                 <mat-icon [style.color]="selectedRule.colorKey">
                     radar
                 </mat-icon>
-            </button>
+            </button> -->
             <!-- <div class="gap-1 no-flex"></div> -->
         </div>
 

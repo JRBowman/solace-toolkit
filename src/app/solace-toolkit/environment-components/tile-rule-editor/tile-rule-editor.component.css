@@ -39,7 +39,7 @@
     border-color: rgba(255, 34, 82, 1);
     height: 14px;
     width: 14px;
-    opacity: 0.75 !important;
+    opacity: 1 !important;
     /* opacity: 1 !important; */
     /* filter: drop-shadow(1px 4px 2px black); */
 }
