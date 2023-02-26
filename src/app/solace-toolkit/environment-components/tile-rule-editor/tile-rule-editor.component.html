@@ -17,7 +17,8 @@
                     <div matRipple class="gridCell background-grid" *ngFor="let rule of model"
                         [style.backgroundColor]="rule.checkType == 4 ? rule.colorKey : ''"
                         [class.gridSelected]="rule == selectedRule" [style.left]="(rule.vx) * ruleEditorTileSize + 'px'"
-                        [style.top]="(rule.vy) * ruleEditorTileSize + 'px'" (click)="selectedRule = rule">
+                        [style.top]="(rule.vy) * ruleEditorTileSize + 'px'" (click)="selectedRule = rule"
+                        [matTooltip]="'Rule at [' + rule.vx + ',' + rule.vy + ']'">
                         <mat-icon class="font-small" *ngIf="(rule.vx == 0 && rule.vy == 0)" [style.background-color]="tile.colorKey">adjust</mat-icon>
                         <mat-icon class="font-small" style="opacity: 0.25;" *ngIf="rule.checkType == 0">block</mat-icon>
                         <mat-icon class="font-small" *ngIf="rule.checkType == 1">do_not_disturb_on</mat-icon>
