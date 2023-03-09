@@ -91,6 +91,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SolacetkStorycardComponent } from './solace-toolkit/common/solacetk-storycard/solacetk-storycard.component';
 import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 import { TileRuleEditorComponent } from './solace-toolkit/environment-components/tile-rule-editor/tile-rule-editor.component';
+import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solacetk-sidenav-extended/solacetk-sidenav-extended.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,8 @@ import { TileRuleEditorComponent } from './solace-toolkit/environment-components
     SafeurlPipe,
     SolacetkStorycardComponent,
     StoryCardsComponent,
-    TileRuleEditorComponent
+    TileRuleEditorComponent,
+    SolacetkSidenavExtendedComponent
   ],
   imports: [
     BrowserModule,

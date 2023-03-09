@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SolacetkToolnavExtendedComponent implements OnInit {
 
   @Input() toolbarIntegrated: boolean = false;
+  @Input() toolbarDirection: string = "horizontal";
 
 
   public toolNavStyle = "top-nav mat-elevation-z2";

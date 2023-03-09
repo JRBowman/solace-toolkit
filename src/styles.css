@@ -3,15 +3,14 @@
 @import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
 
 /* You can add global styles to this file, and also import other style files */
+html { overflow: hidden;  height: 100%;}
+body { height: inherit; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
-
-.router-content {
+/* .router-content {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 32px;
-}
+} */
 
 .word-wrap * {
     white-space: normal;

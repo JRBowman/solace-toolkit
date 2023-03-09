@@ -1,16 +1,16 @@
 <!-- <mat-toolbar [color]="toolNavColor" [class]="toolNavStyle"> -->
 
-    <div class="disp-flex" [class.flex-vertical]="toolbarDirection == 'vertical'">
+    <div class="disp-flex flex-vertical">
         <a mat-button class="let-space-1 auto-flex" [routerLink]="['/projects']">
             <mat-icon>developer_board</mat-icon>
             PROJECTS
         </a>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="gameCoreMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>account_tree</mat-icon>
             GAME CORE
         </button>
-        <mat-menu #gameCoreMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/gamestates']">
                 <mat-icon style="color: mediumspringgreen;">label</mat-icon>Game Systems
             </a>
@@ -23,14 +23,14 @@
             <a mat-menu-item [routerLink]="['/storycards']">
                 <mat-icon style="color: coral;">label</mat-icon>Story Cards
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="controllerMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>videogame_asset</mat-icon>
             CONTROLLERS
         </button>
-        <mat-menu #controllerMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/characters']">
                 <mat-icon style="color: seagreen;">label</mat-icon>Characters
             </a>
@@ -49,13 +49,13 @@
             <a mat-menu-item [routerLink]="['/transports']">
                 <mat-icon style="color: mediumaquamarine;">label</mat-icon>Transports
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="behaviorMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>memory</mat-icon>
             BEHAVIORS
         </button>
-        <mat-menu #behaviorMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/behaviorsystems']">
                 <mat-icon style="color: darkturquoise;">label</mat-icon>Behavior Systems
             </a>
@@ -68,13 +68,13 @@
             <a mat-menu-item [routerLink]="['/animations']">
                 <mat-icon style="color: darkorange;">label</mat-icon>Animations
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="messageMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>bolt</mat-icon>
             EVENTS
         </button>
-        <mat-menu #messageMenu="matMenu">
+        <mat-nav-list>
             <!-- <a mat-menu-item [routerLink]="['/actions']">Actions</a> -->
             <a mat-menu-item [routerLink]="['/events']">
                 <mat-icon style="color: indianred;">label</mat-icon>
@@ -84,26 +84,26 @@
                 <mat-icon style="color: mediumslateblue;">label</mat-icon>
                 Messages
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="environmentMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>architecture</mat-icon>
             ENVIRONMENTS
         </button>
-        <mat-menu #environmentMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/maps']">
                 <mat-icon style="color: #606080;">label</mat-icon>Maps
             </a>
             <a mat-menu-item [routerLink]="['/tilesets']">
                 <mat-icon style="color: #c08060;">label</mat-icon>Tile Sets
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="interfaceMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>branding_watermark</mat-icon>
             INTERFACES
         </button>
-        <mat-menu #interfaceMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/huds']">
                 <mat-icon style="color: darkturquoise;">label</mat-icon>HUDs
             </a>
@@ -116,28 +116,28 @@
             <a mat-menu-item [routerLink]="['/huddialogs']">
                 <mat-icon style="color: darkturquoise;">label</mat-icon>Dialogs
             </a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="soundMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>equalizer</mat-icon>
             SOUNDS
         </button>
-        <mat-menu #soundMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/soundsources']">Sound Sources</a>
             <a mat-menu-item [routerLink]="['/soundsets']">Sound Collections</a>
-        </mat-menu>
+        </mat-nav-list>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="effectsMenu">
+        <button mat-button class="let-space-1 auto-flex">
             <mat-icon>air</mat-icon>
             EFFECTS
         </button>
-        <mat-menu #effectsMenu="matMenu">
+        <mat-nav-list>
             <a mat-menu-item [routerLink]="['/audioeffects']">Audio Effects</a>
             <a mat-menu-item [routerLink]="['/visualeffects']">Visual Effects</a>
             <a mat-menu-item [routerLink]="['/lights']">Lights</a>
             <a mat-menu-item [routerLink]="['/liquids']">Liquids</a>
             <a mat-menu-item [routerLink]="['/overlays']">Overlays</a>
-        </mat-menu>
+        </mat-nav-list>
     </div>
 
 <!-- </mat-toolbar> -->
