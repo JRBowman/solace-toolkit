@@ -51,7 +51,7 @@
                     <div class="auto-flex mr-2 grid-3">
                         <h4>Start</h4>
                         <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
-                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
@@ -63,7 +63,7 @@
                     <div class="auto-flex mr-2 grid-3">
                         <h4>Act</h4>
                         <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.actFrameData"
-                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
@@ -75,7 +75,7 @@
                     <div class="auto-flex grid-3">
                         <h4>End</h4>
                         <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
-                            [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
