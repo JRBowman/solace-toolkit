@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MapTile } from '../../models/map-tile';
 import { MapTileRule } from '../../models/map-tile-rule';
 
@@ -26,6 +27,8 @@ export class TileRuleEditorComponent implements OnInit {
 
   public selectedRule: MapTileRule = new MapTileRule();
 
+  public selectedMode: number = 0;
+
   public checkTypes: string[] = MapTileRule.checkTypes;
 
   ngOnInit(): void {
@@ -50,5 +53,9 @@ export class TileRuleEditorComponent implements OnInit {
         this.model = [...this.model, rule];
       }
     }
+  }
+
+  public ModeChange(change: MatButtonToggleChange): void {
+    this.selectedMode = change.value;
   }
 }

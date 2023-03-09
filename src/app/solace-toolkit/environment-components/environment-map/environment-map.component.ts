@@ -20,7 +20,7 @@ export class EnvironmentMapComponent implements OnInit {
 
   public selectedLayer: EnvironmentMapLayer = new EnvironmentMapLayer();
 
-  public mapscale: number = 2;
+  public mapscale: number = 1;
   public mapscaleChange = new EventEmitter<number>();
 
   public scaleXY = 'scale(' + this.mapscale + ',' + this.mapscale + ')';
@@ -192,6 +192,8 @@ export class EnvironmentMapComponent implements OnInit {
         this.model.layers.push(mLayer);
       };
     });
+
+    //this.CenterMap();
   }
 
   changeScale(event: any) {
