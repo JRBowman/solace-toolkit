@@ -140,7 +140,7 @@ const routes: Routes = [
   {
     path: 'wiki/:article',
     component: SolacetkWikiComponent,
-    //canActivate: [AuthorizationGuard]
+    canActivate: [AuthorizationGuard]
   },
   {
     path: 'weapons',
