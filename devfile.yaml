@@ -33,7 +33,7 @@ components:
           value: 'https://open-vsx.org'
       image: 'registry.redhat.io/devspaces/udi-rhel8@sha256:8de469cc9131a42092bd66e0f27a52bbc9b9a449235abf5b900d172a1bd3c985'
       memoryLimit: 4G
-      memoryRequest: 1024Mi
+      memoryRequest: 1384Mi
       mountSources: true
       sourceMapping: /projects
       volumeMounts:
