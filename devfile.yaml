@@ -15,7 +15,7 @@ projects:
       checkoutFrom:
         revision: master
       remotes:
-        origin: https://dev.azure.com/onbowman/solace-toolkit/_git/solace-toolkit
+        origin: https://bitbucket.org/onbowman/solace-toolkit.git
 components:
   - container:
       endpoints:
