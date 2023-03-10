@@ -20,7 +20,7 @@ components:
   - container:
       command:
         - /checode/entrypoint-volume.sh
-      cpuLimit: '2'
+      cpuLimit: '2000m'
       cpuRequest: '500m'
       env:
         - name: CHE_DASHBOARD_URL
