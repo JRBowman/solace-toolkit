@@ -10,7 +10,7 @@ metadata:
     - NodeJS
     - Angular
 projects:
-  - name: solacetk
+  - name: solace-toolkit
     git:
       checkoutFrom:
         revision: master
@@ -18,37 +18,48 @@ projects:
         origin: https://bitbucket.org/onbowman/solace-toolkit.git
 components:
   - container:
-      endpoints:
-        - name: http
-          targetPort: 4200
-      image: registry.access.redhat.com/ubi8/nodejs-18:latest
+      command:
+        - /checode/entrypoint-volume.sh
+      cpuLimit: '2'
+      cpuRequest: '1'
+      env:
+        - name: CHE_DASHBOARD_URL
+          value: 'https://devspaces.apps.bocp.onbowman.com'
+        - name: CHE_PLUGIN_REGISTRY_URL
+          value: 'https://devspaces.apps.bocp.onbowman.com/plugin-registry/v3'
+        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+          value: 'http://plugin-registry.openshift-operators.svc:8080/v3'
+        - name: OPENVSX_REGISTRY_URL
+          value: 'https://open-vsx.org'
+      image: 'registry.redhat.io/devspaces/udi-rhel8@sha256:8de469cc9131a42092bd66e0f27a52bbc9b9a449235abf5b900d172a1bd3c985'
+      memoryLimit: 4G
+      memoryRequest: 1024Mi
+      mountSources: true
+      sourceMapping: /projects
       volumeMounts:
         - name: npm
           path: /home/user/.npm
-      memoryLimit: 1024Mi
-      mountSources: true
-      sourceMapping: /projects
-      # command: ['tail']
-      # args: ['-f', '/dev/null']
-    name: runtime
+        - name: checode
+          path: /checode
+    name: tools
   - name: npm
     volume:
       size: 5Gi
 commands:
   - exec:
       commandLine: npm install
-      component: runtime
+      component: tools
       group:
         isDefault: true
         kind: build
-      workingDir: ${PROJECT_SOURCE}
+      workingDir: ${PROJECTS_ROOT}/solace-toolkit
     id: install
   - exec:
       commandLine: npm run start
-      component: runtime
+      component: tools
       group:
         isDefault: true
         kind: run
       hotReloadCapable: true
-      workingDir: ${PROJECT_SOURCE}
+      workingDir: ${PROJECTS_ROOT}/solace-toolkit
     id: run
