@@ -20,8 +20,8 @@ components:
   - container:
       command:
         - /checode/entrypoint-volume.sh
-      cpuLimit: '2'
-      cpuRequest: '1'
+      cpuLimit: 2
+      cpuRequest: 500m
       env:
         - name: CHE_DASHBOARD_URL
           value: 'https://devspaces.apps.bocp.onbowman.com'
