@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'solacetk-model-list',
@@ -10,6 +11,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public dataStruct: any[] = [];
+  public viewData: any[] = [];
   public filteredData: any[] = [];
 
   @Input() moduleName: string = "Solace TK Module";
@@ -50,8 +52,14 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     this.service.GetModels(this.modelUri, true, this.tagFilters).subscribe(response => {
       this.dataStruct = [];
       this.dataStruct = response;
-      this.filteredData = this.dataStruct;
+      //this.filteredData = this.dataStruct;
       this.IsLoading = false;
+      this.length = this.dataStruct.length;
+      let pe = new PageEvent();
+      pe.length = this.length;
+      pe.pageIndex = 0;
+      pe.pageSize = this.pageSize;
+      this.handlePageEvent(pe);
       console.log(this.dataStruct);
     });
   }
@@ -134,6 +142,26 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public clickFilter(tag: string): void {
     this.tagFilters = this.tagFilters + tag;
+  }
+
+  public pageEvent?: PageEvent;
+  public length = 50;
+  public pageSize = 10;
+  public pageIndex = 0;
+
+  handlePageEvent(e: PageEvent) {
+    console.log(e);
+    this.viewData = [];
+    this.filteredData = [];
+    this.pageEvent = e;
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+
+    let start = this.pageIndex  * this.pageSize;
+
+    this.viewData = this.dataStruct.slice(start, start + this.pageSize);
+    this.filteredData = this.viewData;
   }
 
 }

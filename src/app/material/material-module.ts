@@ -21,6 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -56,6 +57,7 @@ import {MatSelectModule} from '@angular/material/select';
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
+    MatPaginatorModule,
     DragDropModule,
     MatDialogModule,
     MatChipsModule,

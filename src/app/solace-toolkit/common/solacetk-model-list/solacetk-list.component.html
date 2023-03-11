@@ -8,13 +8,18 @@
 
 <div class="btn-hover-right" *ngIf="!IsLoading">
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
+
+    <!-- List: -->
     <mat-tab [labelClass]="'file-input'">
 
-      <div class="disp-flex mt-2">
-        <div *ngFor='let model of filteredData' class="no-flex width-33 min-width-4 disp-flex">
-          <mat-card class="auto-flex min-width-4 mb-2">
+      <div class="disp-flex">
+        <div class="gap-1 full-width auto-flex"></div>
 
-            <mat-card-title-group class="align-center">
+        <!-- List Card Item: -->
+        <div *ngFor='let model of filteredData' class="auto-flex min-width-3 width-33 disp-flex" style="height: 25%;">
+          <mat-card class="auto-flex full-height width-96">
+
+            <mat-card-title-group class="align-center" style="height: 64px; overflow: hidden;">
               <div mat-card-avatar class="no-flex disp-flex align-center">
                 <div class="gap-1 auto-flex"></div>
                 <h3 class="mat-card-subtitle auto-flex font-small">{{filteredData.indexOf(model)}}:</h3>
@@ -37,20 +42,33 @@
               <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
             </mat-card-content>
 
-            <mat-card-actions class="align-end">
-              <solacetk-tags class="auto-flex full-width align-end" [(model)]="model.tags"
+            <mat-card-actions class="align-end full-width">
+              <solacetk-tags class="no-flex full-width align-end" [(model)]="model.tags"
                 (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
             </mat-card-actions>
 
           </mat-card>
-          <div class="gap-1 no-flex"></div>
+          <div class="gap-2 no-flex"></div>
+          <div class="gap-1 full-width full-height auto-flex"></div>
         </div>
         
       </div>
 
+      <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="length"
+               [pageSize]="pageSize"
+               [pageIndex]="pageIndex"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               aria-label="Select page">
+      </mat-paginator>
+
 
     </mat-tab>
 
+
+    <!-- Editor: -->
     <mat-tab class="full-height" [labelClass]="'file-input'">
 
       <div *ngIf="model" class="mt-2">
