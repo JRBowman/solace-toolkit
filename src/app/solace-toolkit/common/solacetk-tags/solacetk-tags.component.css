@@ -9,3 +9,7 @@
 .flex-flow-reverse {
     flex-flow: wrap-reverse;
 }
+
+.flex-col {
+    flex-direction: column;
+}

@@ -20,6 +20,8 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() hideEditorHeading: boolean = true;
   @Input() collapseCoreEditor: boolean = false;
 
+  @Input() moduleColor: string = "#606060";
+
   @Input() model!: any;
   @Output() modelChange = new EventEmitter<any>();
 
@@ -28,7 +30,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Output() modelSaved = new EventEmitter();
   @Output() modelLoaded = new EventEmitter();
 
-  constructor(private service: SolacetkService) { }
+  constructor(public service: SolacetkService) { }
 
   public IsLoading = true;
   public modelSelected: boolean = false;

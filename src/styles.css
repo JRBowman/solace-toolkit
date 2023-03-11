@@ -164,8 +164,8 @@ mat-tab-header.mat-tab-header {
 }
 
 .icon-sprite {
-    width: 64px !important;
-    height: 64px !important;
+    width: 48px !important;
+    height: 48px !important;
     border: white 3px solid;
     border-radius: 3px;
 }

@@ -1,31 +1,32 @@
-
 <!-- *ngIf="!modelSelected || !hideEditorHeading" -->
 <!-- Landing Toolbar: -->
-<div  class="disp-flex">
+<div class="disp-flex mat-elevation-z4">
 
-  <div class="gap-1 auto-flex"></div>
+  <!-- <div class="gap-1 auto-flex"></div> -->
 
-  <mat-toolbar class="auto-flex" style="height: 96px;">
+  <mat-toolbar class="auto-flex" style="height: 74px;">
 
-  <img class="no-flex icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
+    <div class="gap-2 no-flex"></div>
 
-  <div class="gap-1 no-flex"></div>
+    <img class="no-flex icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
 
-  <span class="no-flex width-6 align-center">{{moduleName}}</span>
+    <div class="gap-1 no-flex"></div>
 
-  <div class="gap-1 auto-flex"></div>
+    <span class="no-flex align-center">{{moduleName}}</span>
 
-  <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="tagFilters"
-  (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
+    <div class="gap-1 auto-flex"></div>
 
-  <!-- <div class="gap-1 no-flex"></div> -->
+    <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="tagFilters"
+      (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
 
-  <div class="gap-1 auto-flex"></div>
+    <!-- <div class="gap-1 no-flex"></div> -->
+
+    <div class="gap-1 auto-flex"></div>
 
     <div *ngIf="tabIndex === 0 && !modelSelected" class="disp-flex no-flex">
 
       <ng-content class="no-flex" select=".list-buttons"></ng-content>
-      
+
       <button mat-icon-button color="primary" class="no-flex" matTooltip="Create New Model"
         aria-label="Add new Character Controller" (click)="NewModel()">
         <mat-icon>add</mat-icon>
@@ -51,8 +52,10 @@
         aria-label="Close Current Editor Window" (click)="CloseModel()">
         <mat-icon>close</mat-icon>
       </button>
-      
+
     </div>
+
+    <div class="gap-2 no-flex"></div>
 
   </mat-toolbar>
 
@@ -61,76 +64,70 @@
 
 
 <!-- <div class="btn-hover-right" *ngIf="!IsLoading"> -->
-  <div *ngIf="!IsLoading">
-  <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
+<div *ngIf="!IsLoading" [style.height]="(service.screenHeight - (modelSelected ? 140 : 194)) + 'px'">
+  <mat-tab-group class="full-height" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
 
     <!-- List: -->
-    <mat-tab [labelClass]="'file-input'">
+    <mat-tab bodyClass="full-height" [labelClass]="'file-input'" >
 
-      <div class="disp-flex">
-        <div class="gap-1 full-width auto-flex"></div>
+      <!-- List Container - This should Scroll: -->
+      <div style="padding: 16px; padding-left: 7%; padding-right: 7%;">
+        <div class="disp-flex">
+          <div class="gap-1 full-width auto-flex"></div>
 
-        <!-- List Card Item: -->
-        <div *ngFor='let model of viewData' class="auto-flex min-width-3 disp-flex" style="height: 20%; padding: 4px;">
-          <mat-card class="auto-flex full-height width-96" >
+          <!-- List Card Item: -->
+          <div *ngFor='let model of viewData' class="auto-flex min-width-3 disp-flex"
+            style="height: 20%; padding: 4px;">
+            <mat-card class="auto-flex full-height width-96" [style.background-color]="moduleColor">
 
-            <mat-card-title-group class="align-center">
-              <div mat-card-avatar class="no-flex disp-flex align-center">
-                <div class="gap-1 auto-flex"></div>
-                <h3 class="mat-card-subtitle auto-flex font-small">{{filteredData.indexOf(model)}}:</h3>
-              </div>
-              <div class="auto-flex mr-2">
-                <mat-card-title class="font-large" style="height: 64px; width: 128px; overflow: hidden;">{{model.name}}</mat-card-title>
-              </div>
+              <mat-card-title-group class="align-center">
+                <div mat-card-avatar class="no-flex disp-flex align-center">
+                  <div class="gap-1 auto-flex"></div>
+                  <h3 class="mat-card-subtitle auto-flex font-small">{{filteredData.indexOf(model)}}:</h3>
+                </div>
+                <div class="auto-flex mr-2">
+                  <mat-card-title class="font-large"
+                    style="height: 64px; width: 128px; overflow: hidden;">{{model.name}}</mat-card-title>
+                </div>
 
-              <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
-                matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
-                <mat-icon>edit_square</mat-icon>
-              </button>
-              <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
-                matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-card-title-group>
+                <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
+                  matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
+                  <mat-icon>edit_square</mat-icon>
+                </button>
+                <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
+                  matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-title-group>
 
-            <mat-card-content style="overflow: hidden; height: 48px; width: 128px;">
-              <mat-card-subtitle>{{model.description}}</mat-card-subtitle>
-            </mat-card-content>
+              <mat-card-content style="overflow: hidden; height: 48px; width: 128px;">
+                <mat-card-subtitle>{{model.description}}</mat-card-subtitle>
+              </mat-card-content>
 
-            <mat-card-actions class="align-end full-width">
-              <solacetk-tags class="no-flex full-width align-end" [(model)]="model.tags"
-                (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
-            </mat-card-actions>
+              <mat-card-actions class="align-end full-width">
+                <solacetk-tags class="no-flex full-width align-end" [(model)]="model.tags"
+                  (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
+              </mat-card-actions>
 
-          </mat-card>
-          <!-- <div class="gap-2 no-flex"></div>
+            </mat-card>
+            <!-- <div class="gap-2 no-flex"></div>
           <div class="gap-1 full-width full-height auto-flex"></div> -->
+          </div>
+
         </div>
-        
+
+        <div class="gap-1 auto-flex"></div>
       </div>
-
-      <div class="gap-1 auto-flex"></div>
-
-      <mat-paginator #paginator
-               class="demo-paginator"
-               (page)="handlePageEvent($event)"
-               [length]="length"
-               [pageSize]="pageSize"
-               [pageIndex]="pageIndex"
-               [pageSizeOptions]="[5, 10, 25, 100]"
-               aria-label="Select page">
-      </mat-paginator>
-
 
     </mat-tab>
 
 
     <!-- Editor: -->
-    <mat-tab class="full-height" [labelClass]="'file-input'">
+    <mat-tab bodyClass="full-height" [labelClass]="'file-input'">
 
       <div class="gap-1 auto-flex"></div>
 
-      <div *ngIf="model">
+      <div *ngIf="model" style="padding: 16px; padding-left: 7%; padding-right: 7%;">
 
         <mat-expansion-panel [expanded]="!collapseCoreEditor && IsNewModel" class="auto-flex">
           <mat-expansion-panel-header>
@@ -185,49 +182,13 @@
 
       </div>
 
-      <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p>
+      <!-- <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p> -->
     </mat-tab>
   </mat-tab-group>
 
-
-  <div class="new-button auto-flex">
-
-
-    <!-- <div *ngIf="tabIndex === 0 && !modelSelected">
-      <div class="btn-hover-right">
-        <ng-content select=".list-buttons"></ng-content>
-      </div>
-
-      <button mat-fab color="primary" matTooltip="Create New Model" class="mat-elevation-z4 auto-flex btn-hover-right"
-        aria-label="Add new Character Controller" (click)="NewModel()">
-        <mat-icon>add</mat-icon>
-      </button>
-
-
-    </div> -->
-
-
-
-    <!-- <div *ngIf="tabIndex === 1 && modelSelected">
-
-      <ng-content class="btn-hover-right" select=".editor-buttons"></ng-content>
-
-      <button *ngIf="!IsNewModel" mat-fab color="accent" matTooltip="Export Selected Model"
-        class="mat-elevation-z4 btn-hover-right" aria-label="Export Model" (click)="ExportModel()">
-        <mat-icon>download</mat-icon>
-      </button>
-
-      <button mat-fab color="primary" matTooltip="Save Current Editor" class="mat-elevation-z4 btn-hover-right"
-        aria-label="Save Current Editor Window" (click)="SaveModel()">
-        <mat-icon>save</mat-icon>
-      </button>
-
-      <button mat-fab color="warn" matTooltip="Close Current Editor" class="mat-elevation-z4 btn-hover-right"
-        aria-label="Close Current Editor Window" (click)="CloseModel()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </div> -->
-  </div>
+  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z4" (page)="handlePageEvent($event)" [length]="length"
+  [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="primary">
+</mat-paginator>
 
 </div>
 
