@@ -62,7 +62,7 @@
       <a mat-list-item class="auto-flex" [routerLink]="['/wiki']">Documentation</a>
     </mat-nav-list>
 
-    <div *ngIf="soltkService.screenWidth > 990">
+    <div *ngIf="soltkService.screenWidth < 990">
       <solacetk-sidenav-extended class="full-width"></solacetk-sidenav-extended>
     </div>
   </mat-drawer>

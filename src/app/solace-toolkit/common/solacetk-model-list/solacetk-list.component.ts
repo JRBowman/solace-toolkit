@@ -59,8 +59,10 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       pe.length = this.length;
       pe.pageIndex = 0;
       pe.pageSize = this.pageSize;
-      this.handlePageEvent(pe);
+      
       console.log(this.dataStruct);
+      this.filteredData = this.dataStruct;
+      this.handlePageEvent(pe);
     });
   }
 
@@ -123,7 +125,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   }
 
   public CloseModel() {
-    this.model = {};
+    this.model = null;
     this.tabIndex = 0;
     this.modelSelected = false;
     this.modelClosed.emit();
@@ -137,6 +139,13 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public filter(tags: string[]): any[] {
     this.filteredData = this.dataStruct.filter(model => model.tags.includes(this.tagFilters));
+
+    let pe = new PageEvent();
+    pe.length = this.filteredData.length;
+    pe.pageIndex = 0;
+    pe.pageSize = this.pageSize;
+
+    this.handlePageEvent(pe);
     return this.filteredData;
   }
 
@@ -152,7 +161,6 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   handlePageEvent(e: PageEvent) {
     console.log(e);
     this.viewData = [];
-    this.filteredData = [];
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
@@ -160,8 +168,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
     let start = this.pageIndex  * this.pageSize;
 
-    this.viewData = this.dataStruct.slice(start, start + this.pageSize);
-    this.filteredData = this.viewData;
+    this.viewData = this.filteredData.slice(start, start + this.pageSize);
   }
 
 }

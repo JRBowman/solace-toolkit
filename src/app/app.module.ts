@@ -92,6 +92,7 @@ import { SolacetkStorycardComponent } from './solace-toolkit/common/solacetk-sto
 import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 import { TileRuleEditorComponent } from './solace-toolkit/environment-components/tile-rule-editor/tile-rule-editor.component';
 import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solacetk-sidenav-extended/solacetk-sidenav-extended.component';
+import { SolacetkListToolbarComponent } from './solace-toolkit/common/solacetk-list-toolbar/solacetk-list-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,8 @@ import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solace
     SolacetkStorycardComponent,
     StoryCardsComponent,
     TileRuleEditorComponent,
-    SolacetkSidenavExtendedComponent
+    SolacetkSidenavExtendedComponent,
+    SolacetkListToolbarComponent
   ],
   imports: [
     BrowserModule,

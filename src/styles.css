@@ -428,7 +428,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
 
     .min-width-12 {
@@ -440,7 +440,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 13%;
@@ -451,7 +451,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 19%;
@@ -462,7 +462,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 19%;
@@ -473,7 +473,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 19%;
@@ -484,7 +484,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 23%;
@@ -495,7 +495,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 11%;
         padding-right: 11%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 31%;
@@ -507,7 +507,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 8%;
         padding-right: 8%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 48%;
@@ -519,7 +519,7 @@ mat-tab-header.mat-tab-header {
     .router-content {
         padding-left: 3%;
         padding-right: 3%;
-        padding-top: 32px;
+        /* padding-top: 16px; */
     }
     .min-width-12 {
         min-width: 47%;

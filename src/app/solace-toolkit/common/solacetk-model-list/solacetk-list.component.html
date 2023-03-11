@@ -1,12 +1,67 @@
-<div *ngIf="!modelSelected || !hideEditorHeading" class="disp-flex">
-  <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
-  <h1 class="no-flex align-center mr-5">{{moduleName}}</h1>
-  <solacetk-tags *ngIf="!modelSelected" class="auto-flex align-center" [(model)]="tagFilters"
-    (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
+
+<!-- *ngIf="!modelSelected || !hideEditorHeading" -->
+<!-- Landing Toolbar: -->
+<div  class="disp-flex">
+
+  <div class="gap-1 auto-flex"></div>
+
+  <mat-toolbar class="auto-flex" style="height: 96px;">
+
+  <img class="no-flex icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
+
+  <div class="gap-1 no-flex"></div>
+
+  <span class="no-flex width-6 align-center">{{moduleName}}</span>
+
+  <div class="gap-1 auto-flex"></div>
+
+  <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="tagFilters"
+  (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
+
+  <!-- <div class="gap-1 no-flex"></div> -->
+
+  <div class="gap-1 auto-flex"></div>
+
+    <div *ngIf="tabIndex === 0 && !modelSelected" class="disp-flex no-flex">
+
+      <ng-content class="no-flex" select=".list-buttons"></ng-content>
+      
+      <button mat-icon-button color="primary" class="no-flex" matTooltip="Create New Model"
+        aria-label="Add new Character Controller" (click)="NewModel()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+    </div>
+
+    <div *ngIf="tabIndex === 1 && modelSelected" class="disp-flex no-flex">
+
+      <ng-content class="no-flex" select=".editor-buttons"></ng-content>
+
+      <button *ngIf="!IsNewModel" mat-icon-button color="accent" matTooltip="Export Selected Model"
+        aria-label="Export Model" (click)="ExportModel()">
+        <mat-icon>download</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" class="no-flex" matTooltip="Save Current Editor"
+        aria-label="Save Current Editor Window" (click)="SaveModel()">
+        <mat-icon>save</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" class="no-flex" matTooltip="Close Current Editor"
+        aria-label="Close Current Editor Window" (click)="CloseModel()">
+        <mat-icon>close</mat-icon>
+      </button>
+      
+    </div>
+
+  </mat-toolbar>
+
+
 </div>
 
 
-<div class="btn-hover-right" *ngIf="!IsLoading">
+<!-- <div class="btn-hover-right" *ngIf="!IsLoading"> -->
+  <div *ngIf="!IsLoading">
   <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
 
     <!-- List: -->
@@ -16,16 +71,16 @@
         <div class="gap-1 full-width auto-flex"></div>
 
         <!-- List Card Item: -->
-        <div *ngFor='let model of filteredData' class="auto-flex min-width-3 width-33 disp-flex" style="height: 25%;">
-          <mat-card class="auto-flex full-height width-96">
+        <div *ngFor='let model of viewData' class="auto-flex min-width-3 disp-flex" style="height: 20%; padding: 4px;">
+          <mat-card class="auto-flex full-height width-96" >
 
-            <mat-card-title-group class="align-center" style="height: 64px; overflow: hidden;">
+            <mat-card-title-group class="align-center">
               <div mat-card-avatar class="no-flex disp-flex align-center">
                 <div class="gap-1 auto-flex"></div>
                 <h3 class="mat-card-subtitle auto-flex font-small">{{filteredData.indexOf(model)}}:</h3>
               </div>
               <div class="auto-flex mr-2">
-                <mat-card-title class="font-large">{{model.name}}</mat-card-title>
+                <mat-card-title class="font-large" style="height: 64px; width: 128px; overflow: hidden;">{{model.name}}</mat-card-title>
               </div>
 
               <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
@@ -38,8 +93,8 @@
               </button>
             </mat-card-title-group>
 
-            <mat-card-content>
-              <mat-card-subtitle>Description: {{model.description}}</mat-card-subtitle>
+            <mat-card-content style="overflow: hidden; height: 48px; width: 128px;">
+              <mat-card-subtitle>{{model.description}}</mat-card-subtitle>
             </mat-card-content>
 
             <mat-card-actions class="align-end full-width">
@@ -48,11 +103,13 @@
             </mat-card-actions>
 
           </mat-card>
-          <div class="gap-2 no-flex"></div>
-          <div class="gap-1 full-width full-height auto-flex"></div>
+          <!-- <div class="gap-2 no-flex"></div>
+          <div class="gap-1 full-width full-height auto-flex"></div> -->
         </div>
         
       </div>
+
+      <div class="gap-1 auto-flex"></div>
 
       <mat-paginator #paginator
                class="demo-paginator"
@@ -71,9 +128,11 @@
     <!-- Editor: -->
     <mat-tab class="full-height" [labelClass]="'file-input'">
 
-      <div *ngIf="model" class="mt-2">
+      <div class="gap-1 auto-flex"></div>
 
-        <mat-expansion-panel [expanded]="!collapseCoreEditor" class="auto-flex">
+      <div *ngIf="model">
+
+        <mat-expansion-panel [expanded]="!collapseCoreEditor && IsNewModel" class="auto-flex">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="mr-2">workspaces</mat-icon>
@@ -134,7 +193,7 @@
   <div class="new-button auto-flex">
 
 
-    <div *ngIf="tabIndex === 0 && !modelSelected">
+    <!-- <div *ngIf="tabIndex === 0 && !modelSelected">
       <div class="btn-hover-right">
         <ng-content select=".list-buttons"></ng-content>
       </div>
@@ -145,11 +204,11 @@
       </button>
 
 
-    </div>
+    </div> -->
 
 
 
-    <div *ngIf="tabIndex === 1 && modelSelected">
+    <!-- <div *ngIf="tabIndex === 1 && modelSelected">
 
       <ng-content class="btn-hover-right" select=".editor-buttons"></ng-content>
 
@@ -167,7 +226,7 @@
         aria-label="Close Current Editor Window" (click)="CloseModel()">
         <mat-icon>close</mat-icon>
       </button>
-    </div>
+    </div> -->
   </div>
 
 </div>

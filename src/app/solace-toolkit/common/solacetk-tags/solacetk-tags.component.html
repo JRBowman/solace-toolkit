@@ -1,7 +1,7 @@
 <!-- Editor Model Tags View: -->
 <div *ngIf="canEdit">
 
-    <mat-form-field class="auto-flex font-small tags-disp-block">
+    <mat-form-field class="auto-flex font-small disp-flex">
 
         <mat-label class="font-small">{{tkHeading}}</mat-label>
         <mat-chip-grid class="auto-flex font-small" #chipList aria-label="Tag Selection">
@@ -12,7 +12,7 @@
                     <mat-icon>cancel</mat-icon>
                 </button>
             </mat-chip>
-            <input class="auto-flex font-small" placeholder="#tag..." #tagInput [formControl]="tagCrtl"
+            <input matInput class="auto-flex font-small" placeholder="#tag..." #tagInput [formControl]="tagCrtl"
                 [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 (matChipInputTokenEnd)="add($event)">
 

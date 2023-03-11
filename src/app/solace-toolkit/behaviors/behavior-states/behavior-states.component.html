@@ -1,17 +1,17 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states">
+<solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states" (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()">
     <div class="editor">
 
         <div class="disp-flex">
             <mat-form-field class="auto-flex font-small model-formfield">
-                <mat-label>Run Count</mat-label>
+                <mat-label class="font-small">Run Count</mat-label>
                 <input matInput placeholder="Run Count" [(ngModel)]="model.runCount">
             </mat-form-field>
             <mat-form-field class="auto-flex font-small model-formfield">
-                <mat-label>Start Delay</mat-label>
+                <mat-label class="font-small">Start Delay</mat-label>
                 <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
             </mat-form-field>
             <mat-form-field class="auto-flex font-small model-formfield">
-                <mat-label>End Delay</mat-label>
+                <mat-label class="font-small">End Delay</mat-label>
                 <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
             </mat-form-field>
 
@@ -20,22 +20,21 @@
             </mat-checkbox>
         </div>
 
-        <mat-divider class="mb-2 mt-2"></mat-divider>
+        <mat-divider></mat-divider>
     </div>
 
     <div class="editor-panels">
-        <!-- <mat-accordion class="auto-flex align-start full-width"> -->
 
-        <div class="mb-2">
             <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
                 panelType="expansionpanel" [(model)]="model.conditions">
                 <div class="action-row">
                     <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
                 </div>
             </solacetk-attributes-panel>
-        </div>
 
-        <mat-expansion-panel class="mb-2">
+        <div class="gap-1 auto-flex"></div>
+
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon class="mr-2">schema</mat-icon>
@@ -46,10 +45,8 @@
             <ng-template matExpansionPanelContent>
 
                 <div class="disp-flex full-width full-height" *ngIf="model.animation">
-                    <!-- <div *ngIf="model.animations[0].startFrameData.enabled" class="no-flex mr-2"> -->
 
-                    <div class="auto-flex mr-2 grid-3">
-                        <h4>Start</h4>
+                    <!-- <div class="auto-flex mr-2 grid-3">
                         <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
                             [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
@@ -57,29 +54,28 @@
                             class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
                     </div>
 
-                    <mat-divider class="mb-2"></mat-divider>
+                    <mat-divider class="mb-2"></mat-divider> -->
 
 
-                    <div class="auto-flex mr-2 grid-3">
-                        <h4>Act</h4>
-                        <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.actFrameData"
-                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                    <div class="auto-flex grid-3">
+                        <!-- <h4>Act</h4> -->
+                        <solacetk-animation-editor class="no-flex mb-2" bgColor="#906868" [(model)]="model.animation.actFrameData"
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"></solacetk-animation-editor>
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
                     </div>
 
-                    <mat-divider class="mb-2"></mat-divider>
+                    <!-- <mat-divider class="mb-2"></mat-divider> -->
 
 
-                    <div class="auto-flex grid-3">
-                        <h4>End</h4>
+                    <!-- <div class="auto-flex grid-3">
                         <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
                             [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
-                    </div>
+                    </div> -->
                 </div>
 
             </ng-template>
@@ -90,32 +86,13 @@
 
         </mat-expansion-panel>
 
-        <solacetk-event-panel class="mb-2" [(model)]="model.events">
+        <div class="gap-1 auto-flex"></div>
+
+        <solacetk-event-panel [(model)]="model.events">
             <div class="action-row">
                 <button mat-button color="primary" (click)="openEventsSheet()">Import</button>
             </div>
         </solacetk-event-panel>
-        <!-- 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Linked State
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <ng-template matExpansionPanelContent>
-                    <div class="auto-flex align-start" *ngIf="model.next">
-                        <mat-card>
-                            <mat-card-title>{{model.next.name}}</mat-card-title>
-                            <mat-card-subtitle>Description: {{model.next.description}}</mat-card-subtitle>
-                        </mat-card>
-                    </div>
-                </ng-template>
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="openNextStateSheet()">Add</button>
-                </mat-action-row>
-            </mat-expansion-panel> -->
-
-        <!-- </mat-accordion> -->
     </div>
 
 </solacetk-model-list>

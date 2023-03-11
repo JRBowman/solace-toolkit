@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { ActionEvent } from '../../models/actionevent';
@@ -20,6 +20,8 @@ export class BehaviorStatesComponent implements OnInit {
 
   public conditionsColor: string = "#006064";
 
+  public unloadModules = new EventEmitter<boolean>();
+
   ngOnInit(): void {
 
   }
@@ -27,6 +29,14 @@ export class BehaviorStatesComponent implements OnInit {
   public LogModel()
   {
     console.log(this.model);
+  }
+
+  public LoadModel(): void {
+    this.unloadModules.emit(false);
+  }
+
+  public CloseModel(): void {
+    this.unloadModules.emit(true);
   }
 
   public openAnimationsSheet()

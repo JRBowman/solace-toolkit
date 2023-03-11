@@ -26,6 +26,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   @Input() modelName: string = "";
 
+  @Input() expanded: boolean = true;
+
 
   public fileName: string = "";
   public sheetName: string = "../../assets/soldof/images/settings.png";
@@ -54,8 +56,10 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     //this.model.frames = [];
     this.unloadChange.subscribe((value) => {
       if (value === true) {
+        this.selected = 0;
         this.fileName = "";
         this.frames = [];
+        this.isPlaying = false;
         this.sheetName = "../../assets/soldof/images/settings.png";
         console.log("unloaded...");
         return;
@@ -66,6 +70,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         this.framesChange.emit(texName + ".png.json");
         console.log("loaded");
       }
+      
     });
 
     this.framesChange.subscribe((url) => {
@@ -100,15 +105,15 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
           this.frames = this.model?.frames ?? [];
         }
 
-
-
-        //this.selectedFrame = this.frames[0];
         if (this.model) this.model.framesJson = JSON.stringify(this.frames);
 
 
         let texName = "Ase/" + this.modelName + "/" + this.model?.name;
         this.sheetName = this.service.apiHost + texName + ".png";
         this.aseReady = true;
+
+        this.selected = 0;
+        this.selectedFrame = this.frames[0];
 
         this.modelChange.emit(this.model);
       })
@@ -178,7 +183,10 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   playAnimation() {
 
-    if (this.model && !this.model?.loop && this.selected == this.model.frames.length - 1) this.selected = 0;
+    if (this.model && this.selected == this.model.frames.length - 1) {
+      this.selected = 0;
+      this.selectedFrame = this.model.frames[this.selected];
+    }
     this.isPlaying = true;
     this.animate();
   }

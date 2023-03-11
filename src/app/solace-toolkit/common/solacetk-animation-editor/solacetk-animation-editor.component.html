@@ -1,4 +1,4 @@
-<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" panelType="expansionpanel">
+<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" panelType="expansionpanel" [expanded]="expanded">
 
     <div class="expansionpanel-content">
         <div class="disp-flex" *ngIf="model">
@@ -125,7 +125,7 @@
 
                     <div class="gap-1 no-flex"></div>
 
-                    <mat-chip-set class="auto-flex">
+                    <mat-chip-set *ngIf="showFrames" class="auto-flex">
                         <mat-chip class="width-4 justify-center font-xsmall soltk-chip" *ngFor="let frame of frames"
                             (click)="onSelect(frame)"
                             [style.background-color]="selectedFrame == frame ? 'mediumvioletred' : 'cadetblue'">

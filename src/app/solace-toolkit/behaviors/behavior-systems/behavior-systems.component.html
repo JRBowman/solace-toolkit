@@ -3,107 +3,59 @@
 
         <div class="disp-flex">
             <mat-form-field class="auto-flex font-small">
-                
+
                 <input matInput #startState placeholder="Start State" [(ngModel)]="model.startState">
             </mat-form-field>
         </div>
 
-        <mat-divider class="mb-2 mt-2"></mat-divider>
+        <mat-divider></mat-divider>
 
     </div>
 
     <div class="editor-panels">
-        <!-- <mat-accordion class="align-start"> -->
 
-            <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
-                panelColor="#4a148c" [(model)]="model.varData"></solacetk-attributes-panel>
+        <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
+            panelColor="#4a148c" [(model)]="model.varData"></solacetk-attributes-panel>
 
-            <div class="no-flex gap-1"></div>
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <mat-icon class="mr-2">schema</mat-icon>
-            Behavior Works
-        </mat-panel-title>
-    </mat-expansion-panel-header>
+        <div class="no-flex gap-1"></div>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon class="mr-2">schema</mat-icon>
+                    Behavior Works
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <ng-template matExpansionPanelContent>
+            <ng-template matExpansionPanelContent>
 
-        <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
+                <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
 
 
-            <div class="disp-flex auto-flex">
-                <div class="disp-flex no-flex width-5" *ngFor="let behavior of model.behaviors">
-                        <solacetk-animation-editor [panelName]="behavior?.name ?? 'Anim Data'"
-                            [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
-                            bgColor="#009688"></solacetk-animation-editor>
-                    <div class="no-flex gap-1"></div>
-                </div>
-            </div>
+                    <div class="disp-flex">
+                        <div class="disp-flex auto-flex" *ngFor="let behavior of model.behaviors">
 
-                        <!-- <mat-card cdkDrag [cdkDragData]="branch" class="no-flex mb-2"
-                            *ngFor="let branch of model.behaviors" style="background-color: #ad1457;">
+                            <solacetk-animation-editor class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
+                                [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
+                                bgColor="#009688"></solacetk-animation-editor>
 
-                            <mat-card-title-group class="disp-flex">
-                                <mat-card-title class="auto-flex">{{branch.name}}</mat-card-title>
-                                <mat-chip-list>
-                                    <mat-chip *ngFor="let cond of branch.conditions" class="font-small"
-                                        style="background-color: #006064;">
-                                        {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
-                                    </mat-chip>
-                                </mat-chip-list>
-                                <h4 class="no-flex mr-2">{{model.behaviors.indexOf(branch)}}</h4>
-                            </mat-card-title-group>
-
-                            <mat-card-content >
-                                <div *ngFor="let state of branch.states">
-                                    <div class="disp-flex min-width-4">
-                                        <solacetk-animation-editor [panelName]="branch?.name ?? 'Anim Data'"
-                                            [(model)]="branch.animation.actFrameData" [showDataPanel]="false"
-                                            [showFrames]="false" bgColor="#009688"></solacetk-animation-editor>
-                                        
-                                        <div class="no-flex gap-1"></div>
-
-                                        <mat-chip-list>
-                                            <mat-chip *ngFor="let data of branch.actData" class="font-small"
-                                                style="background-color: mediumvioletred;">
-                                                {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
-                                            </mat-chip>
-                                            <mat-chip *ngFor="let data of branch.startData" class="font-small"
-                                                style="background-color: mediumvioletred;">
-                                                {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
-                                            </mat-chip>
-                                            <mat-chip *ngFor="let data of branch.endData" class="font-small"
-                                                style="background-color: mediumvioletred;">
-                                                {{data.key}} {{operators[data.operator ?? 0]}} {{data.data}}
-                                            </mat-chip>
-                                        </mat-chip-list>
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </mat-card-content>
-                            <mat-card-actions>
-
-                            </mat-card-actions>
-                        </mat-card> -->
-
+                            <div class="no-flex gap-1"></div>
+                        </div>
                     </div>
 
-                </ng-template>
+                </div>
+
+            </ng-template>
 
 
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
-                </mat-action-row>
+            <mat-action-row>
+                <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
+            </mat-action-row>
 
-            </mat-expansion-panel>
+        </mat-expansion-panel>
 
-            <div class="no-flex gap-1"></div>
+        <div class="no-flex gap-1"></div>
 
-            <solacetk-event-panel class="mb-2" [(model)]="model.events"></solacetk-event-panel>
-
-        <!-- </mat-accordion> -->
+        <solacetk-event-panel [(model)]="model.events"></solacetk-event-panel>
 
     </div>
 </solacetk-model-list>
