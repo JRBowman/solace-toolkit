@@ -19,6 +19,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() tagFilters: string = "";
   @Input() hideEditorHeading: boolean = true;
   @Input() collapseCoreEditor: boolean = false;
+  @Input() queryParameters: string = "";
 
   @Input() moduleColor: string = "#606060";
 
@@ -51,7 +52,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public RefreshView() {
     this.IsLoading = true;
 
-    this.service.GetModels(this.modelUri, true, this.tagFilters).subscribe(response => {
+    this.service.GetModels(this.modelUri, false, this.tagFilters, this.queryParameters).subscribe(response => {
       this.dataStruct = [];
       this.dataStruct = response;
       //this.filteredData = this.dataStruct;

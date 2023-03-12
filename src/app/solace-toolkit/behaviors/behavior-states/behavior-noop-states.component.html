@@ -1,0 +1,73 @@
+<solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/states" queryParameters="?noop=true" (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" (modelCreate)="CreateModel()" moduleColor="#545c80">
+    <div class="editor">
+
+        <!-- <div class="disp-flex">
+            <mat-form-field class="auto-flex font-small model-formfield">
+                <mat-label class="font-small">Run Count</mat-label>
+                <input matInput placeholder="Run Count" [(ngModel)]="model.runCount">
+            </mat-form-field>
+            <mat-form-field class="auto-flex font-small model-formfield">
+                <mat-label class="font-small">Start Delay</mat-label>
+                <input matInput placeholder="Start Delay" [(ngModel)]="model.startDelay">
+            </mat-form-field>
+            <mat-form-field class="auto-flex font-small model-formfield">
+                <mat-label class="font-small">End Delay</mat-label>
+                <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
+            </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider> -->
+    </div>
+
+    <div class="editor-panels">
+
+            <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+                panelType="expansionpanel" [(model)]="model.conditions">
+                <div class="action-row">
+                    <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
+                </div>
+            </solacetk-attributes-panel>
+
+        <div class="gap-1 auto-flex"></div>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon class="mr-2">schema</mat-icon>
+                    Dataworks
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+
+                <div class="disp-flex full-width full-height" *ngIf="model.animation">
+
+                    <div class="auto-flex grid-3">
+                        <!-- <h4>Act</h4> -->
+                        <solacetk-animation-editor class="no-flex mb-2" bgColor="#906868" [(model)]="model.animation.actFrameData"
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"></solacetk-animation-editor>
+
+                        <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
+                            class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
+                    </div>
+
+                </div>
+
+            </ng-template>
+
+            <mat-action-row>
+                <button mat-button color="primary" (click)="openAnimationsSheet()">Import</button>
+            </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <div class="gap-1 auto-flex"></div>
+
+        <solacetk-event-panel [(model)]="model.events">
+            <div class="action-row">
+                <button mat-button color="primary" (click)="openEventsSheet()">Import</button>
+            </div>
+        </solacetk-event-panel>
+    </div>
+
+</solacetk-model-list>

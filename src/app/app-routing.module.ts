@@ -41,6 +41,7 @@ import { AuthorizationGuard } from './auth/auth-guard';
 import { IdentityComponent } from './identity/identity.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
+import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior-states/behavior-noop-states.component';
 
 const routes: Routes = [
   {
@@ -94,7 +95,7 @@ const routes: Routes = [
   },
   {
     path: 'branches',
-    component: BehaviorBranchesComponent,
+    component: BehaviorNoopStatesComponent,
     //canActivate: [AuthorizationGuard]
   },
   {

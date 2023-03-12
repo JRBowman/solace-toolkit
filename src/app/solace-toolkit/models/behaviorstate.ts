@@ -28,5 +28,7 @@ export class BehaviorState implements IModelTK {
     public stateType?: string;
     public runCount: number = 0;
 
+    public noOp: boolean = false;
+
     public enabled: boolean = true;
 }

@@ -93,10 +93,12 @@ import { StoryCardsComponent } from './solace-toolkit/game-components/story-card
 import { TileRuleEditorComponent } from './solace-toolkit/environment-components/tile-rule-editor/tile-rule-editor.component';
 import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solacetk-sidenav-extended/solacetk-sidenav-extended.component';
 import { SolacetkListToolbarComponent } from './solace-toolkit/common/solacetk-list-toolbar/solacetk-list-toolbar.component';
+import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior-states/behavior-noop-states.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BehaviorNoopStatesComponent,
     IntroductionComponent,
     ProjectsComponent,
     SoftwareComponent,
