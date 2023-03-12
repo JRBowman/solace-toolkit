@@ -63,10 +63,10 @@ export class BehaviorNoopStatesComponent implements OnInit {
     this.unloadModules.emit(true);
   }
 
-  public openAnimationsSheet()
+  public openAnimationsSheet(query: string = "")
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/states');
+    instance.instance.LoadData('Behaviors/states', true, query);
 
     instance.instance.modelsSelected.subscribe((models) => 
     {

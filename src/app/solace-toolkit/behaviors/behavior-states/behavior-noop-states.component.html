@@ -1,4 +1,4 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/states" queryParameters="?noop=true" (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" (modelCreate)="CreateModel()" moduleColor="#545c80">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/states" queryParameters="?noop=true" (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" (modelCreate)="CreateModel()" moduleColor="#803040">
     <div class="editor">
     </div>
 
@@ -59,18 +59,37 @@
                 <div class="disp-flex auto-flex" *ngIf="model.nextStates && showNextStates">
                     <div class="disp-flex auto-flex" *ngFor="let behavior of model.nextStates">
 
-                        <solacetk-animation-editor class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
+                        <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
                             [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"
-                            bgColor="#009688"></solacetk-animation-editor>
+                            bgColor="#545c80"></solacetk-animation-editor>
 
-                        <div class="no-flex gap-1"></div>
+                        <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" style="padding: 4px;" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
+                        
+                            <div class="panel-content auto-flex">
+
+                                <mat-chip-listbox class="auto-flex full-width full-height" aria-label="Branch States"
+                                    multiple="false" selectable="false">
+                                    <mat-chip-option class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
+                                        [style.background-color]="'#545c80'"
+                                        style="overflow: hidden;">
+                                        <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
+                                        {{nState.name}}
+                                    </mat-chip-option>
+                                </mat-chip-listbox>
+
+                            </div>
+
+                        </solacetk-panel>
+
+                        <!-- <div class="no-flex gap-1"></div> -->
                     </div>
                 </div>
 
             </ng-template>
 
             <mat-action-row>
-                <button mat-button color="primary" (click)="openAnimationsSheet()">Import</button>
+                <button mat-button color="primary" (click)="openAnimationsSheet()">Import States</button>
+                <button mat-button color="primary" (click)="openAnimationsSheet('?noop=true')">Import Branches</button>
             </mat-action-row>
 
         </mat-expansion-panel>

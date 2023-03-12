@@ -28,13 +28,13 @@ export class SolacetkSearchSheetComponent implements OnInit {
     
   }
 
-  public LoadData(resoureUri: string, multiple: boolean = true) {
+  public LoadData(resoureUri: string, multiple: boolean = true, queryParameters: string = "") {
     this.selectedModels = [];
     this.selectMultiple = multiple;
     this.models = [];
     this.resource = "";
     this.resource = resoureUri;
-    this.service.GetModels(resoureUri, true).subscribe((model) => {
+    this.service.GetModels(resoureUri, false, this.tagFilters, queryParameters).subscribe((model) => {
       this.models = model;
       console.log(model);
       this.IsLoading = false;

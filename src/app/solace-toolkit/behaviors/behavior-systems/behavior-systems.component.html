@@ -1,4 +1,4 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Systems" modelUri="Behaviors/systems" moduleColor="#806090">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Systems" modelUri="Behaviors/systems" moduleColor="#603060">
     <div class="editor">
 
         <div class="disp-flex">
@@ -15,7 +15,7 @@
     <div class="editor-panels">
 
         <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
-            panelColor="#4a148c" [(model)]="model.varData"></solacetk-attributes-panel>
+            [(model)]="model.varData"></solacetk-attributes-panel>
 
         <div class="no-flex gap-1"></div>
         <mat-expansion-panel>
@@ -36,7 +36,7 @@
 
                             <solacetk-animation-editor class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
                                 [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
-                                bgColor="#009688"></solacetk-animation-editor>
+                                bgColor="#545c80"></solacetk-animation-editor>
 
                             <div class="no-flex gap-1"></div>
                         </div>
