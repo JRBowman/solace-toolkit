@@ -51,14 +51,18 @@ public model: BehaviorSystem = new BehaviorSystem();
     
   }
 
-  public openBranchesSheet()
+  public openBranchesSheet(query: string = "")
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/states');
+    instance.instance.LoadData('Behaviors/states', true, query);
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.behaviors = models;
+      this.model.behaviors = [...this.model.behaviors, ...models];
+
+      // models.forEach(m => {
+      //   if (this.model.behaviors.findIndex(x => x.id == m.id) == -1) this.model.behaviors.push(m);
+      // });
     });
     
   }

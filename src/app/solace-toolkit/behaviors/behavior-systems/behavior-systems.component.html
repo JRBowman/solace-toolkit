@@ -34,9 +34,27 @@
                     <div class="disp-flex">
                         <div class="disp-flex auto-flex" *ngFor="let behavior of model.behaviors">
 
-                            <solacetk-animation-editor class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
+                            <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
                                 [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
                                 bgColor="#545c80"></solacetk-animation-editor>
+
+                                <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" style="padding: 4px;" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
+                        
+                                    <div class="panel-content auto-flex">
+        
+                                        <mat-chip-listbox class="auto-flex full-width full-height" aria-label="Branch States"
+                                            multiple="false" selectable="false">
+                                            <mat-chip-option class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
+                                                [style.background-color]="'#545c80'"
+                                                style="overflow: hidden;">
+                                                <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
+                                                {{nState.name}}
+                                            </mat-chip-option>
+                                        </mat-chip-listbox>
+        
+                                    </div>
+        
+                                </solacetk-panel>
 
                             <div class="no-flex gap-1"></div>
                         </div>
@@ -48,7 +66,8 @@
 
 
             <mat-action-row>
-                <button mat-button color="primary" (click)="openBranchesSheet()">Add</button>
+                <button mat-button color="primary" (click)="openBranchesSheet()">Add State</button>
+                <button mat-button color="primary" (click)="openBranchesSheet('?noop=true')">Add Branch</button>
             </mat-action-row>
 
         </mat-expansion-panel>

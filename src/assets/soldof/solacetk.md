@@ -10,4 +10,4 @@ Each of these components of the game system are captured as **Serialized Data Mo
 # Wiki
 Review the **Wiki** to learn more about the Data-Oriented Framework and how to use this Toolkit!
 
-<img src="../../../assets/soldof/wiki/solacetk-overview.svg" width="100%">
+<!-- <img src="../../../assets/soldof/wiki/solacetk-overview.svg" width="50%" style="padding: 25%;"> -->

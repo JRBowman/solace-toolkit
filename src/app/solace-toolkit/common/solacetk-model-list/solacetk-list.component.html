@@ -1,10 +1,10 @@
 <!-- *ngIf="!modelSelected || !hideEditorHeading" -->
 <!-- Landing Toolbar: -->
-<div class="disp-flex mat-elevation-z4">
+<div class="disp-flex auto-flex mat-elevation-z6" style="z-index: 16; position: sticky;">
 
   <!-- <div class="gap-1 auto-flex"></div> -->
 
-  <mat-toolbar class="auto-flex" style="height: 74px;">
+  <mat-toolbar class="no-flex" style="height: 74px;">
 
     <div class="gap-2 no-flex"></div>
 
@@ -12,7 +12,7 @@
 
     <div class="gap-1 no-flex"></div>
 
-    <span class="no-flex align-center">{{moduleName}}</span>
+    <span *ngIf="service.screenWidth > 990" class="auto-flex align-center font-small">{{moduleName}}</span>
 
     <div class="gap-1 auto-flex"></div>
 
@@ -186,8 +186,8 @@
     </mat-tab>
   </mat-tab-group>
 
-  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z4" (page)="handlePageEvent($event)" [length]="length"
-  [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="primary">
+  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z6" style="position: sticky; z-index: 16;" (page)="handlePageEvent($event)" [length]="length"
+  [pageSize]="pageSize" [pageIndex]="pageIndex" hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="primary">
 </mat-paginator>
 
 </div>

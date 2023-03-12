@@ -158,7 +158,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public pageEvent?: PageEvent;
   public length = 50;
-  public pageSize = 10;
+  public pageSize = 25;
   public pageIndex = 0;
 
   handlePageEvent(e: PageEvent) {

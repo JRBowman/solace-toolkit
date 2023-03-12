@@ -1,6 +1,9 @@
 
-<div class="flex-card-group">
-  <mat-card class="auto-flex mr-2">
+<div class="disp-flex" style="padding: 8px;">
+
+  <div class="gap-1 auto-flex"></div>
+
+  <mat-card class="auto-flex width-2">
     <mat-card-content>
       <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/solacetk.md'"></markdown>
     </mat-card-content>
@@ -11,7 +14,9 @@
 
   </mat-card>
 
-  <mat-card class="no-flex">
+  <div class="gap-1 no-flex"></div>
+
+  <mat-card class="auto-flex" style="height: 25%;">
     <mat-card-title-group>
       <mat-card-title>{{msoaUserService.IsAuthenticated ? msoaUserService.testUser.name : "Authentication"}}</mat-card-title>
       <mat-card-subtitle>SolaceTK Identity</mat-card-subtitle>
@@ -25,4 +30,7 @@
       <button *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex" mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
     </mat-card-actions>
   </mat-card>
+
+  <div class="gap-1 auto-flex"></div>
+
 </div>
