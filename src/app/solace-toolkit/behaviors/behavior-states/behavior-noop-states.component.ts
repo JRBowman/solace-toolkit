@@ -14,13 +14,15 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 })
 export class BehaviorNoopStatesComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet, public service: SolacetkService) { }
 
   public model: BehaviorState = new BehaviorState();
 
   public conditionsColor: string = "#006064";
 
   public unloadModules = new EventEmitter<boolean>();
+
+  public showNextStates: boolean = false;
 
   ngOnInit(): void {
     this.model.noOp = true;
@@ -36,8 +38,25 @@ export class BehaviorNoopStatesComponent implements OnInit {
   }
 
   public LoadModel(): void {
-    this.unloadModules.emit(false);
     this.model.noOp = true;
+
+    // Exit if there are no selected States
+    if (this.model.nextStates == null || this.model.nextStates.length == 0) return;
+
+    // Load Full Next States If not Null:
+    for (let index = 0; index < this.model.nextStates.length; index++) {
+      const element = this.model.nextStates[index];
+      if (element == null) this.model.nextStates[index] = new BehaviorState();
+            // Call the Service:
+            this.service.GetModel("Behaviors/states/" + element.id).subscribe(value => {
+              if (this.model.nextStates == null) return;
+              this.model.nextStates[index] = value;
+              console.log(this.model.nextStates[index]);
+              
+            });
+    }
+    this.unloadModules.emit(false);
+    this.showNextStates = true;
   }
 
   public CloseModel(): void {
@@ -51,7 +70,8 @@ export class BehaviorNoopStatesComponent implements OnInit {
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.animation = models[0];
+      if (this.model.nextStates == null) this.model.nextStates = [];
+      this.model.nextStates = [...this.model.nextStates, ...models];
     });
     
   }
