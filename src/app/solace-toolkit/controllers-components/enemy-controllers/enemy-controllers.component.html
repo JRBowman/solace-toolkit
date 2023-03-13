@@ -1,68 +1,98 @@
-<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/movables"
-    (modelLoaded)="loadEditor()" tagFilters="#enemies">
+<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/enemies"
+    (modelLoaded)="loadEditor()">
     <div class="editor">
 
-        <div class="disp-flex">
-            <div class="auto-flex align-center" style="text-align: justify;">
-                <img class="sprite-thumb-2col sprite no-flex mr-2" [src]="profileUrl" alt="sprite">
+        <div class="disp-flex auto-flex">
+            <div class="auto-flex full-width align-center" style="text-align: justify;">
+                <img class="sprite-thumb-2col sprite no-flex" [src]="profileUrl" alt="sprite">
             </div>
 
-            <div class="disp-flex">
-                <mat-form-field class="no-flex width-10 mr-2">
-                    <mat-icon matPrefix class="font-medium mr-2 align-start" [style.color]="model.pixelKeyColor">
+            <div class="disp-flex auto-flex">
+
+                <mat-form-field class="no-flex font-small">
+                    <mat-icon matPrefix class="font-medium align-start" [style.color]="model.pixelKeyColor">
                         pin_drop
                     </mat-icon>
                     <input matInput #pixelKeyColor placeholder="Pixel Color Key" type="color"
                         [(ngModel)]="model.pixelKeyColor">
                 </mat-form-field>
-                <mat-form-field class="no-flex width-10 mr-2">
+
+                <div class="gap-1 no-flex"></div>
+
+                <mat-form-field class="no-flex font-small">
+                    <mat-label class="font-small">Mass</mat-label>
                     <input matInput #mass placeholder="Mass" [(ngModel)]="model.mass">
                 </mat-form-field>
-                <mat-form-field class="no-flex width-10 mr-2">
+
+                <div class="gap-1 no-flex"></div>
+
+                <mat-form-field class="no-flex font-small">
+                    <mat-label class="font-small">Speed</mat-label>
                     <input matInput #speed placeholder="Speed" [(ngModel)]="model.speed">
                 </mat-form-field>
-                <mat-form-field class="no-flex width-10 mr-2">
+
+                <div class="gap-1 no-flex"></div>
+
+                <mat-form-field class="no-flex font-small">
+                    <mat-label class="font-small">Position X</mat-label>
                     <input matInput #worldPositionX placeholder="Position X" [(ngModel)]="model.worldPositionX">
                 </mat-form-field>
-                <mat-form-field class="no-flex width-10 mr-2">
+
+                <div class="gap-1 no-flex"></div>
+                
+                <mat-form-field class="no-flex font-small">
+                    <mat-label class="font-small">Position Y</mat-label>
                     <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
                 </mat-form-field>
-                <mat-form-field class="no-flex width-10">
+
+                <div class="gap-1 no-flex"></div>
+
+                <mat-form-field class="no-flex font-small">
+                    <mat-label class="font-small">Position Z</mat-label>
                     <input matInput #worldPositionZ placeholder="Position Z" [(ngModel)]="model.worldPositionZ">
                 </mat-form-field>
+
             </div>
         </div>
 
-        <div class="disp-flex">
-            <mat-form-field class="model-formfield auto-flex">
-                <mat-select placeholder="Movement Type" [(ngModel)]="model.type">
+        <div class="disp-flex auto-flex">
+
+            <mat-form-field class="auto-flex font-small">
+                <mat-select class="font-small" placeholder="Movement Type" [(ngModel)]="model.type">
                     <mat-option *ngFor="let item of movableTypes" [value]="movableTypes.indexOf(item)">
                         {{GetMoveType(item)}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field class="model-formfield auto-flex">
-                <mat-select placeholder="Collision Type" [(ngModel)]="model.collisionType">
+
+            <div class="gap-1 no-flex"></div>
+
+            <mat-form-field class="auto-flex font-small">
+                <mat-select class="font-small" placeholder="Collision Type" [(ngModel)]="model.collisionType">
                     <mat-option *ngFor="let item of collidableTypes" [value]="collidableTypes.indexOf(item)">
                         {{GetCollisionType(item)}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-checkbox name="affectedByGravity" class="auto-flex model-formfield align-center"
+
+            <div class="gap-1 no-flex"></div>
+
+            <mat-checkbox name="affectedByGravity" class="no-flex align-center"
                 [(ngModel)]="model.affectedByGravity">
                 Affected By
                 Gravity</mat-checkbox>
-            <mat-checkbox name="useFriction" class="auto-flex model-formfield align-center"
+
+            <mat-checkbox name="useFriction" class="no-flex align-center"
                 [(ngModel)]="model.useFriction">Use
                 Friction
             </mat-checkbox>
-            <mat-checkbox name="canMove" class="auto-flex align-center" [(ngModel)]="model.canMove">Can Move
+
+            <mat-checkbox name="canMove" class="no-flex align-center" [(ngModel)]="model.canMove">Can Move
             </mat-checkbox>
+
         </div>
 
     </div>
-
-
 
     <div class="editor-actions">
         <button mat-button (click)="textureUpload.click()" color="primary">Import profile Sprite</button>

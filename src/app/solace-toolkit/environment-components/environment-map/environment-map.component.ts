@@ -6,6 +6,7 @@ import { EnvironmentMap } from '../../models/environment-map';
 import { EnvironmentMapLayer } from '../../models/environment-map-layer';
 import { MapCell } from '../../models/map-cell';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 
 @Component({
   selector: 'app-environment-map',
@@ -14,7 +15,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 })
 export class EnvironmentMapComponent implements OnInit {
 
-  constructor(private soltkService: SolacetkService) { }
+  constructor(private soltkService: SolacetkService, public soundService: SolaceTkSoundService) { }
 
   public model: EnvironmentMap = new EnvironmentMap();
 
@@ -85,6 +86,7 @@ export class EnvironmentMapComponent implements OnInit {
       this.selectedCell.selected = true;
       // TODO: Logic for clicking and selecting a Cell (load its Model into the Cell Editor):
     }
+    this.soundService.playAudio("map-click.wav")
   }
 
   ModeChange(nextMode: MatButtonToggleChange): void {
@@ -222,6 +224,12 @@ export class EnvironmentMapComponent implements OnInit {
     // });
 
     console.log(this.model);
+  }
+
+  public SetLayerState(instance: EnvironmentMapLayer): void {
+    instance.enabled = !instance.enabled;
+    if (instance.enabled) this.soundService.playAudio("map-link.wav");
+    else this.soundService.playAudio("map-unlink.wav");
   }
 
   public fileName: string = "";

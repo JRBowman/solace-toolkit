@@ -44,6 +44,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import {MatSelectModule} from '@angular/material/select';
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
+    MatSnackBarModule,
     MatPaginatorModule,
     DragDropModule,
     MatDialogModule,

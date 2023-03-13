@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatListOption } from '@angular/material/list';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 
 @Component({
   selector: 'app-solacetk-search-sheet',
@@ -10,7 +11,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 })
 export class SolacetkSearchSheetComponent implements OnInit {
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<SolacetkSearchSheetComponent>, private service: SolacetkService) { }
+  constructor(private _bottomSheetRef: MatBottomSheetRef<SolacetkSearchSheetComponent>, private service: SolacetkService, public soundService: SolaceTkSoundService) { }
 
   public models: any[] = []
   public filteredModels: any[] = [];
@@ -34,15 +35,17 @@ export class SolacetkSearchSheetComponent implements OnInit {
     this.models = [];
     this.resource = "";
     this.resource = resoureUri;
-    this.service.GetModels(resoureUri, false, this.tagFilters, queryParameters).subscribe((model) => {
+    this.service.GetModels(resoureUri, queryParameters, this.tagFilters).subscribe((model) => {
       this.models = model;
       console.log(model);
       this.IsLoading = false;
+      this.soundService.playAudio("view-refresh.wav");
     });
   }
 
   public Close() {
     this._bottomSheetRef.dismiss(this.selectedModels);
+    this.soundService.playAudio("model-close.wav");
     this.selectedModels = [];
     this.models = [];
     this.resource = "";

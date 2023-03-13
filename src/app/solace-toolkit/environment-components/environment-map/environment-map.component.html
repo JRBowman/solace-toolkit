@@ -87,7 +87,7 @@
                                 <mat-chip-listbox multiple="true" style="place-content: space-evenly;">
                                     <mat-chip-option [selected]="instance.enabled"
                                         class="font-xsmall auto-flex full-width" *ngFor="let instance of model.layers"
-                                        (click)="instance.enabled = !instance.enabled">
+                                        (click)="SetLayerState(instance)">
                                         {{instance.name}}
                                     </mat-chip-option>
                                 </mat-chip-listbox>

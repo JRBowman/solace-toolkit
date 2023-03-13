@@ -43,9 +43,8 @@ export class SolacetkService {
     return this.http.get<any>(this.apiHost + route);
   }
 
-  public GetModels(route: string, deepGet: boolean = false, tagFilters: string = "", queryParameters: string = ""): Observable<any[]> {
+  public GetModels(route: string, queryParameters: string = "", tagFilters: string = "",): Observable<any[]> {
     let buildRoute = this.baseUrl + route;
-    if (deepGet) buildRoute += this.deepGetQuery;
     if (queryParameters.length > 0) buildRoute += queryParameters;
     if (tagFilters.length > 0) buildRoute += "&tags=" + encodeURIComponent(tagFilters);
     return this.http.get<any[]>(buildRoute);

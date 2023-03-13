@@ -29,6 +29,8 @@ export class CharacterControllersComponent implements OnInit {
 
   public behaviors: BehaviorSystem[] = [];
 
+  public profileUrl: string = "";
+
   public loadingBehaviors: boolean = true;
 
   constructor(private modelService: SolacetkService, private _bottomSheet: MatBottomSheet) { }

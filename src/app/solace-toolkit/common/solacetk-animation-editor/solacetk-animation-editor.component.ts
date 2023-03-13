@@ -3,6 +3,7 @@ import { BehaviorAnimationFrame } from '../../models/behavior-animation-frame';
 import { BehaviorAnimationData, BehaviorComponent } from '../../models/behavioranimation';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 
 @Component({
   selector: 'solacetk-animation-editor',
@@ -11,7 +12,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 })
 export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
-  constructor(private service: SolacetkService) { }
+  constructor(private service: SolacetkService, public soundService: SolaceTkSoundService) { }
 
   @Input() model?: BehaviorAnimationData;
   @Output() modelChange = new EventEmitter<BehaviorAnimationData>();
@@ -187,6 +188,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.selected = 0;
       this.selectedFrame = this.model.frames[this.selected];
     }
+    this.soundService.playAudio("model-link.wav");
     this.isPlaying = true;
     this.animate();
   }
@@ -230,6 +232,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   stopAnimation() {
+    this.soundService.playAudio("model-unlink.wav");
     this.isPlaying = false;
   }
 

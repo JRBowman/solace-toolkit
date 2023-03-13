@@ -2,6 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { SolacetkService } from '../../services/solacetk-service.service';
 import {PageEvent} from '@angular/material/paginator';
+import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'solacetk-model-list',
@@ -31,7 +37,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Output() modelSaved = new EventEmitter();
   @Output() modelLoaded = new EventEmitter();
 
-  constructor(public service: SolacetkService) { }
+  constructor(public service: SolacetkService, public soundService: SolaceTkSoundService, private _snackBar: MatSnackBar) { }
 
   public IsLoading = true;
   public modelSelected: boolean = false;
@@ -52,24 +58,24 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public RefreshView() {
     this.IsLoading = true;
 
-    this.service.GetModels(this.modelUri, false, this.tagFilters, this.queryParameters).subscribe(response => {
+    this.service.GetModels(this.modelUri, this.queryParameters, this.tagFilters).subscribe(response => {
       this.dataStruct = [];
       this.dataStruct = response;
-      //this.filteredData = this.dataStruct;
+      this.soundService.playAudio("view-refresh.wav");
       this.IsLoading = false;
       this.length = this.dataStruct.length;
       let pe = new PageEvent();
       pe.length = this.length;
       pe.pageIndex = 0;
       pe.pageSize = this.pageSize;
-      
-      console.log(this.dataStruct);
       this.filteredData = this.dataStruct;
       this.handlePageEvent(pe);
+      
     });
   }
 
   public LoadModel(model: any) {
+    this.soundService.playAudio("model-load.wav");
     this.model = model;
     this.IsNewModel = false;
     this.modelSelected = true;
@@ -82,6 +88,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public IsSaving: boolean = false;
   public SaveModel() {
     this.IsSaving = true;
+    this.soundService.playAudio("model-save.wav");
     if (this.IsNewModel) {
       this.Create();
       this.model.tags += this.tagFilters;
@@ -92,6 +99,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
         this.modelSaved.emit();
         this.dataStruct.push(response);
         this.IsNewModel = false;
+        this._snackBar.open(this.model.name + " - has been saved.");
       });
 
       return;
@@ -102,6 +110,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       this.modelChange.emit(this.model);
       this.IsSaving = false;
       this.modelSaved.emit();
+      this._snackBar.open(this.model.name + " - has been saved.", "Dismiss");
     });
   }
 
@@ -117,9 +126,11 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public ExportModel() {
     window.location.href = (this.service.baseUrl + this.modelUri + "/" + this.model.id + "/export");
+    this._snackBar.open(this.model.name + " - has been exported.", "Dismiss");
   }
 
   public NewModel() {
+    this.soundService.playAudio("model-new.wav");
     this.IsNewModel = true;
     this.modelChange.emit({});
     this.modelCreate.emit();
@@ -128,6 +139,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   }
 
   public CloseModel() {
+    this.soundService.playAudio("model-exit.wav");
     this.model = null;
     this.tabIndex = 0;
     this.modelSelected = false;

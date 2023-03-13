@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 
 @Component({
   selector: 'solacetk-panel',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SolacetkPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public soundService: SolaceTkSoundService) { }
 
   @Input() panelType: string = "panel";
   @Input() panelIcon: string = "hub";
@@ -27,6 +28,14 @@ export class SolacetkPanelComponent implements OnInit {
   // ---
 
   ngOnInit(): void {
+  }
+
+  public panelClosed(): void {
+    this.soundService.playAudio("panel-close.wav");
+  }
+
+  public panelOpened(): void {
+    this.soundService.playAudio("panel-expand.wav");
   }
 
 }
