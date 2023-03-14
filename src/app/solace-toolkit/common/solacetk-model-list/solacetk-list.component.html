@@ -76,9 +76,10 @@
           <div class="gap-1 full-width auto-flex"></div>
 
           <!-- List Card Item: -->
-          <div *ngFor='let model of viewData' class="auto-flex min-width-3 disp-flex"
-            style="height: 20%; padding: 4px;">
-            <mat-card class="auto-flex full-height width-96" [style.background-color]="moduleColor">
+          <div *ngFor='let model of viewData' class="auto-flex"
+            style="height: 20%; padding: 4px; flex: 1 1">
+            <!-- style="height: 20%; padding: 4px;" [style.flex]="viewData.indexOf(model) < viewData.length - 1 ? '1 1' : '0 1'"> -->
+            <mat-card class="no-flex" [style.background-color]="moduleColor">
 
               <mat-card-title-group class="align-center">
                 <div mat-card-avatar class="no-flex disp-flex align-center">
