@@ -95,17 +95,17 @@
             <!-- Chip Fields Mode: -->
             <div *ngIf="fieldMode == 'chips'">
 
-                <mat-chip-grid class="auto-flex">
-                    <div *ngFor="let attr of model" class="auto-flex" style="padding: 4px; width: 25%;">
-                        <mat-card class="auto-flex">
+                <mat-chip-grid class="auto-flex" style="margin: 0;">
+                    <div *ngFor="let attr of model" class="auto-flex" style="padding-left: 4px; padding-bottom: 4px;">
+                        <mat-card class="auto-flex mat-elevation-z0">
 
                             <mat-card-content class="disp-flex auto-flex" style="flex-wrap: nowrap;">
 
                                 <div class="no-flex font-medium align-center">
-                                    <p>{{GetKeyIndex(attr)}}:</p>
+                                    {{GetKeyIndex(attr)}}:
                                 </div>
 
-                                <div class="gap-2 no-flex"></div>
+                                <div class="gap-1 no-flex"></div>
 
 
                                 <!-- <div class="disp-flex no-flex"> -->

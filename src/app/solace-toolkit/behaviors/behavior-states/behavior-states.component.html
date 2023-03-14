@@ -46,36 +46,36 @@
 
                 <div class="disp-flex full-width full-height" *ngIf="model.animation">
 
-                    <!-- <div class="auto-flex mr-2 grid-3">
-                        <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
-                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                    <div class="auto-flex grid-3">
+                        <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
                     </div>
 
-                    <mat-divider class="mb-2"></mat-divider> -->
+                    <!-- <mat-divider class="mb-2"></mat-divider> -->
 
 
                     <div class="auto-flex grid-3">
                         <!-- <h4>Act</h4> -->
+                        <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
+                        class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
+                        
                         <solacetk-animation-editor class="no-flex mb-2" bgColor="#906868" [(model)]="model.animation.actFrameData"
                             [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"></solacetk-animation-editor>
-
-                        <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
-                            class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
                     </div>
 
                     <!-- <mat-divider class="mb-2"></mat-divider> -->
 
 
-                    <!-- <div class="auto-flex grid-3">
-                        <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
-                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor>
+                    <div class="auto-flex grid-3">
+                        <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
+                            [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
 
                         <solacetk-attributes-panel [panelMode]="1" panelName="Stage Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
-                    </div> -->
+                    </div>
                 </div>
 
             </ng-template>

@@ -67,15 +67,15 @@
                         
                             <div class="panel-content auto-flex">
 
-                                <mat-chip-listbox class="auto-flex full-width full-height" aria-label="Branch States"
-                                    multiple="false" selectable="false">
-                                    <mat-chip-option class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
+                                <mat-chip-set class="auto-flex full-width full-height" aria-label="Branch States"
+                                    multiple="false">
+                                    <mat-chip disableRipple class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
                                         [style.background-color]="'#545c80'"
                                         style="overflow: hidden;">
                                         <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
                                         {{nState.name}}
-                                    </mat-chip-option>
-                                </mat-chip-listbox>
+                                    </mat-chip>
+                                </mat-chip-set>
 
                             </div>
 
