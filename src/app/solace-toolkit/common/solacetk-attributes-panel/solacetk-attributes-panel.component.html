@@ -69,7 +69,7 @@
                     <div *ngFor="let attr of model" class="auto-flex width-33" style="padding-left: 4px; padding-bottom: 4px;">
                         <mat-card class="auto-flex full-width">
 
-                            <mat-card-content class="disp-flex auto-flex" style="flex-wrap: nowrap;">
+                            <mat-card-content class="disp-flex no-flex">
 
                                 <div class="no-flex font-small align-center control-element" style="left: 8px; z-index: unset; color: dimgray;">
                                     {{GetKeyIndex(attr)}}:
@@ -78,21 +78,20 @@
                                 <!-- <div class="gap-1 no-flex"></div> -->
 
 
-                                <mat-chip-set class="auto-flex" style="margin: 0;">
+                                <mat-chip-set class="disp-flex auto-flex full-width" style="margin: 0;">
                                 <!-- <div class="disp-flex no-flex"> -->
-                                <mat-chip-row disableRipple="true" class="auto-flex align-center" (edited)="attr.key = $event.value" [editable]="true">
-                                    <!-- <span matChipEditInput>{{attr.key}}</span> -->
-                                    {{attr.key}}
+                                <mat-chip-row disableRipple="true" class="auto-flex align-center" (edited)="attr.key = $event.value" [editable]="true" style="overflow: hidden;">
+                                    <span class="matChipEditInput no-flex">{{attr.key}}</span>
+                                    <!-- {{attr.key}} -->
                                 </mat-chip-row>
 
                                 <mat-chip *ngIf="operatorsEnabled" class="no-flex align-center" [style.background-color]="panelMode == 0 ? '#6741a3' : '#564668'"
                                     [matMenuTriggerFor]="conditionalOps"
                                     [matMenuTriggerData]="{index: GetKeyIndex(attr) }">
-                                    <span>{{operators[attr.operator]}}</span>
+                                    <span class="auto-flex">{{operators[attr.operator]}}</span>
                                 </mat-chip>
 
-                                <mat-chip-row disableRipple="true" class="auto-flex align-center" (edited)="attr.data = $event.value" [value]="attr.data" [editable]="true">
-                                    <!-- <span matChipEditInput>{{attr.data}}</span> -->
+                                <mat-chip-row disableRipple="true" class="auto-flex align-center" (edited)="attr.data = $event.value" [value]="attr.data" [editable]="true" style="overflow: hidden;">
                                     {{attr.data}}
                                 </mat-chip-row>
 
