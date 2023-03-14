@@ -3,6 +3,7 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { MarkdownService } from 'ngx-markdown';
 import { MsoaUserService } from './services/msoa-user-service';
 import { SolacetkService } from './solace-toolkit/services/solacetk-service.service';
+import { SolaceTkSoundService } from './solace-toolkit/services/solacetk-sounds.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
 
   constructor(private markdownService: MarkdownService, public oidcSecurityService: OidcSecurityService,
      public msoaUserService: MsoaUserService, 
-     public soltkService: SolacetkService) {
+     public soltkService: SolacetkService,
+     public soundService: SolaceTkSoundService) {
     setInterval(() => {
       this.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
     }, 1000);
@@ -23,11 +25,15 @@ export class AppComponent implements OnInit {
         this.servicesConnected = res !== undefined;
       });
     }, 15000);
+
+    
    }
 
   ngOnInit(): void {
     this.soltkService.screenWidth = window.innerWidth;
     this.soltkService.screenHeight = window.innerHeight;
+
+    this.soundService.Initialize();
 
         // Process Authorization checks here:
         this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken}) => {

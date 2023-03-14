@@ -23,24 +23,42 @@ export class SolaceTkSoundService {
   public soundIndex: string[] = [];
 
   public Initialize() {
+    this.loadAudio("map-click.wav");
+    this.loadAudio("map-unlink.wav");
+    this.loadAudio("map-link.wav");
 
+    this.loadAudio("view-refresh.wav");
+
+    this.loadAudio("model-close.wav");
+    this.loadAudio("model-load.wav");
+    this.loadAudio("model-save.wav");
+    this.loadAudio("model-new.wav");
+    this.loadAudio("model-exit.wav");
+
+    this.loadAudio("panel-close.wav");
+    this.loadAudio("panel-expand.wav");
   }
 
-  playAudio(clipName: string){
+  playAudio(clipName: string): void {
 
     // First time Load of Audio:
     if (this.soundIndex.findIndex(s => s == clipName) == -1) {
-        this.soundIndex.push(clipName);
-
-        let audio = new Audio();
-        audio.src = "../../../assets/sounds/" + clipName;
-        audio.load();
-
-        this.soundSet.push(audio);
+      this.loadAudio(clipName);
     }
 
     const index = this.soundIndex.findIndex(s => s == clipName);
     this.soundSet[index].play();
+  }
+
+  loadAudio(clipName: string): void {
+    // First time Load of Audio:
+      this.soundIndex.push(clipName);
+
+      let audio = new Audio();
+      audio.src = "../../../assets/sounds/" + clipName;
+      audio.load();
+
+      this.soundSet.push(audio);
   }
 
 }

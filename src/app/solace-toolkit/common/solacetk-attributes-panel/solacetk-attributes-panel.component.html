@@ -5,7 +5,7 @@
 
         <div *ngIf="model">
 
-            <mat-chip-grid class="auto-flex" style="margin: 0;">
+            <mat-chip-set class="auto-flex" style="margin: 0;">
                 <div *ngFor="let attr of model" class="auto-flex" style="padding-left: 4px; padding-bottom: 4px;">
                     <mat-card class="auto-flex mat-elevation-z0">
 
@@ -47,7 +47,7 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
-            </mat-chip-grid>
+            </mat-chip-set>
 
         </div>
 
@@ -64,21 +64,21 @@
         <div *ngIf="model">
 
             <!-- Chip Fields Mode: -->
-            <div *ngIf="fieldMode == 'chips'">
+            <div class="disp-flex" *ngIf="fieldMode == 'chips'">
 
-                <mat-chip-grid class="auto-flex" style="margin: 0;">
-                    <div *ngFor="let attr of model" class="auto-flex" style="padding-left: 4px; padding-bottom: 4px;">
-                        <mat-card class="auto-flex mat-elevation-z0">
+                    <div *ngFor="let attr of model" class="auto-flex width-33" style="padding-left: 4px; padding-bottom: 4px;">
+                        <mat-card class="auto-flex full-width">
 
                             <mat-card-content class="disp-flex auto-flex" style="flex-wrap: nowrap;">
 
-                                <div class="no-flex font-medium align-center">
+                                <div class="no-flex font-small align-center control-element" style="left: 8px; z-index: unset; color: dimgray;">
                                     {{GetKeyIndex(attr)}}:
                                 </div>
 
-                                <div class="gap-1 no-flex"></div>
+                                <!-- <div class="gap-1 no-flex"></div> -->
 
 
+                                <mat-chip-set class="auto-flex" style="margin: 0;">
                                 <!-- <div class="disp-flex no-flex"> -->
                                 <mat-chip-row disableRipple="true" class="auto-flex align-center" (edited)="attr.key = $event.value" [editable]="true">
                                     <!-- <span matChipEditInput>{{attr.key}}</span> -->
@@ -95,20 +95,21 @@
                                     <!-- <span matChipEditInput>{{attr.data}}</span> -->
                                     {{attr.data}}
                                 </mat-chip-row>
+
+                            </mat-chip-set>
                                 <!-- </div> -->
 
 
-                                <div class="gap-1 no-flex"></div>
+                                <!-- <div class="gap-1 no-flex"></div> -->
 
-                                <button mat-icon-button color="primary" class="no-flex font-small align-top"
+                                <button mat-icon-button color="primary" class="no-flex align-top control-element"
                                     aria-label="Remove Attribute" (click)="RemoveAttribute(attr)">
-                                    <mat-icon>remove</mat-icon>
+                                    <mat-icon class="font-medium">remove</mat-icon>
                                 </button>
 
                             </mat-card-content>
                         </mat-card>
                     </div>
-                </mat-chip-grid>
 
             </div>
 
