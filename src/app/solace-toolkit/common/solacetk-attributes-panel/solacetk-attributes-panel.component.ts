@@ -24,6 +24,7 @@ export class SolacetkAttributesPanelComponent implements OnInit {
 
   @Input() panelClass: string = "";
   @Input() panelIcon: string = "data_object";
+  @Input() fieldMode: string = "chips";
 
   public operators: string[] = [];
 
@@ -56,6 +57,11 @@ export class SolacetkAttributesPanelComponent implements OnInit {
 
   public GetKeyIndex(key: SoltkKeyValue): number {
     return this.model.indexOf(key);
+  }
+
+  public SelectOperator(instance: number, op: string): void
+  {
+    this.model[instance].operator = this.operators.indexOf(op);
   }
 
 }

@@ -1,10 +1,32 @@
 <solacetk-model-list [(model)]="model" moduleName="Action Events" modelUri="Events" moduleColor="#ac6060">
     <div class="editor">
-        <mat-chip-set *ngIf="model.conditions">
+
+        <!-- <mat-chip-grid *ngIf="model.conditions">
                 <mat-chip *ngFor="let cond of model.conditions" style="background-color: #006064;">
-                    {{cond.key}} {{conditionalOperators[cond.operator]}} {{cond.data}}
+                    <span matChipEditInput>{{cond.key}} {{conditionalOperators[cond.operator]}} {{cond.data}}</span>
                 </mat-chip>
-        </mat-chip-set>
+        </mat-chip-grid> -->
+
+        <mat-chip-grid *ngIf="model.conditions">
+            <div class="disp-flex no-flex" *ngFor="let cond of model.conditions" >
+                <mat-chip style="background-color: #006064;">
+                    <span matChipEditInput>{{cond.key}}</span>
+                </mat-chip>
+
+                <mat-chip style="background-color: #006064;" [matMenuTriggerFor]="conditionalOps">
+                    <span>{{conditionalOperators[cond.operator]}}</span>
+                    <mat-menu #conditionalOps="matMenu">
+                        <a mat-menu-item [routerLink]="['/characters']">
+                            <mat-icon style="color: seagreen;">label</mat-icon>Characters
+                        </a>
+                    </mat-menu>
+                </mat-chip>
+
+                <mat-chip style="background-color: #006064;">
+                    <span matChipEditInput>{{cond.data}}</span>
+                </mat-chip>
+            </div>
+        </mat-chip-grid>
 
     </div>
 
