@@ -195,8 +195,10 @@
 
 </div>
 
-<div class="loader">
-  <mat-spinner *ngIf="IsLoading || IsSaving"></mat-spinner>
+<div *ngIf="IsLoading || IsSaving" class="loader">
+  <div class="disp-flex auto-flex full-height" style="justify-content: center;">
+  <mat-spinner class="align-center"></mat-spinner>
+</div>
 </div>
 
 <!-- <div *ngIf="indev">

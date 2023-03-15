@@ -114,7 +114,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
         this.modelSaved.emit();
         this.dataStruct.push(response);
         this.IsNewModel = false;
-        this._snackBar.open(this.model.name + " - has been saved.");
+        this._snackBar.open(this.model.name + " - has been saved.", "X", { duration: 5000 });
       });
 
       return;
@@ -125,7 +125,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       this.modelChange.emit(this.model);
       this.IsSaving = false;
       this.modelSaved.emit();
-      this._snackBar.open(this.model.name + " - has been saved.", "Dismiss");
+      this._snackBar.open(this.model.name + " - has been saved.", "X", { duration: 5000 });
     });
   }
 
@@ -141,7 +141,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   public ExportModel() {
     window.location.href = (this.service.baseUrl + this.modelUri + "/" + this.model.id + "/export");
-    this._snackBar.open(this.model.name + " - has been exported.", "Dismiss");
+    this._snackBar.open(this.model.name + " - has been exported.", "X", { duration: 5000 });
   }
 
   public NewModel() {
