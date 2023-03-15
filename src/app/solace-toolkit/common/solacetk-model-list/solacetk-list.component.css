@@ -29,3 +29,14 @@
     height: 0px !important;
     display: none !important;
 }
+
+.model-toolbar-text {
+    flex: 1 1 4rem; 
+    white-space: break-spaces; 
+    margin: 0;
+}
+
+.text-center {
+    text-align: center; 
+}
+

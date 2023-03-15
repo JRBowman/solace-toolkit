@@ -10,9 +10,10 @@
 
     <img class="no-flex icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
 
-    <div class="gap-1 no-flex"></div>
+    <div class="gap-2 no-flex"></div>
 
-    <span *ngIf="service.screenWidth > 990" class="auto-flex align-center font-small">{{moduleName}}</span>
+    <span *ngIf="service.screenWidth > 990" class="no-flex font-medium model-toolbar-text">{{moduleName}}</span>
+    <p *ngIf="indev" class="font-large auto-flex align-center model-toolbar-text text-center" style="color: crimson;">Currently In Development</p>
 
     <div class="gap-1 auto-flex"></div>
 
@@ -68,7 +69,7 @@
   <mat-tab-group class="full-height" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
 
     <!-- List: -->
-    <mat-tab bodyClass="full-height" [labelClass]="'file-input'" >
+    <mat-tab bodyClass="full-height" [labelClass]="'file-input'">
 
       <!-- List Container - This should Scroll: -->
       <div style="padding: 16px; padding-left: 7%; padding-right: 7%;">
@@ -76,8 +77,7 @@
           <div class="gap-1 full-width auto-flex"></div>
 
           <!-- List Card Item: -->
-          <div *ngFor='let model of viewData' class="auto-flex"
-            style="height: 20%; padding: 4px; flex: 1 1">
+          <div *ngFor='let model of viewData' class="auto-flex" style="height: 20%; padding: 4px; flex: 1 1">
             <!-- style="height: 20%; padding: 4px;" [style.flex]="viewData.indexOf(model) < viewData.length - 1 ? '1 1' : '0 1'"> -->
             <mat-card class="no-flex" [style.background-color]="moduleColor">
 
@@ -187,12 +187,18 @@
     </mat-tab>
   </mat-tab-group>
 
-  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z6" style="position: sticky; z-index: 16;" (page)="handlePageEvent($event)" [length]="length"
-  [pageSize]="pageSize" [pageIndex]="pageIndex" hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="primary">
-</mat-paginator>
+  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z6"
+    style="position: sticky; z-index: 16;" (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+    [pageIndex]="pageIndex" hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
+    color="primary">
+  </mat-paginator>
 
 </div>
 
 <div class="loader">
   <mat-spinner *ngIf="IsLoading || IsSaving"></mat-spinner>
 </div>
+
+<!-- <div *ngIf="indev">
+  <solacetk-devbanner></solacetk-devbanner>
+</div> -->

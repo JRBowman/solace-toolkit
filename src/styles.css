@@ -170,6 +170,12 @@ mat-tab-header.mat-tab-header {
     border-radius: 3px;
 }
 
+.dev-banner {
+    background-color: crimson !important;
+    color: white !important;
+    border-radius: 4px;
+}
+
   .model-formfield {
       margin-right: 3%;
       

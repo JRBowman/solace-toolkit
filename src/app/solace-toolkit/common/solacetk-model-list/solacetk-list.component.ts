@@ -6,8 +6,11 @@ import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
+  MatSnackBarRef,
   MatSnackBarVerticalPosition,
+  TextOnlySnackBar,
 } from '@angular/material/snack-bar';
+import { SolacetkDevbannerComponent } from '../solacetk-devbanner/solacetk-devbanner.component';
 
 @Component({
   selector: 'solacetk-model-list',
@@ -26,6 +29,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() hideEditorHeading: boolean = true;
   @Input() collapseCoreEditor: boolean = false;
   @Input() queryParameters: string = "";
+  @Input() indev: boolean = false;
 
   @Input() moduleColor: string = "#606060";
 
@@ -46,13 +50,24 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public moduleIcon: string = "";
   public IsNewModel = false;
 
+  public devBanner?: MatSnackBarRef<SolacetkDevbannerComponent>;
+
   ngOnInit(): void {
     this.moduleIcon = this.moduleName.replace(' ', '').toLowerCase() + ".png";
     
   }
 
+  ngOnDestroy(): void {
+    if (this.devBanner) this.devBanner.dismiss();
+  }
+
    ngAfterViewInit(): void {
     this.RefreshView();
+    if (this.indev) {
+      const horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+      const verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+      this.devBanner = this._snackBar.openFromComponent(SolacetkDevbannerComponent, {horizontalPosition: horizontalPosition, verticalPosition: verticalPosition, data: {message:"This Module is currently In Development" }});
+    }
   }
 
   public RefreshView() {

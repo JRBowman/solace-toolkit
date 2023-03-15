@@ -1,0 +1,19 @@
+<!-- <div class="full-screen disp-flex">
+
+    <div class="auto-flex disp-flex">
+        <mat-card class="auto-flex align-center mat-elevation-z0" style="height: 33%; opacity: 0.33;">
+            <mat-card-content class="disp-flex full-height align-center">
+                <mat-card-title class="align-center">Currently Under Development</mat-card-title>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+</div> -->
+<div class="gap-2 no-flex"></div>
+<span class="full-width auto-flex dev-banner" matSnackBarLabel>
+    {{dataRef.message}}
+</span>
+<span *ngIf="dataRef.useActions" matSnackBarActions class="dev-banner">
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()"></button>
+</span>

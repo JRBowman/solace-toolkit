@@ -94,6 +94,7 @@ import { TileRuleEditorComponent } from './solace-toolkit/environment-components
 import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solacetk-sidenav-extended/solacetk-sidenav-extended.component';
 import { SolacetkListToolbarComponent } from './solace-toolkit/common/solacetk-list-toolbar/solacetk-list-toolbar.component';
 import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior-states/behavior-noop-states.component';
+import { SolacetkDevbannerComponent } from './solace-toolkit/common/solacetk-devbanner/solacetk-devbanner.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,8 @@ import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior
     StoryCardsComponent,
     TileRuleEditorComponent,
     SolacetkSidenavExtendedComponent,
-    SolacetkListToolbarComponent
+    SolacetkListToolbarComponent,
+    SolacetkDevbannerComponent
   ],
   imports: [
     BrowserModule,
