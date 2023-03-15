@@ -50,7 +50,7 @@
 
 <div *ngIf="panelType == 'expansionpanel'">
 
-    <mat-expansion-panel >
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
                 <mat-icon class="mr-2">hub</mat-icon>
@@ -60,47 +60,58 @@
 
 
         <ng-template matExpansionPanelContent>
-            <div *ngFor="let eventTk of model">
-                <mat-card class="mb-2" [style.backgroundColor]="eventColor">
+            <div class="disp-flex">
+            <div *ngFor="let eventTk of model" class="auto-flex" style="flex: 1 1 25%; padding: 4px;">
+
+                <mat-card class="auto-flex" [style.backgroundColor]="eventColor">
                     <mat-card-title-group>
                         <mat-card-title class="auto-flex">
                             <mat-icon>bolt</mat-icon>
-                             {{eventTk.name}}
+                            {{eventTk.name}}
                         </mat-card-title>
                         <!-- <p>
                             Event [{{GetKeyIndex(eventTk)}}]
                         </p> -->
-                        <button mat-icon-button class="no-flex" aria-label="Remove Event" (click)="RemoveEvent(eventTk)">
+                        <button mat-icon-button class="no-flex" aria-label="Remove Event"
+                            (click)="RemoveEvent(eventTk)">
                             <mat-icon>remove</mat-icon>
                         </button>
                     </mat-card-title-group>
+
                     <mat-card-content>
-        
-                        <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
-                        <mat-form-field class="auto-flex font-small">
-                            <mat-label>Name</mat-label>
-                            <input matInput placeholder="Name" [(ngModel)]="eventTk.name">
-                        </mat-form-field>
-                        <mat-form-field class="auto-flex font-small full-width">
-                            <mat-label>Description</mat-label>
-                            <input matInput placeholder="Description" [(ngModel)]="eventTk.description">
-                        </mat-form-field>
-        
+
                         <div class="disp-flex">
-                            <solacetk-attributes-panel class="auto-flex mb-2 full-width" panelIcon="gavel" panelName="Conditions" panelColor="#006064"
-                                panelType="expansionpanel" [(model)]="eventTk.conditions" [operatorsEnabled]="true">
+                            <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                            <mat-form-field class="auto-flex font-small width-5">
+                                <mat-label class="font-small">Name</mat-label>
+                                <input matInput placeholder="Name" [(ngModel)]="eventTk.name">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label class="font-small">Description</mat-label>
+                                <input matInput placeholder="Description" [(ngModel)]="eventTk.description">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="auto-flex">
+                            <solacetk-attributes-panel class="auto-flex" panelIcon="gavel"
+                                panelName="Conditions" panelColor="#006064" panelType="panel"
+                                [(model)]="eventTk.conditions" [operatorsEnabled]="true">
                             </solacetk-attributes-panel>
-        
-                            <solacetk-attributes-panel [panelMode]="1" class="auto-flex mb-2 full-width" panelName="State Data"
-                                panelType="expansionpanel" [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
-        
-                            <solacetk-messages-panel class="auto-flex full-width" panelName="Messages"
+                            <div class="gap-1 no-flex"></div>
+                            <solacetk-attributes-panel [panelMode]="1" class="auto-flex"
+                                panelName="State Data" panelType="expansionpanel"
+                                [(model)]="eventTk.downstreamData"></solacetk-attributes-panel>
+                                <div class="gap-1 no-flex"></div>
+                            <solacetk-messages-panel class="auto-flex" panelName="Messages"
                                 panelType="expansionpanel" [(model)]="eventTk.messages"></solacetk-messages-panel>
                         </div>
-        
+
                     </mat-card-content>
                 </mat-card>
+
             </div>
+        </div>
 
         </ng-template>
 
