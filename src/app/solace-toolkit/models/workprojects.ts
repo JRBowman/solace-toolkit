@@ -3,7 +3,7 @@ import { WorkItem } from "./workitem";
 import { WorkPayment } from "./workpayment";
 
 export class WorkProject {
-    public id?: string ;
+    public id?: number;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";
@@ -18,6 +18,8 @@ export class WorkProject {
     public workItems: WorkItem[] = [];
     public payments: WorkPayment[] = [];
     public comments: WorkComment[] = [];
+
+    public projectBillable: boolean = false;
 
     public created: Date = new Date();
     public updated: Date = new Date();

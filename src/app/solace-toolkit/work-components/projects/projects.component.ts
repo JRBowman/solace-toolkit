@@ -38,7 +38,7 @@ export class ProjectsComponent implements OnInit {
 
   public averageWorkHours: number = 7;
 
-  public projectBillable: boolean = true;
+  public projectBillable: boolean = false;
 
   ngOnInit(): void {
 

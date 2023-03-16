@@ -46,19 +46,23 @@
 
 
 <solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()" modelUri="Work/projects"
-    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true">
+    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true"
+    queryParameters="?includeElements=true">
 
     <div class="editor-header">
         <div *ngIf="model.id && modelLoaded && showProjectBuckets">
             <div *ngIf="!projectBillable" class="disp-flex">
                 <div class="auto-flex">
-                    <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours ({{totalEstimatedDays}} Days)</small></h4>
+                    <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours
+                            ({{totalEstimatedDays}} Days)</small></h4>
                 </div>
                 <div class="auto-flex">
-                    <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours ({{totalActualDays}} Days)</small></h4>
+                    <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours ({{totalActualDays}}
+                            Days)</small></h4>
                 </div>
                 <div class="auto-flex">
-                    <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours ({{totalOutstandingDays}} Days)</small></h4>
+                    <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours
+                            ({{totalOutstandingDays}} Days)</small></h4>
                 </div>
                 <div class="auto-flex">
                     <h4>Staged: <small class="mat-card-subtitle">{{totalReview}}%</small></h4>
@@ -70,7 +74,7 @@
                     <mat-icon>refresh</mat-icon>
                 </button>
             </div>
-        
+
             <div *ngIf="projectBillable" class="disp-flex">
                 <div class="auto-flex">
                     <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
@@ -88,7 +92,7 @@
                     <mat-icon>refresh</mat-icon>
                 </button>
             </div>
-        
+
         </div>
     </div>
 
@@ -106,136 +110,143 @@
 
 
 
-        <div *ngIf="model.id && modelLoaded && showProjectBuckets" class="flex-container disp-flex mb-2">
+        <div *ngIf="model.id && modelLoaded && showProjectBuckets" class="flex-container disp-flex">
 
             <div cdkDropListGroup class="horizontal-container">
 
-                <mat-card cdkDropList [cdkDropListData]="backlog" (cdkDropListDropped)="drop($event, 'backlog')"
-                    class="width-2 min-width-6 place-flex-start mr-2">
+                <div class="disp-flex" style="padding: 4px;">
+                    <mat-card cdkDropList [cdkDropListData]="backlog" (cdkDropListDropped)="drop($event, 'backlog')"
+                        class="place-flex-start disp-flex" style="flex: 1 1 16rem;">
 
-                    <!-- <mat-card-title-group>
-        
-                    </mat-card-title-group>
-                     -->
-                    <div class="disp-flex">
-                        <h3 class="no-flex" [matBadge]="backlog.length" matBadgeOverlap="false">Backlog</h3>
-                        <span class="auto-flex"></span>
-                        <button class="no-flex align-start" mat-icon-button aria-label="New Backlog Task"
-                            (click)="AddWorkItem(0)">
-                            <mat-icon>add</mat-icon>
-                        </button>
-                        <button class="no-flex align-start" mat-icon-button aria-label="Collapse Backlog List"
-                            (click)="backlogCollapse = !backlogCollapse"
-                            [matTooltip]="(backlogCollapse ? 'Expand' : 'Collapse') + ' Backlog List'">
-                            <mat-icon>{{backlogCollapse ? "expand_more" : "expand_less"}}</mat-icon>
-                        </button>
-                    </div>
-
-                    <mat-card-content
-                        [class]="backlogCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                        <div class="min-width-3 width-5 disp-flex auto-flex" *ngFor="let workItem of backlog">
-                            <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                (modelChange)="WorkItemUpdated($event)" class="auto-flex"
-                                (modelDelete)="DeleteWorkItem($event, backlog)">
-                            </work-item>
+                        <div class="disp-flex" style="height: 48px;">
                             <div class="gap-1 no-flex"></div>
+                            <h3 class="no-flex" [matBadge]="backlog.length" matBadgeOverlap="false">Backlog</h3>
+                            <span class="auto-flex"></span>
+                            <button class="no-flex align-start" mat-icon-button aria-label="New Backlog Task"
+                                (click)="AddWorkItem(0)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <button class="no-flex align-start" mat-icon-button aria-label="Collapse Backlog List"
+                                (click)="backlogCollapse = !backlogCollapse"
+                                [matTooltip]="(backlogCollapse ? 'Expand' : 'Collapse') + ' Backlog List'">
+                                <mat-icon>{{backlogCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                            </button>
                         </div>
-                    </mat-card-content>
 
-                </mat-card>
+                        <mat-card-content
+                            [class]="backlogCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
+                            <div style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of backlog">
+                                <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
+                                    (modelChange)="WorkItemUpdated($event)" 
+                                    (modelDelete)="DeleteWorkItem($event, backlog)">
+                                </work-item>
+                            </div>
+                        </mat-card-content>
 
-                <mat-card cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event, 'inProgress')"
-                    class="width-2 min-width-6 place-flex-start mr-2">
+                    </mat-card>
+                </div>
 
-                    <div class="disp-flex">
-                        <h3 class="no-flex" [matBadge]="inProgress.length" matBadgeOverlap="false">In-Progress</h3>
-                        <span class="auto-flex"></span>
-                        <button class="no-flex align-start mini-fab-header" mat-icon-button
-                            aria-label="New In-Progress Task" (click)="AddWorkItem(1)">
-                            <mat-icon>add</mat-icon>
-                        </button>
-                        <button class="no-flex align-start mini-fab-header" mat-icon-button
-                            aria-label="Collapse In-Progress List" (click)="inProgressCollapse = !inProgressCollapse"
-                            [matTooltip]="(inProgressCollapse ? 'Expand' : 'Collapse') + ' In-Progress List'">
-                            <mat-icon>{{inProgressCollapse ? "expand_more" : "expand_less"}}</mat-icon>
-                        </button>
-                    </div>
+                <div class="disp-flex" style="padding: 4px;">
+                    <mat-card cdkDropList [cdkDropListData]="inProgress"
+                        (cdkDropListDropped)="drop($event, 'inProgress')" class="place-flex-start"
+                        style="flex: 1 0 12rem;">
 
-                    <mat-card-content
-                        [class]="inProgressCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                        <div class="min-width-3 width-5 disp-flex" *ngFor="let workItem of inProgress">
-                            <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                (modelChange)="WorkItemUpdated($event)" class="auto-flex"
-                                (modelDelete)="DeleteWorkItem($event, inProgress)">
-                            </work-item>
-                            <div class="gap-1"></div>
+                        <div class="disp-flex" style="height: 48px;">
+                            <span class="gap-2 no-flex"></span>
+                            <h3 class="no-flex" [matBadge]="inProgress.length" matBadgeOverlap="false">In-Progress</h3>
+                            <span class="auto-flex"></span>
+                            <button class="no-flex align-start mini-fab-header" mat-icon-button
+                                aria-label="New In-Progress Task" (click)="AddWorkItem(1)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <button class="no-flex align-start mini-fab-header" mat-icon-button
+                                aria-label="Collapse In-Progress List"
+                                (click)="inProgressCollapse = !inProgressCollapse"
+                                [matTooltip]="(inProgressCollapse ? 'Expand' : 'Collapse') + ' In-Progress List'">
+                                <mat-icon>{{inProgressCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                            </button>
                         </div>
-                    </mat-card-content>
 
-                </mat-card>
+                        <mat-card-content
+                            [class]="inProgressCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
+                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of inProgress">
+                                <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
+                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelDelete)="DeleteWorkItem($event, inProgress)">
+                                </work-item>
+                            </div>
+                        </mat-card-content>
 
-                <mat-card cdkDropList [cdkDropListData]="review" (cdkDropListDropped)="drop($event, 'review')"
-                    class="width-2 min-width-6 place-flex-start mr-2">
+                    </mat-card>
+                </div>
 
-                    <div class="disp-flex">
-                        <h3 class="no-flex" [matBadge]="review.length" matBadgeOverlap="false">Review</h3>
-                        <span class="auto-flex"></span>
-                        <button class="no-flex align-start mini-fab-header" mat-icon-button aria-label="New Review Task"
-                            (click)="AddWorkItem(2)">
-                            <mat-icon>add</mat-icon>
-                        </button>
-                        <button class="no-flex align-start mini-fab-header" mat-icon-button
-                            aria-label="Collapse Reivew List" (click)="reviewCollapse = !reviewCollapse"
-                            [matTooltip]="(reviewCollapse ? 'Expand' : 'Collapse') + ' Review List'">
-                            <mat-icon>{{reviewCollapse ? "expand_more" : "expand_less"}}</mat-icon>
-                        </button>
-                    </div>
+                <div class="disp-flex" style="padding: 4px;">
+                    <mat-card cdkDropList [cdkDropListData]="review" (cdkDropListDropped)="drop($event, 'review')"
+                        class="place-flex-start" style="flex: 1 0 12rem;">
 
-
-                    <mat-card-content
-                        [class]="reviewCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                        <div class="min-width-3 width-5 disp-flex" *ngFor="let workItem of review">
-                            <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                (modelChange)="WorkItemUpdated($event)" class="auto-flex"
-                                (modelDelete)="DeleteWorkItem($event, review)">
-                            </work-item>
-                            <div class="gap-1"></div>
+                        <div class="disp-flex" style="height: 48px;">
+                            <span class="gap-2 no-flex"></span>
+                            <h3 class="no-flex" [matBadge]="review.length" matBadgeOverlap="false">Review</h3>
+                            <span class="auto-flex"></span>
+                            <button class="no-flex align-start mini-fab-header" mat-icon-button
+                                aria-label="New Review Task" (click)="AddWorkItem(2)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                            <button class="no-flex align-start mini-fab-header" mat-icon-button
+                                aria-label="Collapse Reivew List" (click)="reviewCollapse = !reviewCollapse"
+                                [matTooltip]="(reviewCollapse ? 'Expand' : 'Collapse') + ' Review List'">
+                                <mat-icon>{{reviewCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                            </button>
                         </div>
-                    </mat-card-content>
 
 
-                </mat-card>
-
-                <mat-card cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event, 'complete')"
-                    class="width-2 min-width-6 place-flex-start">
-
-                    <div class="disp-flex">
-                        <h3 class="no-flex" matBadgeColor="accent" [matBadge]="complete.length" matBadgeOverlap="false">
-                            Complete
-                        </h3>
-                        <span class="auto-flex"></span>
-                        <button class="no-flex align-start mini-fab-header" mat-icon-button
-                            aria-label="Collapse Complete List" (click)="completeCollapse = !completeCollapse"
-                            [matTooltip]="(completeCollapse ? 'Expand' : 'Collapse') + ' Complete List'">
-                            <mat-icon>{{completeCollapse ? "expand_more" : "expand_less"}}</mat-icon>
-                        </button>
-                    </div>
+                        <mat-card-content
+                            [class]="reviewCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
+                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of review">
+                                <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
+                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelDelete)="DeleteWorkItem($event, review)">
+                                </work-item>
+                            </div>
+                        </mat-card-content>
 
 
-                    <mat-card-content
-                        [class]="completeCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                        <div class="min-width-3 width-5 disp-flex" *ngFor="let workItem of complete">
-                            <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                (modelChange)="WorkItemUpdated($event)" class="auto-flex"
-                                (modelDelete)="DeleteWorkItem($event, complete)">
-                            </work-item>
-                            <div class="gap-1"></div>
+                    </mat-card>
+                </div>
+
+                <div class="disp-flex" style="padding: 4px;">
+                    <mat-card cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event, 'complete')"
+                        class="place-flex-start" style="flex: 1 0 12rem;">
+
+                        <div class="disp-flex" style="height: 48px;">
+                            <span class="gap-2 no-flex"></span>
+                            <h3 class="no-flex" matBadgeColor="accent" [matBadge]="complete.length"
+                                matBadgeOverlap="false">
+                                Complete
+                            </h3>
+                            <span class="auto-flex"></span>
+                            <button class="no-flex align-start mini-fab-header" mat-icon-button
+                                aria-label="Collapse Complete List" (click)="completeCollapse = !completeCollapse"
+                                [matTooltip]="(completeCollapse ? 'Expand' : 'Collapse') + ' Complete List'">
+                                <mat-icon>{{completeCollapse ? "expand_more" : "expand_less"}}</mat-icon>
+                            </button>
                         </div>
-                    </mat-card-content>
 
 
-                </mat-card>
+                        <mat-card-content
+                            [class]="completeCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
+                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;"
+                                *ngFor="let workItem of complete">
+                                <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
+                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelDelete)="DeleteWorkItem($event, complete)">
+                                </work-item>
+                            </div>
+                        </mat-card-content>
 
+
+                    </mat-card>
+                </div>
             </div>
         </div>
 

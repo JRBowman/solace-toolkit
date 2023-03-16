@@ -4,7 +4,7 @@ import { WorkComment } from "./workcomment";
 import { WorkPayment } from "./workpayment";
 
 export class WorkItem {
-    public id?: string ;
+    public id?: number;
     public name: string = "Task";
     public description: string = "";
     public assemblyType: string = "";
@@ -15,7 +15,7 @@ export class WorkItem {
     public hoursEstimate: number = 0;
     public hoursActual: number = 0;
 
-    public workProjectId?: string;
+    public workProjectId?: number;
 
     public isPaid: boolean = false;
     public comments: WorkComment[] = [];
