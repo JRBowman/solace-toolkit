@@ -5,3 +5,11 @@
 .no-margin {
     margin: 0px !important;
 }
+
+.control-element {
+    width: 32px; 
+    height: 32px; 
+    padding: 0; 
+    padding-top: 7px; 
+    z-index: 5;
+}

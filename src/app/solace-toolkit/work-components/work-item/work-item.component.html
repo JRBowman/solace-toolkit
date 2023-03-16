@@ -1,7 +1,10 @@
-<mat-card class="auto-flex bg-task-card">
+<mat-card class="auto-flex bg-task-card full-height">
 
 
     <mat-card-title-group class="disp-flex auto-flex">
+
+        <ng-content select=".item-content"></ng-content>
+
         <div class="auto-flex align-center" style="word-wrap: break-word;">
             <mat-card-title class="font-medium" style="text-align: center;">{{model.name}}</mat-card-title>
         </div>
@@ -18,16 +21,17 @@
 
 
     <mat-card-actions class="pos-bottom">
-        <div class="flex-card-group">
-            <div *ngIf="model.tags !== '#complete'">
-                <button color="accent" mat-icon-button (click)="openWorkItemEditor()">
-                    <mat-icon>edit</mat-icon>
+        <div class="disp-flex full-width">
+            <div class="gap-1 auto-flex"></div>
+            <div class="no-flex" *ngIf="model.tags !== '#complete'">
+                <button color="accent" class="control-element" mat-icon-button (click)="openWorkItemEditor()">
+                    <mat-icon class="font-large">edit</mat-icon>
                 </button>
 
                 <button *ngIf="model.tags === '#complete'" color="accent" mat-button
                     (click)="openWorkItemEditor()">View</button>
-                <button color="primary" mat-icon-button (click)="deleteWorkItem()">
-                    <mat-icon>delete</mat-icon>
+                <button color="primary" class="control-element" mat-icon-button (click)="deleteWorkItem()">
+                    <mat-icon class="font-large">delete</mat-icon>
                 </button>
             </div>
         </div>

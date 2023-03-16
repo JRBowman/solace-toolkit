@@ -49,7 +49,7 @@
     (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true"
     queryParameters="?includeElements=true">
 
-    <div class="editor-header">
+    <!-- <div class="editor-header">
         <div *ngIf="model.id && modelLoaded && showProjectBuckets">
             <div *ngIf="!projectBillable" class="disp-flex">
                 <div class="auto-flex">
@@ -94,9 +94,57 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <div class="editor">
+
+        <!-- <div class="disp-flex full-width">
+             -->
+            <div *ngIf="model.id && modelLoaded && showProjectBuckets">
+                <div *ngIf="!projectBillable" class="disp-flex">
+                    <div class="auto-flex">
+                        <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours
+                                ({{totalEstimatedDays}} Days)</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours ({{totalActualDays}}
+                                Days)</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours
+                                ({{totalOutstandingDays}} Days)</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Staged: <small class="mat-card-subtitle">{{totalReview}}%</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Completed: <small class="mat-card-subtitle">{{totalCompleted}}%</small></h4>
+                    </div>
+                    <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
+                </div>
+    
+                <div *ngIf="projectBillable" class="disp-flex">
+                    <div class="auto-flex">
+                        <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Paid Hours: <small class="mat-card-subtitle">{{totalPaid}} Hours</small></h4>
+                    </div>
+                    <div class="auto-flex">
+                        <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours</small></h4>
+                    </div>
+                    <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
+                </div>
+    
+            </div>
+        <!-- </div> -->
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
@@ -106,7 +154,7 @@
 
     </div>
 
-    <div class="editor-panels">
+    <div class="editor-panels full-height">
 
 
 
@@ -114,9 +162,9 @@
 
             <div cdkDropListGroup class="horizontal-container">
 
-                <div class="disp-flex" style="padding: 4px;">
+                <div class="disp-flex auto-flex" style="padding: 4px; flex: 1 0 16rem;">
                     <mat-card cdkDropList [cdkDropListData]="backlog" (cdkDropListDropped)="drop($event, 'backlog')"
-                        class="place-flex-start disp-flex" style="flex: 1 1 16rem;">
+                        class="place-flex-start" style="flex: 1 0 16rem;">
 
                         <div class="disp-flex" style="height: 48px;">
                             <div class="gap-1 no-flex"></div>
@@ -135,10 +183,15 @@
 
                         <mat-card-content
                             [class]="backlogCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                            <div style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of backlog">
+                            <div style="flex: 1 1 10rem; padding: 4px;" *ngFor="let workItem of backlog">
                                 <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                    (modelChange)="WorkItemUpdated($event)" 
+                                    (modelChange)="WorkItemUpdated($event)"
                                     (modelDelete)="DeleteWorkItem($event, backlog)">
+                                    <div class="item-content">
+                                        <div cdkDragHandle class="work-item-drag">
+                                            <mat-icon>drag_handle</mat-icon>
+                                        </div>
+                                    </div>
                                 </work-item>
                             </div>
                         </mat-card-content>
@@ -146,10 +199,10 @@
                     </mat-card>
                 </div>
 
-                <div class="disp-flex" style="padding: 4px;">
+                <div class="disp-flex" style="padding: 4px; flex: 1 0 16rem;">
                     <mat-card cdkDropList [cdkDropListData]="inProgress"
                         (cdkDropListDropped)="drop($event, 'inProgress')" class="place-flex-start"
-                        style="flex: 1 0 12rem;">
+                        style="flex: 1 0 16rem;">
 
                         <div class="disp-flex" style="height: 48px;">
                             <span class="gap-2 no-flex"></span>
@@ -169,10 +222,15 @@
 
                         <mat-card-content
                             [class]="inProgressCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of inProgress">
+                            <div class="auto-flex" style="flex: 1 1 10rem; padding: 4px;" *ngFor="let workItem of inProgress">
                                 <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelChange)="WorkItemUpdated($event)" class="full-height"
                                     (modelDelete)="DeleteWorkItem($event, inProgress)">
+                                    <div class="item-content">
+                                        <div cdkDragHandle class="work-item-drag">
+                                            <mat-icon>drag_handle</mat-icon>
+                                        </div>
+                                    </div>
                                 </work-item>
                             </div>
                         </mat-card-content>
@@ -180,9 +238,9 @@
                     </mat-card>
                 </div>
 
-                <div class="disp-flex" style="padding: 4px;">
+                <div class="disp-flex" style="padding: 4px; flex: 1 0 16rem;">
                     <mat-card cdkDropList [cdkDropListData]="review" (cdkDropListDropped)="drop($event, 'review')"
-                        class="place-flex-start" style="flex: 1 0 12rem;">
+                        class="place-flex-start" style="flex: 1 1 16rem;">
 
                         <div class="disp-flex" style="height: 48px;">
                             <span class="gap-2 no-flex"></span>
@@ -202,10 +260,15 @@
 
                         <mat-card-content
                             [class]="reviewCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;" *ngFor="let workItem of review">
+                            <div class="auto-flex" style="flex: 1 1 10rem; padding: 4px;" *ngFor="let workItem of review">
                                 <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelChange)="WorkItemUpdated($event)"
                                     (modelDelete)="DeleteWorkItem($event, review)">
+                                    <div class="item-content">
+                                        <div cdkDragHandle class="work-item-drag">
+                                            <mat-icon>drag_handle</mat-icon>
+                                        </div>
+                                    </div>
                                 </work-item>
                             </div>
                         </mat-card-content>
@@ -214,9 +277,9 @@
                     </mat-card>
                 </div>
 
-                <div class="disp-flex" style="padding: 4px;">
+                <div class="disp-flex" style="padding: 4px; flex: 1 0 16rem;">
                     <mat-card cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event, 'complete')"
-                        class="place-flex-start" style="flex: 1 0 12rem;">
+                        class="place-flex-start" style="flex: 1 0 16rem;">
 
                         <div class="disp-flex" style="height: 48px;">
                             <span class="gap-2 no-flex"></span>
@@ -235,11 +298,16 @@
 
                         <mat-card-content
                             [class]="completeCollapse ? 'collapsed-cdklist disp-flex' : 'normal-cdklist disp-flex'">
-                            <div class="auto-flex" style="flex: 0 1 12rem; padding: 4px;"
+                            <div  style="flex: 1 1 10rem; padding: 4px;"
                                 *ngFor="let workItem of complete">
                                 <work-item cdkDrag [cdkDragData]="workItem" [model]="workItem"
-                                    (modelChange)="WorkItemUpdated($event)" class="auto-flex"
+                                    (modelChange)="WorkItemUpdated($event)" class="full-height"
                                     (modelDelete)="DeleteWorkItem($event, complete)">
+                                    <div class="item-content">
+                                        <div cdkDragHandle class="work-item-drag">
+                                            <mat-icon>drag_handle</mat-icon>
+                                        </div>
+                                    </div>
                                 </work-item>
                             </div>
                         </mat-card-content>

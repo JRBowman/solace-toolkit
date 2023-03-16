@@ -126,7 +126,7 @@ mat-tab-header.mat-tab-header {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
 
-    width: fit-content !important;
+    width: max-content !important;
     overflow-x: visible;
     height: 100%;
 }
