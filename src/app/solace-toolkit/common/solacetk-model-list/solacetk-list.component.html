@@ -130,6 +130,9 @@
 
       <div *ngIf="model" style="padding: 16px; padding-left: 7%; padding-right: 7%;">
 
+        <ng-content select=".editor-header"></ng-content>
+
+
         <mat-expansion-panel [expanded]="!collapseCoreEditor && IsNewModel" class="auto-flex">
           <mat-expansion-panel-header>
             <mat-panel-title>

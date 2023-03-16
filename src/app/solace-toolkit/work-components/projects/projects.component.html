@@ -1,4 +1,4 @@
-<div *ngIf="model.id && modelLoaded && showProjectBuckets">
+<!-- <div *ngIf="model.id && modelLoaded && showProjectBuckets">
     <div *ngIf="!projectBillable" class="disp-flex">
         <div class="auto-flex">
             <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours ({{totalEstimatedDays}} Days)</small></h4>
@@ -38,7 +38,7 @@
         </button>
     </div>
 
-</div>
+</div> -->
 
 <!-- <div class="disp-flex">
     <mat-divider class="auto-flex"></mat-divider>
@@ -46,7 +46,52 @@
 
 
 <solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()" modelUri="Work/projects"
-    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true">
+    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true">
+
+    <div class="editor-header">
+        <div *ngIf="model.id && modelLoaded && showProjectBuckets">
+            <div *ngIf="!projectBillable" class="disp-flex">
+                <div class="auto-flex">
+                    <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours ({{totalEstimatedDays}} Days)</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours ({{totalActualDays}} Days)</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours ({{totalOutstandingDays}} Days)</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Staged: <small class="mat-card-subtitle">{{totalReview}}%</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Completed: <small class="mat-card-subtitle">{{totalCompleted}}%</small></h4>
+                </div>
+                <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+        
+            <div *ngIf="projectBillable" class="disp-flex">
+                <div class="auto-flex">
+                    <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Actual Hours: <small class="mat-card-subtitle">{{totalActual}} Hours</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Paid Hours: <small class="mat-card-subtitle">{{totalPaid}} Hours</small></h4>
+                </div>
+                <div class="auto-flex">
+                    <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours</small></h4>
+                </div>
+                <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+        
+        </div>
+    </div>
+
     <div class="editor">
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
