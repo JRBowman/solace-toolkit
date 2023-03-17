@@ -1,49 +1,46 @@
-<div *ngIf="!IsLoading">
-    <mat-card class="mat-elevation-z0">
+<div *ngIf="!IsLoading" class="full-width">
+    <!-- <mat-card class="mat-elevation-z0"> -->
         <mat-card-title class="mb-2">Edit Task</mat-card-title>
-        <mat-card-content>
+        <div class="disp-flex">
 
-            <mat-form-field class="auto-flex font-small">
+            <mat-form-field class="no-flex font-small" style="flex: 0 0 4rem; padding: 4px;">
                 <mat-label>Id</mat-label>
                 <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
             </mat-form-field>
 
-            <div class="disp-flex">
-                <mat-form-field class="no-flex font-small">
+                <mat-form-field class="auto-flex font-small" style="padding: 4px;">
                     <mat-label>Task Name</mat-label>
                     <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
                 </mat-form-field>
-            </div>
 
 
-            <div class="disp-flex">
-                <mat-form-field class="no-flex font-small">
+                <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem; padding: 4px;">
                     <mat-label>Est. Hours</mat-label>
-                    <input matInput #hoursEstimate placeholder="Estimated Hours" [(ngModel)]="model.hoursEstimate">
+                    <input matInput #hoursEstimate placeholder="Estimated Hours" type="number" [(ngModel)]="model.hoursEstimate">
                 </mat-form-field>
-            </div>
 
-            <div class="disp-flex">
-                <mat-form-field class="no-flex font-small">
+                <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem; padding: 4px;">
                     <mat-label>Actual Hours</mat-label>
-                    <input matInput #hoursActual placeholder="Actul Hours Worked" [(ngModel)]="model.hoursActual">
+                    <input matInput #hoursActual placeholder="Actul Hours Worked" type="number" [(ngModel)]="model.hoursActual">
                 </mat-form-field>
-            </div>
 
+        </div>
 
-            <solacetk-animation-editor [(model)]="anim" [unloadChange]="unloadModules" [showFrames]="false" [showDataPanel]="false"></solacetk-animation-editor>
+        <div class="disp-flex">
+            <mat-card-subtitle class="mb-2">Comments</mat-card-subtitle>
+        </div>
 
-        </mat-card-content>
+        <!-- <solacetk-animation-editor [(model)]="anim" [unloadChange]="unloadModules" [showFrames]="false" [showDataPanel]="false" [expanded]="false"></solacetk-animation-editor> -->
 
-        <mat-card-actions>
-            <div class="disp-flex">
+        <div class="gap-1 auto-flex"></div>
+
+            <div class="disp-flex mat-card-actions">
                 <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
                 <button mat-button color="primary" class="auto-flex" (click)="Save()">Save</button>
             </div>
-        </mat-card-actions>
 
 
-    </mat-card>
+    <!-- </mat-card> -->
 
 
 

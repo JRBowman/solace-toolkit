@@ -15,8 +15,9 @@
     <div class="editor-panels">
 
         <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
-            [(model)]="model.varData" [panelMode]="1" style="padding: 4px;" ></solacetk-attributes-panel>
+            [(model)]="model.varData" [panelMode]="1"></solacetk-attributes-panel>
             
+            <div class="gap-1 auto-flex"></div>
 
         <mat-expansion-panel class="auto-flex full-width">
             <mat-expansion-panel-header>
@@ -72,7 +73,9 @@
 
         </mat-expansion-panel>
 
-        <solacetk-event-panel style="padding: 4px;" [(model)]="model.events"></solacetk-event-panel>
+        <div class="gap-1 auto-flex"></div>
+
+        <solacetk-event-panel [(model)]="model.events"></solacetk-event-panel>
 
     </div>
 </solacetk-model-list>
