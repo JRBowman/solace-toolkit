@@ -42,7 +42,7 @@ public model: BehaviorSystem = new BehaviorSystem();
   public openActionsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/actions');
+    instance.instance.LoadData('Events');
 
     instance.instance.modelsSelected.subscribe((models) => 
     {

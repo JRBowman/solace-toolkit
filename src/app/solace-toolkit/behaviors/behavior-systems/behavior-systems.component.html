@@ -75,7 +75,11 @@
 
         <div class="gap-1 auto-flex"></div>
 
-        <solacetk-event-panel [(model)]="model.events"></solacetk-event-panel>
+        <solacetk-event-panel [(model)]="model.events">
+            <div class="action-row">
+                <button mat-button color="primary" (click)="openActionsSheet()">Import</button>
+            </div>
+        </solacetk-event-panel>
 
     </div>
 </solacetk-model-list>

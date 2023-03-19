@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { ActionEvent } from '../../models/actionevent';
@@ -26,12 +26,15 @@ export class BehaviorStatesComponent implements OnInit {
 
   }
 
+  
+
   public LogModel()
   {
     console.log(this.model);
   }
 
   public LoadModel(): void {
+    // this.unloadModules.emit(true);
     this.unloadModules.emit(false);
   }
 

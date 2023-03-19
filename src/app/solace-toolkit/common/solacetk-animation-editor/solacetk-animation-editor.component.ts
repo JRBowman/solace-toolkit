@@ -68,7 +68,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
       if (this.model) {
         let texName = "Ase/" + this.modelName + "/" + this.model.name;
-        this.framesChange.emit(texName + ".png.json");
+        this.framesChange.emit(texName + ".json");
         console.log("loaded");
       }
       
