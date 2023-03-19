@@ -101,7 +101,7 @@
         <!-- <div class="disp-flex full-width">
              -->
             <div *ngIf="model.id && modelLoaded && showProjectBuckets">
-                <div *ngIf="!projectBillable" class="disp-flex">
+                <div *ngIf="!model.isProjectBillable" class="disp-flex">
                     <div class="auto-flex">
                         <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours
                                 ({{totalEstimatedDays}} Days)</small></h4>
@@ -125,7 +125,7 @@
                     </button>
                 </div>
     
-                <div *ngIf="projectBillable" class="disp-flex">
+                <div *ngIf="model.isProjectBillable" class="disp-flex">
                     <div class="auto-flex">
                         <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
                     </div>
@@ -148,7 +148,7 @@
 
         <mat-divider class="mb-2 mt-2"></mat-divider>
 
-        <mat-slide-toggle [(ngModel)]="projectBillable">
+        <mat-slide-toggle [(ngModel)]="model.isProjectBillable">
             Is Project Billable?
         </mat-slide-toggle>
 

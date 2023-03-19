@@ -19,7 +19,7 @@ export class WorkProject {
     public payments: WorkPayment[] = [];
     public comments: WorkComment[] = [];
 
-    public projectBillable: boolean = false;
+    public isProjectBillable: boolean = false;
 
     public created: Date = new Date();
     public updated: Date = new Date();

@@ -38,7 +38,7 @@ export class ProjectsComponent implements OnInit {
 
   public averageWorkHours: number = 7;
 
-  public projectBillable: boolean = false;
+  //public projectBillable: boolean = false;
 
   ngOnInit(): void {
 
@@ -48,6 +48,7 @@ export class ProjectsComponent implements OnInit {
     console.log(this.model);
     this.modelLoaded = true;
     this.showProjectBuckets = true;
+    //this.projectBillable = this.model.isProjectBillable;
 
     this.ReportHours();
 
@@ -90,7 +91,7 @@ export class ProjectsComponent implements OnInit {
     this.totalReview = Math.round(((this.review.length) / this.totalTasks) * 100);
     this.totalCompleted = Math.round(((this.complete.length) / this.totalTasks) * 100);
 
-    if (this.projectBillable) this.totalOutstanding = +this.totalActual - +this.totalPaid;
+    if (this.model.isProjectBillable) this.totalOutstanding = +this.totalActual - +this.totalPaid;
     else this.totalOutstanding = Math.round(this.totalEstimated - this.totalActual);
 
     this.totalEstimatedDays = Math.round(this.totalEstimated / this.averageWorkHours);
