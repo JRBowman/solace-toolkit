@@ -39,7 +39,7 @@ export class SolaceTkSoundService {
     this.loadAudio("panel-expand.wav");
   }
 
-  playAudio(clipName: string): void {
+  playAudio(clipName: string, volume: number = 0.5): void {
 
     // First time Load of Audio:
     if (this.soundIndex.findIndex(s => s == clipName) == -1) {
@@ -47,6 +47,7 @@ export class SolaceTkSoundService {
     }
 
     const index = this.soundIndex.findIndex(s => s == clipName);
+    this.soundSet[index].volume = volume;
     this.soundSet[index].play();
   }
 

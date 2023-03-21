@@ -42,6 +42,9 @@
                             <mat-form-field class="disp-flex font-small">
                                 <mat-label>Frame Name</mat-label>
                                 <input type="text" matInput [(ngModel)]="model.frames[selected].name">
+                                <button mat-icon-button matSuffix (click)="model.frames[selected].name = cleanFrameName(model.frames[selected].name)" [attr.aria-label]="'Hide password'" >
+                                    <mat-icon>cleaning_services</mat-icon>
+                                  </button>
                             </mat-form-field>
 
                             <div class="disp-flex width-33">
@@ -113,7 +116,7 @@
                 <div class="gap-1 no-flex"></div>
 
                 <!-- Animation Player Controls: -->
-                <div class="disp-flex auto-flex" *ngIf="model && selected">
+                <div class="disp-flex auto-flex" *ngIf="model && selected > -1">
 
                     <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
                         (click)="playAnimation()">
@@ -136,7 +139,7 @@
                 </div>
 
                 <!-- Visual Frame Data -->
-                <div class="disp-flex full-width" *ngIf="showFrames && selected && model.frames[selected].downstreamData">
+                <div class="disp-flex full-width" *ngIf="showFrames && selected > -1 && model.frames[selected].downstreamData">
                     <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1"
                         [panelName]="'Frame ' + selected + ' Data'" panelType="expansionpanel"
                         [(model)]="model.frames[selected].downstreamData">

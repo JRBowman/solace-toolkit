@@ -36,7 +36,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   public frames: any[] = [];
   public selectedFrame: BehaviorAnimationFrame = new BehaviorAnimationFrame();
-  public selected: number = 0;
+  public selected: number = -1;
 
   public selectedComponent?: BehaviorComponent;
   public selectedCompIndex: number = 0;
@@ -73,6 +73,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       }
       
     });
+
+    //this.unloadChange.emit(true);
 
     this.framesChange.subscribe((url) => {
       console.log(url);
@@ -125,8 +127,20 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       // });
     });
 
-    this.unloadChange.emit(false);
+    
 
+  }
+
+  public cleanAllFrameNames(): void {
+    if (!this.model) return;
+
+    this.model.frames.forEach(frame => {
+      frame.name = this.cleanFrameName(frame.name);
+    });
+  }
+
+  public cleanFrameName(name: string): string {
+    return name.replace(".ase", "").trim().replace(" ", "_");
   }
 
   public logModel() {
@@ -180,6 +194,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    
   }
 
   playAnimation() {
@@ -188,7 +203,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.selected = 0;
       this.selectedFrame = this.model.frames[this.selected];
     }
-    this.soundService.playAudio("model-link.wav");
+    this.soundService.playAudio("map-link.wav");
     this.isPlaying = true;
     this.animate();
   }
@@ -232,7 +247,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   stopAnimation() {
-    this.soundService.playAudio("model-unlink.wav");
+    this.soundService.playAudio("map-unlink.wav");
     this.isPlaying = false;
   }
 

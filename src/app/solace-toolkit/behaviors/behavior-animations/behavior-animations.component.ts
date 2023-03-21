@@ -24,7 +24,7 @@ export class BehaviorAnimationsComponent implements OnInit {
   public animEditorDisabled: boolean = false;
 
   ngOnInit(): void {
-    //this.unloadModules.emit(false);
+    //this.unloadModules.emit(true);
 
   }
 
@@ -83,6 +83,18 @@ export class BehaviorAnimationsComponent implements OnInit {
   //       }
   //     });
   // }
+
+  public cleanAllFrameNames(): void {
+    if (!this.model || !this.model.actFrameData) return;
+
+    this.model.actFrameData.frames.forEach(frame => {
+      frame.name = this.cleanFrameName(frame.name);
+    });
+  }
+
+  public cleanFrameName(name: string): string {
+    return name.replace(".ase", "").trim().replace(" ", "_");
+  }
 
   importAseAnims(event: any) {
     let files: File[] = []
