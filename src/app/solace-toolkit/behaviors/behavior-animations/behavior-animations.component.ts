@@ -95,7 +95,9 @@ export class BehaviorAnimationsComponent implements OnInit {
         let tempName = files[x].name.replace(".ase", "");
 
         const formData = new FormData();
-        formData.append(tempName + "-act.ase", files[x]);
+        
+        //formData.append(tempName + "-act.ase", files[x]);
+        formData.append(files[x].name, files[x]);
         const upload$ = this.service.CreateModel("Files/ase", formData);
   
         upload$.subscribe((response) => {

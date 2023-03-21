@@ -2,7 +2,7 @@ import { ActionEvent } from "./actionevent";
 import { SoltkKeyValue } from "./soltk-key-value";
 
 export class MapCell {
-    public id?: number;
+    public id?: number = 0;
     public name?: string = "Map";
     public description?: string = "";
     public tags?: string = "";

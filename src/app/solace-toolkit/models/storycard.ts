@@ -4,7 +4,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 
 export class StoryCard implements IModelTK {
 
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "StoryCard";
     public description?: string = "A Chronological Element of the Story and World Progression.";
     public tags?: string = "";

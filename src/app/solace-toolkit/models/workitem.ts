@@ -4,7 +4,7 @@ import { WorkComment } from "./workcomment";
 import { WorkPayment } from "./workpayment";
 
 export class WorkItem {
-    public id?: number;
+    public id?: number = 0;
     public name: string = "Task";
     public description: string = "";
     public assemblyType: string = "";

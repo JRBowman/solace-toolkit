@@ -6,7 +6,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorAnimation implements IModelTK {
 
-    public id?: string;
+    public id?: number = 0;
     public name: string = "<name>";
     public description: string = "<description>";
     public startFrameData?: BehaviorAnimationData;
@@ -18,7 +18,7 @@ export class BehaviorAnimation implements IModelTK {
 }
 
 export class BehaviorAnimationData implements IModelTK {
-    public id?: string;
+    public id?: number = 0;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";
@@ -39,7 +39,7 @@ export class BehaviorAnimationData implements IModelTK {
 }
 
 export class BehaviorComponent implements IModelTK {
-    public id?: string;
+    public id?: number = 0;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";
@@ -89,7 +89,7 @@ export class BehaviorComponent implements IModelTK {
           enabled: true,
           componentData: [],
           description: "",
-          id: ""
+          id: 0
         },
         {
           name: "RightRay",
@@ -108,7 +108,7 @@ export class BehaviorComponent implements IModelTK {
           enabled: true,
           componentData: [],
           description: "",
-          id: ""
+          id: 0
         },
         {
           name: "LeftRay",
@@ -127,7 +127,7 @@ export class BehaviorComponent implements IModelTK {
           enabled: true,
           componentData: [],
           description: "",
-          id: ""
+          id: 0
         },
         {
           name: "TopRay",
@@ -146,7 +146,7 @@ export class BehaviorComponent implements IModelTK {
           enabled: true,
           componentData: [],
           description: "",
-          id: ""
+          id: 0
         },
         {
           name: "BottomRay",
@@ -165,7 +165,7 @@ export class BehaviorComponent implements IModelTK {
           enabled: true,
           componentData: [],
           description: "",
-          id: ""
+          id: 0
         }
       ];
 

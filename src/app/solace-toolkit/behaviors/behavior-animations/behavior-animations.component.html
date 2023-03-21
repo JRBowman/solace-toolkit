@@ -29,7 +29,7 @@
 
                 
                         <!-- Frames Content: -->
-                        <solacetk-animation-editor *ngIf="model.id" [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
+                        <solacetk-animation-editor *ngIf="model.actFrameData && model.actFrameData.id != 0" [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
                         </solacetk-animation-editor>
                         
 

@@ -6,7 +6,7 @@ import { IModelTK } from "./imodel-tk";
 import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorState implements IModelTK {
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "BehaviorState";
     public description?: string = "";
     public tags?: string = "";

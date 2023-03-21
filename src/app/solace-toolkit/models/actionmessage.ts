@@ -3,7 +3,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 
 export class ActionMessage implements IModelTK {
 
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "EventMessage";
     public description?: string = "Event Message to Send to a Controller.";
     public tags?: string = "";

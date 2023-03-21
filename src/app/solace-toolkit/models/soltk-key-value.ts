@@ -1,5 +1,5 @@
 export class SoltkKeyValue {
-    public id?: string;
+    public id?: number = 0;
     public key: string = "";
     public data: string = "";
     public operator: number = 0;

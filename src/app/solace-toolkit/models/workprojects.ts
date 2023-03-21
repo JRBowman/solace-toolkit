@@ -3,7 +3,7 @@ import { WorkItem } from "./workitem";
 import { WorkPayment } from "./workpayment";
 
 export class WorkProject {
-    public id?: number;
+    public id?: number = 0;
     public name: string = "";
     public description: string = "";
     public assemblyType: string = "";

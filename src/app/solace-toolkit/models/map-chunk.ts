@@ -1,7 +1,7 @@
 import { MapCell } from "./map-cell";
 
 export class MapChunk {
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "Map";
     public description?: string = "";
     public tags?: string = "";

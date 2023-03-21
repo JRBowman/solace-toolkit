@@ -4,7 +4,7 @@ import { IModelTK } from "./imodel-tk";
 
 export class MovableController implements IModelTK {
 
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "MovableController";
     public description?: string = "A MovableController can collide and move within the game world.";
     public tags?: string = "";

@@ -2,7 +2,7 @@ import { MapTileRule } from "./map-tile-rule";
 import { SoltkKeyValue } from "./soltk-key-value";
 
 export class MapTile {
-    public id?: string;
+    public id?: number = 0;
     public name?: string = "Map";
     public description?: string = "";
     public tags?: string = "";

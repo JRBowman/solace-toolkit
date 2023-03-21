@@ -50,7 +50,7 @@ export class CharacterControllersComponent implements OnInit {
     return CollisionDetectionType[Number.parseInt(val)];
   }
 
-  public GetBehaviors(id: string): string {
+  public GetBehaviors(id: number): string {
     let behavior = this.behaviors.filter(x => x.id == id)[0].name;
     return behavior ?? "";
   }

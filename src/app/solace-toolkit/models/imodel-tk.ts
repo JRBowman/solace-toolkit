@@ -1,5 +1,5 @@
 export interface IModelTK {
-    id?: string;
+    id?: number;
     name?: string;
     description?: string;
     tags?: string;

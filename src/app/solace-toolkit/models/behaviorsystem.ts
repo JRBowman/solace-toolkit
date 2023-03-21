@@ -5,7 +5,7 @@ import { SoltkKeyValue } from "./soltk-key-value";
 
 export class BehaviorSystem {
 
-    public id?: string;
+    public id?: number = 0;
     public name?: string;
     public description?: string;
     public tags?: string = "";
