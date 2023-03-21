@@ -113,7 +113,7 @@
                 <div class="gap-1 no-flex"></div>
 
                 <!-- Animation Player Controls: -->
-                <div class="disp-flex auto-flex">
+                <div class="disp-flex auto-flex" *ngIf="model && selected">
 
                     <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
                         (click)="playAnimation()">
@@ -136,7 +136,7 @@
                 </div>
 
                 <!-- Visual Frame Data -->
-                <div class="disp-flex full-width" *ngIf="showFrames">
+                <div class="disp-flex full-width" *ngIf="showFrames && selected && model.frames[selected].downstreamData">
                     <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1"
                         [panelName]="'Frame ' + selected + ' Data'" panelType="expansionpanel"
                         [(model)]="model.frames[selected].downstreamData">
