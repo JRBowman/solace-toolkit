@@ -1,4 +1,5 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states" (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" moduleColor="#545c80">
+<solacetk-model-list [(model)]="model" moduleName="Behavior States" modelUri="Behaviors/states"
+    (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" moduleColor="#545c80">
     <div class="editor">
 
         <div class="disp-flex">
@@ -15,7 +16,8 @@
                 <input matInput placeholder="End Delay" [(ngModel)]="model.endDelay">
             </mat-form-field>
 
-            <mat-checkbox class="auto-flex font-small align-center" name="interruptable" [(ngModel)]="model.interruptable">
+            <mat-checkbox class="auto-flex font-small align-center" name="interruptable"
+                [(ngModel)]="model.interruptable">
                 Interruptable
             </mat-checkbox>
         </div>
@@ -25,53 +27,61 @@
 
     <div class="editor-panels">
 
-            <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
-                panelType="expansionpanel" [(model)]="model.conditions">
-                <div class="action-row">
-                    <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
-                </div>
-            </solacetk-attributes-panel>
+        <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+            panelType="expansionpanel" [(model)]="model.conditions">
+            <div class="action-row">
+                <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
+            </div>
+        </solacetk-attributes-panel>
 
         <div class="gap-1 auto-flex"></div>
         <!-- <mat-divider></mat-divider> -->
 
         <div class="full-width full-height">
 
-                <mat-card-title>
-                    <mat-icon class="mr-2">schema</mat-icon>
-                    Dataworks
-                </mat-card-title>
+            <mat-card-title>
+                <mat-icon class="mr-2">schema</mat-icon>
+                Dataworks
+            </mat-card-title>
 
-            <div class="auto-flex" >
-            <div class="disp-flex">
-                <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
+            <div class="auto-flex">
+                <div class="disp-flex">
+                    <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.startFrameData"
                     [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
 
-                <solacetk-attributes-panel [panelMode]="1" panelName="Start Data" panelType="expansionpanel"
-                    class="auto-flex" [(model)]="model.startData" style="padding-top: 4px; padding-bottom: 4px;"></solacetk-attributes-panel>
-            </div>
+                    <solacetk-attributes-panel [panelMode]="1" panelName="Start Data" panelType="expansionpanel"
+                        class="auto-flex" [(model)]="model.startData"
+                        style="padding-top: 4px; padding-bottom: 4px;"></solacetk-attributes-panel>
+                </div>
 
-            <div class="disp-flex">
-                <!-- <h4>Act</h4> -->
-                <solacetk-attributes-panel [panelMode]="1" panelName="Act Data" panelType="expansionpanel"
-                class="auto-flex" [(model)]="model.actData" style="padding-top: 4px; padding-bottom: 4px; flex: 3 1;"></solacetk-attributes-panel>
-                
-                <solacetk-animation-editor *ngIf="model.animation" bgColor="#906868" [(model)]="model.animation.actFrameData"
-                    [modelName]="model.animation.name" [panelName]="model.animation.name" [showDataPanel]="false" [expanded]="false" style="padding-top: 4px; padding-bottom: 4px; flex: 1 3 24rem;" [showFrames]="false" [unloadChange]="unloadModules"></solacetk-animation-editor>
-            </div>
+                <div class="disp-flex">
+                    <!-- <h4>Act</h4> -->
+                    <solacetk-attributes-panel [panelMode]="1" panelName="Act Data" panelType="expansionpanel"
+                        class="auto-flex" [(model)]="model.actData"
+                        style="padding-top: 4px; padding-bottom: 4px; flex: 3 1;"></solacetk-attributes-panel>
 
-            <div class="disp-flex">
-                <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
+                    <div *ngIf="model.animation.actFrameData" style="padding-top: 4px; padding-bottom: 4px; flex: 1 3 24rem;" >
+                        <solacetk-animation-editor bgColor="#906868" [(model)]="model.animation.actFrameData"
+                            [modelName]="model.animation.name" [panelName]="model.animation.name"
+                            [showDataPanel]="false" [expanded]="false"
+                            [showFrames]="false"
+                            [unloadChange]="unloadModules"></solacetk-animation-editor>
+                    </div>
+                </div>
+
+                <div class="disp-flex">
+                    <!-- <solacetk-animation-editor class="no-flex mb-2" [(model)]="model.animation.endFrameData"
                     [modelName]="model.animation.name" [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
 
-                <solacetk-attributes-panel [panelMode]="1" panelName="End Data" panelType="expansionpanel"
-                    class="auto-flex" [(model)]="model.endData" style="padding-top: 4px; padding-bottom: 4px;"></solacetk-attributes-panel>
+                    <solacetk-attributes-panel [panelMode]="1" panelName="End Data" panelType="expansionpanel"
+                        class="auto-flex" [(model)]="model.endData"
+                        style="padding-top: 4px; padding-bottom: 4px;"></solacetk-attributes-panel>
+                </div>
             </div>
+            <mat-action-row>
+                <button mat-button color="primary" (click)="openAnimationsSheet()">Import</button>
+            </mat-action-row>
         </div>
-        <mat-action-row>
-            <button mat-button color="primary" (click)="openAnimationsSheet()">Import</button>
-        </mat-action-row>
-    </div>
 
         <solacetk-event-panel [(model)]="model.events" style="padding-top: 4px; padding-bottom: 4px;">
             <div class="action-row">

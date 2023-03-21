@@ -28,6 +28,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() modelName: string = "";
 
   @Input() expanded: boolean = true;
+  @Input() panelType: string = "panel";
 
 
   public fileName: string = "";
@@ -73,8 +74,6 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       }
       
     });
-
-    //this.unloadChange.emit(true);
 
     this.framesChange.subscribe((url) => {
       console.log(url);
@@ -127,7 +126,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       // });
     });
 
-    
+    this.unloadChange.emit(false);
 
   }
 

@@ -1,6 +1,6 @@
-<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" panelType="expansionpanel" [expanded]="expanded">
+<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" [panelType]="panelType" [expanded]="expanded">
 
-    <div class="expansionpanel-content">
+    <div class="panel-content">
         <div class="disp-flex" *ngIf="model">
 
             <!-- Sprite Animation Preview -->
@@ -116,7 +116,7 @@
                 <div class="gap-1 no-flex"></div>
 
                 <!-- Animation Player Controls: -->
-                <div class="disp-flex auto-flex" *ngIf="model && selected > -1">
+                <div class="disp-flex auto-flex" *ngIf="model && selected != -1">
 
                     <button *ngIf="!isPlaying" mat-icon-button color="primary" class="no-flex"
                         (click)="playAnimation()">
@@ -160,8 +160,10 @@
 
     </div>
 
-    <div class="expansionpanel-actions">
-        <div *ngIf="showDataPanel" class="disp-flex">
+    <div class="panel-actions disp-flex auto-flex full-width">
+        <div class="gap-1 auto-flex"></div>
+        <div *ngIf="showDataPanel">
+            
             <button mat-button color="primary" class="no-flex" (click)="aseUpload.click()">Import Aseprite</button>
             <button mat-button color="primary" class="no-flex" (click)="sheetUpload.click()">Import Sprite
                 Sheet</button>

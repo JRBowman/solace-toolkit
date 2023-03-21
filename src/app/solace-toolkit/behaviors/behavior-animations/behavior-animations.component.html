@@ -8,7 +8,7 @@
 
         <!-- <mat-accordion class="auto-flex align-start full-width"> -->
         <div class="disp-flex">
-            <div class="auto-flex full-width">
+            <div *ngIf="model.actFrameData" class="auto-flex full-width">
                 <!-- <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -29,7 +29,7 @@
 
                 
                         <!-- Frames Content: -->
-                        <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
+                        <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name" >
                         </solacetk-animation-editor>
                         
 
