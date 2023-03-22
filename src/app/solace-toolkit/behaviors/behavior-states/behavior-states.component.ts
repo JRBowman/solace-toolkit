@@ -39,6 +39,7 @@ export class BehaviorStatesComponent implements OnInit {
   }
 
   public CloseModel(): void {
+    
     this.unloadModules.emit(true);
   }
 

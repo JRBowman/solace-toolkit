@@ -1,7 +1,7 @@
 <solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" [panelType]="panelType" [expanded]="expanded">
 
     <div class="panel-content">
-        <div class="disp-flex" *ngIf="model">
+        <div class="disp-flex" *ngIf="model && isLoaded && frames.length > 0">
 
             <!-- Sprite Animation Preview -->
             <div class="auto-flex">
@@ -89,7 +89,7 @@
 
                             <div class="disp-flex auto-flex">
 
-                                <mat-slider class="no-flex align-center" max="15" min="0.1" step="0.1"
+                                <mat-slider class="auto-flex align-center" style="flex: 0 0 16rem;" max="16" min="0.25" step="0.25"
                                     showTickMarks="true">
                                     <input matSliderThumb [(ngModel)]="zoomFactor">
                                 </mat-slider>

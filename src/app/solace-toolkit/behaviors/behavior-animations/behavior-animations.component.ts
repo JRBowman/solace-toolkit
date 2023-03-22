@@ -29,9 +29,10 @@ export class BehaviorAnimationsComponent implements OnInit {
   }
 
   LoadAnim(): void {
-    this.editorState = SolTkEditorState.Update;
+    
     this.animEditorDisabled = false;
     this.unloadModules.emit(false);
+    this.editorState = SolTkEditorState.Update;
   }
 
   CreateAnim(): void {
@@ -45,8 +46,8 @@ export class BehaviorAnimationsComponent implements OnInit {
   }
 
   CloseAnim(): void {
-    this.editorState = SolTkEditorState.List;
     this.unloadModules.emit(true);
+    this.editorState = SolTkEditorState.List;
   }
 
   CreateState(): void {

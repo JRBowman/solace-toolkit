@@ -46,6 +46,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   public isPlaying: boolean = false;
 
+  public isLoaded: boolean = false;
+
   private interval: any;
 
 
@@ -53,24 +55,30 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   public spriteHeight: number = 48;
   public zoomFactor: number = 4;
 
+  public texName: string = "";
+
   ngOnInit(): void {
 
     //this.model.frames = [];
     this.unloadChange.subscribe((value) => {
       if (value === true) {
-        this.selected = 0;
+        this.selected = -1;
         this.fileName = "";
         this.frames = [];
         this.isPlaying = false;
+        this.isLoaded = false;
+        this.texName = "";
         this.sheetName = "../../assets/soldof/images/settings.png";
         console.log("unloaded...");
         return;
       }
 
       if (this.model) {
-        let texName = "Ase/" + this.modelName + "/" + this.model.name;
-        this.framesChange.emit(texName + ".json");
+        this.isLoaded = true;
+        this.texName = "Ase/" + this.modelName + "/" + this.model.name;
+        this.framesChange.emit(this.texName + ".json");
         console.log("loaded");
+        
       }
       
     });
@@ -78,6 +86,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     this.framesChange.subscribe((url) => {
       console.log(url);
       this.service.GetData(url).subscribe((data) => {
+
+        console.log(data);
 
         if (!data) return;
         //this.model = data;
@@ -118,7 +128,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         this.selectedFrame = this.frames[0];
 
         this.modelChange.emit(this.model);
-      })
+        this.isLoaded = true;
+      });
       // (error) => {
       //   console.log(error);
       //   this.sheetName = "../../assets/soldof/images/settings.png";
@@ -126,7 +137,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       // });
     });
 
-    this.unloadChange.emit(false);
+    this.unloadChange.emit(this.model == null);
 
   }
 
