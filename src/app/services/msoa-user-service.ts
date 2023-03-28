@@ -18,6 +18,7 @@ export class MsoaUserService implements OnInit {
     public testUser: any;
     public IsAuthenticated: boolean = false;
     public AccessToken: string = "";
+    
     public IdToken: string = "";
 
     public Claims: any[] = [];
