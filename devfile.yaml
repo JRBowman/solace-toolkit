@@ -22,15 +22,6 @@ components:
         - /checode/entrypoint-volume.sh
       cpuLimit: '2000m'
       cpuRequest: '500m'
-      env:
-        - name: CHE_DASHBOARD_URL
-          value: 'https://devspaces.apps.bocp.onbowman.com'
-        - name: CHE_PLUGIN_REGISTRY_URL
-          value: 'https://devspaces.apps.bocp.onbowman.com/plugin-registry/v3'
-        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
-          value: 'http://plugin-registry.openshift-operators.svc:8080/v3'
-        - name: OPENVSX_REGISTRY_URL
-          value: 'https://open-vsx.org'
       image: 'registry.redhat.io/devspaces/udi-rhel8@sha256:8de469cc9131a42092bd66e0f27a52bbc9b9a449235abf5b900d172a1bd3c985'
       memoryLimit: 4G
       memoryRequest: 1384Mi
