@@ -168,6 +168,7 @@
             <button mat-button color="primary" class="no-flex" (click)="sheetUpload.click()">Import Sprite
                 Sheet</button>
             <button mat-button color="primary" class="no-flex" (click)="textureUpload.click()">Add Frame</button>
+            <button mat-button color="primary" class="no-flex" (click)="resetFramesFromAse()">Reset Frames</button>
 
             <input type="file" class="file-input" (change)="onAseSelected($event)" accept=".ase,.aseprite" #aseUpload>
             <input type="file" class="file-input" (change)="onSheetSelected($event)" accept=".png" #sheetUpload>

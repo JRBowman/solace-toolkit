@@ -94,24 +94,35 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         //if (!this.model) this.model = data;
 
         // if (!data) return;
-        if (!this.model?.frames || this.model.frames.length == 0) {
+        if (!this.model?.frames || this.model.frames.length == 0 || this.resetFrames) {
           let frames = Object.keys(data['frames']);
+
+          if (this.resetFrames) this.frames = [];
 
           frames.forEach(fr => {
             let f = data['frames'][fr];
-            f.name = fr;
+            f.name = this.cleanFrameName(fr);
             this.frames.push(f);
+
             if (this.model && !this.model?.frames) this.model.frames = [];
-            if (!this.model?.frames.find(x => x.frame == f)) {
+
+            // Not Found:
+            let frameSearch = this.model?.frames.find(x => x.name == f.name);
+            if (!frameSearch) {
               let modelFrame = new BehaviorAnimationFrame();
               modelFrame.name = f.name;
-              //if (!modelFrame.downstreamData) modelFrame.downstreamData = [];
               modelFrame.duration = f.duration;
               modelFrame.frame = f;
               //this.frameWidth = (f.sourceSize.w * this.zoomFactor);
               this.model?.frames.push(modelFrame);
+            } 
+            else {
+              frameSearch.duration = f.duration;
+              frameSearch.frame = f;
             }
+
           });
+          this.resetFrames = false;
         }
         else {
           this.frames = this.model?.frames ?? [];
@@ -151,6 +162,13 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   public cleanFrameName(name: string): string {
     return name.replace(".ase", "").trim().replace(" ", "_");
+  }
+
+  private resetFrames: boolean = false;
+
+  public resetFramesFromAse(): void {
+    this.resetFrames = true;
+    this.framesChange.emit(this.texName + ".json");
   }
 
   public logModel() {
