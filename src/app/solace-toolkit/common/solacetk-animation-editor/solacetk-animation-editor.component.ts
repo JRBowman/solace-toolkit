@@ -50,7 +50,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   private interval: any;
 
-
+  
   public spriteWidth: number = 48;
   public spriteHeight: number = 48;
   public zoomFactor: number = 4;
@@ -76,6 +76,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       if (this.model) {
         this.isLoaded = true;
         this.texName = "Ase/" + this.modelName + "/" + this.model.name;
+        this.texName = this.texName.replace("-act", "");
         this.framesChange.emit(this.texName + ".json");
         console.log("loaded");
         
@@ -131,8 +132,9 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         if (this.model) this.model.framesJson = JSON.stringify(this.frames);
 
 
-        let texName = "Ase/" + this.modelName + "/" + this.model?.name;
-        this.sheetName = this.service.apiHost + texName + ".png";
+        //let texName = "Ase/" + this.modelName + "/" + this.model?.name;
+        //this.texName = this.texName.replace("-act", "");
+        this.sheetName = this.service.apiHost + this.texName + ".png";
         this.aseReady = true;
 
         this.selected = 0;
