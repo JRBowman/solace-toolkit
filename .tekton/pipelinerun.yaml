@@ -35,4 +35,3 @@ spec:
     - name: workspace
       persistentVolumeClaim:
         claimName: solacetk-ui-pvc
-        
