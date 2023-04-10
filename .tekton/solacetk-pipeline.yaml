@@ -1,30 +1,23 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: solacetk-ui-
-  annotations:
-    pipeline.openshift.io/started-by: justin@onbowman.com
-  namespace: bowman-dev
+  namespace: bowman-prod
   labels:
-    pipeline.openshift.io/type: kubernetes
     app.kubernetes.io/instance: solacetk-ui
-    template.openshift.io/template-instance-owner: bf5d6e5c-7da8-426f-954c-6a92c191ce04
-    tekton.dev/pipeline: solacetk-ui
-    pipeline.openshift.io/runtime: dotnet
-    triggers.tekton.dev/eventlistener: event-listener-igimmf
     app.kubernetes.io/name: solacetk-ui
-    triggers.tekton.dev/trigger: ''
-    triggers.tekton.dev/triggers-eventid: 467f4757-9934-49f4-9a2f-805f6840ceb3
+    pipeline.openshift.io/runtime: dotnet
+    pipeline.openshift.io/type: kubernetes
+    tekton.dev/pipeline: solacetk-ui
 spec:
   params:
     - name: APP_NAME
       value: solacetk-ui
     - name: GIT_REPO
-      value: 'https://bitbucket.org/onbowman/solace-toolkit.git'
+      value: 'https://bitbucket.org/onbowman/solace-toolkit'
     - name: GIT_REVISION
       value: master
     - name: IMAGE_NAME
-      value: 'image-registry.openshift-image-registry.svc:5000/bowman-dev/solacetk-ui'
+      value: 'image-registry.openshift-image-registry.svc:5000/bowman-prod/solacetk-ui'
     - name: PATH_CONTEXT
       value: .
   pipelineRef:
