@@ -1,7 +1,9 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  namespace: bowman-prod
+  annotations:
+    pipelinesascode.tekton.dev/on-event: "[push]"
+  generate-name: solacetk-ui-
   labels:
     app.kubernetes.io/instance: solacetk-ui
     app.kubernetes.io/name: solacetk-ui
