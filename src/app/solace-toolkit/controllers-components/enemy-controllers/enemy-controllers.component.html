@@ -1,4 +1,4 @@
-<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers/enemies"
+<solacetk-model-list [(model)]="model" moduleName="Enemy Controllers" modelUri="Controllers"
     (modelLoaded)="loadEditor()" [indev]="true">
     <div class="editor">
 
@@ -177,17 +177,17 @@
 
         <div class="disp-flex">
 
-        <div class="auto-flex width-33 min-width-6">
-            <solacetk-controller-component [(model)]="model.components" panelColor="darkslategrey" panelType="panel">
+        <!-- <div class="auto-flex width-33 min-width-6"> -->
+            <solacetk-controller-component class="auto-flex width-33" [(model)]="model.components" panelColor="darkslategrey">
             </solacetk-controller-component>
-        </div>
+        <!-- </div> -->
         <div class="gap-1 no-flex"></div>
 
-        <div class="no-flex width-2 min-width-6">
-            <solacetk-attributes-panel [panelMode]="1" panelName="Test Data" panelType="expansionpanel"
+        <!-- <div class="no-flex width-2 min-width-6"> -->
+            <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1" panelName="Test Data" panelType="expansionpanel"
                 [(model)]="testStateData">
             </solacetk-attributes-panel>
-        </div>
+        <!-- </div> -->
     </div>
 
 

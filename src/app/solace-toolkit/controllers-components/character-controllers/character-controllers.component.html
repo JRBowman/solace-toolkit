@@ -1,5 +1,5 @@
 <solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Character Controllers"
-    modelUri="Controllers/characters" [indev]="true">
+    modelUri="Controllers" [indev]="true">
 
     <!-- <character-controller [(model)]="model" editor-content></character-controller> -->
     <div class="editor">
@@ -118,17 +118,22 @@
 
             <div class="gap-1 auto-flex"></div>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Attributes
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                <div class="full-height"></div>
-
-            </mat-expansion-panel>
         </mat-accordion>
+
+        <div class="disp-flex">
+
+            <!-- <div class="auto-flex width-33 min-width-6"> -->
+                <solacetk-controller-component class="auto-flex width-33" [(model)]="model.components" panelColor="darkslategrey">
+                </solacetk-controller-component>
+            <!-- </div> -->
+            <div class="gap-1 no-flex"></div>
+    
+            <!-- <div class="no-flex width-2 min-width-6"> -->
+                <!-- <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1" panelName="Test Data" panelType="expansionpanel"
+                    [(model)]="model.Data">
+                </solacetk-attributes-panel> -->
+            <!-- </div> -->
+        </div>
 
     </div>
 
