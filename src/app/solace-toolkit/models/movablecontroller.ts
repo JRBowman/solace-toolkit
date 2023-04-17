@@ -10,7 +10,9 @@ export class MovableController implements IModelTK {
     public tags?: string = "";
 
     public pixelKeyColor?: string = "#FFFFFF";
+
     public controllerData?: string[];
+
     public worldPositionX?: number = 0;
     public worldPositionY?: number = 0;
     public worldPositionZ?: number = 0;
@@ -19,7 +21,7 @@ export class MovableController implements IModelTK {
     public collisionType?: CollisionDetectionType = CollisionDetectionType.RayCast;
     public spriteUri?: string = "";
 
-    public behaviorSystemId?: string;
+    public behaviorSystemId?: number;
     public behaviorSystem?: BehaviorSystem = new BehaviorSystem();
 
     public components: BehaviorComponent[] = [];
@@ -29,7 +31,7 @@ export class MovableController implements IModelTK {
     public canMove?: boolean = true;
     public mass?: number = 1;
     public speed?: number = 0;
-    public isHit?: boolean = false;
+    //public isHit?: boolean = false;
 
     public type?: MovableControllerType = MovableControllerType.Behavior;
 }

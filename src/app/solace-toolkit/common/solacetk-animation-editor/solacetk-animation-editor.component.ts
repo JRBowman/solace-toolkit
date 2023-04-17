@@ -312,7 +312,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   loadDefaultComponents() {
     if (this.model) {
       if (!this.model.components) this.model.components = [];
-      this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
+      //this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
       this.modelChange.emit(this.model);
     }
   }

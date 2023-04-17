@@ -16,6 +16,7 @@ export class SolacetkAttributesPanelComponent implements OnInit {
   @Input() operatorsEnabled: boolean = true;
   @Input() panelName: string = "Attributes";
   @Input() panelType: string = "expansionpanel";
+  @Input() panelElevation: string = "2";
   @Input() panelColor: string = "#403080";
   @Output() panelColorChange = new EventEmitter<string>();
 

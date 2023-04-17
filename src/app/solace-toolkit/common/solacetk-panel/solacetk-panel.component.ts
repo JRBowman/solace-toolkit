@@ -24,6 +24,7 @@ export class SolacetkPanelComponent implements OnInit {
   @Input() panelColor: string = "#006064";
 
   @Input() overflowMethod: string = "hidden";
+  @Input() panelElevation: string = "2";
 
   // ---
 
