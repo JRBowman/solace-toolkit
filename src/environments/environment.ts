@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   //apiHost: "http://localhost:5010/",
   //apiHost: "https://api.solacetk.onbowman.com/",
-  apiHost: "https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/",
+  apiHost: "https://solacetk-core-bow-dev.apps.cluster-n4gnv.n4gnv.sandbox1875.opentlc.com/",
   identityHost: "https://identity-svc.onbowman.com"
 };
 
