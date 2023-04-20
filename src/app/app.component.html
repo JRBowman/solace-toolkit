@@ -4,6 +4,17 @@
     <mat-icon>menu</mat-icon>
   </button>
 
+  <!-- <div class="disp-flex" style="width: 48px; height: 48px;">
+    <div matRipple class="disp-flex solacetk-icon relative-input"
+      (click)="drawer.toggle()">
+      <div class="gap-1 auto-flex"></div>
+      <mat-icon class="auto-flex align-center" style="text-align: center;">menu</mat-icon>
+      <div class="gap-1 auto-flex"></div>
+    </div>
+  </div> -->
+
+  <span class="gap-1 no-flex"></span>
+
   <span class="no-flex mr-2">
     Solace TK
   </span>
@@ -11,7 +22,7 @@
   <span class="no-flex"></span>
 
   <!-- <div *ngIf="msoaUserService.IsAuthenticated" class="auto-flex"> -->
-    <div *ngIf="soltkService.screenWidth > 990">
+  <div *ngIf="soltkService.screenWidth > 990">
     <solacetk-toolnav-extended [toolbarIntegrated]="true" class="full-width"></solacetk-toolnav-extended>
   </div>
   <!-- </div> -->

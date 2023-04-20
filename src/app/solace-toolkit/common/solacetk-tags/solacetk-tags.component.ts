@@ -15,7 +15,8 @@ export class SolacetkTagsComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCrtl = new FormControl('');
   filteredTags!: Observable<string[]>;
-  tags: string[] = [];
+  @Input() tagItems: string[] = [];
+  @Output() tagItemsChange = new EventEmitter<string[]>();
 
   //TODO: Update this to pull from a cache or DB for new entires and filter to a only last pick.
   allTags: string[] = [];
@@ -28,17 +29,18 @@ export class SolacetkTagsComponent implements OnInit {
 
   @Input() tkHeading: string = "Tags";
   @Input() canEdit: boolean = true;
+  @Input() placeholderText: string ="#tag...";
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
   constructor() { }
 
   ngOnInit(): void {
     if (this.model.length > 0) {
-      this.tags = this.model.split(" ");
+      this.tagItems = this.model.split(" ");
     }
 
     this.modelChange.subscribe((next) => {
-      if (this.model && this.model.length > 0) this.tags = this.model.split(" ");
+      if (this.model && this.model.length > 0) this.tagItems = this.model.split(" ");
     });
 
     this.filteredTags = this.tagCrtl.valueChanges.pipe(
@@ -52,7 +54,7 @@ export class SolacetkTagsComponent implements OnInit {
   public add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    if (value) this.tags.push(value);
+    if (value) this.tagItems.push(value);
 
     event.chipInput!.clear();
     this.updateTags();
@@ -60,22 +62,22 @@ export class SolacetkTagsComponent implements OnInit {
   }
 
   public remove(tag: string): void {
-    const index = this.tags.indexOf(tag);
+    const index = this.tagItems.indexOf(tag);
 
     if (index >= 0) {
-      this.tags.splice(index, 1);
+      this.tagItems.splice(index, 1);
       this.updateTags();
     }
   }
 
   public updateTags(): void {
-    this.model = this.tags.join(" ");
+    this.model = this.tagItems.join(" ");
     this.modelChange.emit(this.model);
-    this.tagsChange.emit(this.tags);
+    this.tagsChange.emit(this.tagItems);
   }
 
   public selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
+    this.tagItems.push(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
     this.tagCrtl.setValue(null);
     this.updateTags();

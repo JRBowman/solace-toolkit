@@ -16,6 +16,11 @@
     <p *ngIf="indev" class="font-large auto-flex align-center model-toolbar-text text-center" style="color: crimson;">Currently In Development</p>
 
     <div class="gap-1 auto-flex"></div>
+    
+    <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="textFilterStr"
+    (tagsChange)="textFilter($event)" tkHeading="Search Filter" placeholderText="Filters" [(tagItems)]="textFilters"></solacetk-tags>
+
+    <div class="gap-1 no-flex"></div>
 
     <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="tagFilters"
       (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
@@ -110,7 +115,7 @@
               <mat-card-actions class="align-end full-width">
                 <div *ngIf="hasPreview" class="disp-flex full-width align-center" style="text-align: justify;">
                   <div class="auto-flex"></div>
-                  <img class="sprite no-flex" style="height: 128px; image-rendering: pixelated; image-rendering: crisp-edges;" [src]="GetPreviewUrl(model)" alt="sprite">
+                  <img class="sprite no-flex" style="height: 192px; image-rendering: pixelated; image-rendering: crisp-edges;" [src]="GetPreviewUrl(model)" alt="sprite">
                   <div class="auto-flex"></div>
               </div>
               </mat-card-actions>

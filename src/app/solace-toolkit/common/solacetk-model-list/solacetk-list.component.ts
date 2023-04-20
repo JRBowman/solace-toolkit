@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { SolacetkService } from '../../services/solacetk-service.service';
-import {PageEvent} from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 import {
   MatSnackBar,
@@ -26,6 +26,8 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() moduleName: string = "Solace TK Module";
   @Input() modelUri: string = "Controllers/movables";
   @Input() tagFilters: string = "";
+  @Input() textFilterStr: string = "";
+  @Input() textFilters: string[] = [];
   @Input() hideEditorHeading: boolean = true;
   @Input() collapseCoreEditor: boolean = false;
   @Input() queryParameters: string = "";
@@ -63,17 +65,16 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     if (this.devBanner) this.devBanner.dismiss();
   }
 
-   ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this.RefreshView();
     if (this.indev) {
       const horizontalPosition: MatSnackBarHorizontalPosition = 'start';
       const verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-      this.devBanner = this._snackBar.openFromComponent(SolacetkDevbannerComponent, {horizontalPosition: horizontalPosition, verticalPosition: verticalPosition, data: {message:"This Module is currently In Development" }});
+      this.devBanner = this._snackBar.openFromComponent(SolacetkDevbannerComponent, { horizontalPosition: horizontalPosition, verticalPosition: verticalPosition, data: { message: "This Module is currently In Development" } });
     }
   }
 
-  public GetPreviewUrl(model: any): string
-  {
+  public GetPreviewUrl(model: any): string {
     model.previewUrl = this.service.apiHost + "Ase/" + model.name + "/" + model.name + ".gif";
     return model.previewUrl;
   }
@@ -93,7 +94,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       pe.pageSize = this.pageSize;
       this.filteredData = this.dataStruct;
       this.handlePageEvent(pe);
-      
+
     });
   }
 
@@ -175,15 +176,37 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public Refresh(): void { }
   public Close(): void { }
 
-  public filter(tags: string[]): any[] {
-    this.filteredData = this.dataStruct.filter(model => model.tags.includes(this.tagFilters));
-
+  private createPageEvent(index: number = 0, length: number = 0, size: number = 25): void {
     let pe = new PageEvent();
     pe.length = this.filteredData.length;
-    pe.pageIndex = 0;
-    pe.pageSize = this.pageSize;
+    pe.pageIndex = length > size ? index : 0;
+    pe.pageSize = size;
 
     this.handlePageEvent(pe);
+  }
+
+  public filter(textTags: string[], apply: boolean = true): any[] {
+    //this.filteredData = this.textFilter(this.textFilters);
+    //if (!this.filteredData || this.filteredData.length == 0) this.filteredData = this.dataStruct;
+    if (textTags.length > 0 || this.tagFilters.length > 0) {
+      this.filteredData = this.filteredData.filter(model => model.tags.includes(this.tagFilters));
+    }
+    else this.filteredData = this.textFilter(this.textFilters, false);
+
+    if (apply) this.createPageEvent(this.pageIndex, this.filteredData.length, this.pageSize);
+    return this.filteredData;
+  }
+
+  public textFilter(textTags: string[], apply: boolean = true): any[] {
+    this.filteredData = this.dataStruct;
+    console.log(this.dataStruct);
+    if (textTags.length > 0 && this.filteredData.length > 0) {
+      this.filteredData = this.filteredData.filter(model => textTags.some(t => model.name.toLowerCase().includes(t.toLowerCase())));
+    }
+    else this.filteredData = this.dataStruct;
+
+    if (this.tagFilters.length > 0) this.filteredData = this.filter([], false);
+    if (apply) this.createPageEvent(this.pageIndex, this.filteredData.length, this.pageSize);
     return this.filteredData;
   }
 
@@ -204,7 +227,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
-    let start = this.pageIndex  * this.pageSize;
+    let start = this.pageIndex * this.pageSize;
 
     this.viewData = this.filteredData.slice(start, start + this.pageSize);
   }

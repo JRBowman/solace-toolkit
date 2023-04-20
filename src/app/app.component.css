@@ -25,3 +25,21 @@
 .flexor {
     display: flex !important;
 }
+
+.solacetk-icon {
+    background-color: #ffffff00;
+    width: 48px;
+    height: 48px;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    position: absolute;
+    border-radius: 12px;
+    background-image:url(https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/Ase/soltk-logo/soltk-logo.png);
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.solacetk-icon:hover {
+    background-color: #2d6e661f;
+}
