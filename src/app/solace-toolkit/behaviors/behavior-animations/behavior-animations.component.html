@@ -1,7 +1,7 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()"
-    (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations" moduleColor="#ac5c36">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()" [hasPreview]="true"
+    (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations" moduleColor="#ac5c36" modulePlateType="An">
     <div class="editor">
-        
+
     </div>
 
     <div class="editor-panels">
@@ -9,47 +9,11 @@
         <!-- <mat-accordion class="auto-flex align-start full-width"> -->
         <div class="disp-flex">
             <div *ngIf="editorState == 2" class="auto-flex full-width">
-                <!-- <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            <mat-icon class="mr-2">animation</mat-icon>
-                            Start Frames
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
 
-                    <ng-template matExpansionPanelContent>
+                <!-- Frames Content: -->
+                <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name">
+                </solacetk-animation-editor>
 
-                        <solacetk-animation-editor [(model)]="model.startFrameData" [modelName]="model.name" [unloadChange]="unloadModules">
-                        </solacetk-animation-editor>
-                    </ng-template>
-
-                </mat-expansion-panel> -->
-
-                <!-- <div class="gap-1 no-flex"></div> -->
-
-                
-                        <!-- Frames Content: -->
-                        <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name" >
-                        </solacetk-animation-editor>
-                        
-
-                <!-- <div class="gap-1"></div> -->
-
-                <!-- <mat-expansion-panel [disabled]="!model.id" class="auto-flex">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            <mat-icon class="mr-2">animation</mat-icon>
-                            End Frames
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <ng-template matExpansionPanelContent>
-
-                        <solacetk-animation-editor [(model)]="model.endFrameData" [modelName]="model.name" (unload)="unloadModules">
-                        </solacetk-animation-editor>
-                    </ng-template>
-
-                </mat-expansion-panel> -->
                 <div class="no-flex gap-1"></div>
             </div>
 
@@ -61,21 +25,21 @@
 
     <div class="editor-buttons">
 
-        <button mat-icon-button color="accent" matTooltip="Create State from Animation" aria-label="Create State from Animation"
-            (click)="CreateState()">
+        <button mat-icon-button color="accent" matTooltip="Create State from Animation"
+            aria-label="Create State from Animation" (click)="CreateState()">
             <mat-icon>publish</mat-icon>
         </button>
 
-        <button mat-icon-button matSuffix (click)="cleanAllFrameNames()" >
+        <button mat-icon-button matSuffix (click)="cleanAllFrameNames()">
             <mat-icon>cleaning_services</mat-icon>
-          </button>
+        </button>
     </div>
 
     <!-- List Buttons -->
     <div class="list-buttons">
 
-        <button mat-icon-button color="accent" matTooltip="Import Many Animations Aseprite Files." aria-label="Import Many Animations Aseprite Files."
-            (click)="aseUpload.click()">
+        <button mat-icon-button color="accent" matTooltip="Import Many Animations Aseprite Files."
+            aria-label="Import Many Animations Aseprite Files." (click)="aseUpload.click()">
             <mat-icon>file_open</mat-icon>
         </button>
         <input type="file" class="file-input" (change)="importAseAnims($event)" accept=".ase,.aseprite" #aseUpload

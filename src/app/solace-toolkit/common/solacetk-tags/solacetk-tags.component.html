@@ -6,7 +6,7 @@
         <mat-label class="font-small">{{tkHeading}}</mat-label>
         <mat-chip-grid class="auto-flex font-small" #chipList aria-label="Tag Selection">
             
-            <mat-chip class="font-small" *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+            <mat-chip class="font-small" style="flex: 1 1 8em;" *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 {{tag}}
                 <button matChipRemove>
                     <mat-icon>cancel</mat-icon>
@@ -33,8 +33,8 @@
 
     <mat-chip-set #cardChips class="auto-flex font-small full-width flex-col" #chipList aria-label="Tag Selection">
 
-        <div class="auto-flex sol-card-chips flex-flow-reverse flex-wrap-reverse">
-            <mat-chip class="font-small" mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
+        <div class="auto-flex disp-flex sol-card-chips flex-flow-reverse flex-wrap-reverse">
+            <mat-chip class="font-small auto-flex" style="flex: 0 1 4em;" mat-button *ngFor="let tag of tags" (removed)="remove(tag)" (click)="chipClick(tag)">
                 <small>{{tag}}</small>
             </mat-chip>
         </div>

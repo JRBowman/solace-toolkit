@@ -30,6 +30,8 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   @Input() collapseCoreEditor: boolean = false;
   @Input() queryParameters: string = "";
   @Input() indev: boolean = false;
+  @Input() hasPreview: boolean = false;
+  @Input() modulePlateType: string = "Tk";
 
   @Input() moduleColor: string = "#606060";
 
@@ -54,7 +56,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.moduleIcon = this.moduleName.replace(' ', '').toLowerCase() + ".png";
-    
+    this.pageIndex = 0;
   }
 
   ngOnDestroy(): void {
@@ -70,6 +72,12 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public GetPreviewUrl(model: any): string
+  {
+    model.previewUrl = this.service.apiHost + "Ase/" + model.name + "/" + model.name + ".gif";
+    return model.previewUrl;
+  }
+
   public RefreshView() {
     this.IsLoading = true;
 
@@ -81,7 +89,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
       this.length = this.dataStruct.length;
       let pe = new PageEvent();
       pe.length = this.length;
-      pe.pageIndex = 0;
+      pe.pageIndex = this.pageIndex;
       pe.pageSize = this.pageSize;
       this.filteredData = this.dataStruct;
       this.handlePageEvent(pe);
@@ -186,7 +194,7 @@ export class SolaceTKListComponent implements OnInit, AfterViewInit {
   public pageEvent?: PageEvent;
   public length = 50;
   public pageSize = 24;
-  public pageIndex = 0;
+  public pageIndex: number = 0;
 
   handlePageEvent(e: PageEvent) {
     console.log(e);

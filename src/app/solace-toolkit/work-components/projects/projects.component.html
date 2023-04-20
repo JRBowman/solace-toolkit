@@ -47,7 +47,7 @@
 
 <solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()" modelUri="Work/projects"
     (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true"
-    queryParameters="?includeElements=true">
+    queryParameters="?includeElements=true" modulePlateType="Pr">
 
     <!-- <div class="editor-header">
         <div *ngIf="model.id && modelLoaded && showProjectBuckets">
@@ -64,15 +64,8 @@
                     <h4>Outstanding Hours: <small class="mat-card-subtitle">{{totalOutstanding}} Hours
                             ({{totalOutstandingDays}} Days)</small></h4>
                 </div>
-                <div class="auto-flex">
-                    <h4>Staged: <small class="mat-card-subtitle">{{totalReview}}%</small></h4>
-                </div>
-                <div class="auto-flex">
-                    <h4>Completed: <small class="mat-card-subtitle">{{totalCompleted}}%</small></h4>
-                </div>
-                <button mat-button class="no-flex" matTooltip="Refresh Report" (click)="ReportHours()">
-                    <mat-icon>refresh</mat-icon>
-                </button>
+
+
             </div>
 
             <div *ngIf="projectBillable" class="disp-flex">
