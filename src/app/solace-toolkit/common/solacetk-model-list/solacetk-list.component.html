@@ -108,8 +108,10 @@
               </mat-card-content>
 
               <mat-card-actions class="align-end full-width">
-                <div *ngIf="hasPreview" class="auto-flex full-width align-center" style="text-align: justify;">
-                  <img class="sprite no-flex" style="height: 96px; image-rendering: pixelated; image-rendering: crisp-edges;" [src]="GetPreviewUrl(model)" alt="sprite">
+                <div *ngIf="hasPreview" class="disp-flex full-width align-center" style="text-align: justify;">
+                  <div class="auto-flex"></div>
+                  <img class="sprite no-flex" style="height: 128px; image-rendering: pixelated; image-rendering: crisp-edges;" [src]="GetPreviewUrl(model)" alt="sprite">
+                  <div class="auto-flex"></div>
               </div>
               </mat-card-actions>
 

@@ -33,13 +33,13 @@
 
 
                     <div class="disp-flex">
-                        <div class="disp-flex" style="flex: 1 1 18em;" *ngFor="let behavior of model.behaviors">
+                        <div class="disp-flex auto-flex" style="flex: 1 1 18em; padding: 4px;" *ngFor="let behavior of model.behaviors">
 
-                            <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex full-width" style="padding-left: 4px; padding-right: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
+                            <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex full-height full-height"  [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
                                 [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
                                 bgColor="#545c80"></solacetk-animation-editor>
 
-                                <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" style="padding: 4px;" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
+                                <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height full-width"  panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
                         
                                     <div class="panel-content auto-flex">
         
