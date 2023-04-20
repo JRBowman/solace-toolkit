@@ -342,7 +342,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.fileName = file.name;
       this.sheetName = "";
       const formData = new FormData();
-      formData.append(this.model?.name + ".ase", file);
+      formData.append(this.modelName + ".ase", file);
       const upload$ = this.service.CreateModel("Files/ase", formData);
 
       upload$.subscribe((response) => {
