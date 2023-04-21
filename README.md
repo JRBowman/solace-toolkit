@@ -18,11 +18,6 @@ Review the **Wiki** to learn more about the Data-Oriented Framework and how to u
 
 <img src="src/assets/soldof/wiki/solacetk-overview.svg" width="100%">
 
-# Events and Messages
-![image](https://user-images.githubusercontent.com/29755339/233663479-bbd771bd-8ce4-4a1c-a886-4edacfec8e74.png)
-
-![image](https://user-images.githubusercontent.com/29755339/233663120-61a9b6a2-1113-4001-bcc1-bb3336eb93d8.png)
-
 # Data Operations and Processing
 Variable Substitution, Data Operations and Methods, and more. This section explains the existing supported Data Operations within the Toolkit.
 
@@ -38,6 +33,19 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 
 ## Rand Function
 `rand(min,max)` -> takes 2 arguments for Min and Max values to randomly select between (standard rand function).
+
+# Events and Messages
+`Eventing` in SolaceTK, being data-only in design, defines the details of an action that can be executed by its owner.
+- `Events` are defined by `Conditions`, `Owner Data Changes`, and `Messages`.
+  - `Messages` are defined with `Recipients` of a `RecipientType` and `Recipient Data Changes` for each targetted.
+  - `Messages` are sent to _Recipients_ via a _Core Message Queue_ and processed by each Recipient's internal Message Queue.
+    - _These features are part of the specification of implementation against the data_ 
+- `Conditions` are sets of _KeyValuePairs_ that correspond with _StateData_ of the owner.
+- `Owner Data Changes` are sets of _KeyValuePairs_ that make changes to the owner's _StateData_
+
+![image](https://user-images.githubusercontent.com/29755339/233663479-bbd771bd-8ce4-4a1c-a886-4edacfec8e74.png)
+
+![image](https://user-images.githubusercontent.com/29755339/233663120-61a9b6a2-1113-4001-bcc1-bb3336eb93d8.png)
 
 # Environment Design
 ![image](https://user-images.githubusercontent.com/29755339/233662478-4fd3d5b3-6e89-4884-a612-4613eb98e68e.png)
