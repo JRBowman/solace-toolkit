@@ -21,6 +21,12 @@ Review the **Wiki** to learn more about the Data-Oriented Framework and how to u
 # Data Operations and Processing
 Variable Substitution, Data Operations and Methods, and more. This section explains the existing supported Data Operations within the Toolkit.
 
+## Variable KeyPair Operations 
+![image](https://user-images.githubusercontent.com/29755339/233698831-7a1ed59f-3592-4e91-bed8-15e71b6e1c98.png)
+
+## Condition KeyPair Operations
+![image](https://user-images.githubusercontent.com/29755339/233698567-921cbd7e-cc4c-49be-8cba-95ebf604c340.png)
+
 ## Variable Substitution
 `$(var)` -> takes 1 variable name argument and substitutes the token with the variable value.
 
@@ -34,12 +40,33 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 ## Rand Function
 `rand(min,max)` -> takes 2 arguments for Min and Max values to randomly select between (standard rand function).
 
-# Events and Messages
+![image](https://user-images.githubusercontent.com/29755339/233699300-b2f6fd33-dc6b-49af-8448-67b1620b29e0.png)
+
+# Behaviors - ![image](https://user-images.githubusercontent.com/29755339/233696117-710c55bf-0c3b-4ab5-bf2e-41df32299032.png) ![image](https://user-images.githubusercontent.com/29755339/233696192-b4b323af-f77b-4891-82f5-b6fd91d21d6f.png) ![image](https://user-images.githubusercontent.com/29755339/233696319-52142cad-3023-4f37-9f45-ffb7b637a00d.png)
+![image](https://user-images.githubusercontent.com/29755339/233696773-c6b7aa46-2394-4f31-9301-25b5edd47797.png)
+
+## States - ![image](https://user-images.githubusercontent.com/29755339/233696192-b4b323af-f77b-4891-82f5-b6fd91d21d6f.png)
+![image](https://user-images.githubusercontent.com/29755339/233697356-7cfa7b1f-b9c3-4011-9d53-9b54ad8372a1.png)
+![image](https://user-images.githubusercontent.com/29755339/233697154-e5f9acd1-44cf-4804-8d98-f1796dee12f8.png)
+
+## Animations - ![image](https://user-images.githubusercontent.com/29755339/233696319-52142cad-3023-4f37-9f45-ffb7b637a00d.png)
+![image](https://user-images.githubusercontent.com/29755339/233696944-15cbba52-7ee6-4f50-a6ad-d0dda72c9025.png)
+![image](https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png)
+![image](https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png)
+![image](https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png)
+
+# Events and Messages - ![image](https://user-images.githubusercontent.com/29755339/233695473-fb5e8dc3-569d-4d27-9817-267d435aee70.png) ![image](https://user-images.githubusercontent.com/29755339/233695195-f1b18959-a3f6-471f-a513-dc2add77c85f.png)
 `Eventing` in SolaceTK, being data-only in design, defines the details of an action that can be executed by its owner.
 - `Events` are defined by `Conditions`, `Owner Data Changes`, and `Messages`.
   - `Messages` are defined with `Recipients` of a `RecipientType` and `Recipient Data Changes` for each targetted.
+
+    ![image](https://user-images.githubusercontent.com/29755339/233694375-6830b7da-52fa-470c-97e0-11b576315e08.png)
+    ![image](https://user-images.githubusercontent.com/29755339/233694701-c35a536b-c2f1-4c34-a0b1-b2492827213c.png)
+
   - `Messages` are sent to _Recipients_ via a _Core Message Queue_ and processed by each Recipient's internal Message Queue.
-    - _These features are part of the specification of implementation against the data_ 
+    - _These features are part of the specification of implementation against the data_
+![image](https://user-images.githubusercontent.com/29755339/233694967-a77e24b8-7f21-415f-a8fc-4d7c169248e5.png)
+
 - `Conditions` are sets of _KeyValuePairs_ that correspond with _StateData_ of the owner.
 - `Owner Data Changes` are sets of _KeyValuePairs_ that make changes to the owner's _StateData_
 
@@ -47,23 +74,9 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 
 ![image](https://user-images.githubusercontent.com/29755339/233663120-61a9b6a2-1113-4001-bcc1-bb3336eb93d8.png)
 
-# Environment Design
+# Environment Design - ![image](https://user-images.githubusercontent.com/29755339/233695681-7f822888-6a90-4112-af0b-caed6d1395da.png) ![image](https://user-images.githubusercontent.com/29755339/233695819-104dda10-6999-48a4-aa7a-38237e51e736.png)
 ![image](https://user-images.githubusercontent.com/29755339/233662478-4fd3d5b3-6e89-4884-a612-4613eb98e68e.png)
 
-# Project Management
+# Project Management - ![image](https://user-images.githubusercontent.com/29755339/233695931-de3f2758-751e-4b73-ae7f-985d70d1ca1a.png)
 ![image](https://user-images.githubusercontent.com/29755339/233666047-80b4e7a2-0a99-474c-9de5-bafa49db02ba.png)
 ![image](https://user-images.githubusercontent.com/29755339/233666100-124a0db6-467b-450a-9655-fa6ffb203378.png)
-
-# Animations
-![image](https://user-images.githubusercontent.com/29755339/233666514-27806617-1429-4377-804b-44e1988c9004.png)
-![image](https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png)
-![image](https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png)
-![image](https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png)
-
-
-
-
-
-
-
-
