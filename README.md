@@ -7,7 +7,7 @@ The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framewor
 
 _* While this is a Data Framework that can be implemented with any game engine - SolaceTK provides an implementation with `Unity Engine` and makes use of the WebGL builds to create a comprehensive 'Test Harness' to design and test SolaceTK Data in the engine without build times or installing the engine, the entire development experience and lifecycle can take place in a web-browser!_
 
-_** Version 1 currently only supports `Animation` importing using `Aseprite` `.ase` and `.aseprite` files - the API uses Aseprite on the backend to create Sprite Sheets, Preview Gifs, and initial Animation Frame Data from Aseprite JSON. Version 2 will fully support importing pre-configured Sprite Sheets as `.png` as well as other formats._
+_** Version 1 currently only supports `Animation` importing using [Aseprite](https://github.com/aseprite/aseprite) `.ase` and `.aseprite` files - the API uses Aseprite on the backend to create Sprite Sheets, Preview Gifs, and initial Animation Frame Data from Aseprite JSON. Version 2 will fully support importing pre-configured Sprite Sheets as `.png` as well as other formats._
 
 # Data-Oriented Framework
 This Toolkit uses a Data-Oriented Framework self-titled _Soldof_ (Solace Data-Oriented Framework) - It is comprised of a series of **Interfaces and Data Contracts** which define **Data Models** that encompass the general needs of the game system: 
