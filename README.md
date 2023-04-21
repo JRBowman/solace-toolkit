@@ -1,4 +1,6 @@
 # **Solace Toolkit (TK) for Game Development**
+[![solacetk](https://img.shields.io/badge/SolaceTK-UI%20Demo-blue)](https://solacetk-ui-dev-bowman-dev.apps.bocp.onbowman.com/)
+
 The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framework** to build and design games in your engine of choice.
 
 # Data-Oriented Framework
