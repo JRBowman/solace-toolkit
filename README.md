@@ -42,6 +42,20 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 # Environment Design
 ![image](https://user-images.githubusercontent.com/29755339/233662478-4fd3d5b3-6e89-4884-a612-4613eb98e68e.png)
 
+# Project Management
+![image](https://user-images.githubusercontent.com/29755339/233666047-80b4e7a2-0a99-474c-9de5-bafa49db02ba.png)
+![image](https://user-images.githubusercontent.com/29755339/233666100-124a0db6-467b-450a-9655-fa6ffb203378.png)
+
+# Animations
+![image](https://user-images.githubusercontent.com/29755339/233666514-27806617-1429-4377-804b-44e1988c9004.png)
+![image](https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png)
+![image](https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png)
+![image](https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png)
+
+
+
+
+
 
 
 
