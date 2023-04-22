@@ -2,6 +2,7 @@
 [![solace-toolkit](https://img.shields.io/badge/SolaceTK-Home-purple)](https://github.com/JRBowman/solace-toolkit)
 [![solace-toolkit](https://img.shields.io/badge/SolaceTK-API%20Home-green)](https://github.com/JRBowman/solacetk-service)
 [![solacetk](https://img.shields.io/badge/SolaceTK-UI%20Demo-blue)](https://solacetk-ui-dev-bowman-dev.apps.bocp.onbowman.com/)
+[![solacetk](https://img.shields.io/badge/SolaceTK-API%20Demo-yellow)](https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/swagger)
 
 The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framework** to build and design games in your engine of choice.
 
