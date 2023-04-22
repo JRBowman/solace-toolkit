@@ -1,7 +1,7 @@
 # **Solace Toolkit (TK) for Game Development**
 [![solacetk](https://img.shields.io/badge/SolaceTK-UI%20Demo-blue)](https://solacetk-ui-dev-bowman-dev.apps.bocp.onbowman.com/)
 [![solace-toolkit](https://img.shields.io/badge/SolaceTK-API%20Home-purple)](https://github.com/JRBowman/solacetk-service)
-![image](https://user-images.githubusercontent.com/29755339/233661935-5e9ee107-de15-4818-9557-78bd11192d9e.png)
+<img src="https://user-images.githubusercontent.com/29755339/233661935-5e9ee107-de15-4818-9557-78bd11192d9e.png" width="100%">
 
 The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framework** to build and design games in your engine of choice.
 
@@ -14,7 +14,7 @@ This Toolkit uses a Data-Oriented Framework self-titled _Soldof_ (Solace Data-Or
 > **Actor Controllers** that have **Behavior Systems** which define **Branches** that select **States** by **Conditions** - providing **Animation**, **Action/Movement**, and **State Management**.
 
 Each of these components of the game system are captured as **Serialized Data Models** - The **Models** collectively define Objects and Behaviors that can be applied and implemented against Objects in the Game Engine of Choice, using the **Data Contracts and Interfaces** Defined by the **Models**
-![image](https://user-images.githubusercontent.com/29755339/233662859-5fe2f8ae-913b-4ed9-86f6-b4c7f92c8b9c.png)
+<img src="https://user-images.githubusercontent.com/29755339/233662859-5fe2f8ae-913b-4ed9-86f6-b4c7f92c8b9c.png" width="100%">
 
 
 # Wiki
@@ -46,18 +46,19 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 
 ![image](https://user-images.githubusercontent.com/29755339/233699300-b2f6fd33-dc6b-49af-8448-67b1620b29e0.png)
 
-# Behaviors - ![image](https://user-images.githubusercontent.com/29755339/233696117-710c55bf-0c3b-4ab5-bf2e-41df32299032.png) ![image](https://user-images.githubusercontent.com/29755339/233696192-b4b323af-f77b-4891-82f5-b6fd91d21d6f.png) ![image](https://user-images.githubusercontent.com/29755339/233696319-52142cad-3023-4f37-9f45-ffb7b637a00d.png)
-![image](https://user-images.githubusercontent.com/29755339/233696773-c6b7aa46-2394-4f31-9301-25b5edd47797.png)
+# Behaviors - <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/behavior-plate.svg"> <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/state-plate.svg"> <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/animation-plate.svg">
+<img src="https://user-images.githubusercontent.com/29755339/233696773-c6b7aa46-2394-4f31-9301-25b5edd47797.png" width="100%">
 
-## States - ![image](https://user-images.githubusercontent.com/29755339/233696192-b4b323af-f77b-4891-82f5-b6fd91d21d6f.png)
-![image](https://user-images.githubusercontent.com/29755339/233697356-7cfa7b1f-b9c3-4011-9d53-9b54ad8372a1.png)
-![image](https://user-images.githubusercontent.com/29755339/233697154-e5f9acd1-44cf-4804-8d98-f1796dee12f8.png)
+## States - <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/state-plate.svg">
+<img src="https://user-images.githubusercontent.com/29755339/233697356-7cfa7b1f-b9c3-4011-9d53-9b54ad8372a1.png" width="100%">
+<img src="https://user-images.githubusercontent.com/29755339/233697154-e5f9acd1-44cf-4804-8d98-f1796dee12f8.png" width="100%">
 
-## Animations - ![image](https://user-images.githubusercontent.com/29755339/233696319-52142cad-3023-4f37-9f45-ffb7b637a00d.png)
-![image](https://user-images.githubusercontent.com/29755339/233696944-15cbba52-7ee6-4f50-a6ad-d0dda72c9025.png)
-![image](https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png)
-![image](https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png)
-![image](https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png)
+
+## Animations - <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/animation-plate.svg">
+<img src="https://user-images.githubusercontent.com/29755339/233696944-15cbba52-7ee6-4f50-a6ad-d0dda72c9025.png">
+<img src="https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png" width="100%">
+<img src="https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png">
+<img src="https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png">
 
 # Events and Messages - ![image](https://user-images.githubusercontent.com/29755339/233695473-fb5e8dc3-569d-4d27-9817-267d435aee70.png) ![image](https://user-images.githubusercontent.com/29755339/233695195-f1b18959-a3f6-471f-a513-dc2add77c85f.png)
 `Eventing` in SolaceTK, being data-only in design, defines the details of an action that can be executed by its owner.
@@ -74,13 +75,12 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 - `Conditions` are sets of _KeyValuePairs_ that correspond with _StateData_ of the owner.
 - `Owner Data Changes` are sets of _KeyValuePairs_ that make changes to the owner's _StateData_
 
-![image](https://user-images.githubusercontent.com/29755339/233663479-bbd771bd-8ce4-4a1c-a886-4edacfec8e74.png)
-
-![image](https://user-images.githubusercontent.com/29755339/233663120-61a9b6a2-1113-4001-bcc1-bb3336eb93d8.png)
+<img src="https://user-images.githubusercontent.com/29755339/233663479-bbd771bd-8ce4-4a1c-a886-4edacfec8e74.png" width="100%">
+<img src="https://user-images.githubusercontent.com/29755339/233663120-61a9b6a2-1113-4001-bcc1-bb3336eb93d8.png" width="100%">
 
 # Environment Design - ![image](https://user-images.githubusercontent.com/29755339/233695681-7f822888-6a90-4112-af0b-caed6d1395da.png) ![image](https://user-images.githubusercontent.com/29755339/233695819-104dda10-6999-48a4-aa7a-38237e51e736.png)
-![image](https://user-images.githubusercontent.com/29755339/233662478-4fd3d5b3-6e89-4884-a612-4613eb98e68e.png)
+<img src="https://user-images.githubusercontent.com/29755339/233662478-4fd3d5b3-6e89-4884-a612-4613eb98e68e.png" width="100%">
 
 # Project Management - ![image](https://user-images.githubusercontent.com/29755339/233695931-de3f2758-751e-4b73-ae7f-985d70d1ca1a.png)
-![image](https://user-images.githubusercontent.com/29755339/233666047-80b4e7a2-0a99-474c-9de5-bafa49db02ba.png)
-![image](https://user-images.githubusercontent.com/29755339/233666100-124a0db6-467b-450a-9655-fa6ffb203378.png)
+<img src="https://user-images.githubusercontent.com/29755339/233666047-80b4e7a2-0a99-474c-9de5-bafa49db02ba.png" width="100%">
+<img src="https://user-images.githubusercontent.com/29755339/233666100-124a0db6-467b-450a-9655-fa6ffb203378.png" width="100%">
