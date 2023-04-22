@@ -1,7 +1,6 @@
 # **Solace Toolkit (TK) for Game Development**
 [![solacetk](https://img.shields.io/badge/SolaceTK-UI%20Demo-blue)](https://solacetk-ui-dev-bowman-dev.apps.bocp.onbowman.com/)
 [![solace-toolkit](https://img.shields.io/badge/SolaceTK-API%20Home-purple)](https://github.com/JRBowman/solacetk-service)
-<img src="https://user-images.githubusercontent.com/29755339/233661935-5e9ee107-de15-4818-9557-78bd11192d9e.png" width="100%">
 
 The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framework** to build and design games in your engine of choice.
 
@@ -14,13 +13,15 @@ This Toolkit uses a Data-Oriented Framework self-titled _Soldof_ (Solace Data-Or
 > **Actor Controllers** that have **Behavior Systems** which define **Branches** that select **States** by **Conditions** - providing **Animation**, **Action/Movement**, and **State Management**.
 
 Each of these components of the game system are captured as **Serialized Data Models** - The **Models** collectively define Objects and Behaviors that can be applied and implemented against Objects in the Game Engine of Choice, using the **Data Contracts and Interfaces** Defined by the **Models**
-<img src="https://user-images.githubusercontent.com/29755339/233662859-5fe2f8ae-913b-4ed9-86f6-b4c7f92c8b9c.png" width="100%">
 
+<img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/wiki/solacetk-overview.svg" width="100%">
+
+<img src="https://user-images.githubusercontent.com/29755339/233661935-5e9ee107-de15-4818-9557-78bd11192d9e.png" width="100%">
+<img src="https://user-images.githubusercontent.com/29755339/233662859-5fe2f8ae-913b-4ed9-86f6-b4c7f92c8b9c.png" width="100%">
 
 # Wiki
 Review the **Wiki** to learn more about the Data-Oriented Framework and how to use this Toolkit!
-
-<img src="src/assets/soldof/wiki/solacetk-overview.svg" width="100%">
+- TODO: add the links to the Wiki .md files.
 
 # Data Operations and Processing
 Variable Substitution, Data Operations and Methods, and more. This section explains the existing supported Data Operations within the Toolkit.
