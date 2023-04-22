@@ -1,4 +1,4 @@
-<svg style="width: 36px; height: 36px; display: flex;">
+<svg width="32px" height="32px">
   <circle cx="50%" cy="50%" r="12" stroke-width="2" style="stroke: white; fill: mediumslateblue;"></circle>
-  <text text-anchor="middle" dominant-baseline="middle" x="50%" y="50%" style="fill: white; font-size: 12px; font-weight: 500;">St</text>
+  <text text-anchor="middle" dominant-baseline="middle" x="50%" y="50%" style="fill: white; font-size: 12px; font-weight: 500; font-family: monospace;">St</text>
 </svg>
