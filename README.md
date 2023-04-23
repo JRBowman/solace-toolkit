@@ -29,25 +29,25 @@ Review the **Wiki** to learn more about the Data-Oriented Framework and how to u
 Variable Substitution, Data Operations and Methods, and more. This section explains the existing supported Data Operations within the Toolkit.
 
 ## Variable KeyPair Operations 
-![image](https://user-images.githubusercontent.com/29755339/233698831-7a1ed59f-3592-4e91-bed8-15e71b6e1c98.png)
+<img src="https://user-images.githubusercontent.com/29755339/233698831-7a1ed59f-3592-4e91-bed8-15e71b6e1c98.png" width="50%">
 
 ## Condition KeyPair Operations
-![image](https://user-images.githubusercontent.com/29755339/233698567-921cbd7e-cc4c-49be-8cba-95ebf604c340.png)
+<img src="https://user-images.githubusercontent.com/29755339/233698567-921cbd7e-cc4c-49be-8cba-95ebf604c340.png" width="50%">
 
 ## Variable Substitution
 `$(var)` -> takes 1 variable name argument and substitutes the token with the variable value.
 
-![image](https://user-images.githubusercontent.com/29755339/233663831-7b3e3942-84d2-46de-99f5-89b4982d163f.png)
+<img src="https://user-images.githubusercontent.com/29755339/233663831-7b3e3942-84d2-46de-99f5-89b4982d163f.png" width="45%">
 
 ## RandSet Function
 `randset(x,...N)` -> takes arguments delimited by `,` - `randSet` randomnly chooses an item from the provided Set and uses that value.
 
-![image](https://user-images.githubusercontent.com/29755339/233663893-1fe3d7e5-64bc-407f-ac3d-6e72c9f2b6aa.png)
+<img src="https://user-images.githubusercontent.com/29755339/233663893-1fe3d7e5-64bc-407f-ac3d-6e72c9f2b6aa.png" width="45%">
 
 ## Rand Function
 `rand(min,max)` -> takes 2 arguments for Min and Max values to randomly select between (standard rand function).
 
-![image](https://user-images.githubusercontent.com/29755339/233699300-b2f6fd33-dc6b-49af-8448-67b1620b29e0.png)
+<img src="https://user-images.githubusercontent.com/29755339/233699300-b2f6fd33-dc6b-49af-8448-67b1620b29e0.png" width="45%">
 
 # Behaviors - <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/behavior-plate.svg"> <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/state-plate.svg"> <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/animation-plate.svg">
 <img src="https://user-images.githubusercontent.com/29755339/233696773-c6b7aa46-2394-4f31-9301-25b5edd47797.png" width="100%">
@@ -58,10 +58,10 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 
 
 ## Animations - <img src="https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/src/assets/soldof/icons/animation-plate.svg">
-<img src="https://user-images.githubusercontent.com/29755339/233696944-15cbba52-7ee6-4f50-a6ad-d0dda72c9025.png">
+<img src="https://user-images.githubusercontent.com/29755339/233696944-15cbba52-7ee6-4f50-a6ad-d0dda72c9025.png" width="100%">
 <img src="https://user-images.githubusercontent.com/29755339/233666684-963de386-3b65-44a6-8538-1ce2953ff6d3.png" width="100%">
-<img src="https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png">
-<img src="https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png">
+<img src="https://user-images.githubusercontent.com/29755339/233666590-b5385125-ef0f-492e-b167-6ca9f249820b.png" width="33%">
+<img src="https://user-images.githubusercontent.com/29755339/233666796-50fb93be-5369-44c1-b261-d27f324dd0f4.png" width="66%">
 
 # Events and Messages - ![image](https://user-images.githubusercontent.com/29755339/233695473-fb5e8dc3-569d-4d27-9817-267d435aee70.png) ![image](https://user-images.githubusercontent.com/29755339/233695195-f1b18959-a3f6-471f-a513-dc2add77c85f.png)
 `Eventing` in SolaceTK, being data-only in design, defines the details of an action that can be executed by its owner.
@@ -73,7 +73,8 @@ Variable Substitution, Data Operations and Methods, and more. This section expla
 
   - `Messages` are sent to _Recipients_ via a _Core Message Queue_ and processed by each Recipient's internal Message Queue.
     - _These features are part of the specification of implementation against the data_
-![image](https://user-images.githubusercontent.com/29755339/233694967-a77e24b8-7f21-415f-a8fc-4d7c169248e5.png)
+    
+    <img src="https://user-images.githubusercontent.com/29755339/233694967-a77e24b8-7f21-415f-a8fc-4d7c169248e5.png" width="50%">
 
 - `Conditions` are sets of _KeyValuePairs_ that correspond with _StateData_ of the owner.
 - `Owner Data Changes` are sets of _KeyValuePairs_ that make changes to the owner's _StateData_
