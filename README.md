@@ -24,7 +24,7 @@ The compiled artifact is a _static website_ that can be delivered via any desire
 This repo contains a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/) that builds SolaceTK as a container using [`NGINX`](https://www.nginx.com/) as the default web tier - httpd, IIS, etc. should all work fine should you run this application build through a [`Source-to-Image`](https://github.com/openshift/source-to-image) / [`BuildPacks`](https://buildpacks.io/) process!
 
 ## Development Instructions
-The User Interface uses [`Angular`](https://angular.io/), [`Angular Materials`](), [`ngx-markdown`]() as the _primary_ Framework, UI Library, and .md Markdown renderer - to get started with development, you must prep your environment with the following pre-requisites: (more details can be found using the [`Angular: Local Environment Setup`](https://angular.io/guide/setup-local) guide)
+The User Interface uses [`Angular`](https://angular.io/), [`Angular Materials`](https://material.angular.io/), [`ngx-markdown`](https://github.com/jfcere/ngx-markdown) as the _primary_ Framework, UI Library, and .md Markdown renderer - to get started with development, you must prep your environment with the following pre-requisites: (more details can be found using the [`Angular: Local Environment Setup`](https://angular.io/guide/setup-local) guide)
 
 1. Install [Node.js LTS or greater](https://nodejs.org/en)
 2. Install the Angular CLI (ng) globally:
