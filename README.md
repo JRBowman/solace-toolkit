@@ -10,6 +10,47 @@ _* While this is a Data Framework that can be implemented with any game engine -
 
 _** Version 1 currently only supports `Animation` importing using [Aseprite](https://github.com/aseprite/aseprite) `.ase` and `.aseprite` files - the API uses Aseprite on the backend to create Sprite Sheets, Preview Gifs, and initial Animation Frame Data from Aseprite JSON. Version 2 will fully support importing pre-configured Sprite Sheets as `.png` as well as other formats._
 
+## Build / Deployment Instructions
+This repository contains the [`Angular 15`](https://angular.io/) User Interface of SolaceTK - building the Application for Deployment only requires [`Node.js`](https://nodejs.org/en) and [`NPM`](https://www.npmjs.com/):
+```
+# Install all the dependencies
+npm install
+
+# Generate the build of the application
+npm run build
+```
+The compiled artifact is a _static website_ that can be delivered via any desired HTTP Web Server.
+
+This repo contains a [`Dockerfile`](https://docs.docker.com/engine/reference/builder/) that builds SolaceTK as a container using [`NGINX`](https://www.nginx.com/) as the default web tier - httpd, IIS, etc. should all work fine should you run this application build through a [`Source-to-Image`](https://github.com/openshift/source-to-image) / [`BuildPacks`](https://buildpacks.io/) process!
+
+## Development Instructions
+The User Interface uses [`Angular`](https://angular.io/), [`Angular Materials`](), [`ngx-markdown`]() as the _primary_ Framework, UI Library, and .md Markdown renderer - to get started with development, you must prep your environment with the following pre-requisites: (more details can be found using the [`Angular: Local Environment Setup`](https://angular.io/guide/setup-local) guide)
+
+1. Install [Node.js LTS or greater](https://nodejs.org/en)
+2. Install the Angular CLI (ng) globally:
+ - _Windows Users -> Allow RemoteSigned script execution in PowerShell:_
+```
+PS: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+```
+npm install -g @angular/cli
+```
+3. Open the `solace-toolkit` git repo in your editor of choice and use the `ng CLI` commands to work with the application:
+- Perform an npm install in the source code directory
+```
+npm install
+```
+- Generate new Angular `Components` or other constructs (component.ts, component.html, component.css, etc.)
+  - `ng generate` can be shortened to `ng g`
+```
+ng g component <component-name>
+```
+- Run the Angular application using the ng development server:
+```
+ng serve
+```
+- `ng serve` will serve the application using `http://localhost:4200/`
+
 # Data-Oriented Framework
 This Toolkit uses a Data-Oriented Framework self-titled _Soldof_ (Solace Data-Oriented Framework) - It is comprised of a series of **Interfaces and Data Contracts** which define **Data Models** that encompass the general needs of the game system: 
 > **Actor Controllers** that have **Behavior Systems** which define **Branches** that select **States** by **Conditions** - providing **Animation**, **Action/Movement**, and **State Management**.
