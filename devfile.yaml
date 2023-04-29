@@ -15,7 +15,7 @@ projects:
       checkoutFrom:
         revision: master
       remotes:
-        origin: https://bitbucket.org/onbowman/solace-toolkit.git
+        origin: https://github.com/JRBowman/solace-toolkit.git
 components:
   - container:
       command:
