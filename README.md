@@ -51,6 +51,10 @@ ng serve
 ```
 - `ng serve` will serve the application using `http://localhost:4200/`
 
+## Develop with DevFile
+Use `OpenShift DevSpaces` or `Eclipse Che` (or another service supporting DevFile spec) to start working on the application!
+``` https://<devspaces-url>#https://github.com/JRBowman/solace-toolkit.git ```
+
 # Data-Oriented Framework
 This Toolkit uses a Data-Oriented Framework self-titled _Soldof_ (Solace Data-Oriented Framework) - It is comprised of a series of **Interfaces and Data Contracts** which define **Data Models** that encompass the general needs of the game system: 
 > **Actor Controllers** that have **Behavior Systems** which define **Branches** that select **States** by **Conditions** - providing **Animation**, **Action/Movement**, and **State Management**.
