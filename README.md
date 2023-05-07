@@ -4,6 +4,10 @@
 [![solacetk](https://img.shields.io/badge/SolaceTK-UI%20Demo-blue)](https://solacetk-ui-dev-bowman-dev.apps.bocp.onbowman.com/)
 [![solacetk](https://img.shields.io/badge/SolaceTK-API%20Demo-yellow)](https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/swagger)
 
+*Still Early in Development! The current state of things are "Pre-Alpha", but development is nearing a point where it can enter an alpha release where it should be 'fully' functional to it's purpose!*
+
+---
+
 The _Solace Toolkit (TK) for Game Development_ offers a **Data-Oriented Framework** to build and design games in your engine of choice.
 
 _* While this is a Data Framework that can be implemented with any game engine - SolaceTK provides an implementation with `Unity Engine` and makes use of the WebGL builds to create a comprehensive 'Test Harness' to design and test SolaceTK Data in the engine without build times or installing the engine, the entire development experience and lifecycle can take place in a web-browser!_
