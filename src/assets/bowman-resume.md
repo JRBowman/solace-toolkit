@@ -1,13 +1,16 @@
 # Justin Bowman
 ---
-```Cloud Solutions / Software Engineer```
+
+#### Software Engineer | #1 .NET Fan | (self-proclaimed) Sage of .NET Modernization | @bowman-dev
 ---
+
 Solutions Idealist; continuously learn and adapt to produce the best solution. Proven background bringing the
 complex and abstract to fruition across disciplines of Client Services, Engineering, DevOps, Architecture, and
 Infrastructure. Contagiously positive and team-focused - thrives in ambiguity, collaborative environments, and
 dynamic positions. Always going above and beyond to support the team and clients.
+
 ---
-<br>
+
 
 # <img src="assets/rh-logo.svg" alt="Red Hat" class="img-align-bottom" height="32px">
 ---
