@@ -28,7 +28,7 @@ RUN npm run build
 
 # Use official nginx image as the base image
 #FROM registry.access.redhat.com/ubi8/nginx-120
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nginx:latest
+FROM image-registry.openshift-image-registry.svc:5000/openshift/nginx-ocp:latest
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/onbowman-13 /usr/share/nginx/html
