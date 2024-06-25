@@ -4,15 +4,6 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <!-- <div class="disp-flex" style="width: 48px; height: 48px;">
-    <div matRipple class="disp-flex solacetk-icon relative-input"
-      (click)="drawer.toggle()">
-      <div class="gap-1 auto-flex"></div>
-      <mat-icon class="auto-flex align-center" style="text-align: center;">menu</mat-icon>
-      <div class="gap-1 auto-flex"></div>
-    </div>
-  </div> -->
-
   <span class="gap-1 no-flex"></span>
 
   <span class="no-flex mr-2">
@@ -46,24 +37,34 @@
 
 </mat-toolbar>
 
-<mat-drawer-container class="site-nav" autosize [style.height]="(soltkService.screenHeight - 64) + 'px'">
-  <mat-drawer #drawer class="site-nav-bar mat-elevation-z6" opened="false" mode="side">
+<!-- [style.height]="(soltkService.screenHeight - 64) + 'px'"-->
+<mat-drawer-container class="site-nav" autosize [style.height]="(soltkService.screenHeight - 64) + 'px'" style="transform-style: preserve-3d;">
+  <mat-drawer #drawer class="site-nav-bar mat-elevation-z6" style="transform-style: preserve-3d;" opened="false" mode="side">
     <mat-nav-list>
       <a mat-list-item class="auto-flex" [routerLink]="['/']">Home</a>
       <mat-divider></mat-divider>
       <a mat-list-item class="auto-flex" [routerLink]="['/wiki']">Documentation</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item class="auto-flex" [routerLink]="['/apiexplorer']">API Explorer</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item class="auto-flex" [routerLink]="['/artifacts']">Artifacts</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item class="auto-flex" [routerLink]="['/timelinetp']">Timeline Preview</a>
     </mat-nav-list>
 
     <div *ngIf="soltkService.screenWidth < 990">
       <solacetk-sidenav-extended class="full-width"></solacetk-sidenav-extended>
     </div>
   </mat-drawer>
+  
 
   <!-- <section class="router-content"> -->
-  <section class="full-height">
+  <section class="full-height" style="transform-style: preserve-3d; overflow-x: hidden;">
     <router-outlet></router-outlet>
   </section>
-
+  
+  <!-- <mat-drawer #drawer2 class="site-nav-bar mat-elevation-z6" opened mode="side" position="end">test</mat-drawer> -->
   <!-- <div class="auto-flex gap-1"></div> -->
+
 
 </mat-drawer-container>

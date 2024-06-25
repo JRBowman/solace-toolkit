@@ -5,7 +5,7 @@ import { SoftwareComponent } from './software/software.component';
 import { CharacterControllersComponent } from './solace-toolkit/controllers-components/character-controllers/character-controllers.component';
 import { EnvironmentMapComponent } from './solace-toolkit/environment-components/environment-map/environment-map.component';
 import { SoundSetsComponent } from './solace-toolkit/sound-components/sound-sets/sound-sets.component';
-import { SolacetkWikiComponent } from './solace-toolkit/common/solacetk-wiki/solacetk-wiki.component';
+import { SolacetkWikiComponent } from './solace-toolkit/wiki/solacetk-wiki/solacetk-wiki.component';
 import { BehaviorAnimationsComponent } from './solace-toolkit/behaviors/behavior-animations/behavior-animations.component';
 import { TransportControllersComponent } from './solace-toolkit/controllers-components/transport-controllers/transport-controllers.component';
 import { BehaviorActionsComponent } from './solace-toolkit/action-components/behavior-actions/behavior-actions.component';
@@ -42,6 +42,10 @@ import { IdentityComponent } from './identity/identity.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior-states/behavior-noop-states.component';
+import { SolacetkApiExplorerComponent } from './solace-toolkit/dashboards/solacetk-api-explorer/solacetk-api-explorer.component';
+import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
+import { ArtifactsComponent } from './solace-toolkit/artifacts/artifacts/artifacts.component';
+import { SolacetkTimelinePanelComponent } from './solace-toolkit/common/solacetk-timeline-panel/solacetk-timeline-panel.component';
 
 const routes: Routes = [
   {
@@ -51,6 +55,16 @@ const routes: Routes = [
   {
     path: 'software',
     component: SoftwareComponent,
+    ////canActivate: [AuthorizationGuard]
+  },
+  {
+    path: 'artifacts',
+    component: ArtifactsComponent,
+    ////canActivate: [AuthorizationGuard]
+  },
+  {
+    path: 'apiexplorer',
+    component: ApiExplorerComponent,
     ////canActivate: [AuthorizationGuard]
   },
   {
@@ -64,9 +78,13 @@ const routes: Routes = [
     //canActivate: [AuthorizationGuard]
   },
   {
-    path: 'characters',
+    path: 'entities',
     component: CharacterControllersComponent,
     //canActivate: [AuthorizationGuard]
+  },
+  {
+    path: 'timelinetp',
+    component: SolacetkTimelinePanelComponent
   },
   {
     path: 'enemies',

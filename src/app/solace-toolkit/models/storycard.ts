@@ -1,4 +1,5 @@
 import { ActionEvent } from "./actionevent";
+import { ActionMessage } from "./actionmessage";
 import { IModelTK } from "./imodel-tk";
 import { SoltkKeyValue } from "./soltk-key-value";
 
@@ -10,7 +11,7 @@ export class StoryCard implements IModelTK {
     public tags?: string = "";
 
     public startTime: number = 0;
-    public duration: string = "00:00:00";
+    public duration: number = 0;
     public endTime: number = 0;
 
     public order: number = 0;
@@ -19,4 +20,6 @@ export class StoryCard implements IModelTK {
     public downstreamData: SoltkKeyValue[] = [];
 
     public events: ActionEvent[] = [];
+
+    public messages: ActionMessage[] = [];
 }

@@ -2,71 +2,46 @@
 
     <div class="panel-content">
 
-        <div class="disp-flex">
-        <div class="gap-1 auto-flex"></div>
+        <div class="disp-flex full-width">
+            <div class="gap-1 auto-flex"></div>
 
-        <div class="auto-flex width-5">
-            <!-- Tile Rule Grid: -->
-            <!-- (click)="rule.checkType = (rule.checkType + 1) % 6" -->
-            <div *ngIf="model" class="map-panel relative-container no-flex" style="background-color: rgb(24 23 36);"
-                [style.width]="(ruleEditorTileSize * ruleEditorScale) * ruleEditorWidth + 'px'"
-                [style.height]="(ruleEditorTileSize * ruleEditorScale) * ruleEditorHeight + 'px'">
-                <div class="relative-input" [style.left]="midWidth * (ruleEditorTileSize * ruleEditorScale) + 'px'"
-                    [style.top]="midHeight * (ruleEditorTileSize * ruleEditorScale) + 'px'"
-                    [style.transform]="'scale(' + ruleEditorScale + ')'">
-                    <div matRipple class="gridCell background-grid" *ngFor="let rule of model"
-                        [style.backgroundColor]="rule.checkType == 4 ? rule.colorKey : ''"
-                        [class.gridSelected]="rule == selectedRule" [style.left]="(rule.vx) * ruleEditorTileSize + 'px'"
-                        [style.top]="(rule.vy) * ruleEditorTileSize + 'px'" (click)="selectedRule = rule; rule.checkType = selectedMode;"
-                        [matTooltip]="'Rule at [' + rule.vx + ',' + rule.vy + ']'">
-                        <mat-icon class="font-small" *ngIf="(rule.vx == 0 && rule.vy == 0)" [style.background-color]="tile.colorKey">adjust</mat-icon>
-                        <mat-icon class="font-small" style="opacity: 0.25;" *ngIf="rule.checkType == 0">block</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 1">do_not_disturb_on</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 2">help</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 3"
-                            [style.background-color]="tile.colorKey">adjust</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 4">cancel</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 5">input</mat-icon>
-                        <mat-icon class="font-small" *ngIf="rule.checkType == 6" [style.background-color]="rule.colorKey">invert_colors</mat-icon>
+            <!-- <div class="auto-flex"> -->
+                <!-- Tile Rule Grid: -->
+                <!-- (click)="rule.checkType = (rule.checkType + 1) % 6" -->
+                <div *ngIf="model.rules" class="map-panel relative-container no-flex align-center" style="background-color: rgb(24 23 36);"
+                    [style.width]="(ruleEditorTileSize * ruleEditorScale) * ruleEditorWidth + 'px'"
+                    [style.height]="(ruleEditorTileSize * ruleEditorScale) * ruleEditorHeight + 'px'">
+                    <div class="relative-input" [style.left]="midWidth * (ruleEditorTileSize * ruleEditorScale) + 'px'"
+                        [style.top]="midHeight * (ruleEditorTileSize * ruleEditorScale) + 'px'"
+                        [style.transform]="'scale(' + ruleEditorScale + ')'">
+                        <div matRipple class="gridCell background-grid" *ngFor="let rule of model.rules"
+                            [style.backgroundColor]="rule.checkType == 4 ? rule.colorKey : ''"
+                            [class.gridSelected]="rule == selectedRule"
+                            [style.left]="(rule.vx) * ruleEditorTileSize + 'px'"
+                            [style.top]="(rule.vy) * ruleEditorTileSize + 'px'"
+                            (click)="selectedRule = rule; rule.checkType = selectedMode;"
+                            [matTooltip]="'Rule at [' + rule.vx + ',' + rule.vy + ']'">
+                            <mat-icon class="font-small" *ngIf="(rule.vx == 0 && rule.vy == 0)"
+                                [style.background-color]="model.colorKey">adjust</mat-icon>
+                            <mat-icon class="font-small" style="opacity: 0.25;"
+                                *ngIf="rule.checkType == 0">block</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 1">do_not_disturb_on</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 2">help</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 3"
+                                [style.background-color]="model.colorKey">adjust</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 4">cancel</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 5">input</mat-icon>
+                            <mat-icon class="font-small" *ngIf="rule.checkType == 6"
+                                [style.background-color]="rule.colorKey">invert_colors</mat-icon>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            <!-- </div> -->
+
+            <div class="gap-1 auto-flex"></div>
 
         </div>
-
-        <div class="gap-1 auto-flex"></div>
-
-    </div>
-
-        <!-- Rule Editor: -->
-        <!-- <div class="disp-flex auto-flex width-2" style="height: fit-content;"> -->
-        <!-- <mat-form-field class="no-flex font-small width-5">
-                <mat-label class="font-small">X</mat-label>
-                <input matInput placeholder="X" [(ngModel)]="selectedRule.vx">
-            </mat-form-field>
-
-            <div class="gap-1 no-flex"></div>
-
-            <mat-form-field class="no-flex font-small width-5">
-                <mat-label class="font-small">Y</mat-label>
-                <input matInput placeholder="Y" [(ngModel)]="selectedRule.vy">
-            </mat-form-field> -->
-
-        <!-- <div class="gap-1 no-flex"></div>
-
-            <mat-form-field class="auto-flex font-small">
-                <mat-label>Check Types</mat-label>
-                <mat-select [(ngModel)]="selectedRule.checkType">
-                    <mat-option *ngFor="let ct of checkTypes" [value]="checkTypes.indexOf(ct)">
-                        {{ct}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field> -->
-
-
-        <!-- </div> -->
-
-
 
     </div>
 
@@ -76,86 +51,46 @@
 
 
         <mat-button-toggle-group class="align-center full-height" [(value)]="selectedMode"
-        (change)="ModeChange($event)">
-        <mat-button-toggle value="0" style="background-color: #ff80489e;" 
-            matTooltip="Disabled | N/A" aria-label="Disabled | N/A">
-            <mat-icon>block</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="1" style="background-color: #49316a9e;"
-            matTooltip="Empty" aria-label="Empty">
-            <mat-icon>do_not_disturb_on</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="2" style="background-color: #ff10609e;"
-            matTooltip="Any or Null"aria-label="Any or Null">
-            <mat-icon>help</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="6" [style.background-color]="selectedRule.colorKey != '' ? selectedRule.colorKey : '#3036409e'" 
-            matTooltip="Tile Color Key" aria-label="By Color Key"
-        (click)="selectedRule.checkType = 6; groupColorKey.click();">
-            <mat-icon>invert_colors</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="3" [style.background-color]="tile.colorKey != '' ? tile.colorKey : '#3036409e'"
-            matTooltip="This" aria-label="This">
-            <mat-icon>adjust</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="4" style="background-color: #ff1f1f9e;" 
-            matTooltip="Not This or Null" aria-label="Not This or Null">
-            <mat-icon>cancel</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="5" style="background-color: #3155af9e;"
-            matTooltip="Named Tile" aria-label="Named Tile">
-            <mat-icon>input</mat-icon>
-        </mat-button-toggle>
-    </mat-button-toggle-group>
-
-    <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
-        <mat-icon matPrefix class="align-center" [style.color]="selectedRule.colorKey">
-            radar
-        </mat-icon>
-        <mat-label class="font-small">Color Key</mat-label>
-        <input matInput #groupColorKey placeholder="Color Key" type="color" [(ngModel)]="selectedRule.colorKey"
-            [value]="selectedRule.colorKey">
-    </mat-form-field>
-
-        <!-- Rule Check Type Options: -->
-        <!-- <div class="disp-flex auto-flex" style="transform: scale(0.9);">
-            <button mat-icon-button matTooltip="Disabled / Don't Care" style="background-color: #ff80489e;" (click)="selectedRule.checkType = 0">
+            (change)="ModeChange($event)">
+            <mat-button-toggle [value]="0" style="background-color: #ff80489e;" matTooltip="Disabled | N/A"
+                aria-label="Disabled | N/A">
                 <mat-icon>block</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button matTooltip="Empty" style="background-color: #49316a9e;" (click)="selectedRule.checkType = 1">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="1" style="background-color: #49316a9e;" matTooltip="Empty" aria-label="Empty">
                 <mat-icon>do_not_disturb_on</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button matTooltip="Any or Null" style="background-color: #ff10609e;" (click)="selectedRule.checkType = 2">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="2" style="background-color: #ff10609e;" matTooltip="Any or Null"
+                aria-label="Any or Null">
                 <mat-icon>help</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button [style.background-color]="selectedRule.colorKey != '' ? selectedRule.colorKey : '#3036409e'" matTooltip="Tile Color Key" (click)="selectedRule.checkType = 6; groupColorKey.click();">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="6"
+                [style.background-color]="selectedRule.colorKey != '' ? selectedRule.colorKey : '#3036409e'"
+                matTooltip="Tile Color Key" aria-label="By Color Key"
+                (click)="selectedRule.checkType = 6; groupColorKey.click();">
                 <mat-icon>invert_colors</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button matTooltip="This" [style.background-color]="tile.colorKey != '' ? tile.colorKey : '#3036409e'" (click)="selectedRule.checkType = 3">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="3" [style.background-color]="model.colorKey != '' ? model.colorKey : '#3036409e'"
+                matTooltip="This" aria-label="This">
                 <mat-icon>adjust</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button style="background-color: #ff1f1f9e;" matTooltip="Not This or Null" (click)="selectedRule.checkType = 4">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="4" style="background-color: #ff1f1f9e;" matTooltip="Not This or Null"
+                aria-label="Not This or Null">
                 <mat-icon>cancel</mat-icon>
-            </button>
-            <div class="gap-1 no-flex"></div>
-            <button mat-icon-button style="background-color: #3155af9e;" matTooltip="Named Tile" (click)="selectedRule.checkType = 5">
+            </mat-button-toggle>
+            <mat-button-toggle [value]="5" style="background-color: #3155af9e;" matTooltip="Named Tile"
+                aria-label="Named Tile">
                 <mat-icon>input</mat-icon>
-            </button>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
 
-            <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
-                <mat-icon matPrefix class="align-center" [style.color]="selectedRule.colorKey">
-                    radar
-                </mat-icon>
-                <mat-label class="font-small">Color Key</mat-label>
-                <input matInput #groupColorKey placeholder="Color Key" type="color" [(ngModel)]="selectedRule.colorKey"
-                    [value]="selectedRule.colorKey">
-            </mat-form-field>
-        </div> -->
+        <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
+            <mat-icon matPrefix class="align-center" [style.color]="selectedRule.colorKey">
+                radar
+            </mat-icon>
+            <mat-label class="font-small">Color Key</mat-label>
+            <input matInput #groupColorKey placeholder="Color Key" type="color" [(ngModel)]="selectedRule.colorKey"
+                [value]="selectedRule.colorKey">
+        </mat-form-field>
 
         <div class="gap-1 auto-flex"></div>
 

@@ -1,0 +1,134 @@
+.para-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 100svh;
+    min-width: 48em;
+    position: relative;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    transform: translateZ(-16px) scale(1.5);
+}
+
+.parallax-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100svh;
+    min-width: 48em;
+    position: relative;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    /* transform: translateZ(-16px) scale(4); */
+}
+
+.parallax-item {
+    background: url(http://localhost:5010/Artifacts/solace-site-para-room-0a.png) top;
+    background-size: cover;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    /* width: 128em; */
+    image-rendering: pixelated;
+    position: absolute;
+    /* overflow: visible;
+    transform: translateZ(-16px); */
+    transform-style: preserve-3d;
+    /* filter: blur(3px); */
+    animation: pan-overlay;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+
+}
+
+.parallax-overlay {
+    position: absolute;
+    background: linear-gradient(black,#1c1a22,#c23d5a 50%,#241b3a 60%,black);
+    width: 100%;
+    height: 100%;
+    opacity: 0.96;
+    background-size: 100% 100%;
+    mix-blend-mode: hard-light;
+    animation: gradient-glow 3s infinite linear;
+    /* animation: pan-overlay-grad 60s infinite linear; */
+}
+
+.env-overlay {
+    background: linear-gradient(black 16%, #a7ffe7 33%, black 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    background-size: 100% 100%;
+    mix-blend-mode: color-burn;
+    animation: gradient-glow 30s infinite linear;
+}
+
+.parallax-item-1 {
+    /* background: url(http://localhost:5010/Artifacts/solace-site-parallax-world.png) top center; */
+    background-size: cover;
+    height: 100%;
+    min-height: 48em;
+    width: 100%;
+    /* width: 128em; */
+    image-rendering: pixelated;
+    position: absolute;
+    overflow: visible;
+    /* transform: translateZ(-1em) scale(1.33); */
+    transform-style: preserve-3d;
+    /* filter: blur(2px); */
+    animation: pan-overlay 3.5s infinite linear;
+}
+
+.scene-item {
+    image-rendering: pixelated;
+    position: absolute;
+    transform: scale(3);
+    transform-style: preserve-3d;
+    filter: blur(0px);
+}
+
+
+.scene-items {
+    image-rendering: pixelated;
+    position: absolute;
+    transform-style: preserve-3d;
+    filter: blur(0px);
+}
+
+
+@keyframes pan-overlay {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 530% 50%;
+    }
+
+}
+
+@keyframes pan-overlay-grad {
+    from {
+        background-position: 0 0%;
+    }
+
+    to {
+        background-position: 0% 100%;
+    }
+
+}
+
+@keyframes gradient-glow {
+    0% {
+        filter: saturate(1);
+    }
+
+    50% {
+        filter: saturate(1.5);
+    }
+
+    100% {
+        filter: saturate(1);
+    }
+
+}

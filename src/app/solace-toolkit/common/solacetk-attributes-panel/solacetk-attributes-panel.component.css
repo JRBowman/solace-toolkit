@@ -25,3 +25,18 @@
     z-index: 5;
 }
 
+.control-element-b {
+    display: flex;
+    font-size: initial;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute; 
+    right: 0px; 
+    bottom: 0px; 
+    width: 24px; 
+    height: 24px; 
+    padding: 0; 
+    padding-top: 4px; 
+    z-index: 5;
+}
+

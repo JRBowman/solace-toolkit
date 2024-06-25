@@ -1,21 +1,29 @@
-<div class="full-width full-height" *ngIf="panelType == 'panel'">
+<div *ngIf="panelType == 'panel'" class="disp-flex auto-flex">
     <mat-card class="auto-flex full-height full-width" [style.fontSize]="fontSize" [style.backgroundColor]="panelColor">
 
-        <mat-card-header>
-            <div mat-card-avatar class="width-1">
-                <mat-icon [style.fontSize]="fontSize">{{panelIcon}}</mat-icon>
-            </div>
-            <mat-card-title [style.fontSize]="fontSize">{{panelName}}</mat-card-title>
+        <mat-card-header class="disp-flex flex-gap-050" style="padding-top: 8px; padding-bottom: 8px;" *ngIf="headerEnabled">
+            <!-- <div mat-card-avatar class="disp-flex" style="height: 24px; width: auto; margin: 0;">
+                
+            </div> -->
+            <mat-card-title class="disp-flex flex-gap-050" style="align-items: center;" [style.fontSize]="fontSize">
+                <mat-icon>{{panelIcon}}</mat-icon>
+                <span>{{panelName}}</span>
+            </mat-card-title>
+            <ng-content select=".panel-header"></ng-content>
         </mat-card-header>
 
-        <mat-card-content [style.width]="unitWidth ? (unitWidth * 64) + 'px' : 'auto'"
-            [style.height]="unitHeight ? (unitHeight * 64) + 'px' : 'auto'" [style.overflow]="overflowMethod">
+        <mat-card-content *ngIf="contentEnabled" [style.width]="unitWidth ? (unitWidth * 2) + 'em' : 'auto'"
+            [style.height]="unitHeight ? (unitHeight * 2) + 'em' : '100%'" class="full-height" [style.overflow]="overflowMethod">
 
             <ng-content select=".panel-content"></ng-content>
 
         </mat-card-content>
 
-        <mat-card-actions>
+        <mat-card-footer *ngIf="footerEnabled">
+            <ng-content select=".panel-footer"></ng-content>
+        </mat-card-footer>
+
+        <mat-card-actions *ngIf="actionsEnabled">
             <ng-content select=".panel-actions"></ng-content>
         </mat-card-actions>
 
@@ -26,14 +34,11 @@
 
 <div *ngIf="panelType == 'expansionpanel'">
 
-    <mat-expansion-panel [class]="'mat-elevation-z' + panelElevation" [style.backgroundColor]="panelColor" [style.fontSize]="fontSize" [expanded]="expanded" (closed)="panelClosed()" (opened)="panelOpened()">
+    <mat-expansion-panel [disabled]="!panelEnabled" [class]="'mat-elevation-z' + panelElevation" [style.backgroundColor]="panelColor" [style.fontSize]="fontSize" [expanded]="expanded" (closed)="panelClosed()" (opened)="panelOpened()">
         <mat-expansion-panel-header>
-            <mat-panel-title [style.fontSize]="fontSize">
-                <div class="disp-flex full-width">
-                    <mat-icon class="align-center" [style.fontSize]="fontSize">{{panelIcon}}</mat-icon>
-                    <div class="gap-2 no-flex"></div>
-                    <div class="align-center auto-flex">{{panelName}}</div>
-                </div>
+            <mat-panel-title class="disp-flex flex-gap-050" [style.fontSize]="fontSize">
+                    <mat-icon class="align-center">{{panelIcon}}</mat-icon>
+                    {{panelName}}
             </mat-panel-title>
         </mat-expansion-panel-header>
 

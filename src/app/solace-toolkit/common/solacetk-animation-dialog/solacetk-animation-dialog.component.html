@@ -1,0 +1,37 @@
+<h1 mat-dialog-title [align]="'start'">Frame Options</h1>
+<div class="disp-flex">
+    <div mat-dialog-content style="width: 48rem;" [align]="'start'">
+
+        <mat-form-field class="font-small mr-2">
+            <mat-label>Duration</mat-label>
+            <input type="number" matInput [(ngModel)]="duration" placeholder="100">
+            <span matTextSuffix>ms</span>
+        </mat-form-field>
+
+        <mat-form-field class="font-small mr-2">
+            <mat-label>Sprite Width</mat-label>
+            <input type="number" matInput [(ngModel)]="width" placeholder="48">
+            <span matTextSuffix>px</span>
+        </mat-form-field>
+
+        <mat-form-field class="font-small">
+            <mat-label>Sprite Height</mat-label>
+            <input type="number" matInput [(ngModel)]="height" placeholder="48">
+            <span matTextSuffix>px</span>
+        </mat-form-field>
+
+        <mat-chip-listbox *ngIf="model && model.frames" class="auto-flex full-width" style="flex-wrap: wrap;"
+            [multiple]="true" (change)="framesChanged($event)">
+            <mat-chip-option class="width-4 justify-center font-xsmall soltk-chip" *ngFor="let frame of model.frames"
+                [value]="frame.order">
+                <!-- [style.background-color]="selectedFrame == frame ? 'mediumvioletred' : 'cadetblue'"> -->
+                {{model.frames.indexOf(frame)}}
+            </mat-chip-option>
+        </mat-chip-listbox>
+    </div>
+</div>
+
+<div mat-dialog-actions [align]="'start'">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="applyData()">Apply</button>
+</div>

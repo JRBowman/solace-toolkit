@@ -1,5 +1,5 @@
-<solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Character Controllers"
-    modelUri="Controllers" [indev]="true" modulePlateType="Co">
+<solacetk-model-list [(model)]="model" (modelCreate)="Create()" moduleName="Entities" modelUri="Entities" [indev]="true"
+    modulePlateType="Co" (modelLoaded)="Load()" (modelClosed)="Closed()">
 
     <!-- <character-controller [(model)]="model" editor-content></character-controller> -->
     <div class="editor">
@@ -40,7 +40,7 @@
                 </mat-form-field>
 
                 <div class="gap-1 no-flex"></div>
-                
+
                 <mat-form-field class="no-flex font-small">
                     <mat-label class="font-small">Position Y</mat-label>
                     <input matInput #worldPositionY placeholder="Position Y" [(ngModel)]="model.worldPositionY">
@@ -78,13 +78,11 @@
 
             <div class="gap-1 no-flex"></div>
 
-            <mat-checkbox name="affectedByGravity" class="no-flex align-center"
-                [(ngModel)]="model.affectedByGravity">
+            <mat-checkbox name="affectedByGravity" class="no-flex align-center" [(ngModel)]="model.affectedByGravity">
                 Affected By
                 Gravity</mat-checkbox>
 
-            <mat-checkbox name="useFriction" class="no-flex align-center"
-                [(ngModel)]="model.useFriction">Use
+            <mat-checkbox name="useFriction" class="no-flex align-center" [(ngModel)]="model.useFriction">Use
                 Friction
             </mat-checkbox>
 
@@ -97,44 +95,97 @@
 
     <div class="editor-panels">
 
-        <mat-accordion class="auto-flex align-start full-width">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Behavior
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-                    <ng-template matExpansionPanelContent>
-
-                    </ng-template>
-
-
-                <mat-action-row>
-                    <button mat-button color="primary" (click)="openBehaviorsSheet()">Add</button>
-                </mat-action-row>
-
-            </mat-expansion-panel>
-
-            <div class="gap-1 auto-flex"></div>
-
-        </mat-accordion>
-
-        <div class="disp-flex">
+        <div class="disp-flex flex-gap-050 full-height" style="overflow-x: hidden;">
 
             <!-- <div class="auto-flex width-33 min-width-6"> -->
-                <solacetk-controller-component class="auto-flex width-33" [(model)]="model.components" panelColor="darkslategrey">
-                </solacetk-controller-component>
+            <solacetk-controller-component style="flex: 0 1 32em;" [(model)]="model.components"
+                panelColor="darkslategrey">
+            </solacetk-controller-component>
             <!-- </div> -->
-            <div class="gap-1 no-flex"></div>
-    
+            <!-- <div class="gap-1 no-flex"></div> -->
+
+            <solacetk-panel panelName="Entity" panelColor="" class="full-height auto-flex" style="display: contents;">
+
+                <div class="panel-content full-width full-height component-panel" >
+                    <div class="relative-container components-center full-width full-height">
+                        <div class="component-item" *ngIf="behaviorLoaded && behavior != null" cdkDrag style="transform:scale(8);">
+                            <img class="sprite no-flex" style="height: 48px; image-rendering: pixelated; image-rendering: crisp-edges;"
+                            [src]="GetPreviewUrl(behavior.behaviors[0].animation)" alt="sprite">
+                        </div>
+                        <div class="component-visual" *ngFor="let component of model.components" cdkDrag
+                            [matTooltip]="component.name" [style.backgroundColor]="component.colorKey"
+                            [hidden]="!component.enabled"
+                            [style.width]="(component.scaleX * 32) + 'px'"
+                            [style.height]="(component.scaleY * 32) + 'px'"
+                            [style.transform]="'translate3d(' + (component.positionX * 32 * 8) + 'px,' + (component.positionY * 32 * 8) + 'px, 0px) scale(8)'"
+                            [style.borderRadius]="component.componentType == 7 ? '32px' : '0px'">
+                        </div>
+                    </div>
+                </div>
+
+            </solacetk-panel>
+
             <!-- <div class="no-flex width-2 min-width-6"> -->
-                <!-- <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1" panelName="Test Data" panelType="expansionpanel"
+            <!-- <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1" panelName="Test Data" panelType="expansionpanel"
                     [(model)]="model.Data">
                 </solacetk-attributes-panel> -->
             <!-- </div> -->
+
         </div>
 
+        <mat-expansion-panel class="auto-flex align-start full-width" style="margin-top: 4px;">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Behavior
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+                <!-- Load Behavior System from FK here: -->
+                <div class="disp-flex flex-gap-050" *ngIf="behaviorLoaded">
+                    <div class="auto-flex" style="flex: 1 1 18em; width: 18em;"
+                        *ngFor="let behavior of behavior?.behaviors">
+
+                        <solacetk-model-card class="auto-flex align-center" style="width: inherit;"
+                            *ngIf="!behavior.noOp" [(model)]="behavior.animation">
+                        </solacetk-model-card>
+
+                        <solacetk-panel *ngIf="behavior.noOp" class="auto-flex" panelColor="#803040"
+                            [panelName]="behavior?.name ?? ''" fontSize="medium">
+
+                            <div class="panel-content auto-flex">
+
+                                <mat-chip-listbox class="auto-flex" aria-label="Branch States" multiple="false"
+                                    selectable="false">
+                                    <mat-chip-option class="font-small auto-flex width-33"
+                                        *ngFor="let nState of behavior.nextStates" [style.background-color]="'#545c80'"
+                                        style="overflow: hidden;">
+                                        {{nState.name}}
+                                    </mat-chip-option>
+                                </mat-chip-listbox>
+
+                            </div>
+
+                        </solacetk-panel>
+                    </div>
+                </div>
+            </ng-template>
+
+
+            <mat-action-row>
+                <button mat-button color="primary" (click)="openBehaviorsSheet()">Add</button>
+            </mat-action-row>
+
+        </mat-expansion-panel>
+
+
+        <div class="gap-2 no-flex"></div>
+
+        <!-- <solacetk-webgl-harness [class.harness-disabled]="!harnessEnabled" [class.harness-enabled]="harnessEnabled" *ngIf="harnessVisible" [harnessEnabled]="true"
+            style="position: fixed; bottom: 0; left: 0; z-index: 2;" (click)="harnessEnabled = !harnessEnabled"></solacetk-webgl-harness> -->
+
     </div>
+
+
 
 </solacetk-model-list>

@@ -1,0 +1,304 @@
+<solacetk-panel panelName="Components" unitHeight="100%" panelIcon="hub" [panelColor]="panelColor"
+    [panelType]="panelType" [panelElevation]="panelElevation">
+
+    <div class="panel-content disp-flex">
+
+        <!-- <div class="auto-flex"> -->
+        <!-- <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                    [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
+        <!-- </div> -->
+        <div class="auto-flex">
+            <div class="mb-2">
+                <mat-chip-set class="auto-flex">
+                    <mat-chip class="min-width-12 justify-center" *ngFor="let component of model"
+                        (click)="onComponentSelect(component)">
+                        {{component.name}} - <mat-slide-toggle [(ngModel)]="component.enabled">
+                        </mat-slide-toggle>
+                    </mat-chip>
+                </mat-chip-set>
+            </div>
+
+
+            <mat-card *ngIf="selectedComponent">
+                <mat-card-content>
+                    <div class="disp-flex flex-gap-050">
+
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 2em;">
+                            <mat-label class="font-small">Id</mat-label>
+                            <input matInput disabled placeholder="Id" [(ngModel)]="selectedComponent.id">
+                        </mat-form-field>
+
+                        <mat-form-field class="auto-flex font-small" style="flex: 2 1 8em;">
+                            <!-- <input matInput placeholder="Operator" > -->
+                            <mat-label class="font-small">Types</mat-label>
+                            <mat-select class="font-small" [(ngModel)]="selectedComponent.componentType" (selectionChange)="ComponentTypeChange($event)">
+                                <mat-option class="font-small" *ngFor="let comp of componentTypes"
+                                    [value]="componentTypes?.indexOf(comp)">
+                                    {{comp}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 2em;">
+                            <mat-label class="font-small">Color</mat-label>
+                            <input matInput type="color" placeholder="Color" [(ngModel)]="selectedComponent.colorKey">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="disp-flex flex-gap-050">
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">Name</mat-label>
+                            <input matInput placeholder="Name" [(ngModel)]="selectedComponent.name">
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="disp-flex flex-gap-050">
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">px</mat-label>
+                            <input matInput #positionX placeholder="PositionX"
+                                [(ngModel)]="selectedComponent.positionX">
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">py</mat-label>
+                            <input matInput #positionY placeholder="PositionY"
+                                [(ngModel)]="selectedComponent.positionY">
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">pz</mat-label>
+                            <input matInput #positionZ placeholder="PositionZ"
+                                [(ngModel)]="selectedComponent.positionZ">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="disp-flex flex-gap-050">
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">sx</mat-label>
+                            <input matInput #scaleX placeholder="ScaleX" [(ngModel)]="selectedComponent.scaleX">
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">sy</mat-label>
+                            <input matInput #scaleY placeholder="ScaleY" [(ngModel)]="selectedComponent.scaleY">
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">sz</mat-label>
+                            <input matInput #scaleZ placeholder="ScaleZ" [(ngModel)]="selectedComponent.scaleZ">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="disp-flex">
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">rx</mat-label>
+                            <input matInput #rotationX placeholder="Rotation X"
+                                [(ngModel)]="selectedComponent.rotationX" type="number">
+                            <mat-icon matSuffix>export</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">ry</mat-label>
+                            <input matInput #rotationY placeholder="Rotation Y"
+                                [(ngModel)]="selectedComponent.rotationY" type="number">
+                        </mat-form-field>
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 4em;">
+                            <mat-label class="font-small">rz</mat-label>
+                            <input matInput #rotationZ placeholder="Rotation Z"
+                                [(ngModel)]="selectedComponent.rotationZ" type="number">
+                        </mat-form-field>
+                    </div>
+
+                    <solacetk-tags [(model)]="selectedComponent.tags"></solacetk-tags>
+
+                    <solacetk-attributes-panel panelName="State Variables Collection"
+                        panelType="expansionpanel" [(model)]="selectedComponent.componentData" [panelMode]="1">
+                    </solacetk-attributes-panel>
+
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="panel-actions disp-flex auto-flex">
+
+        <button mat-icon-button color="primary" matTooltip="Add Component" (click)="addComponent()"><mat-icon>add</mat-icon></button>
+
+        <div class="gap-1 auto-flex"></div>
+
+        <ng-content select=".component-actions"></ng-content>
+
+        <!-- <button mat-icon-button matTooltip="Sync Component State" color="primary" class="no-flex"
+        (click)="getComponentVariableData()">
+        <mat-icon>sync_alt</mat-icon>
+    </button> -->
+    </div>
+
+    <div class="expansionpanel-content">
+
+        <div class="disp-flex full-height">
+            <!-- <div class="auto-flex"> -->
+            <!-- <solacetk-animation-editor [(model)]="state.animation.actFrameData"
+                    [showDataPanel]="false" [showFrames]="false"></solacetk-animation-editor> -->
+            <!-- </div> -->
+            <mat-chip-listbox class="no-flex full-height width-5" aria-label="Color selection"
+                aria-orientation="vertical" style="overflow-y: auto; overflow-x: hidden;" multiple="false"
+                selectable="true">
+                <mat-chip-option class="font-small " *ngFor="let component of model"
+                    [style.background-color]="component.colorKey" (selectionChange)="onComponentSelect(component)"
+                    style="overflow: hidden;">
+                    <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
+                    {{component.name}}
+                    <!-- - <mat-slide-toggle [(ngModel)]="component.enabled">
+                    </mat-slide-toggle> -->
+                </mat-chip-option>
+            </mat-chip-listbox>
+
+            <div class="gap-1 no-flex"></div>
+
+            <div class="disp-flex auto-flex width-75" *ngIf="selectedComponent">
+                <!-- <mat-chip-set class="auto-flex">
+                        <mat-chip class="min-width-12 font-small justify-center" *ngFor="let component of model"
+                            (click)="onComponentSelect(component)">
+                            {{component.name}} - <mat-slide-toggle [(ngModel)]="component.enabled">
+                            </mat-slide-toggle>
+                        </mat-chip>
+                    </mat-chip-set> -->
+                <mat-card class="auto-flex" style="flex: 1 1 16em;">
+                    <mat-card-content>
+
+
+                        <!-- Id and Specs Row: -->
+                        <div class="disp-flex full-width">
+
+                            <mat-form-field class="no-flex font-small width-33">
+                                <mat-label>Id</mat-label>
+                                <input class="font-small" matInput disabled placeholder="Id"
+                                    [(ngModel)]="selectedComponent.id">
+                            </mat-form-field>
+
+                            <div class="gap-1 no-flex"></div>
+
+                            <mat-form-field class="no-flex font-small width-5">
+                                <mat-label>Color</mat-label>
+                                <input class="font-small" matInput type="color" placeholder="Color"
+                                    [(ngModel)]="selectedComponent.colorKey">
+                            </mat-form-field>
+
+                            <div class="gap-1 no-flex"></div>
+
+                            <mat-form-field class="auto-flex font-small width-33">
+                                <!-- <input matInput placeholder="Operator" > -->
+                                <mat-label class="font-small">Types</mat-label>
+                                <mat-select class="font-small" [(ngModel)]="selectedComponent.componentType">
+                                    <mat-option class="font-small" *ngFor="let comp of componentTypes"
+                                        [value]="componentTypes?.indexOf(comp)">
+                                        {{comp}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Name Row: -->
+                        <div class="disp-flex">
+
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Name</mat-label>
+                                <input class="font-small" matInput placeholder="Name"
+                                    [(ngModel)]="selectedComponent.name">
+                            </mat-form-field>
+
+                        </div>
+
+                        <!-- Position Row: -->
+                        <!-- <div class="disp-flex"> -->
+                        <div class="disp-flex full-width">
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>px</mat-label>
+                                <input class="font-small" matInput #positionX placeholder="PositionX"
+                                    [(ngModel)]="selectedComponent.positionX" type="number">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>py</mat-label>
+                                <input class="font-small" matInput #positionY placeholder="PositionY"
+                                    [(ngModel)]="selectedComponent.positionY" type="number">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>pz</mat-label>
+                                <input class="font-small" matInput #positionZ placeholder="PositionZ"
+                                    [(ngModel)]="selectedComponent.positionZ" type="number">
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Scale Row: -->
+                        <div class="disp-flex full-width">
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>sx</mat-label>
+                                <input class="font-small" matInput #scaleX placeholder="ScaleX"
+                                    [(ngModel)]="selectedComponent.scaleX" type="number">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>sy</mat-label>
+                                <input class="font-small" matInput #scaleY placeholder="ScaleY"
+                                    [(ngModel)]="selectedComponent.scaleY" type="number">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>sz</mat-label>
+                                <input class="font-small" matInput #scaleZ placeholder="ScaleZ"
+                                    [(ngModel)]="selectedComponent.scaleZ" type="number">
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Rotation Row: -->
+                        <div class="disp-flex full-width">
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>rx</mat-label>
+                                <input class="font-small" matInput #rotationX placeholder="Rotation X"
+                                    [(ngModel)]="selectedComponent.rotationX" type="number">
+                                <!-- <mat-icon matSuffix>export</mat-icon> -->
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>ry</mat-label>
+                                <input class="font-small" matInput #rotationY placeholder="Rotation Y"
+                                    [(ngModel)]="selectedComponent.rotationY" type="number">
+                            </mat-form-field>
+                            <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="auto-flex font-small width-8">
+                                <mat-label>rz</mat-label>
+                                <input class="font-small" matInput #rotationZ placeholder="Rotation Z"
+                                    [(ngModel)]="selectedComponent.rotationZ" type="number">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="disp-flex">
+                            <solacetk-tags class="auto-flex" [(model)]="selectedComponent.tags"></solacetk-tags>
+
+                        </div>
+
+
+
+                        <!-- </div> -->
+                    </mat-card-content>
+
+                </mat-card>
+                <div class="auto-flex" style="flex: 1 1 8em;">
+                    <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
+                        [(model)]="selectedComponent.componentData" [panelMode]="1"></solacetk-attributes-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="expansionpanel-actions">
+
+        <button mat-icon-button matTooltip="Sync Component State" color="primary" class="no-flex"
+            (click)="getComponentVariableData()">
+            <mat-icon>sync_alt</mat-icon>
+        </button>
+
+        <button mat-button color="primary" (click)="addComponent()">Add</button>
+    </div>
+
+</solacetk-panel>

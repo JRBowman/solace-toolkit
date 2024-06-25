@@ -9,5 +9,18 @@
 }
 
 .work-item-drag {
-    position: absolute; bottom: 0; left: 0; width: 32px; height: 32px; z-index: 3;
+    position: absolute; bottom: 0.5em; left: 0.25em; width: 32px; height: 32px; z-index: 3;
+}
+
+.project-items-container {
+    position: relative; 
+    bottom: 0; 
+    left: 0;
+    top: 0;
+    right: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    overflow-y: visible;
+    overflow-x: auto;
 }

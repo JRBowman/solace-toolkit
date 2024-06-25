@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://bitbucket.org/onbowman/solace-toolkit
+  labels:
+    app: solace-toolkit
+    app.kubernetes.io/component: solace-toolkit
+    app.kubernetes.io/instance: solace-toolkit
+    app.kubernetes.io/name: solace-toolkit
+    app.openshift.io/runtime: dotnet
+  name: solace-toolkit
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: solace-toolkit
+    deploymentconfig: solace-toolkit
+  sessionAffinity: None
+  type: ClusterIP

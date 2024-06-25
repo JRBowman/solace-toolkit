@@ -2,130 +2,22 @@
 
     <div class="disp-flex flex-vertical">
         <a mat-button class="let-space-1 auto-flex" [routerLink]="['/projects']">
-            <mat-icon>developer_board</mat-icon>
+            <mat-icon class="align-center">developer_board</mat-icon>
             PROJECTS
         </a>
 
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>account_tree</mat-icon>
-            GAME CORE
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/gamestates']">
-                <mat-icon style="color: mediumspringgreen;">label</mat-icon>Game Systems
-            </a>
-            <a mat-menu-item [routerLink]="['/collections']">
-                <mat-icon style="color: royalblue;">label</mat-icon>Resource Collections
-            </a>
-            <a mat-menu-item [routerLink]="['/timelines']">
-                <mat-icon style="color: deepskyblue;">label</mat-icon>Timelines
-            </a>
-            <a mat-menu-item [routerLink]="['/storycards']">
-                <mat-icon style="color: coral;">label</mat-icon>Story Cards
-            </a>
-        </mat-nav-list>
-
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>videogame_asset</mat-icon>
-            CONTROLLERS
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/characters']">
-                <mat-icon style="color: seagreen;">label</mat-icon>Characters
-            </a>
-            <a mat-menu-item [routerLink]="['/enemies']">
-                <mat-icon style="color: crimson;">label</mat-icon>Enemies
-            </a>
-            <a mat-menu-item [routerLink]="['/objects']">
-                <mat-icon style="color: brown;">label</mat-icon>Objects
-            </a>
-            <a mat-menu-item [routerLink]="['/interactables']">
-                <mat-icon style="color: greenyellow;">label</mat-icon>Interactables
-            </a>
-            <a mat-menu-item [routerLink]="['/navigation']">
-                <mat-icon style="color: mediumvioletred;">label</mat-icon>Navigation
-            </a>
-            <a mat-menu-item [routerLink]="['/transports']">
-                <mat-icon style="color: mediumaquamarine;">label</mat-icon>Transports
-            </a>
-        </mat-nav-list>
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>memory</mat-icon>
-            BEHAVIORS
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/behaviorsystems']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Behavior Systems
-            </a>
-            <!-- <a mat-menu-item [routerLink]="['/branches']">
-                <mat-icon style="color: coral;">label</mat-icon>Branches
-            </a> -->
-            <a mat-menu-item [routerLink]="['/states']">
-                <mat-icon style="color: darkcyan;">label</mat-icon>States
-            </a>
-            <a mat-menu-item [routerLink]="['/animations']">
-                <mat-icon style="color: darkorange;">label</mat-icon>Animations
-            </a>
-        </mat-nav-list>
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>bolt</mat-icon>
-            EVENTS
-        </button>
-        <mat-nav-list>
-            <!-- <a mat-menu-item [routerLink]="['/actions']">Actions</a> -->
-            <a mat-menu-item [routerLink]="['/events']">
-                <mat-icon style="color: indianred;">label</mat-icon>
-                Events
-            </a>
-            <a mat-menu-item [routerLink]="['/messages']">
-                <mat-icon style="color: mediumslateblue;">label</mat-icon>
-                Messages
-            </a>
-        </mat-nav-list>
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>architecture</mat-icon>
-            ENVIRONMENTS
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/maps']">
-                <mat-icon style="color: #606080;">label</mat-icon>Maps
-            </a>
-            <a mat-menu-item [routerLink]="['/tilesets']">
-                <mat-icon style="color: #c08060;">label</mat-icon>Tile Sets
-            </a>
-        </mat-nav-list>
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>branding_watermark</mat-icon>
-            INTERFACES
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/huds']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>HUDs
-            </a>
-            <a mat-menu-item [routerLink]="['/hudelements']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>HUD Elements
-            </a>
-            <a mat-menu-item [routerLink]="['/hudmenus']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Menus
-            </a>
-            <a mat-menu-item [routerLink]="['/huddialogs']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Dialogs
-            </a>
-        </mat-nav-list>
-
-        <button mat-button class="let-space-1 auto-flex">
-            <mat-icon>equalizer</mat-icon>
-            SOUNDS
-        </button>
-        <mat-nav-list>
-            <a mat-menu-item [routerLink]="['/soundsources']">Sound Sources</a>
-            <a mat-menu-item [routerLink]="['/soundsets']">Sound Collections</a>
-        </mat-nav-list>
+        <div class="auto-flex" *ngFor="let menu of toolsList">
+            <mat-nav-list>
+                <div mat-subheader class="disp-flex">
+                    <mat-icon>{{menu.icon}}</mat-icon>
+                    <div class="gap-2 no-flex"></div>
+                    {{menu.name}}
+                </div>
+                <a mat-menu-item [routerLink]="['/' + item.route]" *ngFor="let item of menu.items">
+                    <mat-icon style="color: mediumspringgreen;">label</mat-icon>{{item.name}}
+                </a>
+            </mat-nav-list>
+        </div>
 
         <button mat-button class="let-space-1 auto-flex">
             <mat-icon>air</mat-icon>

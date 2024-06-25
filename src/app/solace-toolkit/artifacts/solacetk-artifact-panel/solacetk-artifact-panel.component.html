@@ -1,0 +1,46 @@
+<solacetk-panel [panelName]="model?.artifactName ?? 'Artifact'" panelColor="" unitHeight="100%" unitWidth="100%"
+    overflowMethod="visible" [actionsEnabled]="false" [contentEnabled]="(model?.artifactUrl != undefined)">
+
+
+    <div class="panel-header disp-flex auto-flex">
+        <div class="gap-1 auto-flex"></div>
+
+        <button class="" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Artifact Options" aria-label="">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="UpdateArtifact()">
+                <mat-icon>edit_square</mat-icon>
+                <span color="accent">Update</span>
+            </button>
+
+            <button mat-menu-item color="accent" matTooltip="Import Artifacts" aria-label=""
+                (click)="aseUpload.click()">
+                <mat-icon>file_open</mat-icon>
+                <span color="accent">Import</span>
+            </button>
+            <input type="file" class="file-input" (change)="ImportArtifact($event)" accept="*.*" #aseUpload multiple>
+        </mat-menu>
+    </div>
+
+    <div *ngIf="model" class="panel-content disp-flex auto-flex">
+
+        <!-- Artifact Details: Name, URL, etc. -->
+        <div *ngIf="model && model.artifactUrl" class="align-center" style="flex: 1 1 8em;">
+            <a class="auto-flex" style="color: coral;"
+                [href]="soltkService.apiHost + model.artifactUrl">{{soltkService.apiHost + model?.artifactUrl}}</a>
+            <div class="gap-1 no-flex"></div>
+            <small class="auto-flex font-smaller" style="color: dimgray;">{{model?.updated}}</small>
+        </div>
+
+        <div class="gap-2 no-flex"></div>
+
+        <ng-content select=".artifact-view"></ng-content>
+
+        <div class="gap-2 auto-flex"></div>
+
+    </div>
+
+
+</solacetk-panel>

@@ -1,7 +1,7 @@
 <solacetk-model-list [(model)]="model" moduleName="Tile Sets" modelUri="Environments/TileSets"
     (modelLoaded)="loadEditor()" modulePlateType="Ti">
     <div class="editor">
-        <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl + '.png'" alt="map layer">
+        <!-- <img cdkDrag class="sprite-thumb-2col sprite auto-flex" [src]="profileUrl + '.png'" alt="map layer"> -->
     </div>
 
     <div class="editor-actions">
@@ -14,135 +14,223 @@
         </div>
     </div>
 
-    <div class="editor-panels">
+    <div class="editor-panels disp-flex flex-gap-050">
 
         <!-- Tileset Editor: -->
-        <solacetk-panel class="auto-flex full-height" unitHeight="8" panelColor="#c08060" panelName="Tile Set"
-            panelIcon="grid_view">
-            <div class="panel-content disp-flex no-flex full-height">
+        <!-- <solacetk-panel class="auto-flex full-height" panelColor="#c08060" panelName="Tile Set" panelIcon="grid_view">
+            <div class="panel-content disp-flex auto-flex full-height"> -->
 
-                <mat-chip-listbox class="no-flex full-height width-5" aria-label="Color selection"
-                    aria-orientation="vertical" style="overflow-y: auto;" multiple="false" selectable="true">
-                    <mat-chip-option class="font-small min-width-1 width-5" *ngFor="let tile of model.tiles"
-                        [style.background-color]="tile.colorKey" (selectionChange)="selectTile(tile)"
-                        style="overflow: hidden;">
-                        <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
-                        {{tile.name}}
-                    </mat-chip-option>
-                </mat-chip-listbox>
+        <!-- Tile Editor -->
+        <solacetk-panel style="flex: 1 1 24em;" unitWidth="auto" fontSize="small"
+            panelName="Tile Editor" panelColor="#608080">
 
-                <div class="gap-1 no-flex"></div>
+            <div class="panel-content auto-flex">
 
-                <!-- Tile Editor -->
-                <solacetk-panel class="auto-flex full-height width-33" fontSize="small" panelName="Tile Editor" panelColor="#608080">
-
-                    <!-- Tile Fields: -->
-                    <div class="panel-content auto-flex">
-
-                        <div class="disp-flex auto-flex">
-                            <div class="auto-flex width-2">
-                                <div class="disp-flex auto-flex">
-                                    <mat-form-field class="no-flex font-small width-5">
-                                        <mat-label class="font-small">Location X</mat-label>
-                                        <input matInput placeholder="Location X" [(ngModel)]="selectedTile.lx">
-                                    </mat-form-field>
-
-                                    <div class="gap-1 no-flex"></div>
-
-                                    <mat-form-field class="no-flex font-small width-5">
-                                        <mat-label class="font-small">Location Y</mat-label>
-                                        <input matInput placeholder="Location Y" [(ngModel)]="selectedTile.ly">
-                                    </mat-form-field>
-
-                                    <div class="gap-1 no-flex"></div>
-
-                                    <mat-form-field class="no-flex font-small width-5">
-                                        <mat-label class="font-small">Width</mat-label>
-                                        <input matInput placeholder="Width" [(ngModel)]="selectedTile.width">
-                                    </mat-form-field>
-
-                                    <div class="gap-1 no-flex"></div>
-
-                                    <mat-form-field class="no-flex font-small width-5">
-                                        <mat-label class="font-small">Height</mat-label>
-                                        <input matInput placeholder="Height" [(ngModel)]="selectedTile.height">
-                                    </mat-form-field>
-
-                                    <div class="gap-1 no-flex"></div>
-
-                                    <button mat-icon-button matTooltip="Tile Color Key"
-                                        [style.background-color]="selectedTile.colorKey"
-                                        (click)="groupColorKey.click();">
-                                        <mat-icon>invert_colors</mat-icon>
-                                    </button>
-                                    <!-- <div class="gap-1 no-flex"></div> -->
-
-                                    <mat-form-field class="no-flex font-small align-center"
-                                        style="opacity: 0; width: 0; height: 0;">
-                                        <mat-icon matPrefix class="align-center" [style.color]="selectedTile.colorKey">
-                                            radar
-                                        </mat-icon>
-                                        <mat-label class="font-small">Color Key</mat-label>
-                                        <input matInput #groupColorKey placeholder="Color Key" type="color"
-                                            [(ngModel)]="selectedTile.colorKey" [value]="selectedTile.colorKey">
-                                    </mat-form-field>
-
-                                </div>
-                                <div class="disp-flex auto-flex">
-
-
-                                    <!-- <div class="disp-flex"> -->
-                                    <mat-form-field class="auto-flex font-small">
-                                        <mat-label class="font-small">Name</mat-label>
-                                        <input matInput placeholder="Name" [(ngModel)]="selectedTile.name">
-                                    </mat-form-field>
-
-                                    <div class="gap-1 no-flex"></div>
-                                </div>
-                            </div>
-
-
-                            <div class="gap-1 no-flex"></div>
-
-                            <!-- Tile Texture Viewer: -->
-                            <div class="map-panel relative-container no-flex mat-elevation-z2"
-                                style="height: 128px; width: 128px;">
-                                <div class="relative-input" style="transform: scale(8);">
-                                    <img class="sprite map-layer auto-flex" [src]="profileUrl + '.png'" alt="map layer"
-                                        [style.left]="-(selectedTile.lx) + 'px'" [style.top]="-(selectedTile.ly) + 'px'"
-                                        [style.height]="textureHeight">
-                                </div>
-
-                                <!-- <h4 class="relative-input" style="bottom: 0px; left: 8px;">{{'[' + selectedTile.x +
-                                        ',' + selectedTile. + ']'}}</h4> -->
-
-                                <div class="gap-1 no-flex"></div>
-
+                <div class="disp-flex auto-flex flex-gap-050">
+                    <div class="no-flex">
+                        <!-- Tile Edit View: -->
+                        <div class="map-panel relative-container no-flex mat-elevation-z2"
+                            style="height: 128px; width: 128px;">
+                            <div *ngIf="selectedTile" class="relative-input" style="transform: scale(8);">
+                                <!-- Tile Texture: -->
+                                <img class="sprite map-layer auto-flex" [src]="profileUrl + '.png'" alt="map layer"
+                                    [style.left]="-(selectedTile.lx) + 'px'" [style.top]="-(selectedTile.ly) + 'px'"
+                                    [style.height]="textureHeight">
+                                <!-- Physics Shape: -->
                             </div>
                         </div>
-
-                        <div class="gap-1 no-flex"></div>
-
-                        <!-- Cell Data: -->
-                        <solacetk-attributes-panel class="auto-flex" [panelMode]="1"
-                            [panelName]="selectedTile.name + ' Data'" panelType="expansionpanel"
-                            [(model)]="selectedTile.data">
-                        </solacetk-attributes-panel>
-
                     </div>
 
-                </solacetk-panel>
+                    <div *ngIf="selectedTile" class="auto-flex" style="flex: 1 1 10em;">
+                        <div class="disp-flex auto-flex flex-gap-050">
+                            <mat-form-field class="font-small" style="flex: 1 1 4em;">
+                                <mat-label class="font-small">Location X</mat-label>
+                                <input matInput placeholder="Location X" [(ngModel)]="selectedTile.lx">
+                            </mat-form-field>
 
-                <div class="gap-1 no-flex"></div>
+                            <mat-form-field class="font-small" style="flex: 1 1 4em;">
+                                <mat-label class="font-small">Location Y</mat-label>
+                                <input matInput placeholder="Location Y" [(ngModel)]="selectedTile.ly">
+                            </mat-form-field>
 
-                <!-- Tile Rules: -->
-                <solacetk-tile-rule-editor class="no-flex full-height width-5" [(model)]="selectedTile.rules"
-                    [tile]="selectedTile"></solacetk-tile-rule-editor>
+                            <mat-form-field class="font-small" style="flex: 1 1 4em;">
+                                <mat-label class="font-small">Order</mat-label>
+                                <input matInput placeholder="0" type="number" [(ngModel)]="selectedTile.order">
+                            </mat-form-field>
 
+                            <mat-form-field class="font-small" style="flex: 1 1 4em;">
+                                <mat-label class="font-small">Width</mat-label>
+                                <input matInput placeholder="Width" [(ngModel)]="selectedTile.width">
+                            </mat-form-field>
+
+                            <mat-form-field class="font-small" style="flex: 1 1 4em;">
+                                <mat-label class="font-small">Height</mat-label>
+                                <input matInput placeholder="Height" [(ngModel)]="selectedTile.height">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="disp-flex auto-flex flex-gap-050">
+                            <mat-form-field class="auto-flex font-small" style="flex: 1 1 100%">
+                                <mat-label class="font-small">Name</mat-label>
+                                <input matInput placeholder="Name" [(ngModel)]="selectedTile.name">
+                            </mat-form-field>
+                            <!-- <mat-form-field class="auto-flex font-small" style="flex: 1 1 100%">
+                                <mat-label class="font-small">Origin Type</mat-label>
+                                <input matInput placeholder="Origin Type" [(ngModel)]="selectedTile.originType">
+                            </mat-form-field> -->
+                            <mat-select class="font-small" placeholder="Origin Type" [(ngModel)]="selectedTile.originType">
+                                <mat-option *ngFor="let item of originTypes" [value]="originTypes.indexOf(item)">
+                                    {{GetOriginType(item)}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+
+                        <div class="disp-flex auto-flex flex-gap-050" *ngIf="selectedTile.originType == 7">
+                            <mat-form-field class="auto-flex font-small" style="flex: 1 1 100%">
+                                <mat-label class="font-small">Origin X</mat-label>
+                                <input matInput placeholder="Origin X" [(ngModel)]="selectedTile.originX">
+                            </mat-form-field>
+                            <mat-form-field class="auto-flex font-small" style="flex: 1 1 100%">
+                                <mat-label class="font-small">Origin Y</mat-label>
+                                <input matInput placeholder="Origin Y" [(ngModel)]="selectedTile.originY">
+                            </mat-form-field>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+                <div *ngIf="selectedTile" class="disp-flex auto-flex flex-gap-050">
+                    <solacetk-tile-shape-editor class="auto-flex" [(model)]="selectedTile" [textureUrl]="profileUrl" [textureHeight]="textureHeight" [tileChange]="tileChange"></solacetk-tile-shape-editor>
+                    <solacetk-tile-rule-editor class="auto-flex" [(model)]="selectedTile"></solacetk-tile-rule-editor>
+                </div>
             </div>
-            <div class="panel-actions">
+
+            <div *ngIf="selectedTile" class="panel-header disp-flex auto-flex">
+                <div class="gap-1 auto-flex"></div>
+
+                <button mat-icon-button matTooltip="Tile Color Key" [style.background-color]="selectedTile.colorKey"
+                    (click)="groupColorKey.click();">
+                    <mat-icon>invert_colors</mat-icon>
+                </button>
+
+                <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
+                    <mat-icon matPrefix class="align-center" [style.color]="selectedTile.colorKey">
+                        radar
+                    </mat-icon>
+                    <mat-label class="font-small">Color Key</mat-label>
+                    <input matInput #groupColorKey placeholder="Color Key" type="color"
+                        [(ngModel)]="selectedTile.colorKey" [value]="selectedTile.colorKey">
+                </mat-form-field>
             </div>
+
         </solacetk-panel>
+
+
+        <!-- Tiles View/Select: -->
+        <solacetk-panel style="flex: 1 1 24em;" fontSize="small" panelName="Tiles">
+
+            <div class="panel-content disp-flex">
+
+                <!-- Construct Tiles over Image: -->
+                <!-- Tile Texture Viewer: -->
+                <div class="map-panel relative-container auto-flex mat-elevation-z2"
+                    [style.height]="(textureHeight * tilesZoom) + 'px'"
+                    [style.width]="(textureWidth * tilesZoom) + 'px'">
+
+                    <div class="relative-input" [style.transform]="'scale(' + tilesZoom + ')'">
+                        <img class="sprite map-layer auto-flex" [src]="profileUrl + '.png'" alt="map layer"
+                            [style.height]="textureHeight">
+
+                        <!-- Overlay the Tile Selection Boxes: -->
+                        <div class="relative-input" [style.width]="tile.width + 'px'"
+                            [style.height]="tile.height + 'px'" [style.left]="tile.lx + 'px'"
+                            [style.top]="tile.ly  + 'px'" *ngFor="let tile of model.tiles" (click)="selectTile(tile)">
+                            <div class="relative-input auto-flex full-height full-width solacetk-icon"
+                                [class.selectedCell]="tile.selected" [style.background-color]="tile.colorKey">
+                            </div>
+                            <mat-icon class="relative-input font-medium" *ngIf="tile.selected">check</mat-icon>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-actions disp-flex auto-flex">
+                <button mat-icon-button matTooltip="Add Tile" (click)="AddTile()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button *ngIf="selectedTile" mat-icon-button matTooltip="Remove Selected Tile(s)"
+                    (click)="RemoveTile(selectedTile)">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+
+                <div class="disp-flex auto-flex flex-gap-050" *ngIf="selectedMode == 1">
+                    <mat-form-field class="no-flex font-small align-center"
+                        style="opacity: 0; width: 0; height: 0;">
+                        <mat-icon matPrefix class="align-center" [style.color]="groupColorKey">
+                            radar
+                        </mat-icon>
+                        <mat-label class="font-small">Group</mat-label>
+                        <input matInput #groupColor placeholder="Group Color Key" type="color"
+                            [(ngModel)]="groupColorKey" [value]="groupColorKey">
+                    </mat-form-field>
+
+                    <button mat-icon-button matTooltip="Set Group Key"
+                        (click)="groupColor.click()">
+                        <mat-icon [style.color]="groupColorKey">
+                            radar
+                        </mat-icon>
+                    </button>
+
+                    <button *ngIf="selectedCells && selectedCells.length > 0" mat-icon-button
+                        matTooltip="Create Chunk from Selected" (click)="setTilesColorKey()">
+                        <mat-icon [style.color]="groupColorKey">link_on</mat-icon>
+                    </button>
+                </div>
+
+                <div class="gap-1 auto-flex"></div>
+
+                <mat-button-toggle-group class="full-height" [(value)]="selectedMode"
+                (change)="ModeChange($event)">
+                <mat-button-toggle value="0" aria-label="Tile Edit">
+                    <mat-icon>preview</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle value="1" aria-label="Multi-Select">
+                    <mat-icon>table_view</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+                <button mat-icon-button matTooltip="Tile Set Options" [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="ImportTileGrid()">
+                        <mat-icon>grid_on</mat-icon>
+                        <span color="accent">Slice TileSet</span>
+                    </button>
+                    <button mat-menu-item (click)="openTileCreationMenu()">
+                        <mat-icon>grid_on</mat-icon>
+                        <span color="accent">Bulk Tile Creator</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </solacetk-panel>
+
+
+        <!-- Cell Data: -->
+        <solacetk-attributes-panel *ngIf="selectedTile" [panelMode]="1" [panelName]="selectedTile?.name + ' Data'"
+            panelType="panel" [(model)]="selectedTile.data" style="flex: 1 1 10em;">
+        </solacetk-attributes-panel>
+
+        <!-- <div class="full-width">
+            <canvas #canvas [width]="1280" [height]="720"></canvas>
+        </div> -->
+
+        <solacetk-tileset-canvas class="full-width" *ngIf="selectedTile" [model]="model" [tileColor]="selectedTile.colorKey" [sheetUrl]="profileUrl + '.png'"></solacetk-tileset-canvas>
 
     </div>
 </solacetk-model-list>

@@ -1,5 +1,6 @@
 import { EnvironmentMapLayer } from "./environment-map-layer";
 import { MapCell } from "./map-cell";
+import { MapChunk } from "./map-chunk";
 
 export class EnvironmentMap {
     public id?: number = 0;
@@ -9,6 +10,6 @@ export class EnvironmentMap {
 
     // Map Data:
     public layers: EnvironmentMapLayer[] = [];
-
+    public chunks: MapChunk[] = [];
     public cells: MapCell[] = [];
 }

@@ -29,15 +29,26 @@ export class CharacterControllersComponent implements OnInit {
 
   public behaviors: BehaviorSystem[] = [];
 
+  public behavior?: BehaviorSystem;
+
   public profileUrl: string = "";
 
   public loadingBehaviors: boolean = true;
+
+  public harnessVisible: boolean = false;
+  public harnessEnabled: boolean = false;
+  public behaviorLoaded: boolean = false;
 
   constructor(private modelService: SolacetkService, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
     this.movableTypes = Object.keys(this.moveType).filter(f => !isNaN(Number(f)));
     this.collidableTypes = Object.keys(this.collidableType).filter(f => !isNaN(Number(f)));
+
+    // Load Behavior:
+    if (this.model.behaviorSystemId != undefined || this.model.behaviorSystemId != 0) {
+      
+    }
   }
 
   public GetMoveType(val: string): string
@@ -74,6 +85,24 @@ export class CharacterControllersComponent implements OnInit {
     this.model = new MovableController();
   }
 
+  public Load() {
+    this.harnessVisible = true;
+
+    // On Load - Obtain a Behavior if present:
+    if (this.model.behaviorSystemId == 0) return;
+
+    this.modelService.GetModelOp<BehaviorSystem>("Behaviors/systems/" + this.model.behaviorSystemId).subscribe((op) => {
+      //if (op.resultCode != 200) return;
+      this.behaviorLoaded = true;
+      this.behavior = op.data;
+    });
+  }
+
+  public Closed() {
+
+    this.harnessVisible = false;
+  }
+
   public openBehaviorsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
@@ -81,9 +110,14 @@ export class CharacterControllersComponent implements OnInit {
 
     instance.instance.modelsSelected.subscribe((models) => 
     {
-      this.model.behaviorSystem = models[0];
+      this.model.behaviorSystemId = models[0].id ?? 0;
     });
     
+  }
+
+  public GetPreviewUrl(model: any): string {
+    model.previewUrl = this.modelService.apiHost + "Artifacts/" + model.name + "/" + model.name + ".gif";
+    return model.previewUrl;
   }
 
 }

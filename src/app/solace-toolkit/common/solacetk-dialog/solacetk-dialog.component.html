@@ -1,0 +1,10 @@
+<h1 mat-dialog-title [align]="data.alignTitle ?? 'start'">{{title}}</h1>
+<div mat-dialog-content [align]="data.alignContent ?? 'start'">
+    <solacetk-markdown-panel [data]="message" [useData]="true"></solacetk-markdown-panel>
+</div>
+<div mat-dialog-actions [align]="data.alignActions ?? 'start'">
+    <button mat-button mat-dialog-close>Close</button>
+    <div class="auto-flex" *ngIf="actions && actions.length > 0">
+        <button mat-button *ngFor="let action of actions" (click)="action?.method()">{{action.name}}</button>
+    </div>
+</div>

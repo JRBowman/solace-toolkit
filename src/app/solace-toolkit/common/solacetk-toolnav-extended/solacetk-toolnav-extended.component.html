@@ -1,133 +1,34 @@
 <!-- <mat-toolbar [color]="toolNavColor" [class]="toolNavStyle"> -->
 
     <div class="disp-flex" [class.flex-vertical]="toolbarDirection == 'vertical'">
+
+        <a mat-button class="let-space-1 auto-flex" [routerLink]="['/artifacts']">
+            <mat-icon>storage</mat-icon>
+            ARTIFACTS
+        </a>
+
         <a mat-button class="let-space-1 auto-flex" [routerLink]="['/projects']">
             <mat-icon>developer_board</mat-icon>
             PROJECTS
         </a>
 
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="gameCoreMenu">
-            <mat-icon>account_tree</mat-icon>
-            GAME CORE
-        </button>
-        <mat-menu #gameCoreMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/gamestates']">
-                <mat-icon style="color: mediumspringgreen;">label</mat-icon>Game Systems
-            </a>
-            <a mat-menu-item [routerLink]="['/collections']">
-                <mat-icon style="color: royalblue;">label</mat-icon>Resource Collections
-            </a>
-            <a mat-menu-item [routerLink]="['/timelines']">
-                <mat-icon style="color: deepskyblue;">label</mat-icon>Timelines
-            </a>
-            <a mat-menu-item [routerLink]="['/storycards']">
-                <mat-icon style="color: coral;">label</mat-icon>Story Cards
-            </a>
-        </mat-menu>
+        <div class="auto-flex" *ngFor="let menu of toolsList">
+            <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="menuList">
+                <mat-icon>{{menu.icon}}</mat-icon>
+                {{menu.name}}
+            </button>
+            <mat-menu #menuList="matMenu">
+                <a mat-menu-item [routerLink]="['/' + item.route]" *ngFor="let item of menu.items">
+                    <!-- <mat-icon style="color: mediumspringgreen;">label</mat-icon>{{item.name}} -->
+                    <div class="disp-flex auto-flex">
+                        <solacetk-svg-plate class="align-center" [plateColor]="item.plateColor" [plateText]="item.plateText" width="28px" height="28px" radius="12" style="padding-right: 0.5em;"></solacetk-svg-plate>
+                        {{item.name}}
+                    </div>
+                </a>
+            </mat-menu>
+        </div>
 
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="controllerMenu">
-            <mat-icon>videogame_asset</mat-icon>
-            CONTROLLERS
-        </button>
-        <mat-menu #controllerMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/characters']">
-                <mat-icon style="color: seagreen;">label</mat-icon>Characters
-            </a>
-            <a mat-menu-item [routerLink]="['/enemies']">
-                <mat-icon style="color: crimson;">label</mat-icon>Enemies
-            </a>
-            <a mat-menu-item [routerLink]="['/objects']">
-                <mat-icon style="color: brown;">label</mat-icon>Objects
-            </a>
-            <a mat-menu-item [routerLink]="['/interactables']">
-                <mat-icon style="color: greenyellow;">label</mat-icon>Interactables
-            </a>
-            <a mat-menu-item [routerLink]="['/navigation']">
-                <mat-icon style="color: mediumvioletred;">label</mat-icon>Navigation
-            </a>
-            <a mat-menu-item [routerLink]="['/transports']">
-                <mat-icon style="color: mediumaquamarine;">label</mat-icon>Transports
-            </a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="behaviorMenu">
-            <mat-icon>memory</mat-icon>
-            BEHAVIORS
-        </button>
-        <mat-menu #behaviorMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/behaviorsystems']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Behavior Systems
-            </a>
-            <a mat-menu-item [routerLink]="['/branches']">
-                <mat-icon style="color: coral;">label</mat-icon>Branches
-            </a>
-            <a mat-menu-item [routerLink]="['/states']">
-                <mat-icon style="color: darkcyan;">label</mat-icon>States
-            </a>
-            <a mat-menu-item [routerLink]="['/animations']">
-                <mat-icon style="color: darkorange;">label</mat-icon>Animations
-            </a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="messageMenu">
-            <mat-icon>bolt</mat-icon>
-            EVENTS
-        </button>
-        <mat-menu #messageMenu="matMenu">
-            <!-- <a mat-menu-item [routerLink]="['/actions']">Actions</a> -->
-            <a mat-menu-item [routerLink]="['/events']">
-                <mat-icon style="color: indianred;">label</mat-icon>
-                Events
-            </a>
-            <a mat-menu-item [routerLink]="['/messages']">
-                <mat-icon style="color: mediumslateblue;">label</mat-icon>
-                Messages
-            </a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="environmentMenu">
-            <mat-icon>architecture</mat-icon>
-            ENVIRONMENTS
-        </button>
-        <mat-menu #environmentMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/maps']">
-                <mat-icon style="color: #606080;">label</mat-icon>Maps
-            </a>
-            <a mat-menu-item [routerLink]="['/tilesets']">
-                <mat-icon style="color: #c08060;">label</mat-icon>Tile Sets
-            </a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="interfaceMenu">
-            <mat-icon>branding_watermark</mat-icon>
-            INTERFACES
-        </button>
-        <mat-menu #interfaceMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/huds']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>HUDs
-            </a>
-            <a mat-menu-item [routerLink]="['/hudelements']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>HUD Elements
-            </a>
-            <a mat-menu-item [routerLink]="['/hudmenus']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Menus
-            </a>
-            <a mat-menu-item [routerLink]="['/huddialogs']">
-                <mat-icon style="color: darkturquoise;">label</mat-icon>Dialogs
-            </a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="soundMenu">
-            <mat-icon>equalizer</mat-icon>
-            SOUNDS
-        </button>
-        <mat-menu #soundMenu="matMenu">
-            <a mat-menu-item [routerLink]="['/soundsources']">Sound Sources</a>
-            <a mat-menu-item [routerLink]="['/soundsets']">Sound Collections</a>
-        </mat-menu>
-
-        <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="effectsMenu">
+        <!-- <button mat-button class="let-space-1 auto-flex" [matMenuTriggerFor]="effectsMenu">
             <mat-icon>air</mat-icon>
             EFFECTS
         </button>
@@ -137,7 +38,7 @@
             <a mat-menu-item [routerLink]="['/lights']">Lights</a>
             <a mat-menu-item [routerLink]="['/liquids']">Liquids</a>
             <a mat-menu-item [routerLink]="['/overlays']">Overlays</a>
-        </mat-menu>
+        </mat-menu> -->
     </div>
 
 <!-- </mat-toolbar> -->

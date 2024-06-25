@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: solace-toolkit
+    app.kubernetes.io/component: solace-toolkit
+    app.kubernetes.io/instance: solace-toolkit
+    app.kubernetes.io/name: solace-toolkit
+    app.openshift.io/runtime: dotnet
+  name: solace-toolkit
+spec:
+  port:
+    targetPort: 8080-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: solace-toolkit
+    weight: 100
+  wildcardPolicy: None

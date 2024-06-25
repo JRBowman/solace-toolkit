@@ -1,7 +1,13 @@
-<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" [panelType]="panelType" [expanded]="expanded" unitHeight="100%">
+<solacetk-panel [panelName]="panelName" panelIcon="animation" [panelColor]="bgColor" [panelType]="panelType"
+    [expanded]="expanded" unitHeight="100%">
+
+    <div class="panel-header disp-flex auto-flex">
+        <div class="gap-1 auto-flex"></div>
+        <button mat-icon-button color="primary" matTooltip="Frame Options" class="no-flex" (click)="openFrameOptionsMenu()"><mat-icon>more_vert</mat-icon></button>
+    </div>
 
     <div class="panel-content">
-        <div class="disp-flex" *ngIf="model && isLoaded && frames.length > 0">
+        <div class="disp-flex" *ngIf="model && frames.length > 0">
 
             <!-- Sprite Animation Preview -->
             <div class="auto-flex">
@@ -20,9 +26,9 @@
                                 [style.left]="(selected * -(spriteWidth * zoomFactor)) + 'px'"
                                 [style.height]="(spriteHeight * zoomFactor) + 'px'">
                         </div>
-                        <div *ngIf="model.components && model.components.length > 0">
-                            <div class="component-visual" *ngFor="let component of model.components" cdkDrag
-                                [matTooltip]="component.name" [style.backgroundColor]="component.color"
+                        <div *ngIf="components && components.length > 0">
+                            <div class="component-visual" *ngFor="let component of components" cdkDrag
+                                [matTooltip]="component.name" [style.backgroundColor]="component.colorKey"
                                 [style.left]="(component.positionX * spriteWidth * zoomFactor) + 'px'"
                                 [style.bottom]="(component.positionY * spriteHeight * zoomFactor) + 'px'"
                                 [style.width]="(component.scaleX * spriteWidth * zoomFactor) + 'px'"
@@ -42,9 +48,11 @@
                             <mat-form-field class="disp-flex font-small">
                                 <mat-label>Frame Name</mat-label>
                                 <input type="text" matInput [(ngModel)]="model.frames[selected].name">
-                                <button mat-icon-button matSuffix (click)="model.frames[selected].name = cleanFrameName(model.frames[selected].name)" [attr.aria-label]="'Hide password'" >
+                                <button mat-icon-button matSuffix
+                                    (click)="model.frames[selected].name = cleanFrameName(model.frames[selected].name)"
+                                    [attr.aria-label]="'Hide password'">
                                     <mat-icon>cleaning_services</mat-icon>
-                                  </button>
+                                </button>
                             </mat-form-field>
 
                             <div class="disp-flex width-33">
@@ -73,14 +81,32 @@
 
                             <mat-form-field class="no-flex full-width font-small">
                                 <mat-label>Sprite Width</mat-label>
-                                <input type="number" matInput [(ngModel)]="spriteWidth" placeholder="192">
+                                <input type="number" matInput [(ngModel)]="model.frames[selected].width" placeholder="192">
                                 <span matTextSuffix>px</span>
                             </mat-form-field>
 
                             <mat-form-field class="no-flex full-width font-small">
                                 <mat-label>Sprite Height</mat-label>
-                                <input type="number" matInput [(ngModel)]="spriteHeight" placeholder="192">
+                                <input type="number" matInput [(ngModel)]="model.frames[selected].height" placeholder="192">
                                 <span matTextSuffix>px</span>
+                            </mat-form-field>
+
+                            <mat-form-field class="no-flex full-width font-small">
+                                <mat-label>Frame X</mat-label>
+                                <input type="number" matInput [(ngModel)]="model.frames[selected].x" placeholder="0">
+                                <span matTextSuffix>px</span>
+                            </mat-form-field>
+
+                            <mat-form-field class="no-flex full-width font-small">
+                                <mat-label>Frame Y</mat-label>
+                                <input type="number" matInput [(ngModel)]="model.frames[selected].y" placeholder="0">
+                                <span matTextSuffix>px</span>
+                            </mat-form-field>
+
+                            <mat-form-field class="no-flex font-small full-width">
+                                <mat-label>Speed</mat-label>
+                                <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
+                                <span matTextSuffix>x</span>
                             </mat-form-field>
                         </div>
 
@@ -89,18 +115,14 @@
 
                             <div class="disp-flex auto-flex">
 
-                                <mat-slider class="auto-flex align-center" style="flex: 0 0 16rem;" max="16" min="0.25" step="0.25"
-                                    showTickMarks="true">
+                                <mat-slider class="auto-flex align-center" style="flex: 0 0 16rem;" max="16" min="0.25"
+                                    step="0.25" showTickMarks="true">
                                     <input matSliderThumb [(ngModel)]="zoomFactor">
                                 </mat-slider>
 
                                 <div class="auto-flex"></div>
 
-                                <mat-form-field class="no-flex font-small width-8">
-                                    <mat-label>Speed</mat-label>
-                                    <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
-                                    <span matTextSuffix>x</span>
-                                </mat-form-field>
+                                
 
                             </div>
 
@@ -138,20 +160,6 @@
 
                 </div>
 
-                <!-- Visual Frame Data -->
-                <div class="disp-flex full-width" *ngIf="showFrames && selected > -1 && model.frames[selected].downstreamData">
-                    <solacetk-attributes-panel class="auto-flex width-33" [panelMode]="1"
-                        [panelName]="'Frame ' + selected + ' Data'" panelType="expansionpanel"
-                        [(model)]="model.frames[selected].downstreamData">
-                    </solacetk-attributes-panel>
-
-                    <div class="gap-1 no-flex"></div>
-
-                    <solacetk-controller-component class="auto-flex width-33" [(model)]="model.components"
-                        panelColor="#006064" (getStateData)="onGetStateData($event)">
-                    </solacetk-controller-component>
-                </div>
-
             </div>
 
         </div>
@@ -163,7 +171,7 @@
     <div class="panel-actions disp-flex auto-flex full-width">
         <div class="gap-1 auto-flex"></div>
         <div *ngIf="showDataPanel">
-            
+
             <button mat-button color="primary" class="no-flex" (click)="aseUpload.click()">Import Aseprite</button>
             <button mat-button color="primary" class="no-flex" (click)="sheetUpload.click()">Import Sprite
                 Sheet</button>

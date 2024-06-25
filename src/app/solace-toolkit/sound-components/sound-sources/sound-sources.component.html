@@ -1,4 +1,47 @@
-<solacetk-model-list [(model)]="model" moduleName="Sound Sources" modelUri="Sound/sources" modulePlateType="So">
+<solacetk-model-list [(model)]="model" moduleName="Sound Sources" modelUri="Sounds/sources" modulePlateType="So"
+    (modelLoaded)="RefreshArtifact()">
     <div class="editor">
     </div>
+
+    <div class="editor-panels">
+
+        <!-- Artifact Data: -->
+        <solacetk-artifact-panel class="align-center auto-flex" [(model)]="artifact" [(id)]="model.artifactId">
+
+            <div *ngIf="audioSource" class="artifact-view disp-flex auto-flex">
+
+                <button class="align-center" *ngIf="audioSource.paused || audioSource.ended" mat-icon-button
+                    (click)="PlaySound()"><mat-icon>play_arrow</mat-icon>
+                </button>
+                <button class="align-center" *ngIf="!audioSource.paused && hasPlayed" mat-icon-button
+                    (click)="StopSound()"><mat-icon>pause</mat-icon></button>
+
+                <div class="gap-2 no-flex"></div>
+
+                <mat-slider class="auto-flex" min="0" step="0.001" [max]="audioSource.duration">
+                    <input matSliderThumb [(value)]="audioSource.currentTime">
+                </mat-slider>
+
+                <span class="no-flex align-center">{{GetDate(audioSource.currentTime) + "/" + GetDate(audioSource.duration)}}</span>
+
+                <div class="gap-1 no-flex"></div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div class="gap-1 no-flex"></div>
+
+                <button class="align-center" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Volume" aria-label="Volume">
+                    <mat-icon>volume_up</mat-icon>
+                </button>
+        
+                <mat-menu #menu="matMenu">
+                    <mat-slider min="0" max="1" step="0.01" style="margin-left: 2em; margin-right: 2em;">
+                        <input matSliderThumb [(ngModel)]="audioSource.volume">
+                    </mat-slider>
+                </mat-menu>
+
+            </div>
+
+        </solacetk-artifact-panel>
+
+    </div>
+
 </solacetk-model-list>

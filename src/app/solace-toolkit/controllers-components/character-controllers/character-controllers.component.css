@@ -1,0 +1,32 @@
+.harness-enabled {
+    width: 32em;
+}
+
+.harness-disabled {
+    width: 8em;
+}
+
+.component-item {
+    position: absolute;
+}
+
+.component-panel {
+    min-height: 48em;
+}
+
+.component-visual {
+    background-color: crimson;
+    opacity: 0.25;
+    position: absolute;
+    /* bottom: 0px;
+    left: 25%;
+    width: 55%;
+    height: 67%; */
+}
+
+.components-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

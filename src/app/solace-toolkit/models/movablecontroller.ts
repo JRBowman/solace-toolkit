@@ -1,6 +1,6 @@
-import { BehaviorComponent } from "./behavioranimation";
 import { BehaviorSystem } from "./behaviorsystem";
 import { IModelTK } from "./imodel-tk";
+import { SolTkComponent } from "./soltk-component";
 
 export class MovableController implements IModelTK {
 
@@ -24,7 +24,7 @@ export class MovableController implements IModelTK {
     public behaviorSystemId?: number;
     public behaviorSystem?: BehaviorSystem = new BehaviorSystem();
 
-    public components: BehaviorComponent[] = [];
+    public components: SolTkComponent[] = [];
 
     public useFriction?: boolean = true;
     public affectedByGravity?: boolean = true;

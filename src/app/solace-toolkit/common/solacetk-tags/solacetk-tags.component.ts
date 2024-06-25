@@ -35,7 +35,7 @@ export class SolacetkTagsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.model.length > 0) {
+    if (this.model && this.model.length > 0) {
       this.tagItems = this.model.split(" ");
     }
 

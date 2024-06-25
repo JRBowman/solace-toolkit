@@ -1,0 +1,9 @@
+.scroll-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.markdown-container {
+    display: flex;
+    height: 100%;
+}

@@ -1,0 +1,24 @@
+.relative-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.relative-input {
+    position: absolute;
+}
+
+.gridCell:hover {
+    background-color: rgba(255, 255, 255, 0.81);
+}
+
+.gridCell:active{
+    background-color: rgba(64, 128, 128, 0.5);
+}
+
+.gridCell {
+    /* margin-left: -1px;
+    margin-top: -1px; */
+    /* margin-right: 2px; */
+    border-width: 0.1em;
+
+}

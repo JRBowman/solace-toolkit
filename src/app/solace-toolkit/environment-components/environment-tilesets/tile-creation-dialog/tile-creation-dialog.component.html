@@ -1,0 +1,52 @@
+<h1 mat-dialog-title [align]="'start'">Tile Creator</h1>
+<div mat-dialog-content class="disp-flex auto-flex flex-gap-050">
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Location X</mat-label>
+        <input matInput placeholder="Location X" type="number" [(ngModel)]="xLocation">
+    </mat-form-field>
+
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Location Y</mat-label>
+        <input matInput placeholder="Location Y" type="number" [(ngModel)]="yLocation">
+    </mat-form-field>
+
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Width</mat-label>
+        <input matInput placeholder="Width" type="number" [(ngModel)]="width">
+    </mat-form-field>
+
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Height</mat-label>
+        <input matInput placeholder="Height" type="number" [(ngModel)]="height">
+    </mat-form-field>
+
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Columns</mat-label>
+        <input matInput placeholder="0" type="number" [(ngModel)]="xTiles">
+    </mat-form-field>
+
+    <mat-form-field class="font-small" style="flex: 1 1 4em;">
+        <mat-label class="font-small">Rows</mat-label>
+        <input matInput placeholder="0" type="number" [(ngModel)]="yTiles">
+    </mat-form-field>
+
+    <mat-form-field class="no-flex font-small align-center" style="opacity: 0; width: 0; height: 0;">
+        <mat-icon matPrefix class="align-center" [style.color]="groupColorKey">
+            radar
+        </mat-icon>
+        <mat-label class="font-small">Group</mat-label>
+        <input matInput #groupColor placeholder="Group Color Key" type="color" [(ngModel)]="groupColorKey"
+            [value]="groupColorKey">
+    </mat-form-field>
+
+    <button mat-icon-button matTooltip="Set Group Key" (click)="groupColor.click()">
+        <mat-icon [style.color]="groupColorKey">
+            radar
+        </mat-icon>
+    </button>
+</div>
+
+<div mat-dialog-actions [align]="'start'">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="applyData()">Apply</button>
+</div>

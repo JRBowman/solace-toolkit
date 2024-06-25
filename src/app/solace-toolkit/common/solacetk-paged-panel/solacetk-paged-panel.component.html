@@ -1,0 +1,50 @@
+<solacetk-panel fontSize="small" [panelName]="panelName" [panelIcon]="panelIcon" [panelColor]="panelColor"
+    [panelType]="panelType" [unitWidth]="unitWidth" [unitHeight]="unitHeight" [panelElevation]="panelElevation">
+
+    <div class="panel-content disp-flex" *ngIf="panelType == 'panel'">
+
+        <div ngIf="selected">
+
+            <div class="auto-flex" style="flex: 1 1 18em; width: 18em; padding: 4px;" *ngFor="let behavior of model">
+
+
+                <solacetk-model-card class="auto-flex align-center" style="width: inherit;" *ngIf="!behavior.noOp"
+                    [(model)]="behavior.animation">
+                    <div class="model-header disp-flex">
+                        <div class="gap-1 auto-flex"></div>
+                        <button mat-icon-button matTooltip="Remove Behavior"
+                            (click)="RemoveState(behavior)"><mat-icon>cancel</mat-icon></button>
+                    </div>
+                </solacetk-model-card>
+
+            </div>
+
+        </div>
+
+        <ng-content select=".paginated-content"></ng-content>
+
+    </div>
+
+    <div class="panel-actions disp-flex auto-flex" *ngIf="panelType == 'panel'">
+
+        <mat-paginator #paginator class="auto-flex mat-elevation-z0" style="position: sticky; z-index: 16;"
+            (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" color="primary">
+        </mat-paginator>
+
+        <ng-content select=".action-row"></ng-content>
+
+    </div>
+
+    <div class="expansionpanel-content" *ngIf="panelType == 'expansionpanel'">
+
+
+    </div>
+
+    <div class="expansionpanel-actions" *ngIf="panelType == 'expansionpanel'">
+
+        <ng-content select=".action-row"></ng-content>
+
+    </div>
+
+</solacetk-panel>

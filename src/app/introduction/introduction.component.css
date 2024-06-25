@@ -1,3 +1,48 @@
 .intro-card {
     width: 100%;
 }
+
+.solacetk-icon {
+    background-color: #ffffff00;
+    width: 5em;
+    height: 5em;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    border-radius: 12px;
+    background-image:url(https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/Ase/soltk-logo/soltk-logo.png);
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.solacetk-icon:hover {
+    background-color: #2d6e661f;
+}
+
+.solacetk-code-text {
+    font-family:'Courier New', Courier, monospace;
+}
+
+.solacetk-text-focus-5 {
+    color: rgb(144, 144, 144);
+}
+
+.solacetk-text-focus-4 {
+    color: rgb(192, 192, 192);
+}
+
+.solacetk-text-focus-3 {
+    color: rgb(208, 208, 208);
+}
+
+.solacetk-text-focus-2 {
+    color: rgb(224, 224, 224);
+}
+
+.solacetk-text-focus-1 {
+    color: rgb(240, 240, 240);
+}
+
+.solacetk-text-focus-0 {
+    color: white;
+}

@@ -1,0 +1,124 @@
+<div *ngIf="panelType == 'panel'">
+    <mat-card class="auto-flex" [style.backgroundColor]="">
+        <mat-card-header>
+            <div mat-card-avatar class="width-1">
+                <mat-icon>event</mat-icon>
+            </div>
+            <mat-card-title>                
+                {{model.name}}
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="readonly">
+                <div class="disp-flex">
+                    <div class="min-width-10 no-flex"></div>
+                    {{model.description}}
+                </div>
+            </mat-card-subtitle>
+            <div class="gap-1 auto-flex"></div>
+            <button mat-icon-button class="no-flex" (click)="ToggleReadonly()">
+                <mat-icon>tune</mat-icon>
+            </button>
+        </mat-card-header>
+        <mat-card-content class="disp-flex auto-flex flex-gap-050">
+
+            <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+            <mat-form-field *ngIf="!readonly" class="auto-flex full-width font-small">
+                <mat-label>Name</mat-label>
+                <input class="full-width" matInput placeholder="Name" [(ngModel)]="model.name">
+            </mat-form-field>
+
+            <!-- <div class="gap-1 no-flex"></div> -->
+
+            <mat-form-field *ngIf="!readonly" class="auto-flex full-width font-small">
+                <mat-label>Description</mat-label>
+                <textarea class="panel-textarea" #description matInput placeholder="Description" [(ngModel)]="model.description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="!readonly" class="auto-flex full-width font-small">
+                <mat-label>Duration</mat-label>
+                <input class="full-width" #duration matInput placeholder="Description" [(ngModel)]="localDuration" type="text">
+                <button *ngIf="localDuration" matSuffix mat-icon-button aria-label="Clear" (click)="CalculateDuration()">
+                    <mat-icon>timer</mat-icon>
+                  </button>
+            </mat-form-field>
+
+            <!-- <div class="auto-flex full-width"> -->
+
+                <solacetk-attributes-panel *ngIf="!readonly" class="full-width" panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+                    panelType="expansionpanel" [(model)]="model.conditions" [operatorsEnabled]="true">
+                </solacetk-attributes-panel>
+
+                <mat-chip-set class="full-width auto-flex" *ngIf="readonly">
+                    <mat-chip *ngFor="let cond of model.conditions" class="font-small"
+                        style="background-color: #006064;">
+                        {{cond.key}} {{operators[cond.operator ?? 0]}} {{cond.data}}
+                    </mat-chip>
+                </mat-chip-set>
+
+                <!-- <div class="gap-1 no-flex"></div> -->
+
+                <solacetk-attributes-panel *ngIf="!readonly" [panelMode]="1" class="auto-flex full-width" panelName="Story Data"
+                    panelType="expansionpanel" [(model)]="model.downstreamData"></solacetk-attributes-panel>
+
+                    <mat-chip-set class="full-width auto-flex" *ngIf="readonly">
+                        <mat-chip *ngFor="let data of model.downstreamData" class="font-small"
+                            style="background-color: #4a148c;">
+                            {{data.key}} {{dataOperators[data.operator ?? 0]}} {{data.data}}
+                        </mat-chip>
+                    </mat-chip-set>
+
+                    <!-- <div class="gap-1 no-flex"></div> -->
+
+                <solacetk-event-panel *ngIf="!readonly" class="full-width" [(model)]="model.events">
+                </solacetk-event-panel>
+
+                <solacetk-messages-panel *ngIf="!readonly" class="full-width" panelType="expansionpanel" creationType="local" [(model)]="model.messages">
+                </solacetk-messages-panel>
+
+                <mat-chip-set class="full-width auto-flex" *ngIf="readonly">
+                    <div *ngFor="let message of model.messages">
+                    <mat-chip *ngFor="let data of message.data" class="font-small"
+                        style="background-color: rebeccapurple;">
+                        {{message.targetName}}.{{data.key}} {{dataOperators[data.operator ?? 0]}} {{data.data}}
+                    </mat-chip>
+                </div>
+                </mat-chip-set>
+            <!-- </div> -->
+
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div *ngIf="panelType == 'expansionpanel'">
+
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon class="mr-2">hub</mat-icon>
+                {{model.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{model.description}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+
+        <ng-template matExpansionPanelContent>
+
+            <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+                panelType="expansionpanel" [(model)]="model.conditions" [operatorsEnabled]="true">
+            </solacetk-attributes-panel>
+
+            <solacetk-attributes-panel [panelMode]="1" panelName="Story Data" panelType="expansionpanel"
+                class="auto-flex" [(model)]="model.downstreamData"></solacetk-attributes-panel>
+
+            <solacetk-event-panel class="mb-2" [(model)]="model.events">
+            </solacetk-event-panel>
+
+        </ng-template>
+
+        <mat-action-row>
+            <ng-content select=".action-row"></ng-content>
+        </mat-action-row>
+    </mat-expansion-panel>
+</div>

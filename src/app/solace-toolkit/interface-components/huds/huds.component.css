@@ -1,0 +1,39 @@
+.sprite-perfect {
+    /* margin-bottom: 3%; */
+    display: inline-block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.image-cover {
+    width: 100% !important;
+    height: fit-content;
+}
+
+.scene-text {
+    font-size: 6px;
+    font-variant: all-small-caps;
+    font-family: monospace;
+}
+
+.relative-container {
+    position: relative;
+}
+
+.relative-input {
+    position: absolute;
+    top: 0;
+}
+
+.scene-view {
+    width: 320px;
+    height: 180px;
+    transform-origin: left top;
+    transform-style: preserve-3d;
+}
+
+.scene-item {
+    transform-origin: center top;
+    transform-style: preserve-3d;
+}

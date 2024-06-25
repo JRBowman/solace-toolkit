@@ -1,0 +1,80 @@
+ <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon class="mr-2">schema</mat-icon>
+                    Dataworks
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ng-template matExpansionPanelContent>
+
+                <div class="disp-flex full-width full-height">
+
+                    <div class="auto-flex grid-3">
+                        <solacetk-attributes-panel [panelMode]="1" panelName="Start Data" panelType="expansionpanel"
+                            class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
+                    </div>
+
+                    <div class="gap-1 no-flex"></div>
+
+                    <div class="auto-flex grid-3">
+                        <solacetk-attributes-panel [panelMode]="1" panelName="Act Data" panelType="expansionpanel"
+                            class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
+                    </div>
+
+                    <div class="gap-1 no-flex"></div>
+
+                    <div class="auto-flex grid-3">
+                        <solacetk-attributes-panel [panelMode]="1" panelName="End Data" panelType="expansionpanel"
+                            class="auto-flex" [(model)]="model.endData"></solacetk-attributes-panel>
+                    </div>
+
+                </div>
+
+
+                <!-- Divider: -->
+                <div class="disp-flex auto-flex">
+                    <div class="gap-1 auto-flex full-width"></div>
+                    <mat-divider class="auto-flex full-width"></mat-divider>
+                    <div class="gap-1 auto-flex full-width"></div>
+                </div>
+                
+
+                <!-- Next States View: -->
+                <div class="disp-flex auto-flex" *ngIf="model.nextStates && showNextStates">
+                    <div class="disp-flex auto-flex" *ngFor="let behavior of model.nextStates">
+
+                        <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
+                            [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"
+                            bgColor="#545c80"></solacetk-animation-editor>
+
+                        <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" style="padding: 4px;" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
+                        
+                            <div class="panel-content auto-flex">
+
+                                <mat-chip-set class="auto-flex full-width full-height" aria-label="Branch States"
+                                    multiple="false">
+                                    <mat-chip disableRipple class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
+                                        [style.background-color]="'#545c80'"
+                                        style="overflow: hidden;">
+                                        <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
+                                        {{nState.name}}
+                                    </mat-chip>
+                                </mat-chip-set>
+
+                            </div>
+
+                        </solacetk-panel>
+
+                        <!-- <div class="no-flex gap-1"></div> -->
+                    </div>
+                </div>
+
+            </ng-template>
+
+            <mat-action-row>
+                <button mat-button color="primary" (click)="openAnimationsSheet()">Import States</button>
+                <button mat-button color="primary" (click)="openAnimationsSheet('?noop=true')">Import Branches</button>
+            </mat-action-row>
+
+        </mat-expansion-panel>

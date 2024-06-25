@@ -35,7 +35,7 @@ import { TransportControllersComponent } from './solace-toolkit/controllers-comp
 import { BehaviorAnimationsComponent } from './solace-toolkit/behaviors/behavior-animations/behavior-animations.component';
 import { EnvironmentMapComponent } from './solace-toolkit/environment-components/environment-map/environment-map.component';
 import { SoundSetsComponent } from './solace-toolkit/sound-components/sound-sets/sound-sets.component';
-import { SolacetkWikiComponent } from './solace-toolkit/common/solacetk-wiki/solacetk-wiki.component';
+import { SolacetkWikiComponent } from './solace-toolkit/wiki/solacetk-wiki/solacetk-wiki.component';
 import { ActionEventsComponent } from './solace-toolkit/action-components/action-events/action-events.component';
 import { GameStatesComponent } from './solace-toolkit/game-components/game-states/game-states.component';
 import { AudioEffectsComponent } from './solace-toolkit/effects-components/audio-effects/audio-effects.component';
@@ -79,16 +79,15 @@ import { SolacetkToolnavExtendedComponent } from './solace-toolkit/common/solace
 import { SolacetkIdentityBadgeComponent } from './solace-toolkit/common/solacetk-identity-badge/solacetk-identity-badge.component';
 import { IdentityComponent } from './identity/identity.component';
 import { SolacetkBottomSheetComponent } from './solace-toolkit/common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
-import { SolacetkEventPanelComponent } from './solace-toolkit/common/solacetk-event-panel/solacetk-event-panel.component';
+import { SolacetkEventPanelComponent } from './solace-toolkit/action-components/solacetk-event-panel/solacetk-event-panel.component';
 import { SolacetkConditionsPanelComponent } from './solace-toolkit/common/solacetk-conditions-panel/solacetk-conditions-panel.component';
-import { SolacetkMessagesPanelComponent } from './solace-toolkit/common/solacetk-messages-panel/solacetk-messages-panel.component';
-import { SolaceControllerComponentComponent } from './solace-toolkit/common/solace-controller-component/solace-controller-component.component';
-import { SolacetkControllerComponentComponent } from './solace-toolkit/common/solacetk-controller-component/solacetk-controller-component.component';
+import { SolacetkMessagesPanelComponent } from './solace-toolkit/action-components/solacetk-messages-panel/solacetk-messages-panel.component';
+import { SolacetkControllerComponentComponent } from './solace-toolkit/controllers-components/solacetk-controller-component/solacetk-controller-component.component';
 import { SolacetkPanelComponent } from './solace-toolkit/common/solacetk-panel/solacetk-panel.component';
 import { SolacetkPanelListComponent } from './solace-toolkit/common/solacetk-panel-list/solacetk-panel-list.component';
 import { MapLayersPanelComponent } from './solace-toolkit/environment-components/map-layers-panel/map-layers-panel.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { SolacetkStorycardComponent } from './solace-toolkit/common/solacetk-storycard/solacetk-storycard.component';
+import { SolacetkStorycardComponent } from './solace-toolkit/game-components/solacetk-storycard/solacetk-storycard.component';
 import { StoryCardsComponent } from './solace-toolkit/game-components/story-cards/story-cards.component';
 import { TileRuleEditorComponent } from './solace-toolkit/environment-components/tile-rule-editor/tile-rule-editor.component';
 import { SolacetkSidenavExtendedComponent } from './solace-toolkit/common/solacetk-sidenav-extended/solacetk-sidenav-extended.component';
@@ -96,6 +95,30 @@ import { SolacetkListToolbarComponent } from './solace-toolkit/common/solacetk-l
 import { BehaviorNoopStatesComponent } from './solace-toolkit/behaviors/behavior-states/behavior-noop-states.component';
 import { SolacetkDevbannerComponent } from './solace-toolkit/common/solacetk-devbanner/solacetk-devbanner.component';
 import { SolacetkSvgPlateComponent } from './solace-toolkit/common/solacetk-svg-plate/solacetk-svg-plate.component';
+import { SolacetkStatusPanelComponent } from './solace-toolkit/dashboards/solacetk-status-panel/solacetk-status-panel.component';
+import { SolacetkInventoryPanelComponent } from './solace-toolkit/dashboards/solacetk-inventory-panel/solacetk-inventory-panel.component';
+import { SolacetkApiExplorerComponent } from './solace-toolkit/dashboards/solacetk-api-explorer/solacetk-api-explorer.component';
+import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
+import { SolacetkMarkdownPanelComponent } from './solace-toolkit/common/solacetk-markdown-panel/solacetk-markdown-panel.component';
+import { SolacetkWebglHarnessComponent } from './solace-toolkit/common/solacetk-webgl-harness/solacetk-webgl-harness.component';
+import { SolacetkGraphObjectComponent } from './solace-toolkit/common/solacetk-graph-object/solacetk-graph-object.component';
+import { SolacetkModelCardComponent } from './solace-toolkit/common/solacetk-model-card/solacetk-model-card.component';
+import { SolacetkDialogComponent } from './solace-toolkit/common/solacetk-dialog/solacetk-dialog.component';
+import { SolacetkPagedPanelComponent } from './solace-toolkit/common/solacetk-paged-panel/solacetk-paged-panel.component';
+import { SolacetkArtifactsPanelComponent } from './solace-toolkit/artifacts/solacetk-artifacts-panel/solacetk-artifacts-panel.component';
+import { SolacetkArtifactPanelComponent } from './solace-toolkit/artifacts/solacetk-artifact-panel/solacetk-artifact-panel.component';
+import { ArtifactsComponent } from './solace-toolkit/artifacts/artifacts/artifacts.component';
+import { SolacetkAnimationDialogComponent } from './solace-toolkit/common/solacetk-animation-dialog/solacetk-animation-dialog.component';
+import { SolacetkCanvasGridComponent } from './solace-toolkit/common/solacetk-canvas-grid/solacetk-canvas-grid.component';
+import { SolacetkTilesetCanvasComponent } from './solace-toolkit/common/solacetk-tileset-canvas/solacetk-tileset-canvas.component';
+import { SolacetkParallaxPanelComponent } from './solace-toolkit/common/solacetk-parallax-panel/solacetk-parallax-panel.component';
+import { SolacetkTimelinePanelComponent } from './solace-toolkit/common/solacetk-timeline-panel/solacetk-timeline-panel.component';
+import { LoreEntryComponent } from './solace-toolkit/game-components/lore-entry/lore-entry.component';
+import { DialogueEntryComponent } from './solace-toolkit/game-components/dialogue-entry/dialogue-entry.component';
+import { TileShapeEditorComponent } from './solace-toolkit/environment-components/tile-shape-editor/tile-shape-editor.component';
+import { SolacetkGraphLineComponent } from './solace-toolkit/common/solacetk-graph-line/solacetk-graph-line.component';
+import { GraphLineDirective } from './solace-toolkit/common/solacetk-graph-line/graph-line-directive';
+import { TileCreationDialogComponent } from './solace-toolkit/environment-components/environment-tilesets/tile-creation-dialog/tile-creation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -166,19 +189,42 @@ import { SolacetkSvgPlateComponent } from './solace-toolkit/common/solacetk-svg-
     SolacetkEventPanelComponent,
     SolacetkConditionsPanelComponent,
     SolacetkMessagesPanelComponent,
-    SolaceControllerComponentComponent,
     SolacetkControllerComponentComponent,
     SolacetkPanelComponent,
     SolacetkPanelListComponent,
     MapLayersPanelComponent,
     SafeurlPipe,
+    GraphLineDirective,
     SolacetkStorycardComponent,
     StoryCardsComponent,
     TileRuleEditorComponent,
     SolacetkSidenavExtendedComponent,
     SolacetkListToolbarComponent,
     SolacetkDevbannerComponent,
-    SolacetkSvgPlateComponent
+    SolacetkSvgPlateComponent,
+    SolacetkStatusPanelComponent,
+    SolacetkInventoryPanelComponent,
+    SolacetkApiExplorerComponent,
+    ApiExplorerComponent,
+    SolacetkMarkdownPanelComponent,
+    SolacetkWebglHarnessComponent,
+    SolacetkGraphObjectComponent,
+    SolacetkModelCardComponent,
+    SolacetkDialogComponent,
+    SolacetkPagedPanelComponent,
+    SolacetkArtifactsPanelComponent,
+    SolacetkArtifactPanelComponent,
+    ArtifactsComponent,
+    SolacetkAnimationDialogComponent,
+    SolacetkCanvasGridComponent,
+    SolacetkTilesetCanvasComponent,
+    SolacetkParallaxPanelComponent,
+    SolacetkTimelinePanelComponent,
+    LoreEntryComponent,
+    DialogueEntryComponent,
+    TileShapeEditorComponent,
+    SolacetkGraphLineComponent,
+    TileCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -189,7 +235,8 @@ import { SolacetkSvgPlateComponent } from './solace-toolkit/common/solacetk-svg-
     GojsAngularModule,
     AllMaterialsModule,
     MarkdownModule.forRoot({
-      loader: HttpClient
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE
     }),
   ],
   providers: [MarkdownService ],

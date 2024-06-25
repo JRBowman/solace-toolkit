@@ -5,6 +5,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import { EnvironmentMap } from '../../models/environment-map';
 import { EnvironmentMapLayer } from '../../models/environment-map-layer';
 import { MapCell } from '../../models/map-cell';
+import { MapTileset } from '../../models/map-tileset';
 import { SolacetkService } from '../../services/solacetk-service.service';
 import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 
@@ -25,6 +26,7 @@ export class EnvironmentMapComponent implements OnInit {
   public mapscaleChange = new EventEmitter<number>();
 
   public scaleXY = 'scale(' + this.mapscale + ',' + this.mapscale + ')';
+  public mapFullscreen: boolean = false;
 
   //public tiles: MapCell[] = [];
 
@@ -53,10 +55,11 @@ export class EnvironmentMapComponent implements OnInit {
   public chunkOpacity: number = 0.667;
   public selectedCells: Array<any> = new Array<any>();
 
+  public selectedTileSet?: MapTileset;
 
   public profileUrl: string = "";
   public layerDataUrl: string = "";
-  public gridUrl: string = this.soltkService.apiHost + "Ase/grid-tile/grid-tile.png";
+  public gridUrl: string = this.soltkService.apiHost + "Artifacts/grid-tile/grid-tile.png";
 
   ngOnInit(): void {
     //this.selectedModeChange.subscribe(x => this.ModeChange(x));
@@ -117,21 +120,21 @@ export class EnvironmentMapComponent implements OnInit {
 
   public ClearChunk(): void {
     this.selectedCells.forEach(cell => {
-      cell.groupColorKey = "";
+      cell.colorKey = "";
     });
   }
 
   // Chunk Mode:
   public CreateChunk() {
     this.selectedCells.forEach(cell => {
-      cell.groupColorKey = this.chunkColor;
+      cell.colorKey = this.chunkColor;
     });
   }
 
   private layersCount = 0;
   loadEditor() {
-    this.profileUrl = this.soltkService.apiHost + "Ase/" + this.model.name + "/" + this.model.name;
-    this.layerDataUrl = "Ase/" + this.model.name + "/" + this.model.name + ".json";
+    this.profileUrl = this.soltkService.apiHost + "Artifacts/" + this.model.name + "/" + this.model.name;
+    this.layerDataUrl = "Artifacts/" + this.model.name + "/" + this.model.name + ".json";
     this.layersCount = 0;
     this.soltkService.GetData(this.layerDataUrl).subscribe((data) => {
       console.log(data);

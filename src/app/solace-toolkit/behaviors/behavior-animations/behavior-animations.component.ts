@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
+import { ConstantPool } from '@angular/compiler';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkBottomSheetComponent } from '../../common/solacetk-bottom-sheet/solacetk-bottom-sheet.component';
+import { BehaviorAnimationFrame } from '../../models/behavior-animation-frame';
 import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
 import { BehaviorState } from '../../models/behaviorstate';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import { SolTkComponent } from '../../models/soltk-component';
 
 @Component({
   selector: 'app-behavior-animations',
@@ -17,6 +20,8 @@ export class BehaviorAnimationsComponent implements OnInit {
   constructor(private service: SolacetkService, private _bottomSheet: MatBottomSheet) { }
 
   public model: BehaviorAnimation = new BehaviorAnimation();
+  public selectedFrame?: BehaviorAnimationFrame;
+  public selectedComponent?: SolTkComponent;
 
   public unloadModules = new EventEmitter<boolean>();
 
@@ -29,7 +34,7 @@ export class BehaviorAnimationsComponent implements OnInit {
   }
 
   LoadAnim(): void {
-    
+
     this.animEditorDisabled = false;
     this.unloadModules.emit(false);
     this.editorState = SolTkEditorState.Update;
@@ -39,14 +44,14 @@ export class BehaviorAnimationsComponent implements OnInit {
     this.editorState = SolTkEditorState.Create;
     this.animEditorDisabled = true;
     this.model = new BehaviorAnimation();
-    this.model.startFrameData = new BehaviorAnimationData();
     this.model.actFrameData = new BehaviorAnimationData();
-    this.model.endFrameData = new BehaviorAnimationData();
     this.unloadModules.emit(true);
   }
 
   CloseAnim(): void {
     this.unloadModules.emit(true);
+    this.selectedComponent = undefined;
+    this.selectedFrame = undefined;
     this.editorState = SolTkEditorState.List;
   }
 
@@ -57,9 +62,10 @@ export class BehaviorAnimationsComponent implements OnInit {
     state.name = this.model.name;
     state.runCount = 1;
     state.interruptable = true;
+    state.stateType = "State";
     state.tags = this.model.tags;
 
-    this.service.CreateModel("Behaviors/States", state).subscribe(x => {
+    this.service.CreateModelOp("Behaviors/States", state).subscribe(x => {
       console.log(x);
     });
   }
@@ -85,6 +91,45 @@ export class BehaviorAnimationsComponent implements OnInit {
   //     });
   // }
 
+  public getComponentVariableData(): void {
+    if (!this.selectedFrame || !this.selectedComponent) return;
+
+    //this.model.components.forEach(component => {
+      // Collect Component Values into SolTkKeyValues:
+      this.mergeFrameData({ key: this.selectedComponent.name + ".positionX", data: this.selectedComponent.positionX.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".positionY", data: this.selectedComponent.positionY.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".positionZ", data: this.selectedComponent.positionZ.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".scaleX", data: this.selectedComponent.scaleX.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".scaleY", data: this.selectedComponent.scaleY.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".scaleZ", data: this.selectedComponent.scaleZ.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".rotationX", data: this.selectedComponent.rotationX.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".rotationY", data: this.selectedComponent.rotationY.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".rotationZ", data: this.selectedComponent.rotationZ.toString(), operator: 0 });
+      this.mergeFrameData({ key: this.selectedComponent.name + ".enabled", data: this.selectedComponent.enabled.toString(), operator: 0 });
+
+      this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData];
+    //});
+  }
+
+  public mergeFrameData(model: SoltkKeyValue): void {
+    if (!this.selectedFrame) return;
+
+    let index = this.selectedFrame.downstreamData.findIndex(x => x.key == model.key);
+    if (index == -1) {
+      // Doesn't Exist, add it:
+      console.log("adding new frame data");
+      
+      this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, model];
+      console.log(this.selectedFrame.downstreamData);
+    }
+    // Data already exists
+    else {
+      this.selectedFrame.downstreamData[index].data = model.data;
+    }
+
+
+  }
+
   public cleanAllFrameNames(): void {
     if (!this.model || !this.model.actFrameData) return;
 
@@ -108,11 +153,11 @@ export class BehaviorAnimationsComponent implements OnInit {
         let tempName = files[x].name.replace(".ase", "");
 
         const formData = new FormData();
-        
+
         //formData.append(tempName + "-act.ase", files[x]);
         formData.append(files[x].name, files[x]);
         const upload$ = this.service.CreateModel("Files/ase", formData);
-  
+
         upload$.subscribe((response) => {
           console.log("Multiple File Uploads Responses");
           console.log(response);
@@ -121,6 +166,10 @@ export class BehaviorAnimationsComponent implements OnInit {
         // Create BehaviorAnimation for Ase:
         let tmpAnim: BehaviorAnimation = new BehaviorAnimation();
         tmpAnim.name = tempName;
+        tmpAnim.actFrameData = new BehaviorAnimationData();
+        tmpAnim.actFrameData.name = tempName + "-act";
+        tmpAnim.actFrameData.enabled = true;
+        tmpAnim.actFrameData.id = 0;
         tmpAnim.tags = "#anim";
 
         let animCreate = this.service.CreateModel("Behaviors/animations", tmpAnim);
@@ -137,8 +186,7 @@ export class BehaviorAnimationsComponent implements OnInit {
 
 }
 
-export enum SolTkEditorState
-{
+export enum SolTkEditorState {
   List = 0,
   Create = 1,
   Update = 2

@@ -1,5 +1,6 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()" [hasPreview]="true"
-    (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations" moduleColor="#ac5c36" modulePlateType="An">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Animations" (modelCreated)="CreateAnim()"
+    [hasPreview]="true" (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations"
+    moduleColor="#ac5c36" modulePlateType="An">
     <div class="editor">
 
     </div>
@@ -7,17 +8,34 @@
     <div class="editor-panels">
 
         <!-- <mat-accordion class="auto-flex align-start full-width"> -->
-        <div class="disp-flex">
-            <div *ngIf="editorState == 2" class="auto-flex full-width">
+        <div *ngIf="editorState == 2" class="disp-flex auto-flex full-width">
 
-                <!-- Frames Content: -->
-                <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name">
-                </solacetk-animation-editor>
+            <solacetk-controller-component [(model)]="model.components" panelColor="#006064" style="flex: 0 1 24em;"
+                panelElevation="0" [(selectedComponent)]="selectedComponent">
 
-                <div class="no-flex gap-1"></div>
-            </div>
+                <div class="component-actions">
+                    <button mat-icon-button matTooltip="Sync Component State" color="primary" class="no-flex"
+                    (click)="getComponentVariableData()">
+                    <mat-icon>sync_alt</mat-icon>
+                </button>
+                </div>
 
-            <div class="no-flex gap-1"></div>
+
+            </solacetk-controller-component>
+
+            <!-- Frames Content: -->
+            <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name"
+                [(components)]="model.components" style="flex: 1 1 48em;" [(selectedFrame)]="selectedFrame">
+            </solacetk-animation-editor>
+
+            <solacetk-attributes-panel *ngIf="selectedFrame" [panelMode]="1" style="flex: 0 1 24em;"
+                [panelName]="'Frame ' + selectedFrame.name + ' Data'" panelType="expansionpanel"
+                [(model)]="selectedFrame.downstreamData" panelElevation="0">
+            </solacetk-attributes-panel>
+
+            <!-- <solacetk-controller-component class="auto-flex width-33" [(model)]="model.components"
+                    panelColor="#006064" (getStateData)="onGetStateData($event)">
+                </solacetk-controller-component> -->
 
         </div>
 

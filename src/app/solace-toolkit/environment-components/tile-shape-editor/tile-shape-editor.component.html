@@ -1,0 +1,42 @@
+<solacetk-panel panelName="Shape Editor" class="full-width auto-flex" fontSize="small" panelColor="#c04848">
+
+    <div class="panel-content">
+
+        <div class="disp-flex full-width flex-gap-050" style="justify-content: center;">
+            <!-- <div class="gap-1 auto-flex"></div> -->
+
+            <!-- <div class="auto-flex"> -->
+            <!-- Tile Rule Grid: -->
+            <!-- (click)="rule.checkType = (rule.checkType + 1) % 6" -->
+
+            <div class="map-panel relative-container no-flex mat-elevation-z2" style="height: 192px; width: 192px; background-color: rgb(24 23 36);">
+                <div *ngIf="model" class="relative-input" style="transform: scale(12);">
+                    <!-- Tile Texture: -->
+                    <img class="sprite map-layer auto-flex" [src]="textureUrl + '.png'" alt="map layer"
+                        [style.left]="-(model.lx) + 'px'" [style.top]="-(model.ly) + 'px'"
+                        [style.height]="textureHeight">
+
+                    <!-- Physics Shape: -->
+                    <div [id]="point.x + ',' + point.y + '-div'" matRipple class="gridCell background-grid" style="opacity: 0.5;" *ngFor="let point of editorPoints"
+                            [style.backgroundColor]="point.enabled ? 'crimson' : 'transparent'"
+                            [class.gridSelected]="point == selectedPoint"
+                            [style.left]="(point.x) * ruleEditorTileSize + 'px'"
+                            [style.top]="(point.y) * ruleEditorTileSize + 'px'"
+                            (click)="selectedPoint = point; point.enabled = !point.enabled; ShapePointChange(point);"
+                            [matTooltip]="'Shape Point at [' + point.x + ',' + point.y + ']'">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="panel-actions disp-flex auto-flex">
+
+        <!-- Other Rule Actions: -->
+
+    </div>
+
+</solacetk-panel>

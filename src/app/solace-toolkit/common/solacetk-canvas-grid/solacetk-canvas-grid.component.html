@@ -1,0 +1,9 @@
+<div class="relative-container" style="width: 1280px; height: 720px;">
+    <canvas class="relative-input" #canvas [width]="1280" [height]="720"></canvas>
+
+    <div matRipple *ngFor="let tile of tiles" class="relative-input" [style.left]="(tile.x * 64) + 'px'" 
+        [style.top]="(tile.y * 64) + 'px'" [style.width]="'64px'" [style.height]="'64px'" (click)="applyTile(tile)">
+        <div class="auto-flex grid-cell"></div>
+    </div>
+
+</div>

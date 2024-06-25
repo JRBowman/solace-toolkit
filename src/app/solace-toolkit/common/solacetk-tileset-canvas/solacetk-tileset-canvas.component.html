@@ -1,0 +1,38 @@
+<mat-card>
+
+    <mat-card-header>
+        <mat-toolbar>
+            <span>Test Canvas</span>
+            <button mat-button>Erase</button>
+            <button mat-button (click)="redraw()">Clear</button>
+
+        </mat-toolbar>
+    </mat-card-header>
+
+    <mat-card-content class="disp-flex flex-gap-050" style="padding: 1em;">
+
+        <!-- <mat-card class="disp-flex auto-flex" appearance="outlined"> -->
+
+            <!-- Minimap: -->
+            <div class="no-flex" style="width: 192px;">
+                <canvas #minimap [width]="192" [height]="192"></canvas>
+            </div>
+
+            <div class="auto-flex" style="width: 64em;">
+
+                <div class="auto-flex relative-container" style="width: 1280px; height: 720px;">
+
+                    <!-- Tile Viewer: -->
+                    <canvas class="relative-input" #canvas [width]="1280" [height]="720"></canvas>
+
+                    <div matRipple *ngFor="let tile of tiles" class="relative-input" [style.left]="(tile.x * 64) + 'px'"
+                        [style.top]="(tile.y * 64) + 'px'" [style.width]="'64px'" [style.height]="'64px'"
+                        (click)="applyTile(tile)" [matTooltip]="tile.x + '-' + tile.y">
+                        <div class="auto-flex grid-cell" [style.background-color]="tile.colorKey"></div>
+                    </div>
+
+                </div>
+            </div>
+        <!-- </mat-card> -->
+    </mat-card-content>
+</mat-card>

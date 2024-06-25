@@ -1,0 +1,72 @@
+.map-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.map-layer {
+    width: auto !important;
+    position: absolute;
+    image-rendering: pixelated;
+}
+
+.background-grid {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+
+    /* border-width: 0.01em; */
+    /* border-style: dotted; */
+    border-bottom-style: hidden;
+    border-right-style: hidden;
+
+}
+
+.gridCell {
+    /* margin-left: -1px;
+    margin-top: -1px; */
+    /* margin-right: 2px; */
+    /* border-width: 0.01em; */
+}
+
+.gridSelected {
+    /* background-color: white; */
+    
+    /* border-style: solid; */
+    border-color: rgba(255, 34, 82, 1);
+    height: 1px;
+    width: 1px;
+    opacity: 1 !important;
+    /* opacity: 1 !important; */
+    /* filter: drop-shadow(1px 4px 2px black); */
+}
+
+.relative-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.relative-input {
+    position: absolute;
+}
+
+.gridCell:hover {
+    opacity: 0.75 !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* border-style: solid; */
+    height: 1px;
+    width: 1px;
+}
+
+.gridCell:active{
+    background-color: rgba(64, 128, 128, 0.5);
+}
+
+.map-panel {
+    border-style: inset;
+    border-width: 5px;
+    border-color: lightslategrey;
+    border-radius: 5px;
+}

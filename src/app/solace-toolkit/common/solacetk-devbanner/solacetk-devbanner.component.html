@@ -11,9 +11,9 @@
 
 </div> -->
 <div class="gap-2 no-flex"></div>
-<span class="full-width auto-flex dev-banner" matSnackBarLabel>
+<span class="full-width auto-flex" matSnackBarLabel>
     {{dataRef.message}}
 </span>
-<span *ngIf="dataRef.useActions" matSnackBarActions class="dev-banner">
-    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()"></button>
+<span *ngIf="dataRef.useActions" matSnackBarActions>
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">{{dataRef.actionName}}</button>
 </span>

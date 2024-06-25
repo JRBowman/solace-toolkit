@@ -1,224 +1,242 @@
 <!-- *ngIf="!modelSelected || !hideEditorHeading" -->
 <!-- Landing Toolbar: -->
-<div class="disp-flex auto-flex mat-elevation-z6" style="z-index: 16; position: sticky;">
+<mat-sidenav-container class="full-height">
 
-  <!-- <div class="gap-1 auto-flex"></div> -->
-
-  <mat-toolbar class="no-flex" style="height: 74px;">
-
-    <div class="gap-2 no-flex"></div>
-
-    <img class="no-flex icon-sprite" src="../../../assets/soldof/icons/{{moduleIcon}}" alt="Module Icon">
-
-    <div class="gap-2 no-flex"></div>
-
-    <span *ngIf="service.screenWidth > 990" class="no-flex font-medium model-toolbar-text">{{moduleName}}</span>
-    <p *ngIf="indev" class="font-large auto-flex align-center model-toolbar-text text-center" style="color: crimson;">Currently In Development</p>
-
-    <div class="gap-1 auto-flex"></div>
-    
-    <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="textFilterStr"
-    (tagsChange)="textFilter($event)" tkHeading="Search Filter" placeholderText="Filters" [(tagItems)]="textFilters"></solacetk-tags>
-
-    <div class="gap-1 no-flex"></div>
-
-    <solacetk-tags *ngIf="!modelSelected" class="auto-flex" style="padding-top: 24px;" [(model)]="tagFilters"
-      (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
-
-    <!-- <div class="gap-1 no-flex"></div> -->
-
-    <div class="gap-1 auto-flex"></div>
-
-    <div *ngIf="tabIndex === 0 && !modelSelected" class="disp-flex no-flex">
-
-      <ng-content class="no-flex" select=".list-buttons"></ng-content>
-
-      <button mat-icon-button color="primary" class="no-flex" matTooltip="Create New Model"
-        aria-label="Add new Character Controller" (click)="NewModel()">
-        <mat-icon>add</mat-icon>
+  <mat-sidenav #sidenav class="full-height full-width" [opened]="toggleJsonEditor" mode="side"
+    position="end" [fixedInViewport]="true" style="max-width: 48em; flex: 1 1 28em;">
+    <!-- <div class="disp-flex auto-flex">
+      <div class="gap-2 no-flex"></div>
+      <div class="auto-flex font-medium align-center">JSON Editor</div>
+      <button mat-icon-button matTooltip="Toggle JSON Editor" (click)="toggleJsonEditor = !toggleJsonEditor">
+        <mat-icon>code_blocks</mat-icon>
       </button>
+      <div class="gap-2 no-flex"></div>
+    </div> -->
+    <!-- Json Editor: -->
+    <solacetk-markdown-panel class="disp-flex full-height auto-flex" [canEdit]="true" useLineNumbers ngPreserveWhitespace [(data)]="modelJson" 
+      [useData]="true" [useLanguage]="true" (dataChange)="ApplyModel($event)"></solacetk-markdown-panel>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+
+    <!-- Toolbar: -->
+    <div class="disp-flex auto-flex mat-elevation-z6" style="z-index: 16; position: sticky;">
+
+      <!-- <div class="gap-1 auto-flex"></div> -->
+
+      <mat-toolbar class="auto-flex" style="height: 74px;">
+
+        <div class="gap-2 no-flex"></div>
+        <img class="no-flex icon-sprite soltk-backup-img" [src]="'../../../assets/soldof/icons/' + moduleIcon">
+        <div class="gap-2 no-flex"></div>
+
+        <span *ngIf="service.screenWidth > 990" class="no-flex font-medium model-toolbar-text">{{moduleName}}<small *ngIf="indev" style="color: crimson; vertical-align: super;">Preview</small></span>
+        <!-- <p *ngIf="indev" class="font-large auto-flex align-center model-toolbar-text text-center"
+          style="color: crimson;">Currently In Development</p> -->
+
+        <!-- <div *ngIf="service.screenWidth > 990" class="gap-1 auto-flex"></div> -->
+
+        <div class="disp-flex auto-flex">
+          <solacetk-tags *ngIf="!modelSelected" style="flex: 1 1 2em; width: 4em; padding-top: 24px;"
+            [(model)]="textFilterStr" (tagsChange)="textFilter($event)" tkHeading="Search Filter"
+            placeholderText="Filters" [(tagItems)]="textFilters"></solacetk-tags>
+
+          <div class="gap-1 no-flex"></div>
+
+          <solacetk-tags *ngIf="!modelSelected" style="flex: 1 1 2em; width: 4em; padding-top: 24px;"
+            [(model)]="tagFilters" (tagsChange)="filter($event)" tkHeading="Tags Filter"></solacetk-tags>
+
+        </div>
+
+        <!-- <div class="gap-1 no-flex"></div> -->
+
+        <div *ngIf="service.screenWidth > 990" class="gap-1 auto-flex"></div>
+        <div *ngIf="service.screenWidth < 990" class="gap-2 no-flex"></div>
+
+        <div *ngIf="tabIndex === 0 && !modelSelected" class="disp-flex no-flex">
+
+          <ng-content class="no-flex" select=".list-buttons"></ng-content>
+
+          <button mat-icon-button color="primary" class="no-flex" matTooltip="Create New Model" aria-label="Add New"
+            (click)="NewModel()">
+            <mat-icon>add</mat-icon>
+          </button>
+
+          <button mat-icon-button color="primary" class="no-flex" matTooltip="Seed Data" aria-label="Seed Data"
+            (click)="SeedData()" [disabled]="!moduleData.moduleSeedData">
+            <mat-icon>javascript</mat-icon>
+          </button>
+
+        </div>
+
+        <div *ngIf="tabIndex === 1 && modelSelected" class="disp-flex no-flex">
+
+          <ng-content class="no-flex" select=".editor-buttons"></ng-content>
+
+          <button *ngIf="!IsNewModel" mat-icon-button color="accent" matTooltip="Export Selected Model"
+            aria-label="Export Model" (click)="ExportModel()">
+            <mat-icon>download</mat-icon>
+          </button>
+
+          <button mat-icon-button color="primary" class="no-flex" matTooltip="Save Current Editor"
+            aria-label="Save Current Editor Window" (click)="SaveModel()">
+            <mat-icon>save</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Toggle JSON Editor" (click)="toggleJsonEditor = !toggleJsonEditor">
+            <mat-icon>code_blocks</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" class="no-flex" matTooltip="Close Current Editor"
+            aria-label="Close Current Editor Window" (click)="CloseModel()">
+            <mat-icon>close</mat-icon>
+          </button>
+
+        </div>
+
+        <div class="gap-2 no-flex"></div>
+
+      </mat-toolbar>
+
 
     </div>
 
-    <div *ngIf="tabIndex === 1 && modelSelected" class="disp-flex no-flex">
+    <!-- Main View: -->
+    <div *ngIf="!IsLoading" [style.height]="(service.screenHeight - (modelSelected ? 140 : 194)) + 'px'">
 
-      <ng-content class="no-flex" select=".editor-buttons"></ng-content>
+      <mat-tab-group class="full-height" [dynamicHeight]="dynamicTabHeight" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
 
-      <button *ngIf="!IsNewModel" mat-icon-button color="accent" matTooltip="Export Selected Model"
-        aria-label="Export Model" (click)="ExportModel()">
-        <mat-icon>download</mat-icon>
-      </button>
+        <!-- List: -->
+        <mat-tab bodyClass="full-height" [labelClass]="'file-input'">
 
-      <button mat-icon-button color="primary" class="no-flex" matTooltip="Save Current Editor"
-        aria-label="Save Current Editor Window" (click)="SaveModel()">
-        <mat-icon>save</mat-icon>
-      </button>
+          <!-- List Container - This should Scroll: -->
+          <div style="padding: 16px; padding-left: 7%; padding-right: 7%;">
+            <div class="disp-flex flex-gap-050">
 
-      <button mat-icon-button color="warn" class="no-flex" matTooltip="Close Current Editor"
-        aria-label="Close Current Editor Window" (click)="CloseModel()">
-        <mat-icon>close</mat-icon>
-      </button>
+              <!-- List Card Item: -->
+              <div *ngFor='let model of viewData' class="auto-flex" style="flex: 1 1 18em;">
 
-    </div>
+                <solacetk-model-card class="auto-flex align-center" style="width: inherit;" [model]="model" [hasPreview]="hasPreview" [modelType]="modulePlateType">
+                  <div class="model-header disp-flex">
+                    <div class="gap-1 auto-flex"></div>
 
-    <div class="gap-2 no-flex"></div>
+                    <button mat-icon-button matTooltip="Edit Model"
+                    (click)="LoadModel(model)"><mat-icon>edit_square</mat-icon></button>
 
-  </mat-toolbar>
+                  </div>
+                  <div class="model-footer disp-flex">
+                    
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Additional Model Options">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
 
+                    <mat-menu #menu="matMenu" yPosition="above">
+                      <button mat-menu-item>
+                        <mat-icon>download</mat-icon>
+                        <span>Export</span>
+                      </button>
+                      <button color="warn" mat-menu-item (click)="DeleteModel(model)">
+                        <mat-icon color="warn">cancel</mat-icon>
+                        <span>Remove</span>
+                      </button>
+                    </mat-menu>
 
-</div>
+                  </div>
+                </solacetk-model-card>
 
-
-<!-- <div class="btn-hover-right" *ngIf="!IsLoading"> -->
-<div *ngIf="!IsLoading" [style.height]="(service.screenHeight - (modelSelected ? 140 : 194)) + 'px'">
-  <mat-tab-group class="full-height" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex = $event">
-
-    <!-- List: -->
-    <mat-tab bodyClass="full-height" [labelClass]="'file-input'">
-
-      <!-- List Container - This should Scroll: -->
-      <div style="padding: 16px; padding-left: 7%; padding-right: 7%;">
-        <div class="disp-flex">
-          <div class="gap-1 full-width auto-flex"></div>
-
-          <!-- List Card Item: -->
-          <div *ngFor='let model of viewData' class="auto-flex" style="padding: 4px; flex: 1 1 18em;">
-            <!-- style="height: 20%; padding: 4px;" [style.flex]="viewData.indexOf(model) < viewData.length - 1 ? '1 1' : '0 1'"> -->
-            <mat-card class="auto-flex full-height" [style.background-color]="moduleColor">
-
-              <mat-card-title-group class="align-center">
-                <div mat-card-avatar class="no-flex">
-                  <!-- <div class="gap-1 no-flex"></div> -->
-                  <solacetk-svg-plate  [plateText]="modulePlateType"></solacetk-svg-plate>
-                  <!-- <h3 class="mat-card-subtitle auto-flex font-small"></h3> -->
-                </div>
-                <div class="auto-flex">
-                  <div class="gap-1 auto-flex"></div>
-                  <mat-card-title 
-                    style="height: 64px; width: auto; overflow: hidden; text-transform: uppercase; font-size: 1.15em; line-height: 1.5em;">{{model.name}}</mat-card-title>
-                </div>
-
-                <button id="modelEditBtn" class="no-flex align-top" aria-label="Edit Model" title="Edit Model"
-                  matTooltip="Edit Model" color="accent" mat-icon-button (click)="LoadModel(model)">
-                  <mat-icon>edit_square</mat-icon>
-                </button>
-                <button id="modelDeleteBtn" class="no-flex align-top" aria-label="Delete Model" title="Edit Model"
-                  matTooltip="Delete Model" color="warn" mat-icon-button (click)="DeleteModel(model)">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-title-group>
-
-              <mat-card-content style="overflow: hidden; height: 48px;">
-                <mat-card-subtitle class="full-width">{{model.description}}</mat-card-subtitle>
-              </mat-card-content>
-
-              <mat-card-actions class="align-end full-width">
-                <div *ngIf="hasPreview" class="disp-flex full-width align-center" style="text-align: justify;">
-                  <div class="auto-flex"></div>
-                  <img class="sprite no-flex" style="height: 192px; image-rendering: pixelated; image-rendering: crisp-edges;" [src]="GetPreviewUrl(model)" alt="sprite">
-                  <div class="auto-flex"></div>
               </div>
-              </mat-card-actions>
 
-              <mat-card-footer>
-                <solacetk-tags class="auto-flex align-end" [(model)]="model.tags"
-                  (tagClick)="clickFilter($event)" [canEdit]="false"></solacetk-tags>
-              </mat-card-footer>
+            </div>
 
-            </mat-card>
-            <!-- <div class="gap-2 no-flex"></div>
-          <div class="gap-1 full-width full-height auto-flex"></div> -->
+            <div class="gap-1 auto-flex"></div>
           </div>
 
-        </div>
-
-        <div class="gap-1 auto-flex"></div>
-      </div>
-
-    </mat-tab>
+        </mat-tab>
 
 
-    <!-- Editor: -->
-    <mat-tab bodyClass="full-height" [labelClass]="'file-input'">
+        <!-- Editor: -->
+        <mat-tab bodyClass="full-height tab-container" [labelClass]="'file-input'">
+          <!--  -->
+          <div class="gap-1 auto-flex"></div>
 
-      <div class="gap-1 auto-flex"></div>
+          <div *ngIf="model" style="padding: 16px; padding-left: 7%; padding-right: 7%;">
 
-      <div *ngIf="model" style="padding: 16px; padding-left: 7%; padding-right: 7%;">
-
-        <ng-content select=".editor-header"></ng-content>
+            <ng-content select=".editor-header"></ng-content>
 
 
-        <mat-expansion-panel [expanded]="!collapseCoreEditor && IsNewModel" class="auto-flex">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon class="mr-2">workspaces</mat-icon>
-              {{model.name}}
-            </mat-panel-title>
-            <!-- <mat-panel-description>
-              Description: {{model.description}}
-            </mat-panel-description> -->
-          </mat-expansion-panel-header>
+            <mat-expansion-panel [expanded]="!collapseCoreEditor && IsNewModel" class="auto-flex">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon class="mr-2">workspaces</mat-icon>
+                  {{model.name}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-          <div>
-            <mat-form-field appearance="outline" class="auto-flex font-small full-width" disabled>
-              <mat-label>Id</mat-label>
-              <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
-            </mat-form-field>
+              <div>
+                <mat-form-field appearance="outline" class="auto-flex font-small full-width" disabled>
+                  <mat-label>Id</mat-label>
+                  <input matInput disabled placeholder="Id" [(ngModel)]="model.id">
+                </mat-form-field>
 
-            <mat-form-field class="auto-flex full-width font-small">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Name" [(ngModel)]="model.name">
-            </mat-form-field>
+                <mat-form-field class="auto-flex full-width font-small">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Name" [(ngModel)]="model.name">
+                </mat-form-field>
 
-            <mat-form-field class="auto-flex font-small full-width">
-              <mat-label>Description</mat-label>
-              <textarea matInput #description autosize class="min-height-96 full-width" placeholder="Description"
-                [(ngModel)]="model.description"></textarea>
-            </mat-form-field>
+                <mat-form-field class="auto-flex font-small full-width">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput #description autosize class="min-height-96 full-width" placeholder="Description"
+                    [(ngModel)]="model.description"></textarea>
+                </mat-form-field>
 
-            <solacetk-tags class="full-width" [(model)]="model.tags"></solacetk-tags>
+                <solacetk-tags class="full-width" [(model)]="model.tags"></solacetk-tags>
 
-            <!-- <h3>Properties</h3> -->
-            <ng-content select=".editor"></ng-content>
+                <!-- <h3>Properties</h3> -->
+                <ng-content select=".editor"></ng-content>
+
+              </div>
+
+              <mat-action-row>
+                <ng-content select=".editor-actions"></ng-content>
+              </mat-action-row>
+
+            </mat-expansion-panel>
+
+            <div class="gap-2"></div>
+
+            <mat-divider></mat-divider>
+
+            <div class="gap-2"></div>
+
+            <div class="auto-flex full-height">
+              <ng-content select=".editor-panels"></ng-content>
+            </div>
 
           </div>
 
-          <mat-action-row>
-            <ng-content select=".editor-actions"></ng-content>
-          </mat-action-row>
 
-        </mat-expansion-panel>
 
-        <div class="gap-2"></div>
+          <!-- <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p> -->
+        </mat-tab>
+      </mat-tab-group>
 
-        <mat-divider></mat-divider>
+      <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z6"
+        style="position: sticky; z-index: 16;" (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+        [pageIndex]="pageIndex" hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
+        color="primary">
+      </mat-paginator>
 
-        <div class="gap-2"></div>
+    </div>
 
-        <div class="auto-flex full-height">
-          <ng-content select=".editor-panels"></ng-content>
-        </div>
-
+    <!-- Static Load Spinner: -->
+    <div *ngIf="IsLoading || IsSaving" class="loader">
+      <div class="disp-flex auto-flex full-height" style="justify-content: center;">
+        <mat-spinner class="align-center"></mat-spinner>
       </div>
+    </div>
 
-      <!-- <p *ngIf="!modelSelected">No Model Selected, Select a Model from the List or Create a New Model.</p> -->
-    </mat-tab>
-  </mat-tab-group>
+  </mat-sidenav-content>
 
-  <mat-paginator *ngIf="!modelSelected" #paginator class="auto-flex mat-elevation-z6"
-    style="position: sticky; z-index: 16;" (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
-    [pageIndex]="pageIndex" hidePageSize="true" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
-    color="primary">
-  </mat-paginator>
-
-</div>
-
-<div *ngIf="IsLoading || IsSaving" class="loader">
-  <div class="disp-flex auto-flex full-height" style="justify-content: center;">
-  <mat-spinner class="align-center"></mat-spinner>
-</div>
-</div>
-
-<!-- <div *ngIf="indev">
-  <solacetk-devbanner></solacetk-devbanner>
-</div> -->
+</mat-sidenav-container>

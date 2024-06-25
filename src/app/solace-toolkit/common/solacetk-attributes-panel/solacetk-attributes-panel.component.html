@@ -1,14 +1,14 @@
 <solacetk-panel fontSize="small" [panelName]="panelName" [panelIcon]="panelIcon" [panelColor]="panelColor"
     [panelType]="panelType" [unitWidth]="unitWidth" [unitHeight]="unitHeight" [panelElevation]="panelElevation">
 
-    <div class="panel-content">
+    <div class="panel-content" *ngIf="panelType == 'panel'">
 
-        <div *ngIf="model" class="disp-flex">
+        <div *ngIf="model" class="disp-flex flex-gap-050">
 
-            <div *ngFor="let attr of model" class="auto-flex width-33" style="padding-left: 4px; padding-bottom: 4px;">
+            <div *ngFor="let attr of model" class="auto-flex width-33" style="flex: 1 1 24em;">
                 <mat-card class="auto-flex full-width">
 
-                    <mat-card-content class="disp-flex no-flex">
+                    <mat-card-content class="disp-flex auto-flex">
 
                         <div class="no-flex font-small align-center control-element"
                             style="left: 8px; z-index: unset; color: dimgray;">
@@ -42,6 +42,11 @@
                             <mat-icon class="font-medium">remove</mat-icon>
                         </button>
 
+                        <button mat-icon-button color="primary" class="no-flex control-element-b pb-1"
+                            aria-label="Switch Attribute Type" (click)="SwitchAttributeType(attr)">
+                            <span>{{attributeTypes[attr.type ?? 0]}}</span>
+                        </button>
+
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -50,18 +55,18 @@
 
     </div>
 
-    <div class="panel-actions">
+    <div class="panel-actions" *ngIf="panelType == 'panel'">
 
         <button mat-button (click)="AddAttribute()">Add</button>
         <ng-content select=".action-row"></ng-content>
 
     </div>
 
-    <div class="expansionpanel-content">
+    <div class="expansionpanel-content" *ngIf="panelType == 'expansionpanel'">
 
-        <div *ngIf="model" class="disp-flex">
+        <div *ngIf="model" class="disp-flex flex-gap-050">
 
-            <div *ngFor="let attr of model" class="auto-flex" style="padding-left: 4px; padding-bottom: 4px; flex: 1 1 24em;">
+            <div *ngFor="let attr of model" class="auto-flex" style="flex: 1 1 24em;">
                 <mat-card class="auto-flex full-width">
 
                     <mat-card-content class="disp-flex no-flex">
@@ -98,6 +103,11 @@
                             <mat-icon class="font-medium">remove</mat-icon>
                         </button>
 
+                        <button mat-icon-button color="primary" class="no-flex control-element-b pb-1"
+                            aria-label="Switch Attribute Type" (click)="SwitchAttributeType(attr)">
+                            <span>{{attributeTypes[attr.type ?? 0]}}</span>
+                        </button>
+
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -106,7 +116,7 @@
 
     </div>
 
-    <div class="expansionpanel-actions">
+    <div class="expansionpanel-actions" *ngIf="panelType == 'expansionpanel'">
 
         <button mat-button (click)="AddAttribute()">Add</button>
         <ng-content select=".action-row"></ng-content>

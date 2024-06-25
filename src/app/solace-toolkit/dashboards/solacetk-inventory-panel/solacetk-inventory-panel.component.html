@@ -1,0 +1,39 @@
+<mat-card class="auto-flex full-height" [style.flex]="panelFlex">
+
+    <mat-card-header>
+      <solacetk-svg-plate mat-card-avatar matRipple height="48px" width="48px" radius="16" plateFontSize="16px"
+        plateText="In" style="width: auto; height: auto; margin: 0;" plateColor="#b32865"></solacetk-svg-plate>
+      <mat-card-title>Inventory</mat-card-title>
+      <mat-card-subtitle>Defintions</mat-card-subtitle>
+      <span class="auto-flex"></span>
+      <a mat-icon-button class="font-small" [href]="service.baseUrl + 'health/inventory'"><mat-icon>open_in_new</mat-icon></a>
+    </mat-card-header>
+
+    <mat-card-content class="auto-flex" style="overflow-y: auto;">
+
+      <!-- Service Status: -->
+      <div class="disp-flex auto-flex align-center" *ngFor="let invItem of inventoryKeys">
+        <solacetk-svg-plate class="align-center" mat-card-avatar matRipple
+        [plateText]="invItem[0].toUpperCase() + invItem[1]" style="margin: 0px; width: auto; height: auto;"></solacetk-svg-plate>
+        <div class="gap-1 no-flex"></div>
+        <div mat-card-subtitle class="no-flex width-5 align-center" style="text-align: left; text-transform: capitalize;">
+          {{invItem}}
+        </div>
+
+        <div class="gap-2 no-flex"></div>
+
+        <div class="auto-flex align-center" style="text-align: right;">
+          {{invObj[invItem]}}
+        </div>
+        <div class="gap-2 no-flex"></div>
+        <!-- <div class="gap-1 no-flex"></div> -->
+        <mat-divider class="disp-flex full-width auto-flex" style="margin: 2px;"></mat-divider>
+      </div>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+        <div class="gap-2 no-flex"></div>
+    </mat-card-footer>
+
+  </mat-card>

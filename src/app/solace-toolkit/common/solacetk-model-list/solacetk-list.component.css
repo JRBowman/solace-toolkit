@@ -41,3 +41,16 @@
     text-align: center; 
 }
 
+.tab-container {
+    overflow-y: auto;
+}
+
+.soltk-backup-img {
+    background:url(https://solacetk-core-dev-bowman-dev.apps.bocp.onbowman.com/Ase/soltk-logo/soltk-logo.png);
+    /* image-rendering: crisp-edges;
+    image-rendering: pixelated; */
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

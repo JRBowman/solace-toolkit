@@ -1,0 +1,94 @@
+<!-- Health and Status: -->
+<mat-card class="auto-flex full-height" [style.flex]="panelFlex">
+
+    <mat-card-header>
+        <solacetk-svg-plate mat-card-avatar matRipple height="48px" width="48px" radius="16" plateFontSize="16px"
+            plateText="He" style="width: auto; height: auto; margin: 0;" plateColor="#3db57a"></solacetk-svg-plate>
+        <mat-card-title>Status</mat-card-title>
+        <mat-card-subtitle>SolaceTK Service and Health</mat-card-subtitle>
+        <span class="auto-flex"></span>
+        <a mat-icon-button class="font-small" [href]="service.apiHost + 'swagger'"><mat-icon>open_in_new</mat-icon></a>
+    </mat-card-header>
+
+    <mat-card-content class="auto-flex full-height">
+
+        <!-- Service Status: -->
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="flex: 0 1 4em;">
+                    <span class="auto-flex" style="text-align: center;">Service</span>
+                </mat-panel-title>
+                <mat-panel-description class="font-small" style="justify-content: space-between; align-items: center;">
+                    <span class="auto-flex" style="text-align: center;">{{service.connected ? "Connected" : "Offline"}}</span>
+                    <solacetk-svg-plate class="align-center" width="1em" height="1em" radius="5.5" plateText=""
+                    style="margin: 0px; width: auto; height: auto;"
+                    [matTooltip]="service.connected ? 'Online' : 'Offline'"
+                    [plateColor]="service.connected ? '#60c040' : '#ff0020'"></solacetk-svg-plate>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+        <div class="disp-flex auto-flex" *ngFor="let serviceEntry of service.healthStatus.serviceStatus">
+            <div class="auto-flexalign-center"
+                style="font-family: monospace; font-size: 0.75em;">
+                {{serviceEntry}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+
+    <mat-divider class="full-width"></mat-divider>
+
+        <!-- Data Status: -->
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="flex: 0 1 4em;">
+                    <span class="auto-flex" style="text-align: center;">Data</span>
+                </mat-panel-title>
+                <mat-panel-description class="font-small" style="justify-content: space-between; align-items: center;">
+                    <span class="auto-flex" style="text-align: center;">{{service.healthStatus.dataMessage}}</span>
+                    <solacetk-svg-plate width="1em" height="1em" radius="5.5" plateText=""
+                        style="margin: 0px; width: fit-content; height: fit-content;"
+                        [matTooltip]="service.connected ? 'Online' : 'Offline'"
+                        [plateColor]="service.healthStatus.dataServiceColor"></solacetk-svg-plate>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="disp-flex auto-flex" *ngFor="let dataEntry of service.healthStatus.dataStatus">
+                <div class="auto-flex align-center width-2" style="font-size: 0.75em; font-family: monospace;">
+                    {{dataEntry}}
+                </div>
+                <mat-divider class="full-width" style="margin-top: 4px; margin-bottom: 4px;"></mat-divider>
+            </div>
+
+        </mat-expansion-panel>
+
+        <mat-divider class="full-width"></mat-divider>
+
+        <!-- Asesprite Status: -->
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="flex: 0 1 4em;">
+                    <span class="auto-flex" style="text-align: center;">Aseprite</span>
+                </mat-panel-title>
+                <mat-panel-description class="font-small" style="justify-content: space-between; align-items: center;">
+                    <span class="auto-flex" style="text-align: center;">{{service.healthStatus.aseMessage}}</span>
+                    <solacetk-svg-plate class="align-center" width="1em" height="1em" radius="5.5" plateText=""
+                        style="margin: 0px; width: fit-content; height: fit-content;"
+                        [matTooltip]="service.healthStatus.aseEnabled ? 'Enabled' : 'Disabled'"
+                        [plateColor]="service.healthStatus.aseEnabled ? '#60c040' : '#ff0020'"></solacetk-svg-plate>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="disp-flex full-width auto-flex" *ngFor="let aseEntry of service.healthStatus.asepriteStatus">
+                <div class="auto-flex align-center"
+                    style="font-family: monospace; font-size: 0.75em;">
+                    {{aseEntry}}
+                </div>
+                <mat-divider class="full-width" style="margin-top: 4px; margin-bottom: 4px;"></mat-divider>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+    </mat-card-actions>
+
+</mat-card>

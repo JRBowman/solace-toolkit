@@ -1,43 +1,67 @@
 <div *ngIf="!IsLoading" class="full-width">
     <!-- <mat-card class="mat-elevation-z0"> -->
-        <mat-card-title class="mb-2">Edit Task</mat-card-title>
-        <div class="disp-flex">
+    <mat-card-title class="mb-2">Edit Task</mat-card-title>
+    <div class="disp-flex flex-gap-050">
 
-            <mat-form-field class="no-flex font-small" style="flex: 0 0 4rem; padding: 4px;">
-                <mat-label>Id</mat-label>
-                <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
+        <mat-form-field class="no-flex font-small" style="flex: 0 0 4rem;">
+            <mat-label class="font-small">Id</mat-label>
+            <input matInput #id placeholder="Id" [(ngModel)]="model.id" disabled>
+        </mat-form-field>
+
+        <mat-form-field class="auto-flex font-small">
+            <mat-label class="font-small">Task Name</mat-label>
+            <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
+        </mat-form-field>
+
+
+        <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem;">
+            <mat-label class="font-small">Est. Hours</mat-label>
+            <input matInput #hoursEstimate placeholder="Estimated Hours" type="number"
+                [(ngModel)]="model.hoursEstimate">
+        </mat-form-field>
+
+        <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem;">
+            <mat-label class="font-small">Actual Hours</mat-label>
+            <input matInput #hoursActual placeholder="Actul Hours Worked" type="number" [(ngModel)]="model.hoursActual">
+        </mat-form-field>
+
+    </div>
+
+    <div class="auto-flex">
+        <div class="disp-flex align-center">
+            <mat-card-subtitle class="auto-flex font-medium align-center">Comments</mat-card-subtitle>
+        </div>
+
+        <mat-divider style="margin-top: 0.75em; margin-bottom: 0.75em;"></mat-divider>
+
+        <div class="auto-flex" style="max-height: 24em; overflow-y: auto;">
+
+            <solacetk-markdown-panel [data]="comment.comment" [useData]="true"
+                *ngFor="let comment of model.comments" style="padding: 2px;"></solacetk-markdown-panel>
+            <span *ngIf="!model.comments || model.comments.length == 0">No Comments</span>
+        </div>
+
+        <mat-divider style="margin-top: 0.75em; margin-bottom: 0.75em;"></mat-divider>
+
+        <!-- Comment Edit / Create Area: -->
+        <div class="disp-flex flex-gap-050 auto-flex" style="height: 100%; max-height: 16em;">
+            <mat-form-field class="auto-flex font-small align-center">
+                <mat-label class="font-small">Comment</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="6"
+                 style="max-height: 16em;" placeholder="Comment" [(ngModel)]="selectedComment.comment"></textarea>
             </mat-form-field>
-
-                <mat-form-field class="auto-flex font-small" style="padding: 4px;">
-                    <mat-label>Task Name</mat-label>
-                    <input matInput #name placeholder="Task Name" [(ngModel)]="model.name">
-                </mat-form-field>
-
-
-                <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem; padding: 4px;">
-                    <mat-label>Est. Hours</mat-label>
-                    <input matInput #hoursEstimate placeholder="Estimated Hours" type="number" [(ngModel)]="model.hoursEstimate">
-                </mat-form-field>
-
-                <mat-form-field class="no-flex font-small" style="flex: 0 0 8rem; padding: 4px;">
-                    <mat-label>Actual Hours</mat-label>
-                    <input matInput #hoursActual placeholder="Actul Hours Worked" type="number" [(ngModel)]="model.hoursActual">
-                </mat-form-field>
-
+            <button class="align-center" matTooltip="Add Comment" mat-icon-button (click)="AddComment()" [disabled]="selectedComment.comment.length == 0"><mat-icon>add</mat-icon></button>
         </div>
+    </div>
 
-        <div class="disp-flex">
-            <mat-card-subtitle class="mb-2">Comments</mat-card-subtitle>
-        </div>
+    <!-- <solacetk-animation-editor [(model)]="anim" [unloadChange]="unloadModules" [showFrames]="false" [showDataPanel]="false" [expanded]="false"></solacetk-animation-editor> -->
 
-        <!-- <solacetk-animation-editor [(model)]="anim" [unloadChange]="unloadModules" [showFrames]="false" [showDataPanel]="false" [expanded]="false"></solacetk-animation-editor> -->
+    <div class="gap-1 auto-flex"></div>
 
-        <div class="gap-1 auto-flex"></div>
-
-            <div class="disp-flex mat-card-actions">
-                <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
-                <button mat-button color="primary" class="auto-flex" (click)="Save()">Save</button>
-            </div>
+    <div class="disp-flex mat-card-actions">
+        <button mat-button color="warn" class="auto-flex" (click)="Close()">Close</button>
+        <button mat-button color="primary" class="auto-flex" (click)="Save()">Save</button>
+    </div>
 
 
     <!-- </mat-card> -->

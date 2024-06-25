@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorAnimationFrame } from '../../models/behavior-animation-frame';
-import { BehaviorAnimationData, BehaviorComponent } from '../../models/behavioranimation';
+import { BehaviorAnimationData } from '../../models/behavioranimation';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
+import { SolacetkMenuProviderService } from '../../services/solacetk-menu-provider.service';
 import { SolacetkService } from '../../services/solacetk-service.service';
 import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
+import { SolacetkAnimationDialogComponent } from '../solacetk-animation-dialog/solacetk-animation-dialog.component';
+import { SolTkComponent } from '../../models/soltk-component';
 
 @Component({
   selector: 'solacetk-animation-editor',
@@ -12,7 +15,7 @@ import { SolaceTkSoundService } from '../../services/solacetk-sounds.service';
 })
 export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
-  constructor(private service: SolacetkService, public soundService: SolaceTkSoundService) { }
+  constructor(private service: SolacetkService, public soundService: SolaceTkSoundService, public menuService: SolacetkMenuProviderService) { }
 
   @Input() model?: BehaviorAnimationData;
   @Output() modelChange = new EventEmitter<BehaviorAnimationData>();
@@ -30,16 +33,21 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   @Input() expanded: boolean = true;
   @Input() panelType: string = "panel";
 
+  @Input() components: SolTkComponent[] = [];
+  @Output() componentsChange = new EventEmitter<SolTkComponent[]>();
+
 
   public fileName: string = "";
   public sheetName: string = "../../assets/soldof/images/settings.png";
   public aseReady: boolean = false;
 
   public frames: any[] = [];
-  public selectedFrame: BehaviorAnimationFrame = new BehaviorAnimationFrame();
+  @Input() selectedFrame?: BehaviorAnimationFrame;
+  @Output() selectedFrameChange = new EventEmitter<BehaviorAnimationFrame>();
+
   public selected: number = -1;
 
-  public selectedComponent?: BehaviorComponent;
+  public selectedComponent?: SolTkComponent;
   public selectedCompIndex: number = 0;
 
   public framesChange = new EventEmitter<string>();
@@ -75,7 +83,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
       if (this.model) {
         this.isLoaded = true;
-        this.texName = "Ase/" + this.modelName + "/" + this.model.name;
+        this.texName = "Artifacts/" + this.modelName + "/" + this.model.name;
         this.texName = this.texName.replace("-act", "");
         this.framesChange.emit(this.texName + ".json");
         console.log("loaded");
@@ -114,12 +122,16 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
               modelFrame.name = f.name;
               modelFrame.duration = f.duration;
               modelFrame.frame = f;
+              modelFrame.x = f.frame.x;
+              modelFrame.y = f.frame.y;
               //this.frameWidth = (f.sourceSize.w * this.zoomFactor);
               this.model?.frames.push(modelFrame);
             } 
             else {
               frameSearch.duration = f.duration;
               frameSearch.frame = f;
+              frameSearch.x = f.frame.x;
+              frameSearch.y = f.frame.y;
             }
 
           });
@@ -139,6 +151,8 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
         this.selected = 0;
         this.selectedFrame = this.frames[0];
+        this.selectedFrameChange.emit(this.selectedFrame);
+        this.spriteWidth = this.frames[0].sourceSize.w;
 
         this.modelChange.emit(this.model);
         this.isLoaded = true;
@@ -177,51 +191,55 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     console.log(this.model);
   }
 
-  public addComponentToFrame() {
+  public openFrameOptionsMenu(): void {
+    this.menuService.OpenDialog(SolacetkAnimationDialogComponent, { data: this.model });
+  }
 
-    if (this.selectedComponent) {
-      console.log("Adding components to frame:");
-      let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
-      console.log(componentData);
-      let ind = 0;
-      //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
-      componentData.forEach(pair => {
-        if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
-          // Doesn't Exist, add it:
-          this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
-        }
-        // Data already exists
-        else {
-          this.selectedFrame.downstreamData[ind].data = pair.data;
-        }
-      });
-      this.modelChange.emit(this.model);
-    }
+  // public addComponentToFrame() {
+
+  //   if (this.selectedComponent) {
+  //     console.log("Adding components to frame:");
+  //     let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
+  //     console.log(componentData);
+  //     let ind = 0;
+  //     //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
+  //     componentData.forEach(pair => {
+  //       if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
+  //         // Doesn't Exist, add it:
+  //         this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
+  //       }
+  //       // Data already exists
+  //       else {
+  //         this.selectedFrame.downstreamData[ind].data = pair.data;
+  //       }
+  //     });
+  //     this.modelChange.emit(this.model);
+  //   }
 
     
-  }
+  // }
 
-  public onGetStateData(event: SoltkKeyValue[])
-  {
-    // if (this.selectedComponent) {
-      console.log("Adding components to frame:");
-      //let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
-      //console.log(componentData);
-      let ind = 0;
-      //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
-      event.forEach(pair => {
-        if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
-          // Doesn't Exist, add it:
-          this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
-        }
-        // Data already exists
-        else {
-          this.selectedFrame.downstreamData[ind].data = pair.data;
-        }
-      });
-      this.modelChange.emit(this.model);
-    // }
-  }
+  // public onGetStateData(event: SoltkKeyValue[])
+  // {
+  //   // if (this.selectedComponent) {
+  //     console.log("Adding components to frame:");
+  //     //let componentData: SoltkKeyValue[] = BehaviorComponent.getStateValues(this.selectedComponent);
+  //     //console.log(componentData);
+  //     let ind = 0;
+  //     //this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, ...event];
+  //     event.forEach(pair => {
+  //       if ((ind = this.selectedFrame.downstreamData.findIndex(x => x.key == pair.key)) == -1) {
+  //         // Doesn't Exist, add it:
+  //         this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, pair];
+  //       }
+  //       // Data already exists
+  //       else {
+  //         this.selectedFrame.downstreamData[ind].data = pair.data;
+  //       }
+  //     });
+  //     this.modelChange.emit(this.model);
+  //   // }
+  // }
 
   ngAfterViewInit(): void {
     
@@ -229,9 +247,13 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   playAnimation() {
 
-    if (this.model && this.selected == this.model.frames.length - 1) {
+    if (!this.model) return;
+
+    if (this.selected == this.model.frames.length - 1) {
       this.selected = 0;
       this.selectedFrame = this.model.frames[this.selected];
+      this.selectedFrameChange.emit(this.selectedFrame);
+      if (this.components && this.components.length > 0) this.processComponents();
     }
     this.soundService.playAudio("map-link.wav");
     this.isPlaying = true;
@@ -240,8 +262,9 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   private run: boolean = true;
   animate() {
-    let tempSpeed = this.selectedFrame.duration * (this.model?.speed ?? 1);
+    let tempSpeed = (this.selectedFrame?.duration ?? 100) * (this.model?.speed ?? 1);
     if (!this.isPlaying || !this.model) return;
+
     this.interval = setTimeout(() => {
       if (this.isPlaying && this.model) {
         if (this.model?.loop) this.selected = (this.selected + 1) % this.model.frames.length;
@@ -253,20 +276,12 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
           this.stopAnimation();
         }
         this.selectedFrame = this.model.frames[this.selected];
+        this.selectedFrameChange.emit(this.selectedFrame);
+        this.spriteWidth = this.selectedFrame.width;
+        this.spriteHeight = this.selectedFrame.height;
 
         // Process Components:
-        if (this.model.components && this.model.components.length > 0) {
-          this.selectedFrame.downstreamData.forEach(data => {
-
-            if (data.key.includes(".")) {
-              let keys = data.key.split(".");
-
-              let component = this.model?.components.find(x => x.name == keys[0]) as any;
-
-              if (component) component[keys[1]] = data.data;
-            }
-          });
-        }
+        if (this.components && this.components.length > 0) this.processComponents();
 
 
         this.animate();
@@ -285,52 +300,60 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
     if (this.model) {
       this.selected = this.frames.indexOf(event);
       this.selectedFrame = this.model.frames[this.selected];
+      this.selectedFrameChange.emit(this.selectedFrame);
+      if (!this.components || this.components.length == 0) return;
 
       // Process Components:
-      if (this.model.components && this.model.components.length > 0) {
-        this.selectedFrame.downstreamData.forEach(data => {
-
-          if (data.key.includes(".")) {
-            let keys = data.key.split(".");
-
-            let component = this.model?.components.find(x => x.name == keys[0]) as any;
-
-            if (component) component[keys[1]] = data.data;
-          }
-        });
-      }
+      this.processComponents();
     }
   }
 
   onComponentSelect(event: any) {
     if (this.model) {
-      this.selectedCompIndex = this.model.components.indexOf(event);
-      this.selectedComponent = this.model.components[this.selectedCompIndex];
+      this.selectedCompIndex = this.components.indexOf(event);
+      this.selectedComponent = this.components[this.selectedCompIndex];
+      this.componentsChange.emit(this.components);
     }
   }
 
-  loadDefaultComponents() {
+  loadDefaultComponents(): void {
     if (this.model) {
-      if (!this.model.components) this.model.components = [];
+      if (!this.components) this.components = [];
       //this.model.components = [...this.model.components, ...BehaviorComponent.defaultComponents];
       this.modelChange.emit(this.model);
+      this.componentsChange.emit(this.components);
     }
   }
 
-  addComponent() {
+  addComponent(): void {
     if (this.model) {
-      if (!this.model.components) this.model.components = [];
-      this.model.components = [...this.model.components, new BehaviorComponent()];
+      if (!this.components) this.components = [];
+      this.components = [...this.components, new SolTkComponent()];
       this.modelChange.emit(this.model);
+      this.componentsChange.emit(this.components);
     }
   }
 
-  removeComponent(component: BehaviorComponent) {
+  removeComponent(component: SolTkComponent): void {
     if (this.model) {
-      if (!this.model.components) this.model.components = [];
-      this.model.components.splice(this.model.components.indexOf(component), 1);
+      if (!this.components) this.components = [];
+      this.components.splice(this.components.indexOf(component), 1);
       this.modelChange.emit(this.model);
+      this.componentsChange.emit(this.components);
     }
+  }
+
+  processComponents(): void {
+    if (!this.selectedFrame) return;
+
+    this.selectedFrame.downstreamData.forEach(data => {
+
+      if (data.key.includes(".")) {
+        let keys = data.key.split(".");
+        let component = this.components.find(x => x.name == keys[0]) as any;
+        if (component) component[keys[1]] = data.data;
+      }
+    });
   }
 
   onAseSelected(event: any) {

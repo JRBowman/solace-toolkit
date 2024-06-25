@@ -35,8 +35,8 @@ export class SolacetkSearchSheetComponent implements OnInit {
     this.models = [];
     this.resource = "";
     this.resource = resoureUri;
-    this.service.GetModels(resoureUri, queryParameters, this.tagFilters).subscribe((model) => {
-      this.models = model;
+    this.service.GetModelsOp(resoureUri, queryParameters, this.tagFilters).subscribe((model) => {
+      this.models = model.data ?? [];
       console.log(model);
       this.IsLoading = false;
       this.soundService.playAudio("view-refresh.wav");

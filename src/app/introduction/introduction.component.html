@@ -1,36 +1,107 @@
+<div class="full-height">
 
-<div class="disp-flex" style="padding: 8px;">
+  <!-- <div class="gap-1 auto-flex"></div> -->
 
-  <div class="gap-1 auto-flex"></div>
+  <!-- <div class="disp-flex auto-flex full-width" style="flex: 1 1 28em;"> -->
 
-  <mat-card class="auto-flex width-2">
-    <mat-card-content>
-      <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/solacetk.md'"></markdown>
-    </mat-card-content>
+    <div cdkDropList class="disp-flex flex-gap-050 pt-1 pl-1 pr-1">
+      <div class="disp-flex flex-gap-050 auto-flex">
+        <mat-card class="auto-flex" style="flex: 1 1 18em;">
 
-    <mat-card-actions>
-      <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
-    </mat-card-actions>
+          <mat-card-header class="align-center">
+            <div mat-card-avatar matRipple class="solacetk-icon"></div>
+          </mat-card-header>
 
-  </mat-card>
+          <mat-card-content class="full-height">
+            <div mat-card-title class="align-center full-width">
+              SolaceTK
+              <a class="align-center" mat-icon-button href="https://github.com/JRBowman/solace-toolkit"
+                style="width: 32px; height: 32px; margin: 0; padding: 0;"><mat-icon class="font-large"
+                  style="vertical-align: middle;">open_in_new</mat-icon></a>
+            </div>
+            <mat-card-subtitle>The Solace Toolkit (TK) for Game Development offers a Data-Oriented Framework to build
+              and design games in your engine of choice.</mat-card-subtitle>
+          </mat-card-content>
 
-  <div class="gap-1 no-flex"></div>
+        </mat-card>
 
-  <mat-card class="auto-flex" style="height: 25%;">
-    <mat-card-title-group>
+        <!-- Health and Status: -->
+        <solacetk-status-panel class="auto-flex" style="width: 24em;"
+          panelFlex="flex: 1 1 24em"></solacetk-status-panel>
+
+      </div>
+
+      <!-- <div class="disp-flex" style="flex: 1 1 18em;"> -->
+
+      <!-- Inventory: -->
+      <solacetk-inventory-panel class="auto-flex" style="max-height: 33em; width: 18em;"
+        panelFlex="flex: 1 1 18em"></solacetk-inventory-panel>
+
+
+      <mat-card class="auto-flex" style="flex: 1 1 24em;">
+
+        <mat-card-header>
+          <solacetk-svg-plate mat-card-avatar matRipple height="48px" width="48px" radius="16" plateFontSize="16px"
+            plateText="Ac" style="width: auto; height: auto; margin: 0;" plateColor="#b32865"></solacetk-svg-plate>
+          <mat-card-title>Activity</mat-card-title>
+          <mat-card-subtitle>Users and Events</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="disp-flex full-height" style="justify-content: center;">
+          <mat-card-subtitle class="align-center">No Activity</mat-card-subtitle>
+        </mat-card-content>
+
+      </mat-card>
+
+      <!-- </div> -->
+
+      <!-- <div class="gap-1 auto-flex "></div> -->
+
+
+      <!-- <solacetk-panel class="auto-flex full-width" style="width: 24em; flex: 1 1 28em; margin: 4px;" panelType="expansionpanel"
+        panelName="ReadMe" panelColor="#332d6c" panelIcon="library_books">
+        <div class="expansionpanel-content" style="overflow: hidden;">
+          <markdown style="overflow: hidden;" lineNumbers ngPreserveWhitespaces
+            [src]="'https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/README.md'"></markdown>
+        </div>
+
+        <div expansionpanel-actions>
+          <a mat-flat-button color="primary" [routerLink]="['/wiki']">Documentation</a>
+        </div>
+
+      </solacetk-panel> -->
+    </div>
+  <!-- </div> -->
+
+  <!-- <div class="gap-1 no-flex"></div> -->
+
+  <!-- <mat-card class="auto-flex" style="height: 25%;">
+
       <mat-card-title>{{msoaUserService.IsAuthenticated ? msoaUserService.testUser.name : "Authentication"}}</mat-card-title>
       <mat-card-subtitle>SolaceTK Identity</mat-card-subtitle>
-    </mat-card-title-group>
 
-    <mat-card-content class="auto-flex">
+    <mat-card-content class="auto-flex" style="padding-top: 4px;">
       <img class="no-flex model-formfield icon-sprite" src="../../../assets/soldof/images/accounts.png" alt="Module Icon">
     </mat-card-content>
 
     <mat-card-actions>
       <button *ngIf="!msoaUserService.IsAuthenticated" class="auto-flex" mat-flat-button color="accent" (click)="msoaUserService.Login()">Login</button>
     </mat-card-actions>
-  </mat-card>
+  </mat-card> -->
 
-  <div class="gap-1 auto-flex"></div>
+  <!-- <div class="gap-1 auto-flex" style="margin-bottom: 72px;"></div> -->
+
+    <!-- <mat-toolbar class="disp-flex align-center"
+    style="position: fixed; z-index: 1; justify-content: space-between; align-items: center; bottom: 0;">
+  
+    <div class="auto-flex font-xsmall">Code License Pending</div>
+    <span class="auto-flex font-xsmall align-center">Version 0.78</span>
+    <div class="align-center">
+      <div class="full-width font-xsmall" style="height: 1.15em;">SolaceTK Development Team - ©2023</div>
+      <a class="font-xsmall" href="mailto:solacetk@onbowman.com"
+        style="height: 1.15em; color: green;">solacetk@onbowman.com</a>
+    </div>
+  </mat-toolbar> -->
 
 </div>
+

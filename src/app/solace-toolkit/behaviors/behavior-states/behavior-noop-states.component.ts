@@ -4,7 +4,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
 import { ActionEvent } from '../../models/actionevent';
 import { BehaviorAnimation } from '../../models/behavioranimation';
-import { BehaviorState } from '../../models/behaviorstate';
+import { BehaviorState, StateType } from '../../models/behaviorstate';
 import { SolacetkService } from '../../services/solacetk-service.service';
 
 @Component({
@@ -24,8 +24,18 @@ export class BehaviorNoopStatesComponent implements OnInit {
 
   public showNextStates: boolean = false;
 
+  public moduleData: any = {};
+
+  public togglePreview: boolean = false;
+
+  public doc: Document = document;
+
   ngOnInit(): void {
     this.model.noOp = true;
+    this.model.endDelay = 0.0;
+    this.model.startDelay = 0.0;
+    this.model.type = StateType.Branch;
+    this.moduleData.moduleSeedData = window.origin + "/assets/test/behaviors/branch_create.json";
   }
 
   public LogModel()
@@ -35,11 +45,15 @@ export class BehaviorNoopStatesComponent implements OnInit {
 
   public CreateModel(): void {
     this.model.noOp = true;
+    this.model.endDelay = 0.0;
+    this.model.startDelay = 0.0;
+    this.model.stateType = "Branch";
+    this.model.type = StateType.Branch;
   }
 
   public LoadModel(): void {
     this.model.noOp = true;
-
+    this.model.type = StateType.Branch;
     // Exit if there are no selected States
     if (this.model.nextStates == null || this.model.nextStates.length == 0) return;
 
@@ -48,9 +62,9 @@ export class BehaviorNoopStatesComponent implements OnInit {
       const element = this.model.nextStates[index];
       if (element == null) this.model.nextStates[index] = new BehaviorState();
             // Call the Service:
-            this.service.GetModel("Behaviors/states/" + element.id).subscribe(value => {
+            this.service.GetModelOp<BehaviorState>("Behaviors/states/" + element.id).subscribe(value => {
               if (this.model.nextStates == null) return;
-              this.model.nextStates[index] = value;
+              this.model.nextStates[index] = value.data ?? new BehaviorState();
               console.log(this.model.nextStates[index]);
               
             });
@@ -63,6 +77,11 @@ export class BehaviorNoopStatesComponent implements OnInit {
     this.unloadModules.emit(true);
   }
 
+  public RemoveState(behavior: BehaviorState): void {
+    this.model.nextStates?.splice(this.model.nextStates.indexOf(behavior), 1);
+    //this.model.nextStates = this.model.nextStates ? [...this.model.nextStates] : [];
+  }
+
   public openAnimationsSheet(query: string = "")
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
@@ -71,6 +90,9 @@ export class BehaviorNoopStatesComponent implements OnInit {
     instance.instance.modelsSelected.subscribe((models) => 
     {
       if (this.model.nextStates == null) this.model.nextStates = [];
+      models.forEach(m => {
+        m.parentId = this.model.id;
+      });
       this.model.nextStates = [...this.model.nextStates, ...models];
     });
     

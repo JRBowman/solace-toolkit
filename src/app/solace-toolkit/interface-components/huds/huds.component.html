@@ -1,35 +1,108 @@
-<solacetk-model-list [(model)]="model" moduleName="HUD Interfaces" modelUri="Core/resourcecollections" [indev]="true">
+<solacetk-model-list [(model)]="model" moduleName="HUD Interfaces" modelUri="Interfaces/Huds" [indev]="true">
     <div class="editor">
 
     </div>
 
     <div class="editor-panels">
 
-        <div class="disp-flex">
-            <solacetk-panel [unitHeight]="11" class="auto-flex" panelColor="dimgray" panelName="Scene"
-                panelIcon="branding_watermark">
+        <div class="disp-flex flex-gap-050">
+            <solacetk-panel [unitHeight]="28" class="no-flex" style="flex: 1 1 48em; padding: 4px;" panelColor="#5c4143"
+                panelName="Scene" panelIcon="branding_watermark">
 
-                <div class="panel-content">
-
+                <div class="panel-content disp-flex full-height">
+                    <div class="disp-flex scene-view relative-container" [style.transform]="'scale(' + zoom + ')'">
+                        <img class="sprite-perfect image-cover relative-input" [src]="service.apiHost + 'Artifacts/solacetk-hud-scene.png'" width="100%" height="100%">
+                        <!-- TODO: Setup Grid, Show Hud Elements Rendered and adjust positions: -->
+                        <div class="relative-input scene-item" *ngFor="let element of model.elements" cdkDragBoundary=".relative-container" cdkDrag (cdkDragEnded)="ElementDragEnd($event, element)"
+                            [style.transform]="'translate(' + element.positionX + 'px,' + element.positionY + 'px)'" [style.width]="element.width" [style.height]="element.height">
+                            <span *ngIf="element.text == '' && element.type != 2" class="scene-text">{{element.name}}</span>
+                            <span *ngIf="element.text != ''" class="scene-text">{{element.text}}</span>
+                            <img *ngIf="element.type == 2" class="sprite-perfect relative-input" style="display: block;" [src]="service.apiHost + 'Artifacts/'+ element.textureRef + '.png'" 
+                            [width]="element.width" [height]="element.height">
+                        </div>
+                    </div>
                 </div>
 
-            </solacetk-panel>
-
-            <div class="gap-1 no-flex"></div>
-
-            <solacetk-panel panelColor="indigo" panelName="HUD Elements" panelIcon="settop_component">
-
-                <div class="panel-content">
-
-                </div>
-
-                <div class="panel-actions">
-                    <button mat-icon-button color="primary">
-                        <mat-icon>add</mat-icon>
+                <div class="panel-actions disp-flex full-width">
+                    <div class="gap-1 auto-flex"></div>
+                    <button mat-icon-button color="primary" matTooltip="Upload a Scene Image to use for context">
+                        <mat-icon>upload</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" matTooltip="Refresh the Scene" (click)="RedrawScene()">
+                        <mat-icon>refresh</mat-icon>
                     </button>
                 </div>
 
             </solacetk-panel>
+
+            <solacetk-panel-list class="auto-flex full-height" [(model)]="model.elements" style="flex: 1 1 16em;" [showActions]="true" 
+                panelName="HUD Elements" panelColor="#415c4f" panelType="expansionpanel" [(selectedInstance)]="selectedElement">
+                <div class="instance-editor">
+                    <div class="disp-flex flex-gap-050">
+
+                        <mat-form-field class="no-flex font-small" style="flex: 1 1 2em;">
+                            <mat-label class="font-small">Id</mat-label>
+                            <input matInput disabled placeholder="Id" [(ngModel)]="selectedElement.id">
+                        </mat-form-field>
+
+                        <mat-form-field class="auto-flex font-small" style="flex: 2 1 8em;">
+                            <!-- <input matInput placeholder="Operator" > -->
+                            <mat-label class="font-small">Types</mat-label>
+                            <mat-select class="font-small" [(ngModel)]="selectedElement.type" (selectionChange)="TypeChanged($event)">
+                                <mat-option class="font-small" *ngFor="let comp of elementTypes"
+                                    [value]="elementTypes?.indexOf(comp)">
+                                    {{comp}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="disp-flex flex-gap-050">
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">Name</mat-label>
+                            <input matInput placeholder="Name" [(ngModel)]="selectedElement.name">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">Width</mat-label>
+                            <input matInput placeholder="48px" [(ngModel)]="selectedElement.width" type="number">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">Height</mat-label>
+                            <input matInput placeholder="48px" [(ngModel)]="selectedElement.height" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">PositionX</mat-label>
+                            <input matInput placeholder="48px" [(ngModel)]="selectedElement.positionX" type="number">
+                        </mat-form-field>
+                        <mat-form-field class="auto-flex font-small" style="flex: 1 1 8em;">
+                            <mat-label class="font-small">PositionY</mat-label>
+                            <input matInput placeholder="48px" [(ngModel)]="selectedElement.positionY" type="number">
+                        </mat-form-field>
+
+                    </div>
+
+                    <solacetk-attributes-panel panelName="State Variables Collection"
+                        panelType="expansionpanel" [(model)]="selectedElement.data" [panelMode]="1">
+                    </solacetk-attributes-panel>
+
+                </div>
+            </solacetk-panel-list>
+
+            <!-- <solacetk-panel [unitHeight]="16" panelColor="#415c4f" panelName="HUD Elements" panelIcon="settop_component"
+                style="flex: 1 1 16em; padding: 4px;">
+
+                <div class="panel-content disp-flex full-width">
+                    
+                </div>
+
+                <div class="panel-actions">
+                    <button mat-icon-button color="primary" matTooltip="Add HUD Element" (click)="AddElement()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+
+            </solacetk-panel> -->
 
         </div>
 

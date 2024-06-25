@@ -1,0 +1,25 @@
+<div class="para-wrapper" [style.transform]="panelTransform">
+
+
+    <div class="parallax-container">
+        <!-- <cdk-virtual-scroll-viewport class="parallax-item" itemSize="1024"> -->
+        <div class="parallax-item" [style.backgroundImage]="'url(' + bgUrl + ')'" [style.backgroundSize]="bgSize" 
+        [style.animationDuration]="speed" [style.animationTimingFunction]="bgTiming" [style.backgroundPosition]="bgPosition">
+
+        </div>
+
+        <ng-content select=".scene-items">
+            <!-- <img class="scene-item" style="top: 28.5em; right: 42em;"
+                src="http://localhost:5010/Artifacts/alpha2-sprint.gif">
+            <img class="scene-item" style="top: 27.5em; left: 42em;"
+                src="http://localhost:5010/Artifacts/specG-sprint.gif"> -->
+        </ng-content>
+        <!-- </cdk-virtual-scroll-viewport> -->
+
+        <div class="parallax-overlay" [style.background]="envLighting"></div>
+        <div class="env-overlay" [style.background]="envBackground"></div>
+
+    </div>
+
+
+</div>

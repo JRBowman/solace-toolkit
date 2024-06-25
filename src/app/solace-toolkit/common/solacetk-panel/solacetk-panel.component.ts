@@ -25,6 +25,12 @@ export class SolacetkPanelComponent implements OnInit {
 
   @Input() overflowMethod: string = "hidden";
   @Input() panelElevation: string = "2";
+  @Input() panelEnabled: boolean = true;
+
+  @Input() actionsEnabled: boolean = true;
+  @Input() contentEnabled: boolean = true;
+  @Input() footerEnabled: boolean = false;
+  @Input() headerEnabled: boolean = true;
 
   // ---
 

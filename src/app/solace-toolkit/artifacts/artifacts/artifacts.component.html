@@ -1,0 +1,87 @@
+<solacetk-model-list [(model)]="model" moduleName="Artifacts" modelUri="Artifacts" modulePlateType="Ar"
+    (modelLoaded)="LoadArtifact()" (modelClosed)="CloseArtifact()" [refreshList]="refreshList">
+
+    <div class="editor">
+    </div>
+
+    <div class="editor-panels">
+        <solacetk-artifact-panel *ngIf="model" class="align-center auto-flex" [(model)]="model">
+
+            <!-- Audio: -->
+            <div *ngIf="artifactType == 1 && audioSource" class="artifact-view disp-flex auto-flex">
+
+                <button class="align-center" *ngIf="audioSource.paused || audioSource.ended" mat-icon-button
+                    (click)="PlaySound()"><mat-icon>play_arrow</mat-icon>
+                </button>
+                <button class="align-center" *ngIf="!audioSource.paused && hasPlayed" mat-icon-button
+                    (click)="StopSound()"><mat-icon>pause</mat-icon></button>
+
+                <div class="gap-2 no-flex"></div>
+
+                <mat-slider class="auto-flex align-center" min="0" [max]="audioSource.duration" step="0.001">
+                    <input matSliderThumb [(ngModel)]="audioSource.currentTime">
+                </mat-slider>
+
+                <span class="no-flex align-center">{{GetDate(audioSource.currentTime) + "/" +
+                    GetDate(audioSource.duration)}}</span>
+
+                <div class="gap-1 no-flex"></div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div class="gap-1 no-flex"></div>
+
+                <button class="align-center" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Volume"
+                    aria-label="Volume">
+                    <mat-icon>volume_up</mat-icon>
+                </button>
+
+                <!-- <div class="gap-1 auto-flex"></div> -->
+
+                <mat-menu #menu="matMenu">
+                    <mat-slider min="0" max="1" step="0.01" style="margin-left: 2em; margin-right: 2em;">
+                        <input matSliderThumb [(ngModel)]="audioSource.volume">
+                    </mat-slider>
+                </mat-menu>
+
+            </div>
+
+            <!-- Video: -->
+            <div *ngIf="artifactType == 3 " class="artifact-view disp-flex full-width auto-flex">
+                <div class="gap-1 auto-flex"></div>
+                <div style="flex: 0 1 64em;">
+                    <video width="100%" controls>
+                        <source [src]="soundService.apiHost + model.artifactUrl">
+                    </video>
+                </div>
+                <div class="gap-1 auto-flex"></div>
+            </div>
+
+            <!-- Image: -->
+            <div *ngIf="artifactType == 2" class="artifact-view full-width disp-flex">
+                <div class="gap-2 auto-flex"></div>
+                <div style="flex: 1 1 64em;">
+                    <solacetk-markdown-panel class="auto-flex" [data]="artifactImage" [useData]="true"></solacetk-markdown-panel>
+                </div>
+                <div class="gap-2 auto-flex"></div>
+            </div>
+
+            <!-- code: -->
+            <div *ngIf="artifactType == 4" class="artifact-view auto-flex full-width">
+                <!-- <solacetk-markdown-panel [Data]="this.soundService.apiHost + this.model.artifactUrl" [disableSanitizer]="true"></solacetk-markdown-panel> -->
+                <solacetk-markdown-panel [data]="artifactSource" [useData]="true"></solacetk-markdown-panel>
+            </div>
+
+        </solacetk-artifact-panel>
+    </div>
+
+    <div class="list-buttons">
+
+        <button mat-icon-button color="accent" matTooltip="Upload Artifacts."
+            aria-label="Upload Artifacts" (click)="artifactUpload.click()">
+            <mat-icon>file_open</mat-icon>
+        </button>
+        <input type="file" class="file-input" (change)="importArtifacts($event)" accept="*.*" #artifactUpload
+            multiple>
+
+    </div>
+
+</solacetk-model-list>

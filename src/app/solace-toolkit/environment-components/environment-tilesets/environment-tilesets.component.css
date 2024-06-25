@@ -24,6 +24,19 @@
 
 }
 
+.solacetk-icon {
+    opacity: 0.25;
+}
+
+.solacetk-icon:hover {
+    opacity: 0.667;
+}
+
+.selectedCell {
+    opacity: 0.5;
+    border: 1em white;
+}
+
 .gridCell {
     /* margin-left: -1px;
     margin-top: -1px; */

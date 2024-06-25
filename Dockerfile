@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nodejs:latest as build
+FROM node:16 as build
 
 # Set the working directory
 WORKDIR /usr/local/app
@@ -28,7 +28,7 @@ RUN npm run build
 
 # Use official nginx image as the base image
 #FROM registry.access.redhat.com/ubi8/nginx-120
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nginx-ocp:latest
+FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/onbowman-13 /usr/share/nginx/html

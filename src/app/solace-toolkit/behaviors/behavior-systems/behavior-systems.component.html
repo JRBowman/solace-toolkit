@@ -1,4 +1,5 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Systems" modelUri="Behaviors/systems" moduleColor="#603060" modulePlateType="Be">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Systems" modelUri="Behaviors/systems" moduleColor="#603060"
+    modulePlateType="Be" [(moduleData)]="moduleData">
     <div class="editor">
 
         <div class="disp-flex">
@@ -12,14 +13,16 @@
 
     </div>
 
-    <div class="editor-panels">
+    <div class="editor-panels disp-flex flex-gap-050 auto-flex">
 
-        <solacetk-attributes-panel panelName="State Variables Collection" panelType="expansionpanel"
-            [(model)]="model.varData" [panelMode]="1"></solacetk-attributes-panel>
-            
-            <div class="gap-1 auto-flex"></div>
+        <!-- <solacetk-paged-panel [(model)]="model.behaviors" panelName="Behavior Works"
+            style="flex: 1 1 48em;"></solacetk-paged-panel> -->
 
-        <mat-expansion-panel class="auto-flex full-width">
+        <solacetk-attributes-panel style="flex: 1 1 48em;" panelName="State Variables Collection"
+            panelType="panel" [(model)]="model.varData" [panelMode]="1" unitHeight="10em;">
+        </solacetk-attributes-panel>
+
+        <mat-expansion-panel style="flex: 1 1 48em;">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon class="mr-2">schema</mat-icon>
@@ -32,32 +35,38 @@
                 <div cdkDropList (cdkDropListDropped)="dropBranches($event)">
 
 
-                    <div class="disp-flex">
-                        <div class="disp-flex auto-flex" style="flex: 1 1 18em; padding: 4px;" *ngFor="let behavior of model.behaviors">
+                    <div class="disp-flex flex-gap-050">
+                        <div class="auto-flex" style="flex: 1 1 18em; width: 18em;"
+                            *ngFor="let behavior of model.behaviors">
 
-                            <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex full-height full-height"  [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
-                                [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false"
-                                bgColor="#545c80"></solacetk-animation-editor>
 
-                                <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height full-width"  panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
-                        
-                                    <div class="panel-content auto-flex">
-        
-                                        <mat-chip-listbox class="auto-flex full-width full-height" aria-label="Branch States"
-                                            multiple="false" selectable="false">
-                                            <mat-chip-option class="font-small auto-flex width-33" *ngFor="let nState of behavior.nextStates"
-                                                [style.background-color]="'#545c80'"
-                                                style="overflow: hidden;">
-                                                <!-- <mat-icon *ngIf="tile == selectedTile" matChipTrailingIcon>selected</mat-icon> -->
-                                                {{nState.name}}
-                                            </mat-chip-option>
-                                        </mat-chip-listbox>
-        
-                                    </div>
-        
-                                </solacetk-panel>
+                            <solacetk-model-card class="auto-flex align-center" style="width: inherit;"
+                                *ngIf="!behavior.noOp" [(model)]="behavior.animation">
+                                <div class="model-header disp-flex">
+                                    <div class="gap-1 auto-flex"></div>
+                                    <button mat-icon-button matTooltip="Remove Behavior"
+                                        (click)="RemoveState(behavior)"><mat-icon>cancel</mat-icon></button>
+                                </div>
+                            </solacetk-model-card>
 
-                            <div class="no-flex gap-1"></div>
+
+                            <solacetk-panel *ngIf="behavior.noOp" class="auto-flex" panelColor="#803040"
+                                [panelName]="behavior?.name ?? ''" fontSize="medium">
+
+                                <div class="panel-content auto-flex">
+
+                                    <mat-chip-listbox class="auto-flex" aria-label="Branch States" multiple="false"
+                                        selectable="false">
+                                        <mat-chip-option class="font-small auto-flex width-33"
+                                            *ngFor="let nState of behavior.nextStates"
+                                            [style.background-color]="'#545c80'" style="overflow: hidden;">
+                                            {{nState.name}}
+                                        </mat-chip-option>
+                                    </mat-chip-listbox>
+
+                                </div>
+
+                            </solacetk-panel>
                         </div>
                     </div>
 
@@ -73,13 +82,18 @@
 
         </mat-expansion-panel>
 
-        <div class="gap-1 auto-flex"></div>
-
-        <solacetk-event-panel [(model)]="model.events">
+        <solacetk-event-panel [(model)]="model.events" style="flex: 1 1 32em;">
             <div class="action-row">
                 <button mat-button color="primary" (click)="openActionsSheet()">Import</button>
             </div>
         </solacetk-event-panel>
 
+    </div>
+
+    <div class="editor-buttons">
+        <button mat-icon-button color="warn" class="no-flex" matTooltip="Generate Texture Atlas"
+            aria-label="Generate a Texture Atlas" (click)="GenerateAtlas()">
+            <mat-icon>close</mat-icon>
+          </button>
     </div>
 </solacetk-model-list>

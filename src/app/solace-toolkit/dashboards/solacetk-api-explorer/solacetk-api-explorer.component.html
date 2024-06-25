@@ -1,0 +1,50 @@
+<div class="disp-flex flex-gap-050 auto-flex">
+    <mat-card class="auto-flex" style="flex: 1 1 24em; width: 24em;" *ngFor="let so of swaggerObjects">
+        <mat-card-header>
+            <solacetk-svg-plate matCardAvatar class="align-center" width="2.5em" height="2.5em" radius="16"
+                style="margin: 0px; width: auto; height: auto;" [matTooltip]="so.name"></solacetk-svg-plate>
+            <mat-card-title class="font-medium">{{so.name}}</mat-card-title>
+            <mat-card-subtitle>{{":" + so.type}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-divider style="margin-top: 0.75em; margin-bottom: 0.75em;"></mat-divider>
+            <div class="auto-flex">
+                <span>Description</span>
+            </div>
+            <mat-divider style="margin-top: 0.75em; margin-bottom: 0.75em;"></mat-divider>
+            <!-- An Object - so it uses Properties to define fields: -->
+            <mat-expansion-panel class="mat-elevation-z0 auto-flex">
+                <mat-expansion-panel-header>
+                    <mat-panel-title style="flex: 1 1 4em;">
+                        <span class="auto-flex">Data</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div *ngIf="so.properties && so.properties.length > 0">
+                    <div class="auto-flex" *ngFor="let prop of so.properties"
+                        style="font-family: 'Courier New', Courier, monospace;">
+                        <span>{{prop.name}}: </span><span>{{prop.type}}</span>
+                        <div *ngIf="prop.items && prop.items.length > 1" class="auto-flex" style="padding-left: 1em;">
+                            - <span style="color: #e6983e;" *ngFor="let i of prop.items">{{i.split('/')[3]}}</span>
+                        </div>
+                        <div *ngIf="prop.items && prop.items.length == 1" class="auto-flex" style="padding-left: 1em;">
+                            - <span style="color: #3e94e6;">{{prop.items[0].split('/')[3]}}</span>
+                        </div>
+                        <div *ngIf="prop.ref" class="auto-flex" style="padding-left: 1em;">
+                            - <span style="color: #34f584;">{{prop.ref}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-expansion-panel>
+
+            <!-- Not an Object - so It's a defined Field: -->
+            <!-- <div *ngIf="so.type != 'object'">{{so.type}}</div> -->
+        </mat-card-content>
+
+        <mat-card-footer>
+            <div class="gap-2"></div>
+        </mat-card-footer>
+    </mat-card>
+</div>

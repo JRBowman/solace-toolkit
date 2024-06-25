@@ -1,18 +1,17 @@
-<solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/states" queryParameters="?noop=true" (modelClosed)="CloseModel()" 
-    (modelLoaded)="LoadModel()" (modelCreate)="CreateModel()" moduleColor="#803040" modulePlateType="Br">
+<solacetk-model-list [(model)]="model" moduleName="Behavior Branches" modelUri="Behaviors/states"
+    (modelClosed)="CloseModel()" (modelLoaded)="LoadModel()" (modelCreate)="CreateModel()"
+    moduleColor="#803040" modulePlateType="Br" [(moduleData)]="moduleData">
     <div class="editor">
     </div>
 
-    <div class="editor-panels">
+    <div class="editor-panels disp-flex flex-gap-050">
 
-            <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
-                panelType="expansionpanel" [(model)]="model.conditions">
-                <div class="action-row">
-                    <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
-                </div>
-            </solacetk-attributes-panel>
-
-        <div class="gap-1 auto-flex"></div>
+        <solacetk-attributes-panel panelIcon="gavel" panelName="Conditions" panelColor="#006064"
+            panelType="expansionpanel" [(model)]="model.conditions">
+            <div class="action-row">
+                <button mat-button color="primary" (click)="openConditionsSheet()">Include</button>
+            </div>
+        </solacetk-attributes-panel>
 
         <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -24,21 +23,17 @@
 
             <ng-template matExpansionPanelContent>
 
-                <div class="disp-flex full-width full-height">
+                <div class="disp-flex flex-gap-050 full-width full-height">
 
                     <div class="auto-flex grid-3">
                         <solacetk-attributes-panel [panelMode]="1" panelName="Start Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.startData"></solacetk-attributes-panel>
                     </div>
 
-                    <div class="gap-1 no-flex"></div>
-
                     <div class="auto-flex grid-3">
                         <solacetk-attributes-panel [panelMode]="1" panelName="Act Data" panelType="expansionpanel"
                             class="auto-flex" [(model)]="model.actData"></solacetk-attributes-panel>
                     </div>
-
-                    <div class="gap-1 no-flex"></div>
 
                     <div class="auto-flex grid-3">
                         <solacetk-attributes-panel [panelMode]="1" panelName="End Data" panelType="expansionpanel"
@@ -57,14 +52,16 @@
                 
 
                 <!-- Next States View: -->
-                <div class="disp-flex auto-flex" *ngIf="model.nextStates && showNextStates">
+                <div class="disp-flex flex-gap-050 auto-flex" *ngIf="model.nextStates">
                     <div class="disp-flex auto-flex" *ngFor="let behavior of model.nextStates">
 
-                        <solacetk-animation-editor *ngIf="!behavior.noOp" class="auto-flex" style="padding: 4px;" [panelName]="behavior?.name ?? 'Anim Data'" [modelName]="behavior.animation.name"
-                            [(model)]="behavior.animation.actFrameData" [showDataPanel]="false" [showFrames]="false" [unloadChange]="unloadModules"
-                            bgColor="#545c80"></solacetk-animation-editor>
+                        <div>
+                            <button mat-icon-button (click)="RemoveState(behavior)"><mat-icon>cancel</mat-icon></button>
+                        </div>
 
-                        <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" style="padding: 4px;" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
+                        <solacetk-model-card class="auto-flex" *ngIf="!behavior.noOp" [(model)]="behavior.animation"></solacetk-model-card>
+
+                        <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
                         
                             <div class="panel-content auto-flex">
 
@@ -95,13 +92,31 @@
 
         </mat-expansion-panel>
 
-        <div class="gap-1 auto-flex"></div>
-
         <solacetk-event-panel [(model)]="model.events">
             <div class="action-row">
                 <button mat-button color="primary" (click)="openEventsSheet()">Import</button>
             </div>
         </solacetk-event-panel>
+
+        <!-- Branch Graph: -->
+        <div id="graphobjects" #graphobjects *ngIf="togglePreview" class="disp-flex flex-gap-1 auto-flex" style="min-height: 48em;">
+
+            <!-- Branch Graph Node: -->
+            <solacetk-graph-object id="branch" cdkDrag name="branch"></solacetk-graph-object>
+
+           
+
+            <solacetk-graph-object [id]="nState.name" cdkDrag [name]="nState.name ?? 'State'" [model]="nState" [ref]="true" *ngFor="let nState of (model.nextStates ?? [])" [trackedInputsT]="['anim', 'data']"></solacetk-graph-object>
+
+            <div graphLine [id]="nState.name + 'line'" [startRef]="doc.getElementById('branch')" [endRef]="doc.getElementById(nState.name ?? 'State')" *ngFor="let nState of (model.nextStates ?? [])"></div>
+
+        </div>
+
+        <!-- <div class="gap-1 auto-flex"></div> -->
+    </div>
+
+    <div class="editor-buttons">
+        <button mat-icon-button matTooltip="Preview Graphs Feature" (click)="togglePreview = !togglePreview"><mat-icon>preview</mat-icon></button>
     </div>
 
 </solacetk-model-list>

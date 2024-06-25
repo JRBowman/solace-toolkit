@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { BehaviorAnimationData } from 'src/app/solace-toolkit/models/behavioranimation';
 import { WorkItemArtifact } from 'src/app/solace-toolkit/models/work-item-artifact';
+import { WorkComment } from 'src/app/solace-toolkit/models/workcomment';
 import { WorkItem } from 'src/app/solace-toolkit/models/workitem';
 import { SolacetkService } from 'src/app/solace-toolkit/services/solacetk-service.service';
 
@@ -20,6 +21,8 @@ export class WorkItemSheetEditorComponent implements OnInit {
   public unloadModules = new EventEmitter<boolean>();
 
   public anim: BehaviorAnimationData = new BehaviorAnimationData();
+
+  public selectedComment: WorkComment = new WorkComment();
 
   ngOnInit(): void {
   }
@@ -48,6 +51,12 @@ export class WorkItemSheetEditorComponent implements OnInit {
     this._bottomSheetRef.dismiss(this.model);
     this.model = new WorkItem();
     this.IsLoading = true;
+  }
+
+  public AddComment() {
+    if (!this.model.comments) this.model.comments = [];
+    this.model.comments = [...this.model.comments, this.selectedComment];
+    this.selectedComment = new WorkComment();
   }
 
 }

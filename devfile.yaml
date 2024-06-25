@@ -4,7 +4,7 @@ metadata:
   displayName: Angular
   icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/angular.svg
   language: typescript
-  name: solacetk
+  name: solace-toolkit
   projectType: angular
   tags:
     - NodeJS
@@ -15,7 +15,7 @@ projects:
       checkoutFrom:
         revision: master
       remotes:
-        origin: https://github.com/JRBowman/solace-toolkit.git
+        origin: https://bitbucket.org/onbowman/solace-toolkit.git
 components:
   - container:
       command:

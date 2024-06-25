@@ -1,0 +1,37 @@
+<mat-card class="auto-flex full-width full-height" style="background-color: rgb(11, 10, 17);">
+
+    <mat-card-header *ngIf="canEdit" class="disp-flex">
+        <div class="gap-1 auto-flex"></div>
+        <button mat-button (click)="(mode = mode == 0 ? 1 : 0)">Edit</button>
+        <button mat-button (click)="ApplyChanges()">Apply</button>
+        <button mat-button (click)="RevertChanges()">Clear</button>
+    </mat-card-header>
+
+    <mat-card-content class="scroll-container full-height">
+
+        <div class="auto-flex full-height" *ngIf="mode == 0">
+            <div class="auto-flex full-height" *ngIf="!useData && !useLanguage">
+                <markdown class="markdown-container" lineNumbers ngPreserveWhitespaces [src]="source" [disableSanitizer]="disableSanitizer">
+                </markdown>
+            </div>
+            <div class="auto-flex full-height" *ngIf="useData && !useLanguage">
+                <markdown class="markdown-container" lineNumbers ngPreserveWhitespaces [data]="data">
+                </markdown>
+            </div>
+            <div class="auto-flex full-height" *ngIf="useData && useLanguage">
+                <markdown class="markdown-container" lineNumbers ngPreserveWhitespaces [data]="data | language : mdLanguage">
+                </markdown>
+            </div>
+        </div>
+
+        <div class="auto-flex full-width" style="width: 28em;" *ngIf="mode == 1">
+            <mat-form-field class="auto-flex full-width">
+                <textarea matInput #description cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="48" placeholder="Description"
+                  [(ngModel)]="data"></textarea>
+              </mat-form-field>
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

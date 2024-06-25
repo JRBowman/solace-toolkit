@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
-import { MovableController } from '../../models/movablecontroller';
+import { ParticleSystem } from '../../models/particle-system';
 
 @Component({
   selector: 'app-particle-systems',
@@ -10,7 +9,7 @@ import { MovableController } from '../../models/movablecontroller';
 })
 export class ParticleSystemsComponent implements OnInit {
 
-  public model: MovableController = new MovableController();
+  public model: ParticleSystem = new ParticleSystem();
 
   public worldLocation: string = "0,0,0";
 
@@ -21,20 +20,7 @@ export class ParticleSystemsComponent implements OnInit {
 
   public Create()
   {
-    this.model = new MovableController();
-  }
-
-
-  public openBehaviorsSheet()
-  {
-    let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
-    instance.instance.LoadData('Behaviors/systems');
-
-    instance.instance.modelsSelected.subscribe((models) => 
-    {
-      this.model.behaviorSystem = models[0];
-    });
-    
+    this.model = new ParticleSystem();
   }
 
 }

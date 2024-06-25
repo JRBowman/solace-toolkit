@@ -1,0 +1,92 @@
+<!-- SolaceTK Graph Object Generates Inputs/Outputs for Properties -->
+<mat-card style="height: fit-content; min-height: 4em; flex: 1 1 8em;">
+
+    <!-- Top Row -->
+    <div class="disp-flex auto-flex"
+        style="position: relative; top: -1em; justify-content: space-evenly; width: fit-content; flex-wrap: nowrap;">
+        <div class="gap-1 auto-flex"></div>
+        <div class="auto-flex align-center">
+            <solacetk-svg-plate class="disp-flex align-center" plateText="" plateHeight="1em" plateWidth="100%"
+                radius="6" [plateBorderColor]="ref ? 'darkgray' : 'white'"
+                plateColor="lightslategray"></solacetk-svg-plate>
+            <span class="auto-flex align-center" style="text-align: center;"
+                [style.color]="ref ? 'dimgray' : 'darkgray'">IN</span>
+        </div>
+
+        <div class="auto-flex" *ngFor="let inputT of trackedInputsT">
+
+            <solacetk-svg-plate class="disp-flex align-center" plateText="" plateHeight="1em" plateWidth="100%"
+                radius="6" [plateBorderColor]="ref ? 'darkgray' : 'white'" plateColor="aquamarine"></solacetk-svg-plate>
+            <span class="auto-flex align-center" style="text-align: center;"
+                [style.color]="ref ? 'dimgray' : 'darkgray'">{{inputT}}</span>
+        </div>
+
+        <div class="auto-flex">
+            <solacetk-svg-plate class="disp-flex align-center" plateText="" plateHeight="1em" plateWidth="100%"
+                radius="6" plateColor="lightslategray"></solacetk-svg-plate>
+            <span class="auto-flex align-center" style="text-align: center;"
+                [style.color]="ref ? 'dimgray' : 'darkgray'">OUT</span>
+        </div>
+        <!-- <div class="gap-1 auto-flex"></div> -->
+    </div>
+
+    <!-- Middle Row: -->
+    <div class="relative-container disp-flex auto-flex">
+
+        <!-- Left Side Rows: -->
+        <div class="auto-flex" style="position: relative; left: -1em; flex-wrap: nowrap;">
+            <!-- Core Object IN -->
+            <div class="disp-flex no-flex">
+                <solacetk-svg-plate class="align-center" plateText="" plateHeight="1em" plateWidth="1em" radius="6"
+                    [plateBorderColor]="ref ? 'darkgray' : 'white'" plateColor="lightslategray"></solacetk-svg-plate>
+                <span class="align-center" [style.color]="ref ? 'dimgray' : 'darkgray'">IN</span>
+            </div>
+
+            <!-- Generate Object Input Blocks -->
+            <div class="auto-flex">
+                <div class="disp-flex no-flex" *ngFor="let input of trackedInputs">
+                    <solacetk-svg-plate class="align-center" plateText="" plateHeight="1em" plateWidth="1em" radius="6"
+                        [plateBorderColor]="ref ? 'darkgray' : 'white'" plateColor="aquamarine"></solacetk-svg-plate>
+                    <span class="auto-flex align-center" [style.color]="ref ? 'dimgray' : 'darkgray'">{{input}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-flex align-center">
+            {{name}}
+            <solacetk-model-card *ngIf="model && model != {}" [(model)]="model"></solacetk-model-card>
+        </div>
+
+        <!-- Right Side Rows: -->
+        <div class="auto-flex" style="position: relative; right: -1em; flex-wrap: nowrap;">
+
+            <!-- Core Object OUT -->
+            <div class="disp-flex no-flex">
+                <span class="auto-flex align-center" style="text-align: right; color: darkgray;">OUT</span>
+                <solacetk-svg-plate class="align-center" plateText="" plateHeight="1em" plateWidth="1em" radius="6"
+                    plateColor="lightslategray"></solacetk-svg-plate>
+            </div>
+
+            <!-- Generate Object Output Blocks -->
+            <div class="disp-flex no-flex" *ngFor="let output of trackedOutputs">
+                <solacetk-svg-plate class="align-center" plateText="" plateHeight="1em" plateWidth="1em" radius="6"
+                    [plateBorderColor]="ref ? 'darkgray' : 'white'" plateColor="aquamarine"></solacetk-svg-plate>
+                <span class="auto-flex align-center" [style.color]="ref ? 'dimgray' : 'darkgray'">{{output}}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="disp-flex auto-flex" style="position: relative; bottom: -1em; justify-content: space-evenly; flex-wrap: nowrap;">
+        <div class="gap-1 auto-flex"></div>
+        <div class="auto-flex" *ngFor="let inputb of trackedInputsB">
+            <span class="auto-flex align-center" [style.color]="ref ? 'dimgray' : 'darkgray'">{{inputb}}</span>
+            <solacetk-svg-plate class="disp-flex align-center" plateText="" plateHeight="1em" plateWidth="100%"
+                radius="6" [plateBorderColor]="ref ? 'darkgray' : 'white'" plateColor="aquamarine"></solacetk-svg-plate>
+        </div>
+    </div>
+
+
+</mat-card>

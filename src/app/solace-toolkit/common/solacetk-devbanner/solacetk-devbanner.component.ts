@@ -9,7 +9,8 @@ import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar'
 export class SolacetkDevbannerComponent implements OnInit {
 
   ngOnInit(): void {
-    
+    this.dataRef.useActions = true;
+    this.dataRef.actionName = "X";
   }
 
   snackBarRef = inject(MatSnackBarRef);

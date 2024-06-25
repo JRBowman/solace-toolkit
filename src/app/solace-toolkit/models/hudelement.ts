@@ -1,8 +1,9 @@
 import { IModelTK } from "./imodel-tk";
+import { SoltkKeyValue } from "./soltk-key-value";
 
 export class HudElement implements IModelTK  {
     public id?: number = 0;
-    public name: string = "";
+    public name: string = "HudElement";
     public description: string = "";
     public assemblyType: string = "";
     public tags: string = "";
@@ -24,7 +25,26 @@ export class HudElement implements IModelTK  {
 
     public imageResource: string = "";
 
-    // public componentData: SoltkKeyValue[] = [];
+    public type: HudElementType = HudElementType.StaticText;
+
+    public width: number = 48;
+    public height: number = 48;
+
+    public data: SoltkKeyValue[] = [];
 
     public color?: string = "white";
+
+    public textureRef?: string = "";
+    public text?: string = "";
+}
+
+export enum HudElementType
+{
+    StaticText,
+    DynamicText,
+    Texture,
+    List,
+    Field,
+    Gauge,
+    Animation
 }

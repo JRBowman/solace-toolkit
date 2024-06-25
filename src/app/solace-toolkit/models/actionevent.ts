@@ -10,6 +10,10 @@ export class ActionEvent implements IModelTK {
     public description?: string = "An Event is used by Behaviors to conditionally Trigger Data Changes - Use for Inputs, Data Changes, Interactions between one or more objects, etc.";
     public tags?: string = "";
 
+    public isPhysicsEvent: boolean = false;
+    public hasDebounce: boolean = false;
+    public debounceTime: number = 0;
+
     public condition: BehaviorCondition[] = [];
     public conditions: SoltkKeyValue[] = [];
     public downstreamData: SoltkKeyValue[] = [];

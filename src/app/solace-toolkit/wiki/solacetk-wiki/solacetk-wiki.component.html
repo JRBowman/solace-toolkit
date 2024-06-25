@@ -1,0 +1,190 @@
+<div cdkScrollable class="disp-flex flex-gap-050"
+    style="padding: 8px; transform-style: preserve-3d; perspective: 128px; position: relative;">
+
+    <div class="gap-1 auto-flex"></div>
+
+    <mat-card class="auto-flex" style="width: 24em; flex: 1 1 24em; transform-style: preserve-3d; transform: translateZ(0px);">
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab class="auto-flex" label="Main">
+                    <markdown lineNumbers ngPreserveWhitespaces
+                        [src]="'https://raw.githubusercontent.com/JRBowman/solace-toolkit/master/README.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Game Core">
+                    <markdown class="full-width" lineNumbers ngPreserveWhitespaces
+                        [src]="'assets/soldof/wiki/solacetk-core.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Controller Actors">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-actors.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Behaviors">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-behaviors.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Actions">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-actions.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Environment">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-environment.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Interfaces">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-interfaces.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Sounds">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-sounds.md'">
+                    </markdown>
+                </mat-tab>
+                <mat-tab class="auto-flex" label="Effects">
+                    <markdown lineNumbers ngPreserveWhitespaces [src]="'assets/soldof/wiki/solacetk-effects.md'">
+                    </markdown>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+        <mat-card-actions>
+
+        </mat-card-actions>
+    </mat-card>
+
+    <div class="gap-1 auto-flex"></div>
+
+    <div style="position: absolute; left: 0; right: 0; width: 100%; height: 100%; overflow: hidden; transform-style: preserve-3d; z-index: 3; transform: translateZ(-128px) scale(2);">
+
+        <solacetk-parallax-panel class="disp-flex hide-overflow" bgSize="auto 100%" speed="30s"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-ph0.png"
+            envLighting="linear-gradient(black, rgb(28, 26, 34) 20%, #cba3ff 50%, rgb(36, 27, 58), black) top center"
+            envBackground="#ffcbf2">
+            <div class="scene-items">
+                <img class="ship-item" style="top: 20em; right: 42em; transform: scale(1);"
+                    src="http://localhost:5010/Artifacts/solace-site-transport-0.png">
+            </div>
+        </solacetk-parallax-panel>
+        <solacetk-parallax-panel class="disp-flex hide-overflow" bgSize="auto 100%" speed="90s"
+        bgUrl="http://localhost:5010/Artifacts/solace-site-ph0.png"
+        envLighting="linear-gradient(black, rgb(28, 26, 34) 20%, rgb(36, 27, 58), black)"
+        envBackground="#ffcbf2"></solacetk-parallax-panel>
+        <solacetk-parallax-panel class="disp-flex hide-overflow" bgSize="auto 100%" speed="180s"
+        bgUrl="http://localhost:5010/Artifacts/solace-site-ph0.png" style="transform: scaleX(-1);"
+        envLighting="linear-gradient(black, rgb(28, 26, 34) 20%, rgb(36, 27, 58), black)"
+        envBackground="#ffcbf2"></solacetk-parallax-panel>
+
+        <!-- Ominious Station -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" bgSize="auto 100%" speed="360s"
+            style="transform: scaleX(-1) translateZ(-50px);" bgUrl="http://localhost:5010/Artifacts/solace-site-ph0.png"
+            envLighting="linear-gradient(black, rgb(28, 26, 34) 20%, #cba3ff 50%, rgb(36, 27, 58), black) top center"
+            envBackground="#ffcbf2">
+        </solacetk-parallax-panel>
+
+        <!-- Alpha Evaluation: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="16s" style="transform: scaleX(-1);"
+            envLighting="linear-gradient(black, #1c1a22 8%, #ffd2a3 30%, #72502c, black) center top">
+            <div class="scene-items">
+                <img class="scene-item" style="top: 28.5em; right: 42em;"
+                    src="http://localhost:5010/Artifacts/alpha1-walk.gif">
+                <img class="scene-item" style="top: 28.5em; left: 54em;"
+                    src="http://localhost:5010/Artifacts/alpha4-walk.gif">
+                <img class="scene-item" style="top: 28.5em; left: 32em;"
+                    src="http://localhost:5010/Artifacts/alpha2-walk.gif">
+
+                <img class="scene-item" style="top: 28.5em; right: 32em;"
+                    src="http://localhost:5010/Artifacts/jarod-walk-rifle-0.gif">
+            </div>
+        </solacetk-parallax-panel>
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="24s" style="transform: scaleX(-1);"
+            envLighting="linear-gradient(#1c1a22 50%, black) center top">
+        </solacetk-parallax-panel>
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="32s" style="transform: scaleX(-1);"
+            envLighting="linear-gradient(#1c1a22 50%, black) center top">
+        </solacetk-parallax-panel>
+
+        <!-- Tram Deck: -->
+        <!-- Sector 1: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="0s" style="transform: scaleX(-1);"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-emp-0a.png" bgPosition="0% -50%"
+            envLighting="linear-gradient(black 8%, #971f1f 60%, black 100%)">
+            <div class="scene-items"></div>
+        </solacetk-parallax-panel>
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="0s" style="transform: scaleX(-1);"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-emp-0a.png" bgPosition="0% 171%"
+            envLighting="linear-gradient(black, #1c1a22 8%, #c2563d 30%, #c23d5a , black) center top">
+            <div class="scene-items">
+                <img class="scene-item" style="bottom: 488px; left: 32em;"
+                    src="http://localhost:5010/Artifacts/alpha2-idle-c.gif">
+
+                <img class="scene-item" style="bottom: 488px; left: 38em;"
+                    src="http://localhost:5010/Artifacts/james-crouch-idle-rifle-f.gif">
+
+                <img class="scene-item" style="bottom: 488px; right: 27em;"
+                    src="http://localhost:5010/Artifacts/bodies-debris-0f.png">
+
+                <img class="scene-item" style="bottom: 488px; left: 26em;"
+                    src="http://localhost:5010/Artifacts/bodies-debris-0a.png">
+
+                <img class="scene-item" style="bottom: 372px; right: 56em;"
+                    src="http://localhost:5010/Artifacts/bodies-debris-0d.png">
+
+                <img class="scene-item" style="bottom: 372px; right: 57em;"
+                    src="http://localhost:5010/Artifacts/p0-feed.gif">
+
+                <img class="scene-item" style="bottom: 372px; left: 68em;"
+                    src="http://localhost:5010/Artifacts/p1-dead.gif">
+
+                <img class="scene-item" style="bottom: 488px; right: 36em; transform: scaleX(-3) scaleY(3);"
+                    src="http://localhost:5010/Artifacts/p1-hit-1.gif">
+
+                <img class="scene-item" style="bottom: 412px; left: 55em;"
+                    src="http://localhost:5010/Artifacts/p4-horror.gif">
+            </div>
+        </solacetk-parallax-panel>
+        <!-- Sector 1: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="0s" style="transform: scaleX(-1);"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-emp-0a.png" bgPosition="0% -50%"
+            envLighting="linear-gradient(black 8%, #971f1f 60%, black 100%)">
+        </solacetk-parallax-panel>
+        <!-- Sector 1: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="0s" style="transform: scaleX(-1);"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-emp-0a.png" bgPosition="0% 138%"
+            envLighting="linear-gradient(black 8%, #971f1f 60%, black 100%)">
+        </solacetk-parallax-panel>
+
+
+        <!-- Sector 1: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="2s">
+            <div class="scene-items">
+                <img class="scene-item" style="top: 28.5em; right: 42em;"
+                    src="http://localhost:5010/Artifacts/alpha2-sprint.gif">
+                <img class="scene-item" style="top: 27.5em; left: 42em;"
+                    src="http://localhost:5010/Artifacts/specG-sprint.gif">
+            </div>
+        </solacetk-parallax-panel>
+
+        <!-- Sector 1: -->
+        <solacetk-parallax-panel class="disp-flex hide-overflow" speed="2s">
+            <div class="scene-items">
+                <img class="scene-item" style="top: 28.5em; right: 42em;"
+                    src="http://localhost:5010/Artifacts/alpha2-sprint.gif">
+                <img class="scene-item" style="top: 27.5em; left: 42em;"
+                    src="http://localhost:5010/Artifacts/specG-sprint.gif">
+            </div>
+        </solacetk-parallax-panel>
+
+
+
+        <!-- Emergency Sprinting: -->
+        <!-- <solacetk-parallax-panel class="disp-flex hide-overflow" bgUrl="http://localhost:5010/Artifacts/solace-site-parallax-world.png">
+        </solacetk-parallax-panel> -->
+
+
+        <!-- Ominious Station -->
+        <!-- <solacetk-parallax-panel class="disp-flex full-height hide-overflow" bgSize="auto 100%" speed="90s"
+            bgUrl="http://localhost:5010/Artifacts/solace-site-parallax-world.png" envLighting="transparent"
+            envBackground="white">
+        </solacetk-parallax-panel> -->
+    </div>
+
+</div>

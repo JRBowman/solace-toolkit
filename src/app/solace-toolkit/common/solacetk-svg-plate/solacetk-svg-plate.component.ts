@@ -16,5 +16,6 @@ export class SolacetkSvgPlateComponent {
   @Input() plateText: string = "TK";
   @Input() width: string = "36px";
   @Input() height: string = "36px";
+  @Input() radius: string = "12";
 
 }

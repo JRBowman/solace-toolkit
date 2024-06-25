@@ -1,3 +1,4 @@
+import { Artifact } from "./artifact";
 import { MapTile } from "./map-tile";
 
 export class MapTileset {
@@ -10,4 +11,8 @@ export class MapTileset {
     public tiles: MapTile[] = [];
 
     public tileSize: number = 16;
+
+    // Artifact Ref:
+    public artifactId: number = 0;
+    public artifact?: Artifact;
 }

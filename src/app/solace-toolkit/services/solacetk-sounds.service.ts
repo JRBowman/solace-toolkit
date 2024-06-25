@@ -39,7 +39,7 @@ export class SolaceTkSoundService {
     this.loadAudio("panel-expand.wav");
   }
 
-  playAudio(clipName: string, volume: number = 0.5): void {
+  playAudio(clipName: string, volume: number = 0.5): HTMLAudioElement {
 
     // First time Load of Audio:
     if (this.soundIndex.findIndex(s => s == clipName) == -1) {
@@ -49,6 +49,12 @@ export class SolaceTkSoundService {
     const index = this.soundIndex.findIndex(s => s == clipName);
     this.soundSet[index].volume = volume;
     this.soundSet[index].play();
+    return this.soundSet[index];
+  }
+
+  stopAudio(clipName: string): void {
+    const index = this.soundIndex.findIndex(s => s == clipName);
+    this.soundSet[index].pause();
   }
 
   loadAudio(clipName: string): void {
@@ -62,4 +68,29 @@ export class SolaceTkSoundService {
       this.soundSet.push(audio);
   }
 
+  loadAudioUrl(clipName: string, url: string): HTMLAudioElement {
+    // First time Load of Audio:
+      this.soundIndex.push(clipName);
+
+      let audio = new Audio();
+      audio.src = this.apiHost + url;
+      audio.load();
+
+      this.soundSet.push(audio);
+
+      return audio;
+  }
+
+  public LoadVideoUrl(videoName: string, url: string): HTMLVideoElement {
+    var video = { src: this.apiHost + url } as HTMLVideoElement;
+    video.src = this.apiHost + url;
+    video.load();
+
+    return video;
+  }
+
 }
+
+declare var Video: {
+  new(src?: string): HTMLVideoElement;
+};

@@ -10,10 +10,11 @@ import { MapTileRule } from '../../models/map-tile-rule';
 })
 export class TileRuleEditorComponent implements OnInit {
 
-  @Input() model: MapTileRule[] = [];
-  @Output() modelChange = new EventEmitter<MapTileRule[]>();
+  @Input() rules: MapTileRule[] = [];
+  @Output() rulesChange = new EventEmitter<MapTileRule[]>();
 
-  @Input() tile: MapTile = new MapTile();
+  @Input() model: MapTile = new MapTile();
+  @Output() modelChange = new EventEmitter<MapTile>();
 
   // # of Tiles in Dimension:
   public ruleEditorWidth: number = 3;
@@ -36,8 +37,12 @@ export class TileRuleEditorComponent implements OnInit {
     this.midHeight = Math.floor(this.ruleEditorHeight / 2);
     this.midWidth = Math.floor(this.ruleEditorWidth / 2);
 
-    let exTile: number = -1;
+    this.modelChange.subscribe((value) => {});
 
+  }
+
+  private loadRules(): MapTileRule[] {
+    let exTile = -1;
     for (let y = -(this.midHeight); y < this.midHeight + 1; y++) {
       for (let x = -(this.midWidth); x < this.midWidth + 1; x++) {
         var rule = new MapTileRule();
@@ -45,14 +50,16 @@ export class TileRuleEditorComponent implements OnInit {
         rule.vy = y;
 
         // Tile Rule Exists - Merge Data:
-        if ((exTile = this.model.findIndex(r => r.vx == x && r.vy == y)) >= 0) {
-          rule = this.model[exTile];
-          
+        if ((exTile = this.model.rules.findIndex(r => r.vx == x && r.vy == y)) >= 0) {
+          rule = this.model.rules[exTile];
+
         }
         // Merge Existing Tiles into Editor:
-        this.model = [...this.model, rule];
+        this.model.rules.push(rule);
+        //this.model.rules = [...this.model.rules, rule];
       }
     }
+    return [];
   }
 
   public ModeChange(change: MatButtonToggleChange): void {

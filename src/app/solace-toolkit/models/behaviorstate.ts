@@ -11,24 +11,37 @@ export class BehaviorState implements IModelTK {
     public description?: string = "";
     public tags?: string = "";
 
-    public nextStates?: BehaviorState[] = [];
+    // Associated Owners:
+    public behaviorSystemId: number = 0;
+    public parentId: number = 0;
 
     public animation: BehaviorAnimation = new BehaviorAnimation();
 
+    // Conditions & Events:
     public conditions: SoltkKeyValue[] = [];
     public events: ActionEvent[] = [];
 
+    // Stage Data:
     public startData: SoltkKeyValue[] = [];
     public actData: SoltkKeyValue[] = [];
     public endData: SoltkKeyValue[] = [];
+    public nextStates: BehaviorState[] = [];
 
-    public startDelay?: string = "0";
-    public endDelay?: string = "0";
+    // State Governance:
+    public startDelay?: number = 0;
+    public endDelay?: number = 0;
     public interruptable?: boolean;
     public stateType?: string;
-    public runCount: number = 0;
+    public type: StateType = StateType.State;
 
+    public runCount: number = 0;
     public noOp: boolean = false;
 
     public enabled: boolean = true;
+}
+
+export enum StateType
+{
+    State,
+    Branch
 }

@@ -3,19 +3,16 @@
 
     <mat-card-title-group class="disp-flex auto-flex">
 
-        <ng-content select=".item-content"></ng-content>
-
         <div class="auto-flex align-center" style="word-wrap: break-word;">
             <mat-card-title class="font-medium" style="text-align: center;">{{model.name}}</mat-card-title>
         </div>
     </mat-card-title-group>
 
-    <mat-card-content>
+    <mat-card-content class="full-height">
 
         <mat-divider matLine class="mb-2"></mat-divider>
         <p class="font-small no-margin auto-flex" matLine>Estimate: {{model.hoursEstimate}} hr</p>
         <p class="font-small no-margin auto-flex" matLine>Actual: {{model.hoursActual}} hr</p>
-
 
     </mat-card-content>
 
@@ -24,15 +21,30 @@
         <div class="disp-flex full-width">
             <div class="gap-1 auto-flex"></div>
             <div class="no-flex" *ngIf="model.tags !== '#complete'">
-                <button color="accent" class="control-element" mat-icon-button (click)="openWorkItemEditor()">
+
+                <!-- <button color="accent" class="control-element" mat-icon-button (click)="openWorkItemEditor()">
                     <mat-icon class="font-large">edit</mat-icon>
+                </button> -->
+                <div class="no-flex">
+                    <ng-content select=".item-content"></ng-content>
+                </div>
+
+                <button class="control-element" mat-icon-button [matMenuTriggerFor]="menu"
+                    matTooltip="Work Item Options" aria-label="Work Item Options">
+                    <mat-icon class="font-large">more_vert</mat-icon>
                 </button>
 
-                <button *ngIf="model.tags === '#complete'" color="accent" mat-button
-                    (click)="openWorkItemEditor()">View</button>
-                <button color="primary" class="control-element" mat-icon-button (click)="deleteWorkItem()">
-                    <mat-icon class="font-large">delete</mat-icon>
-                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openWorkItemEditor()">
+                        <mat-icon>edit_square</mat-icon>
+                        <span color="accent">Edit</span>
+                    </button>
+                    <button color="warn" mat-menu-item (click)="deleteWorkItem()">
+                        <mat-icon color="warn">cancel</mat-icon>
+                        <span>Remove</span>
+                    </button>
+                </mat-menu>
+
             </div>
         </div>
     </mat-card-actions>

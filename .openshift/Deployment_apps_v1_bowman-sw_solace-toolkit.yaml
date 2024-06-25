@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://bitbucket.org/onbowman/solace-toolkit.git
+  labels:
+    app: solace-toolkit
+    app.kubernetes.io/component: solace-toolkit
+    app.kubernetes.io/instance: solace-toolkit
+    app.kubernetes.io/name: solace-toolkit
+    app.kubernetes.io/part-of: solacetk-dev
+    app.openshift.io/runtime: angularjs
+  name: solace-toolkit
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: solace-toolkit
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: solace-toolkit
+        deploymentconfig: solace-toolkit
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/bowman-dev/solacetk-ui:latest
+        imagePullPolicy: Always
+        name: solace-toolkit
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: angular-sa
+      serviceAccountName: angular-sa
+      terminationGracePeriodSeconds: 30

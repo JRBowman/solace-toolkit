@@ -2,12 +2,13 @@ import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SolacetkSearchSheetComponent } from '../../common/solacetk-search-sheet/solacetk-search-sheet.component';
-import { BehaviorAnimation, BehaviorAnimationData, BehaviorComponent } from '../../models/behavioranimation';
+import { BehaviorAnimation, BehaviorAnimationData } from '../../models/behavioranimation';
 import { BehaviorBranch } from '../../models/behaviorbranch';
 import { BehaviorState } from '../../models/behaviorstate';
 import { CollisionDetectionType, MovableController, MovableControllerType } from '../../models/movablecontroller';
 import { SoltkKeyValue } from '../../models/soltk-key-value';
 import { SolacetkService } from '../../services/solacetk-service.service';
+import { SolTkComponent } from '../../models/soltk-component';
 
 @Component({
   selector: 'app-enemy-controllers',
@@ -21,7 +22,7 @@ export class EnemyControllersComponent implements OnInit {
   public model: MovableController = new MovableController();
   public worldLocation: string = "0,0,0";
 
-  public selectedComponent: BehaviorComponent = new BehaviorComponent();
+  public selectedComponent: SolTkComponent = new SolTkComponent();
 
 
   moveType = MovableControllerType;

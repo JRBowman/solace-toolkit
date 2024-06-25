@@ -1,0 +1,127 @@
+<div *ngIf="panelType == 'panel'">
+
+    <h3><mat-icon class="mr-2">local_post_office</mat-icon>Messages</h3>
+
+    <div class="disp-flex flex-gap-050">
+        <mat-card class="auto-flex message-card" *ngFor="let message of model">
+            <mat-card-title-group class="disp-flex flex-gap-050 auto-flex">
+                <mat-card-title class="disp-flex auto-flex flex-gap-050">
+                    <mat-icon>local_post_office</mat-icon>
+                    <span style="font-size: medium;">{{message.name}}</span>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    Message [{{GetKeyIndex(message)}}]
+                </mat-card-subtitle>
+                <button mat-icon-button class="no-flex" aria-label="Remove Message" (click)="RemoveMessage(message)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </mat-card-title-group>
+            <mat-card-content>
+
+                <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                <div class="disp-flex flex-gap-050">
+                    <mat-form-field class="auto-flex font-small">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Name" [(ngModel)]="message.name">
+                    </mat-form-field>
+                    <mat-form-field class="auto-flex font-small full-width">
+                        <mat-label>Description</mat-label>
+                        <input matInput placeholder="Description" [(ngModel)]="message.description">
+                    </mat-form-field>
+                    <mat-form-field class="auto-flex font-small">
+                        <mat-label>Target</mat-label>
+                        <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
+                    </mat-form-field>
+                    <mat-form-field class="auto-flex font-small">
+                        <mat-label>Target Type</mat-label>
+                        <mat-select [(ngModel)]="message.targetType">
+                            <mat-option [value]="0">Named Target</mat-option>
+                            <mat-option [value]="1">Instance Target</mat-option>
+                            <mat-option [value]="2">Collision Target</mat-option>
+                            <mat-option [value]="3">Focus Target</mat-option>
+                            <mat-option [value]="4">Message Queue</mat-option>
+                            <mat-option [value]="5">Self</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <solacetk-attributes-panel [panelMode]="1" panelName="Message Data" [(model)]="message.data"
+                    panelType="panel">
+                </solacetk-attributes-panel>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <button mat-button (click)="AddMessage()">Add Message</button>
+
+</div>
+
+<div *ngIf="panelType == 'expansionpanel'">
+    <mat-expansion-panel [style.backgroundColor]="messageColor">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="disp-flex flex-gap-050">
+                <mat-icon>local_post_office</mat-icon>
+                Messages
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+            <div class="disp-flex flex-gap-050">
+                <mat-card class="auto-flex message-card" *ngFor="let message of model">
+                    <mat-card-title-group class="disp-flex auto-flex" style="padding-top: 8px; padding-bottom: 8px;">
+                        <mat-card-title class="disp-flex auto-flex flex-gap-050" style="padding-left: 16px;">
+                            <mat-icon class="pt-1">quickreply</mat-icon>
+                            <span style="font-size: medium;">{{message.name}}</span>
+                        </mat-card-title>
+                        <mat-card-subtitle style="padding-left: 16px;">
+                            Message [{{GetKeyIndex(message)}}]
+                        </mat-card-subtitle>
+                        <button mat-icon-button class="no-flex" aria-label="Remove Message"
+                            (click)="RemoveMessage(message)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </mat-card-title-group>
+                    <mat-card-content>
+
+                        <!-- TODO: Add Message Context Data here - include Target Name and Target Selection: -->
+                        <div class="disp-flex flex-gap-050">
+                            <mat-form-field class="font-small">
+                                <mat-label>Name</mat-label>
+                                <input matInput placeholder="Name" [(ngModel)]="message.name">
+                            </mat-form-field>
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Description</mat-label>
+                                <input matInput placeholder="Description" [(ngModel)]="message.description">
+                            </mat-form-field>
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Target</mat-label>
+                                <input matInput placeholder="Target Name" [(ngModel)]="message.targetName">
+                            </mat-form-field>
+                            <mat-form-field class="auto-flex font-small">
+                                <mat-label>Target Type</mat-label>
+                                <mat-select [(ngModel)]="message.targetType" class="font-small">
+                                    <mat-option [value]="0">Named Target</mat-option>
+                                    <mat-option [value]="1">Instance Target</mat-option>
+                                    <mat-option [value]="2">Collision Target</mat-option>
+                                    <mat-option [value]="3">Focus Target</mat-option>
+                                    <mat-option [value]="4">Message Queue</mat-option>
+                                    <mat-option [value]="5">Self</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <solacetk-attributes-panel [panelMode]="1" panelName="Message Data" [(model)]="message.data"
+                            panelType="panel">
+                        </solacetk-attributes-panel>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-template>
+        <mat-action-row>
+            <button mat-button (click)="AddMessage()">Add Message</button>
+        </mat-action-row>
+
+    </mat-expansion-panel>
+</div>

@@ -17,10 +17,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
+    "esModuleInterop": true,
     "lib": [
       "es2020",
       "dom"
     ],
+    // "typeRoots": ["./node_modules/@types", "./src"],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

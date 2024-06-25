@@ -1,0 +1,6758 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "SolaceTK.Core",
+      "description": "Version 1 is pre-microservices, this Core API is a placeholder until v2 comes around next.",
+      "version": "v1"
+    },
+    "paths": {
+      "/api/v1/Behaviors/Animations": {
+        "get": {
+          "tags": [
+            "Animations"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorAnimation"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorAnimation"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorAnimation"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Animations"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/Animations/{id}": {
+        "get": {
+          "tags": [
+            "Animations"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Animations"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorAnimation"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Animations"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorAnimation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/Animations/{id}/export": {
+        "get": {
+          "tags": [
+            "Animations"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Controllers": {
+        "get": {
+          "tags": [
+            "Controllers"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MovableController"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MovableController"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MovableController"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Controllers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Controllers/{id}": {
+        "get": {
+          "tags": [
+            "Controllers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Controllers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovableController"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Controllers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MovableController"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Controllers/{id}/export": {
+        "get": {
+          "tags": [
+            "Controllers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Core/gamesystems": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/GameSystem"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/GameSystem"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/GameSystem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Core"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Core/gamesystems/{name}": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Core/gamesystems/{id}": {
+        "put": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSystem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GameSystem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Core/gamesystems/{id}/export": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Core/resourcecollections": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ResourceCollection"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ResourceCollection"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ResourceCollection"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Core"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Core/resourcecollections/{name}": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Core/resourcecollections/{id}": {
+        "put": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceCollection"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ResourceCollection"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Core/resourcecollections/{id}/export": {
+        "get": {
+          "tags": [
+            "Core"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Events": {
+        "get": {
+          "tags": [
+            "Events"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorEvent"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorEvent"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorEvent"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Events"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Events/{id}": {
+        "get": {
+          "tags": [
+            "Events"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Events"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorEvent"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Events"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorEvent"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Events/{id}/export": {
+        "get": {
+          "tags": [
+            "Events"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Files/ase": {
+        "post": {
+          "tags": [
+            "Files"
+          ],
+          "parameters": [
+            {
+              "name": "SplitTags",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "SplitLayers",
+              "in": "query",
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "AseImportMode",
+              "in": "query",
+              "schema": {
+                "$ref": "#/components/schemas/AseImportMode"
+              }
+            },
+            {
+              "name": "SheetType",
+              "in": "query",
+              "schema": {
+                "$ref": "#/components/schemas/AseSheetType"
+              }
+            },
+            {
+              "name": "Tag",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "FromFrame",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "ToFrame",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Files": {
+        "post": {
+          "tags": [
+            "Files"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Glossary/all": {
+        "get": {
+          "tags": [
+            "Glossary"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Glossary": {
+        "get": {
+          "tags": [
+            "Glossary"
+          ],
+          "parameters": [
+            {
+              "name": "type",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Glossary"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { }
+              },
+              "text/json": {
+                "schema": { }
+              },
+              "application/*+json": {
+                "schema": { }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Glossary"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { }
+              },
+              "text/json": {
+                "schema": { }
+              },
+              "application/*+json": {
+                "schema": { }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Glossary"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Health": {
+        "get": {
+          "tags": [
+            "Health"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ServiceHealthReport"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ServiceHealthReport"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ServiceHealthReport"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Health/Inventory": {
+        "get": {
+          "tags": [
+            "Health"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InventoryReport"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InventoryReport"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InventoryReport"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Layers": {
+        "get": {
+          "tags": [
+            "Layers"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MapLayer"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MapLayer"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/MapLayer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Layers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Layers/{id}": {
+        "get": {
+          "tags": [
+            "Layers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Layers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MapLayer"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Layers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MapLayer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Layers/{id}/export": {
+        "get": {
+          "tags": [
+            "Layers"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Maps": {
+        "get": {
+          "tags": [
+            "Maps"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Map"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Map"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Map"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Maps"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Maps/{id}": {
+        "get": {
+          "tags": [
+            "Maps"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Maps"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Map"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Maps"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/Maps/{id}/export": {
+        "get": {
+          "tags": [
+            "Maps"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Events/Messages": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorMessage"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorMessage"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Messages"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Events/Messages/{id}": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Messages"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorMessage"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Messages"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorMessage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Events/Messages/{id}/export": {
+        "get": {
+          "tags": [
+            "Messages"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sets": {
+        "get": {
+          "tags": [
+            "Sound"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSet"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSet"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSet"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Sound"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sets/{name}": {
+        "get": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sets/{id}": {
+        "put": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSet"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sources": {
+        "get": {
+          "tags": [
+            "Sound"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSource"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSource"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SoundSource"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Sound"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sources/{name}": {
+        "get": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SoundSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Sound/sources/{id}": {
+        "put": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundSource"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Sound"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/States": {
+        "get": {
+          "tags": [
+            "States"
+          ],
+          "parameters": [
+            {
+              "name": "noop",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorState"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorState"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorState"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "States"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/States/{id}": {
+        "get": {
+          "tags": [
+            "States"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "noop",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "States"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorState"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "States"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorState"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/States/{id}/export": {
+        "get": {
+          "tags": [
+            "States"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "noop",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/StoryCards": {
+        "get": {
+          "tags": [
+            "StoryCards"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/StoryCard"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/StoryCard"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/StoryCard"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "StoryCards"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/StoryCards/{id}": {
+        "get": {
+          "tags": [
+            "StoryCards"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "StoryCards"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoryCard"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "StoryCards"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StoryCard"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/StoryCards/{id}/export": {
+        "get": {
+          "tags": [
+            "StoryCards"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/Systems": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorSystem"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorSystem"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/BehaviorSystem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Systems"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/Systems/{id}": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Systems"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BehaviorSystem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Systems"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BehaviorSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Behaviors/Systems/{id}/export": {
+        "get": {
+          "tags": [
+            "Systems"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/TileSets": {
+        "get": {
+          "tags": [
+            "TileSets"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TileSet"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TileSet"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TileSet"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "TileSets"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/TileSets/{id}": {
+        "get": {
+          "tags": [
+            "TileSets"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "TileSets"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TileSet"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "TileSets"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TileSet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Environments/TileSets/{id}/export": {
+        "get": {
+          "tags": [
+            "TileSets"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Timelines": {
+        "get": {
+          "tags": [
+            "Timelines"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Timeline"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Timeline"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Timeline"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Timelines"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Timelines/{id}": {
+        "get": {
+          "tags": [
+            "Timelines"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Timelines"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timeline"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Timelines"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Timelines/{id}/export": {
+        "get": {
+          "tags": [
+            "Timelines"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/projects": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkProject"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkProject"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkProject"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Work"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/projects/{name}": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/projects/{id}": {
+        "put": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkProject"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkProject"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/projects/{id}/export": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/items": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkItem"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkItem"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkItem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Work"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/items/{name}": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/items/{id}": {
+        "put": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkItem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/items/{id}/export": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/payments": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkPayment"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkPayment"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkPayment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Work"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/payments/{name}": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/payments/{id}": {
+        "put": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkPayment"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkPayment"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/payments/{id}/export": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/comments": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "includeElements",
+              "in": "query",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkComment"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkComment"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/WorkComment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Work"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/comments/{name}": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/Work/comments/{id}": {
+        "put": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkComment"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/WorkComment"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/v1/Work/comments/{id}/export": {
+        "get": {
+          "tags": [
+            "Work"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AseImportMode": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "AseSheetType": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "BehaviorAnimation": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "actFrameData": {
+              "$ref": "#/components/schemas/BehaviorAnimationData"
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkComponent"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorAnimationData": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "frames": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorAnimationFrame"
+              },
+              "nullable": true
+            },
+            "loop": {
+              "type": "boolean"
+            },
+            "invert": {
+              "type": "boolean"
+            },
+            "mirror": {
+              "type": "boolean"
+            },
+            "speed": {
+              "type": "number",
+              "format": "float"
+            },
+            "runCount": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorAnimationFrame": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "order": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "speed": {
+              "type": "number",
+              "format": "float"
+            },
+            "duration": {
+              "type": "number",
+              "format": "float"
+            },
+            "frameData": {
+              "type": "string",
+              "nullable": true
+            },
+            "downstreamData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorEvent": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "isPhysicsEvent": {
+              "type": "boolean"
+            },
+            "debounceTime": {
+              "type": "number",
+              "format": "float"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkCondition"
+              },
+              "nullable": true
+            },
+            "downstreamData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "messages": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorMessage"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorMessage": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "targetName": {
+              "type": "string",
+              "nullable": true
+            },
+            "targetType": {
+              "$ref": "#/components/schemas/MessageTarget"
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorState": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "stateType": {
+              "type": "string",
+              "nullable": true
+            },
+            "runCount": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "noOp": {
+              "type": "boolean"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "animation": {
+              "$ref": "#/components/schemas/BehaviorAnimation"
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorEvent"
+              },
+              "nullable": true
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkCondition"
+              },
+              "nullable": true
+            },
+            "startData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "actData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "endData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "nextStates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorState"
+              },
+              "nullable": true
+            },
+            "behaviorStates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorState"
+              },
+              "nullable": true
+            },
+            "behaviorSystemId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "startDelay": {
+              "type": "string",
+              "nullable": true
+            },
+            "endDelay": {
+              "type": "string",
+              "nullable": true
+            },
+            "interruptable": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorSystem": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "behaviorType": {
+              "$ref": "#/components/schemas/BehaviorType"
+            },
+            "varData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "behaviors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorState"
+              },
+              "nullable": true
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorEvent"
+              },
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BehaviorType": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "CharacterController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "useFriction": {
+              "type": "boolean"
+            },
+            "affectedByGravity": {
+              "type": "boolean"
+            },
+            "canMove": {
+              "type": "boolean"
+            },
+            "mass": {
+              "type": "number",
+              "format": "float"
+            },
+            "behaviorSystemId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "controllerData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkComponent"
+              },
+              "nullable": true
+            },
+            "soundSet": {
+              "$ref": "#/components/schemas/SoundSet"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MovableControllerType"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "CollisionDetectionType": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "EnemyController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "useFriction": {
+              "type": "boolean"
+            },
+            "affectedByGravity": {
+              "type": "boolean"
+            },
+            "canMove": {
+              "type": "boolean"
+            },
+            "mass": {
+              "type": "number",
+              "format": "float"
+            },
+            "behaviorSystemId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "controllerData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkComponent"
+              },
+              "nullable": true
+            },
+            "soundSet": {
+              "$ref": "#/components/schemas/SoundSet"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MovableControllerType"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "GameSystem": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "behaviorType": {
+              "$ref": "#/components/schemas/BehaviorType"
+            },
+            "varData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "behaviors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorState"
+              },
+              "nullable": true
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorEvent"
+              },
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Hud": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "HudDialog": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "HudMenu": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ImmovableController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "isHit": {
+              "type": "boolean"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "InventoryReport": {
+          "type": "object",
+          "properties": {
+            "projects": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "behaviors": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "states": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "animations": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "controllers": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "events": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "maps": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "tilesets": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "interfaces": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "soundSets": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "resourceCollections": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "timelines": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "storyCards": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Map": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "layers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MapLayer"
+              },
+              "nullable": true
+            },
+            "cells": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MapCell"
+              },
+              "nullable": true
+            },
+            "chunks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MapChunk"
+              },
+              "nullable": true
+            },
+            "tileSet": {
+              "$ref": "#/components/schemas/TileSet"
+            }
+          },
+          "additionalProperties": false
+        },
+        "MapCell": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "x": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "y": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "colorKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "enterData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "activeData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "behaviorEvents": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorEvent"
+              },
+              "nullable": true
+            },
+            "exitData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "MapChunk": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "colorKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "cells": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MapCell"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "MapLayer": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "layerData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "layerName": {
+              "type": "string",
+              "nullable": true
+            },
+            "sortingLayer": {
+              "type": "string",
+              "nullable": true
+            },
+            "layerOrder": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "isCollidable": {
+              "type": "boolean"
+            },
+            "isBreakable": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "MessageTarget": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "MovableController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "useFriction": {
+              "type": "boolean"
+            },
+            "affectedByGravity": {
+              "type": "boolean"
+            },
+            "canMove": {
+              "type": "boolean"
+            },
+            "mass": {
+              "type": "number",
+              "format": "float"
+            },
+            "behaviorSystemId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "controllerData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkComponent"
+              },
+              "nullable": true
+            },
+            "soundSet": {
+              "$ref": "#/components/schemas/SoundSet"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MovableControllerType"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "MovableControllerType": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "NavigationController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "isHit": {
+              "type": "boolean"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ResourceCollection": {
+          "type": "object",
+          "properties": {
+            "movables": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/MovableController"
+              },
+              "nullable": true
+            },
+            "immovables": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ImmovableController"
+              },
+              "nullable": true
+            },
+            "navigations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/NavigationController"
+              },
+              "nullable": true
+            },
+            "transports": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TransportController"
+              },
+              "nullable": true
+            },
+            "characters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CharacterController"
+              },
+              "nullable": true
+            },
+            "enemies": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EnemyController"
+              },
+              "nullable": true
+            },
+            "objects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/StaticObjectController"
+              },
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "behaviors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorSystem"
+              },
+              "nullable": true
+            },
+            "tileSets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TileSet"
+              },
+              "nullable": true
+            },
+            "huds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Hud"
+              },
+              "nullable": true
+            },
+            "dialogs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/HudDialog"
+              },
+              "nullable": true
+            },
+            "menus": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/HudMenu"
+              },
+              "nullable": true
+            },
+            "soundSets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SoundSet"
+              },
+              "nullable": true
+            },
+            "soundSources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SoundSource"
+              },
+              "nullable": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "RuleCheckType": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "ServiceHealthReport": {
+          "type": "object",
+          "properties": {
+            "serviceStatus": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "dataStatus": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "asepriteStatus": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SolTkComponent": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "positionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "positionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "positionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "rotationX": {
+              "type": "number",
+              "format": "float"
+            },
+            "rotationY": {
+              "type": "number",
+              "format": "float"
+            },
+            "rotationZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "scaleX": {
+              "type": "number",
+              "format": "float"
+            },
+            "scaleY": {
+              "type": "number",
+              "format": "float"
+            },
+            "scaleZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "componentData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "movableControllerId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "behaviorAnimationId": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SolTkCondition": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            },
+            "data": {
+              "type": "string",
+              "nullable": true
+            },
+            "operator": {
+              "$ref": "#/components/schemas/SolTkOperator"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SolTkData": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "key": {
+              "type": "string",
+              "nullable": true
+            },
+            "data": {
+              "type": "string",
+              "nullable": true
+            },
+            "operator": {
+              "$ref": "#/components/schemas/SolTkDataOperator"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SolTkDataOperator": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "SolTkOperator": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "SoundSet": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SoundSource"
+              },
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SoundSource": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "isLoop": {
+              "type": "boolean"
+            },
+            "volume": {
+              "type": "number",
+              "format": "float"
+            },
+            "pitch": {
+              "type": "number",
+              "format": "float"
+            },
+            "playOnLoad": {
+              "type": "boolean"
+            },
+            "clipName": {
+              "type": "string",
+              "nullable": true
+            },
+            "loopStartTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "loopEndTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "soundData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "StaticObjectController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "isHit": {
+              "type": "boolean"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "StoryCard": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "completed": {
+              "type": "boolean"
+            },
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "order": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "startTime": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "duration": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "endTime": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkCondition"
+              },
+              "nullable": true
+            },
+            "downstreamData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/BehaviorEvent"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Tile": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "colorKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "type": {
+              "$ref": "#/components/schemas/TileType"
+            },
+            "mode": {
+              "$ref": "#/components/schemas/TileTransformMode"
+            },
+            "lx": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "ly": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "width": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "height": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "objectKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "rules": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TileRule"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "TileRule": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "priority": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "colorKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "dataKey": {
+              "type": "string",
+              "nullable": true
+            },
+            "vx": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "vy": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "vm": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "checkType": {
+              "$ref": "#/components/schemas/RuleCheckType"
+            }
+          },
+          "additionalProperties": false
+        },
+        "TileSet": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "tiles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Tile"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "TileTransformMode": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "TileType": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "Timeline": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "storyCards": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/StoryCard"
+              },
+              "nullable": true
+            },
+            "length": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "additionalProperties": false
+        },
+        "TransportController": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "pixelKeyColor": {
+              "type": "string",
+              "nullable": true
+            },
+            "worldPositionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionY": {
+              "type": "number",
+              "format": "float"
+            },
+            "worldPositionZ": {
+              "type": "number",
+              "format": "float"
+            },
+            "mapPositionX": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "mapPositionY": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collisionType": {
+              "$ref": "#/components/schemas/CollisionDetectionType"
+            },
+            "useFriction": {
+              "type": "boolean"
+            },
+            "affectedByGravity": {
+              "type": "boolean"
+            },
+            "canMove": {
+              "type": "boolean"
+            },
+            "mass": {
+              "type": "number",
+              "format": "float"
+            },
+            "behaviorSystemId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "controllerData": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkData"
+              },
+              "nullable": true
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SolTkComponent"
+              },
+              "nullable": true
+            },
+            "soundSet": {
+              "$ref": "#/components/schemas/SoundSet"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MovableControllerType"
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "directionX": {
+              "type": "number",
+              "format": "float"
+            },
+            "directionY": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "additionalProperties": false
+        },
+        "WorkArtifact": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "artifactUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "WorkComment": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "comment": {
+              "type": "string",
+              "nullable": true
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "WorkItem": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "hoursEstimate": {
+              "type": "number",
+              "format": "float"
+            },
+            "hoursActual": {
+              "type": "number",
+              "format": "float"
+            },
+            "payment": {
+              "$ref": "#/components/schemas/WorkPayment"
+            },
+            "isPaid": {
+              "type": "boolean"
+            },
+            "workProjectId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "comments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/WorkComment"
+              },
+              "nullable": true
+            },
+            "artifact": {
+              "$ref": "#/components/schemas/WorkArtifact"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "WorkPayment": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "project": {
+              "$ref": "#/components/schemas/WorkProject"
+            },
+            "paymentDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "amount": {
+              "type": "number",
+              "format": "float"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "workItems": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/WorkItem"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "WorkProject": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "tags": {
+              "type": "string",
+              "nullable": true
+            },
+            "totalEstimatedHours": {
+              "type": "number",
+              "format": "float"
+            },
+            "totalActualHours": {
+              "type": "number",
+              "format": "float"
+            },
+            "paidHours": {
+              "type": "number",
+              "format": "float"
+            },
+            "totalPaid": {
+              "type": "number",
+              "format": "float"
+            },
+            "remainingPayment": {
+              "type": "number",
+              "format": "float"
+            },
+            "isProjectBillable": {
+              "type": "boolean"
+            },
+            "workItems": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/WorkItem"
+              },
+              "nullable": true
+            },
+            "payments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/WorkPayment"
+              },
+              "nullable": true
+            },
+            "comments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/WorkComment"
+              },
+              "nullable": true
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "securitySchemes": {
+        "Bearer": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    }
+  }

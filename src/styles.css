@@ -12,6 +12,38 @@ body { height: inherit; margin: 0; font-family: Roboto, "Helvetica Neue", sans-s
     padding-top: 32px;
 } */
 
+.flex-gap-050 {
+    gap: 0.5em;
+}
+.flex-gap-075 {
+    gap: 0.75em;
+}
+.flex-gap-1 {
+    gap: 1em;
+}
+.flex-gap-2 {
+    gap: 2em;
+}
+.flex-gap-3 {
+    gap: 3em;
+}
+.flex-gap-4 {
+    gap: 4em;
+}
+.flex-gap-5 {
+    gap: 5em;
+}
+.flex-gap-6 {
+    gap: 6em;
+}
+.flex-gap-7 {
+    gap: 7em;
+}
+
+code {
+    white-space : pre-wrap !important;
+  }
+
 .word-wrap * {
     white-space: normal;
 }
@@ -32,6 +64,31 @@ body { height: inherit; margin: 0; font-family: Roboto, "Helvetica Neue", sans-s
     flex-direction: row-reverse;
 }
 
+.service-connect-up {
+    width: 24px;
+    height: 24px;
+    color: rgb(96, 192, 64);
+    fill: rgb(96, 192, 64);
+}
+
+.service-connect-down {
+    width: 24px;
+    height: 24px;
+    color: rgb(255, 0, 32);
+    fill: rgb(255, 0, 32);
+}
+
+.resizable {
+    resize: both;
+}
+
+.resizable-h {
+    resize: horizontal;
+}
+
+.resizable-v {
+    resize: vertical;
+}
 
 
 .new-button {
@@ -61,7 +118,69 @@ mat-tab-header.mat-tab-header {
 }
 
 
+.pb-1 {
+    padding-bottom: 1% !important;
+}
+.pb-2 {
+    padding-bottom: 2% !important;
+}
+.pb-3 {
+    padding-bottom: 3% !important;
+}
+.pb-4 {
+    padding-bottom: 4% !important;
+}
+.pb-5 {
+    padding-bottom: 5% !important;
+}
 
+.pr-1 {
+    padding-right: 1% !important;
+}
+.pr-2 {
+    padding-right: 2% !important;
+}
+.pr-3 {
+    padding-right: 3% !important;
+}
+.pr-4 {
+    padding-right: 4% !important;
+}
+.pr-5 {
+    padding-right: 5% !important;
+}
+
+.pl-1 {
+    padding-left: 1% !important;
+}
+.pl-2 {
+    padding-left: 2% !important;
+}
+.pl-3 {
+    padding-left: 3% !important;
+}
+.pl-4 {
+    padding-left: 4% !important;
+}
+.pl-5 {
+    padding-left: 5% !important;
+}
+
+.pt-1 {
+    padding-top: 1% !important;
+}
+.pt-2 {
+    padding-top: 2% !important;
+}
+.pt-3 {
+    padding-top: 3% !important;
+}
+.pt-4 {
+    padding-top: 4% !important;
+}
+.pt-5 {
+    padding-top: 5% !important;
+}
 
 
 
@@ -127,6 +246,7 @@ mat-tab-header.mat-tab-header {
     flex-wrap: nowrap !important;
 
     width: max-content !important;
+    /* width: 100%; */
     overflow-x: visible;
     height: 100%;
 }
@@ -137,7 +257,8 @@ mat-tab-header.mat-tab-header {
 
 .flex-container {
     position: relative;
-    min-height: 800px;
+    min-height: 32em;
+    height: max-content;
 }
 
 .sprite-thumb-2col.sprite-placeholder {

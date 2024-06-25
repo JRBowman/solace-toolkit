@@ -1,0 +1,98 @@
+.parallax-item {
+    background: url(http://localhost:5010/Artifacts/solace-site-para-room-0a.png) top center;
+    background-size: contain;
+    min-height: 96%;
+    /* min-height: 48em;
+    width: 100%; */
+    overflow-x: hidden;
+    image-rendering: pixelated;
+    /* position: absolute;
+    overflow: visible; */
+    /* transform: translateZ(-1em) scale(1.5); */
+    transform-style: preserve-3d;
+    /* filter: blur(2px); */
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+.scene-text {
+    image-rendering: pixelated;
+    position: absolute;
+    inset: 0;
+    transform: translateZ(64px) scale(0.5);
+    transform-style: preserve-3d;
+    z-index: 5;
+    
+    filter: blur(0px);
+}
+
+.scene-item {
+    image-rendering: pixelated;
+    position: absolute;
+    transform: scale(3);
+    transform-style: preserve-3d;
+    
+    filter: blur(0px);
+}
+
+.ship-item {
+    image-rendering: pixelated;
+    position: absolute;
+    transform-style: preserve-3d;
+    filter: blur(0px);
+    animation: ship-shake 30s infinite linear;
+}
+
+
+.scene-items {
+    image-rendering: pixelated;
+    position: absolute;
+    transform-style: preserve-3d;
+    perspective: 100px;
+    filter: blur(0px);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.preserve3d {
+    transform-style: preserve-3d;
+}
+
+@keyframes ship-shake {
+    0% {
+        transform: translate3d(-512px, 32px, 100px);
+        filter: blur(1px);
+    }
+
+    16% {
+        filter: blur(0px);
+    }
+
+    67% {
+        transform: translate3d(0px, -64px, 32px);
+        filter: blur(0px);
+    }
+
+    92% {
+        transform: translate3d(-64px, 512px, 100px);
+        filter: blur(0px);
+    }
+
+    96% {
+        transform: translate3d(-2048px, 96px, -100px);
+        filter: blur(8px);
+    }
+
+    98% {
+        filter: blur(0px);
+    }
+
+    100% {
+        transform: translate3d(1024px, 24px, 100px);
+        filter: blur(1px);
+    }
+}
