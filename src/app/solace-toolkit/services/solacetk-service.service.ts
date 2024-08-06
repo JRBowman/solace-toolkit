@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Artifact } from '../models/artifact';
@@ -14,10 +15,11 @@ export class SolacetkService {
   constructor(private http: HttpClient) { }
 
   //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
-  public apiVersion: string = "api/v1/";
+  public apiVersion: string = "v1/";
   //public apiHost: string = "http://localhost:5010/"
-  public apiHost: string = environment.apiHost;
-  public baseUrl: string = environment.apiHost + this.apiVersion;
+  // public apiHost: string = environment.apiHost;
+  public apiHost: string = "/api/"
+  public baseUrl: string = this.apiHost + this.apiVersion;
 
   public deepGetQuery: string = "?includeElements=true";
   public solTkServStatus: boolean = false;
@@ -27,8 +29,11 @@ export class SolacetkService {
 
   public screenWidth: any;
   public screenHeight: any;
+  public origin: any;
 
   public healthStatus: ServiceHealthReport = new ServiceHealthReport();
+
+  public IsClient: boolean = false;
 
   public Initialize() {
 
@@ -51,11 +56,11 @@ export class SolacetkService {
   }
 
   public GetData(route: string, headers?: HttpHeaders): Observable<any> {
-    return this.http.get<any>(this.apiHost + route, { headers: headers});
+    return this.http.get<any>(route, { headers: headers});
   }
 
   public GetArtifact(route: string, headers?: HttpHeaders): Observable<string> {
-    return this.http.get<string>(this.apiHost + route, { headers: headers});
+    return this.http.get<string>(route, { headers: headers});
   }
 
   public GetDataFromSource(route: string, headers?: HttpHeaders): Observable<any> {

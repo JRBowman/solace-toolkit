@@ -264,11 +264,16 @@ const routes: Routes = [
   {
     path: 'storycards',
     component: StoryCardsComponent
+  },
+  {
+    path: '**', component: IntroductionComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

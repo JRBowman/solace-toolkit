@@ -24,7 +24,8 @@ public moduleData: any = {};
 
   ngOnInit(): void {
     this.behaviorTypes = Object.keys(BehaviorType).filter(f => !isNaN(Number(f)));
-    this.moduleData.moduleSeedData = window.origin + "/assets/test/behaviors/system_create.json"
+    // this.moduleData.moduleSeedData = window.origin + "/assets/test/behaviors/system_create.json"
+    this.moduleData.moduleSeedData = this.service.origin + "/assets/test/behaviors/system_create.json"
   }
 
   public behaviorTypes: any[] = [];

@@ -7,14 +7,14 @@ import { environment } from 'src/environments/environment';
     imports: [AuthModule.forRoot({
         config: {
             authority: environment.identityHost,
-            redirectUrl: window.location.origin,
-            postLogoutRedirectUri: window.location.origin,
+            // redirectUrl: window.location.origin,
+            // postLogoutRedirectUri: window.location.origin,
             clientId: 'msoa-js',
             scope: 'openid profile account-api',
             responseType: 'code',
             silentRenew: true,
             useRefreshToken: true,
-            silentRenewUrl: window.location.origin + "/silent-renew.html",
+            // silentRenewUrl: window.location.origin + "/silent-renew.html",
             logLevel: LogLevel.Debug
         }
       })],

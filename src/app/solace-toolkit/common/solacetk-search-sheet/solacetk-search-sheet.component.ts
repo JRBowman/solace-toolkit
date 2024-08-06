@@ -39,13 +39,13 @@ export class SolacetkSearchSheetComponent implements OnInit {
       this.models = model.data ?? [];
       console.log(model);
       this.IsLoading = false;
-      this.soundService.playAudio("view-refresh.wav");
+      // if (this.soundService.IsClient) this.soundService.playAudio("view-refresh.wav");
     });
   }
 
   public Close() {
     this._bottomSheetRef.dismiss(this.selectedModels);
-    this.soundService.playAudio("model-close.wav");
+    // if (this.soundService.IsClient) this.soundService.playAudio("model-close.wav");
     this.selectedModels = [];
     this.models = [];
     this.resource = "";

@@ -70,8 +70,8 @@ export class EnvironmentTilesetsComponent implements OnInit {
   loadEditor() {
 
     // Load Data related to the Model:
-    this.profileUrl = this.soltkService.apiHost + "Artifacts/" + this.model.name + "/" + this.model.name;
-    this.tileJsonUrl = "Artifacts/" + this.model.name + "/" + this.model.name + ".json";
+    this.profileUrl = "/Artifacts/" + this.model.name + "/" + this.model.name;
+    this.tileJsonUrl = "/Artifacts/" + this.model.name + "/" + this.model.name + ".json";
 
     // Ase JSON Data:
     this.soltkService.GetData(this.tileJsonUrl).subscribe((data) => {

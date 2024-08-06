@@ -67,10 +67,10 @@ export class EnvironmentMapComponent implements OnInit {
 
   CenterMap(): void {
     if (this.mapscale > 1) {
-      this.mapDragPos = { x: (window.innerWidth / 2) - this.mapWidth, y: (window.innerHeight / 2) - this.mapHeight };
+      this.mapDragPos = { x: (this.soltkService.screenWidth / 2) - this.mapWidth, y: (this.soltkService.screenHeight / 2) - this.mapHeight };
     }
     else if (this.mapscale = 1) {
-      this.mapDragPos = { x: (window.innerWidth / (2 * this.mapscale) - this.mapWidth), y: (window.innerHeight / (2 * this.mapscale) - this.mapHeight) };
+      this.mapDragPos = { x: (this.soltkService.screenWidth / (2 * this.mapscale) - this.mapWidth), y: (this.soltkService.screenHeight / (2 * this.mapscale) - this.mapHeight) };
     }
     else if (this.mapscale < 1) {
       this.mapDragPos = { x: 0, y: 0 };
@@ -89,7 +89,7 @@ export class EnvironmentMapComponent implements OnInit {
       this.selectedCell.selected = true;
       // TODO: Logic for clicking and selecting a Cell (load its Model into the Cell Editor):
     }
-    this.soundService.playAudio("map-click.wav")
+    // if (this.soundService.IsClient) this.soundService.playAudio("map-click.wav")
   }
 
   ModeChange(nextMode: MatButtonToggleChange): void {
@@ -231,8 +231,10 @@ export class EnvironmentMapComponent implements OnInit {
 
   public SetLayerState(instance: EnvironmentMapLayer): void {
     instance.enabled = !instance.enabled;
-    if (instance.enabled) this.soundService.playAudio("map-link.wav");
-    else this.soundService.playAudio("map-unlink.wav");
+    // if (this.soundService.IsClient) {
+    //   if (instance.enabled) this.soundService.playAudio("map-link.wav");
+    //   else this.soundService.playAudio("map-unlink.wav");
+    // }
   }
 
   public fileName: string = "";

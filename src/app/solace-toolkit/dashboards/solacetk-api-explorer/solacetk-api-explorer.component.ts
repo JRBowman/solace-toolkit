@@ -13,7 +13,8 @@ export class SolacetkApiExplorerComponent implements OnInit {
   constructor(public service: SolacetkService) { }
 
   public oasData: any = {};
-  public oasUrl: string = window.origin + "/assets/swagger.json";
+  // public oasUrl: string = window.origin + "/assets/swagger.json";
+  public oasUrl: string = "./assets/swagger.json";
   public oasString: string = "";
 
   public components: any = {};

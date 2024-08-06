@@ -1,38 +1,41 @@
-# Stage 1: Compile and Build angular codebase
+# Stage 1: Build the Angular application
+FROM node:18 as build-stage
 
-# Use official node image as the base image
-FROM node:16 as build
+# Set working directory
+WORKDIR /app
 
-# Set the working directory
-WORKDIR /usr/local/app
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Add the source code to app
-COPY src/ /usr/local/app/src
-COPY package.json /usr/local/app
-COPY tsconfig.app.json /usr/local/app
-COPY tsconfig.json /usr/local/app
-COPY angular.json /usr/local/app
-COPY default.conf /usr/local/app
-COPY karma.conf.js /usr/local/app
-COPY package-lock.json /usr/local/app
-COPY tsconfig.spec.json /usr/local/app
-
-
-# Install all the dependencies
+# Install dependencies
 RUN npm install
 
-# Generate the build of the application
-RUN npm run build
+# Copy the rest of the application source code
+COPY . .
 
-# Stage 2: Serve app with nginx server
+# Build the Angular application
+RUN npm run build:ssr
 
-# Use official nginx image as the base image
-#FROM registry.access.redhat.com/ubi8/nginx-120
-FROM nginx:latest
+# Stage 2: Setup the Node.js environment
+FROM node:18 as production-stage
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/onbowman-13 /usr/share/nginx/html
-COPY --from=build /usr/local/app/default.conf /etc/nginx/conf.d/default.conf
+# Set working directory
+WORKDIR /app
 
-# Expose port 8080
-EXPOSE 80
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
+
+# Install only production dependencies
+#RUN npm install --only=production
+
+# Copy the built Angular application from the build stage
+COPY --from=build-stage /app/dist/onbowman-13 /app/dist/onbowman-13
+
+# Copy the server file
+COPY server.ts ./
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the application
+CMD ["node", "dist/onbowman-13/server/main.js"]

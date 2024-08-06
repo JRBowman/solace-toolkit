@@ -38,11 +38,11 @@ export class SolacetkPanelComponent implements OnInit {
   }
 
   public panelClosed(): void {
-    this.soundService.playAudio("panel-close.wav");
+    // if (this.soundService.IsClient) this.soundService.playAudio("panel-close.wav");
   }
 
   public panelOpened(): void {
-    this.soundService.playAudio("panel-expand.wav");
+    // if (this.soundService.IsClient) this.soundService.playAudio("panel-expand.wav");
   }
 
 }

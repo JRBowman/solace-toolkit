@@ -17,7 +17,7 @@ export class ArtifactsComponent implements OnInit {
   public model?: Artifact;
 
   public artifactType: number = 0;
-  public audioSource?: HTMLAudioElement;
+  public audioSource?: HTMLAudioElement | null;
   public artifactImage: string = "";
 
   public artifactFileUrl: string = ""
@@ -36,8 +36,8 @@ export class ArtifactsComponent implements OnInit {
     
     // type value or 0:
     this.artifactType = this.ArtifactTypeLookup.find(x => x.extensions.includes(this.model?.artifactExtension ?? ""))?.typeValue ?? 0;
-    if (this.artifactType == 1) this.audioSource = this.soundService.loadAudioUrl(this.model.artifactName, this.model.artifactUrl);
-    if (this.artifactType == 2) this.artifactImage = "<img height='100%' width='100%' src='" + this.soundService.apiHost + this.model.artifactUrl + "'>" 
+    // if (this.artifactType == 1) this.audioSource = this.soundService.loadAudioUrl(this.model.artifactName, this.model.artifactUrl);
+    // if (this.artifactType == 2) this.artifactImage = "<img height='100%' width='100%' src='" + this.soundService.apiHost + this.model.artifactUrl + "'>" 
     //if (this.artifactType == 3) this.videoSource = this.soundService.LoadVideoUrl(this.model.artifactName, this.model.artifactUrl)
 
     // if (this.artifactType == 4) {
@@ -61,13 +61,13 @@ export class ArtifactsComponent implements OnInit {
 
   public PlaySound(): void {
     if (!this.model) return;
-    this.audioSource = this.soundService.playAudio(this.model?.artifactName);
+    // if (this.soundService.IsClient) this.audioSource = this.soundService.playAudio(this.model?.artifactName);
     this.hasPlayed = true;
   }
 
   public StopSound(): void {
     if (!this.model) return;
-    this.soundService.stopAudio(this.model?.artifactName);
+    // if (this.soundService.IsClient) this.soundService.stopAudio(this.model?.artifactName);
   }
 
   public GetDate(value: number): string {

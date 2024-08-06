@@ -35,7 +35,8 @@ export class BehaviorNoopStatesComponent implements OnInit {
     this.model.endDelay = 0.0;
     this.model.startDelay = 0.0;
     this.model.type = StateType.Branch;
-    this.moduleData.moduleSeedData = window.origin + "/assets/test/behaviors/branch_create.json";
+    // this.moduleData.moduleSeedData = window.origin + "/assets/test/behaviors/branch_create.json";
+    this.moduleData.moduleSeedData = this.service.origin + "/assets/test/behaviors/branch_create.json";
   }
 
   public LogModel()

@@ -255,7 +255,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
       this.selectedFrameChange.emit(this.selectedFrame);
       if (this.components && this.components.length > 0) this.processComponents();
     }
-    this.soundService.playAudio("map-link.wav");
+    // if (this.soundService.IsClient) this.soundService.playAudio("map-link.wav");
     this.isPlaying = true;
     this.animate();
   }
@@ -292,7 +292,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   }
 
   stopAnimation() {
-    this.soundService.playAudio("map-unlink.wav");
+    // if (this.soundService.IsClient) this.soundService.playAudio("map-unlink.wav");
     this.isPlaying = false;
   }
 

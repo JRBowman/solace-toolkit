@@ -1,3 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
+import { Inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
 import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { MarkdownService } from 'ngx-markdown';
@@ -16,7 +19,8 @@ export class AppComponent implements OnInit {
   constructor(private markdownService: MarkdownService, public oidcSecurityService: OidcSecurityService,
      public msoaUserService: MsoaUserService, 
      public soltkService: SolacetkService,
-     public soundService: SolaceTkSoundService) {
+     public soundService: SolaceTkSoundService,
+     @Inject(PLATFORM_ID) private platformId: Object) {
     setInterval(() => {
       this.time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
     }, 1000);
@@ -28,10 +32,15 @@ export class AppComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.soltkService.screenWidth = window.innerWidth;
-    this.soltkService.screenHeight = window.innerHeight;
+    if (isPlatformBrowser(this.platformId)) {
+      this.soltkService.IsClient = true;
+      // this.soundService.IsClient = true;
+      this.soltkService.screenWidth = window.innerWidth;
+      this.soltkService.screenHeight = window.innerHeight;
+      // this.soundService.Initialize();
+    }
 
-    this.soundService.Initialize();
+    
 
         // Process Authorization checks here:
         // this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken}) => {
@@ -83,8 +92,11 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
+    if (isPlatformBrowser(this.platformId)) {
     this.soltkService.screenWidth = window.innerWidth;
     this.soltkService.screenHeight = window.innerHeight;
+    this.soltkService.origin = window.origin;
+    }
   }
 
   servicesConnected = true;

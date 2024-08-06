@@ -31,7 +31,7 @@ export class SolacetkModelCardComponent implements OnInit {
 
 
   public GetPreviewUrl(model: any): string {
-    model.previewUrl = this.service.apiHost + "Artifacts/" + model.name + "/" + model.name + ".gif";
+    model.previewUrl = "/Artifacts/" + model.name + "/" + model.name + ".gif";
     return model.previewUrl;
   }
 }

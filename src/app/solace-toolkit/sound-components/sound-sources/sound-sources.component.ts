@@ -18,7 +18,7 @@ export class SoundSourcesComponent implements OnInit {
 
   public artifact?: Artifact;
 
-  public audioSource?: HTMLAudioElement;
+  public audioSource?: HTMLAudioElement | null;
 
   ngOnInit(): void {
   }
@@ -28,7 +28,7 @@ export class SoundSourcesComponent implements OnInit {
     
     this.service.GetModelOp<Artifact>("Artifacts/" + this.model.artifactId).subscribe((next) => {
       this.artifact = next.data;
-      this.audioSource = this.soundService.loadAudioUrl(this.artifact?.artifactName ?? "x", this.artifact?.artifactUrl ?? "");
+      // this.audioSource = this.soundService.loadAudioUrl(this.artifact?.artifactName ?? "x", this.artifact?.artifactUrl ?? "");
     });
   }
 
@@ -37,13 +37,13 @@ export class SoundSourcesComponent implements OnInit {
 
   public PlaySound(): void {
     if (!this.artifact) return;
-    this.audioSource = this.soundService.playAudio(this.artifact?.artifactName);
+    // if (this.soundService.IsClient) this.audioSource = this.soundService.playAudio(this.artifact?.artifactName);
     this.hasPlayed = true;
   }
 
   public StopSound(): void {
     if (!this.artifact) return;
-    this.soundService.stopAudio(this.artifact?.artifactName);
+    // if (this.soundService.IsClient) this.soundService.stopAudio(this.artifact?.artifactName);
   }
 
   public GetDate(value: number): string {

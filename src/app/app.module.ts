@@ -119,6 +119,7 @@ import { TileShapeEditorComponent } from './solace-toolkit/environment-component
 import { SolacetkGraphLineComponent } from './solace-toolkit/common/solacetk-graph-line/solacetk-graph-line.component';
 import { GraphLineDirective } from './solace-toolkit/common/solacetk-graph-line/graph-line-directive';
 import { TileCreationDialogComponent } from './solace-toolkit/environment-components/environment-tilesets/tile-creation-dialog/tile-creation-dialog.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -227,7 +228,7 @@ import { TileCreationDialogComponent } from './solace-toolkit/environment-compon
     TileCreationDialogComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthConfigModule,
@@ -239,7 +240,10 @@ import { TileCreationDialogComponent } from './solace-toolkit/environment-compon
       sanitize: SecurityContext.NONE
     }),
   ],
-  providers: [MarkdownService ],
+  providers: [
+    MarkdownService ,
+    { provide: APP_BASE_HREF, useValue: '/' } // Default base href
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

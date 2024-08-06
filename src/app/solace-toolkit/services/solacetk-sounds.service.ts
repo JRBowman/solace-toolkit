@@ -22,68 +22,82 @@ export class SolaceTkSoundService {
   public soundSet: HTMLAudioElement[] = [];
   public soundIndex: string[] = [];
 
+  public IsClient: boolean = false;
+
   public Initialize() {
-    this.loadAudio("map-click.wav");
-    this.loadAudio("map-unlink.wav");
-    this.loadAudio("map-link.wav");
+    // this.loadAudio("map-click.wav");
+    // this.loadAudio("map-unlink.wav");
+    // this.loadAudio("map-link.wav");
 
-    this.loadAudio("view-refresh.wav");
+    // this.loadAudio("view-refresh.wav");
 
-    this.loadAudio("model-close.wav");
-    this.loadAudio("model-load.wav");
-    this.loadAudio("model-save.wav");
-    this.loadAudio("model-new.wav");
-    this.loadAudio("model-exit.wav");
+    // this.loadAudio("model-close.wav");
+    // this.loadAudio("model-load.wav");
+    // this.loadAudio("model-save.wav");
+    // this.loadAudio("model-new.wav");
+    // this.loadAudio("model-exit.wav");
 
-    this.loadAudio("panel-close.wav");
-    this.loadAudio("panel-expand.wav");
+    // this.loadAudio("panel-close.wav");
+    // this.loadAudio("panel-expand.wav");
   }
 
-  playAudio(clipName: string, volume: number = 0.5): HTMLAudioElement {
+  playAudio(clipName: string, volume: number = 0.5): HTMLAudioElement | null {
 
-    // First time Load of Audio:
-    if (this.soundIndex.findIndex(s => s == clipName) == -1) {
-      this.loadAudio(clipName);
-    }
+    // if (!this.IsClient) return this.soundSet[0];
 
-    const index = this.soundIndex.findIndex(s => s == clipName);
-    this.soundSet[index].volume = volume;
-    this.soundSet[index].play();
-    return this.soundSet[index];
+    // // First time Load of Audio:
+    // if (this.soundIndex.findIndex(s => s == clipName) == -1) {
+    //   this.loadAudio(clipName);
+    // }
+
+    // const index = this.soundIndex.findIndex(s => s == clipName);
+
+    // if (index == -1) return this.soundSet[0];
+
+    // this.soundSet[index].volume = volume;
+    // this.soundSet[index].play();
+    // return this.soundSet[index];
+    return null;
   }
 
   stopAudio(clipName: string): void {
-    const index = this.soundIndex.findIndex(s => s == clipName);
-    this.soundSet[index].pause();
+    // if (!this.IsClient) return;
+    // const index = this.soundIndex.findIndex(s => s == clipName);
+    // this.soundSet[index].pause();
   }
 
   loadAudio(clipName: string): void {
-    // First time Load of Audio:
-      this.soundIndex.push(clipName);
+    // // First time Load of Audio:
+    //   this.soundIndex.push(clipName);
 
-      let audio = new Audio();
-      audio.src = "../../../assets/sounds/" + clipName;
-      audio.load();
+    //   if (!this.IsClient) return;
 
-      this.soundSet.push(audio);
+    //   let audio = new Audio();
+    //   audio.src = "../../../assets/sounds/" + clipName;
+    //   audio.load();
+
+    //   this.soundSet.push(audio);
   }
 
-  loadAudioUrl(clipName: string, url: string): HTMLAudioElement {
-    // First time Load of Audio:
-      this.soundIndex.push(clipName);
+  loadAudioUrl(clipName: string, url: string): HTMLAudioElement | null {
+    // // First time Load of Audio:
+    //   this.soundIndex.push(clipName);
 
-      let audio = new Audio();
-      audio.src = this.apiHost + url;
-      audio.load();
+    //   if (!this.IsClient) return new Audio();
 
-      this.soundSet.push(audio);
+    //   let audio = new Audio();
+    //   audio.src = url;
+    //   audio.load();
 
-      return audio;
+    //   this.soundSet.push(audio);
+
+    //   return audio;
+    return null;
   }
 
   public LoadVideoUrl(videoName: string, url: string): HTMLVideoElement {
-    var video = { src: this.apiHost + url } as HTMLVideoElement;
-    video.src = this.apiHost + url;
+    var video = { src: url } as HTMLVideoElement;
+    video.src = url;
     video.load();
 
     return video;
