@@ -2,10 +2,9 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: solacetk-ui
-  namespace: bowman-dev
 spec:
   params:
-    - default: 'https://bitbucket.org/onbowman/solace-toolkit'
+    - default: 'https://github.com/JRBowman/solace-toolkit.git'
       name: GIT_REPO
       type: string
     - default: master
@@ -88,5 +87,16 @@ spec:
       workspaces:
         - name: source
           workspace: workspace
+    - name: openshift-client
+      runAfter:
+        - buildah
+      taskRef:
+        kind: ClusterTask
+        name: openshift-client
+      params:
+        - name: SCRIPT
+          value: oc rollout status deploy/solacetk-ui
+        - name: VERSION
+          value: latest
   workspaces:
     - name: workspace

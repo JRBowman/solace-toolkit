@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  annotations:
+    chains.tekton.dev/signed: 'true'
+  generateName: solacetk-ui-
+  finalizers:
+    - chains.tekton.dev/pipelinerun
+  labels:
+    tekton.dev/pipeline: solacetk-ui
+spec:
+  params:
+    - name: GIT_REPO
+      value: 'https://github.com/JRBowman/solace-toolkit.git'
+    - name: GIT_REVISION
+      value: master
+    - name: IMAGE_NAME
+      value: 'image-registry.openshift-image-registry.svc:5000/bowman-dev/solacetk-ui'
+    - name: PATH_CONTEXT
+      value: .
+  pipelineRef:
+    name: solacetk-ui
+  taskRunTemplate:
+    serviceAccountName: pipeline
+  timeouts:
+    pipeline: 1h0m0s
+  workspaces:
+    - name: workspace
+      persistentVolumeClaim:
+        claimName: solacetk-ui
