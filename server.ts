@@ -16,7 +16,7 @@ export function app(): express.Express {
 
   const server = express();
   const distFolder = join(process.cwd(), 'dist/onbowman-13/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index.html';
 
   const apiProxy = httpProxy.createProxyMiddleware('/api', {
     target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
@@ -46,6 +46,7 @@ export function app(): express.Express {
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
+  
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
