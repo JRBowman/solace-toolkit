@@ -39,6 +39,12 @@ export class SolacetkService {
 
   }
 
+  public GetServiceEnvironmentData(): void {
+    this.http.get("/serviceenvironment").subscribe((data) => {
+
+    });
+  }
+
   public CheckSolTkServices(): Observable<ServiceHealthReport> {
     return this.http.get<ServiceHealthReport>(this.baseUrl + "Health");
   }

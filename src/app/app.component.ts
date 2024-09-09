@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
       // this.soundService.IsClient = true;
       this.soltkService.screenWidth = window.innerWidth;
       this.soltkService.screenHeight = window.innerHeight;
+      // this.soltkService.GetServiceEnvironmentData();
       // this.soundService.Initialize();
     }
 

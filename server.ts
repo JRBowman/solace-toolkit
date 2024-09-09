@@ -19,7 +19,7 @@ export function app(): express.Express {
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   const apiProxy = httpProxy.createProxyMiddleware('/api', {
-    target: environment.apiHost,
+    target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
     changeOrigin: true,
     xfwd: true,
     secure: false,
@@ -54,6 +54,13 @@ export function app(): express.Express {
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  });
+
+  server.get("/serviceenvironment", (req, res) => {
+    let envData: any = {};
+    envData.apiHost = process.env['BACKEND_SERVICE_HOST'];
+    envData.identityHost = process.env['IDENTITY_SERVICE_HOST'];
+    res.send()
   });
 
   return server;
