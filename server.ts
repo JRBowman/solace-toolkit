@@ -16,7 +16,7 @@ export function app(): express.Express {
 
   const server = express();
   const distFolder = join(process.cwd(), 'dist/onbowman-13/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index.html';
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   const apiProxy = httpProxy.createProxyMiddleware('/api', {
     target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
@@ -44,24 +44,30 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
-  
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
   }));
 
   // All regular routes use the Universal engine
-  server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  server.get('/**/*', (req, res) => {
+    console.log("using /**/* path for index");
+    res.render(distFolder + '/index', { req, res });
   });
+
+  server.get('/*', (req, res) => {
+    console.log("using * path for index");
+    res.sendFile(join(distFolder, 'index.html'));
+    // res.render(join(distFolder, 'index.html'), { req, res });
+  });
+
+  
 
   server.get("/serviceenvironment", (req, res) => {
     let envData: any = {};
     envData.apiHost = process.env['BACKEND_SERVICE_HOST'];
     envData.identityHost = process.env['IDENTITY_SERVICE_HOST'];
-    res.send()
+    res.send(envData);
   });
 
   return server;
