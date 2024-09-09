@@ -26,7 +26,7 @@ export function app(): express.Express {
   });
 
   const artifactProxy = httpProxy.createProxyMiddleware('/Artifacts', {
-    target: environment.apiHost,
+    target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
     changeOrigin: true,
     xfwd: true,
     secure: false,
