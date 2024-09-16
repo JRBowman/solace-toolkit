@@ -15,14 +15,14 @@ projects:
       checkoutFrom:
         revision: master
       remotes:
-        origin: https://bitbucket.org/onbowman/solace-toolkit.git
+        origin: https://github.com/JRBowman/solace-toolkit.git
 components:
   - container:
       command:
         - /checode/entrypoint-volume.sh
       cpuLimit: '2000m'
       cpuRequest: '500m'
-      image: 'registry.redhat.io/devspaces/udi-rhel8@sha256:8de469cc9131a42092bd66e0f27a52bbc9b9a449235abf5b900d172a1bd3c985'
+      image: 'registry.redhat.io/devspaces/udi-rhel8:latest'
       memoryLimit: 4G
       memoryRequest: 1384Mi
       mountSources: true
