@@ -46,6 +46,7 @@ import { SolacetkApiExplorerComponent } from './solace-toolkit/dashboards/solace
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { ArtifactsComponent } from './solace-toolkit/artifacts/artifacts/artifacts.component';
 import { SolacetkTimelinePanelComponent } from './solace-toolkit/common/solacetk-timeline-panel/solacetk-timeline-panel.component';
+import { BehaviorAnimationAtlasComponent } from './solace-toolkit/behaviors/behavior-animation-atlas/behavior-animation-atlas.component';
 
 const routes: Routes = [
   {
@@ -168,7 +169,7 @@ const routes: Routes = [
   },
   {
     path: 'animations',
-    component: BehaviorAnimationsComponent,
+    component: BehaviorAnimationAtlasComponent,
     //canActivate: [AuthorizationGuard]
   },
   {

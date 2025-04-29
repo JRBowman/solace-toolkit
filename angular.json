@@ -171,6 +171,9 @@
               "serverTarget": "onbowman-13:server:production"
             }
           },
+          "options": {
+            "port": 5050
+          },
           "defaultConfiguration": "development"
         },
         "prerender": {

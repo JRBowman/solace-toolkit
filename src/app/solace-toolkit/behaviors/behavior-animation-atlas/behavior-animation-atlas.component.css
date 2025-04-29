@@ -1,0 +1,64 @@
+.pos-bottom {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 2%;
+}
+
+.bg-task-card {
+    background-color: cadetblue;
+}
+
+.component-collider {
+    background-color: rgb(192, 32, 64, 0.5);
+    border-radius: 8px;
+    position: relative;
+    left: 0px;
+}
+
+.component-ray {
+    background-color: rgba(24, 144, 192, 0.667);
+    border-radius: 8px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+.relative-container {
+    position: relative;
+}
+
+.sprite-frame {
+    overflow: hidden;
+    width: 192px;
+}
+
+.sprite-perfect {
+    width: 100%;
+    height: fit-content;
+    /* margin-bottom: 3%; */
+    display: inline-block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.relative-input {
+    position: absolute;
+    bottom: 0;
+}
+
+.component-visual {
+    background-color: crimson;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 0px;
+    left: 25%;
+    width: 55%;
+    height: 67%;
+}
+
+.soltk-chip {
+    overflow: hidden;
+}

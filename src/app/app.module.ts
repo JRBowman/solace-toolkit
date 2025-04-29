@@ -120,6 +120,8 @@ import { SolacetkGraphLineComponent } from './solace-toolkit/common/solacetk-gra
 import { GraphLineDirective } from './solace-toolkit/common/solacetk-graph-line/graph-line-directive';
 import { TileCreationDialogComponent } from './solace-toolkit/environment-components/environment-tilesets/tile-creation-dialog/tile-creation-dialog.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { BehaviorAnimationAtlasComponent } from './solace-toolkit/behaviors/behavior-animation-atlas/behavior-animation-atlas.component';
+import { FrameEditorComponent } from './solace-toolkit/behaviors/behavior-animation-atlas/frame-editor/frame-editor.component';
 
 @NgModule({
   declarations: [
@@ -225,7 +227,9 @@ import { APP_BASE_HREF } from '@angular/common';
     DialogueEntryComponent,
     TileShapeEditorComponent,
     SolacetkGraphLineComponent,
-    TileCreationDialogComponent
+    TileCreationDialogComponent,
+    BehaviorAnimationAtlasComponent,
+    FrameEditorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,0 +1,77 @@
+<solacetk-model-list [(model)]="model" moduleName="Behavior Animations Atlas" (modelCreated)="CreateAnim()"
+    (modelClosed)="CloseAnim()" (modelLoaded)="LoadAnim()" modelUri="Behaviors/animations" moduleColor="#ac5c36"
+    modulePlateType="An">
+    <!-- [hasPreview]="true" -->
+    <div class="editor">
+
+    </div>
+
+    <div class="editor-panels">
+
+        <mat-toolbar class="disp-flex auto-flex">
+            <button mat-button color="accent" matTooltip="Add Animation to Atlas" aria-label="Add Animation to Atlas."
+                (click)="CreateAtlasAnimation()">
+                Add Entry
+            </button>
+        </mat-toolbar>
+
+        <!-- Working Area: -->
+        <div class="disp-flex auto-flex">
+
+            <!-- Anims List: -->
+            <div class="disp-flex no-flex">
+                <mat-selection-list #animations [multiple]="false" (selectionChange)="AnimSelectionChanged($event)">
+                    <mat-list-option *ngFor="let anim of atlasModel.animations" [value]="anim">
+                        {{anim.name}}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+
+            <!-- Main Working Page: -->
+            <div class="disp-flex auto-flex relative-container" style="justify-content: center;">
+                <img [src]="testAnimSheet" class="sprite sprite-perfect" [style.width]="100 * zoomLevel + '%'" />
+                <div class="disp-flex auto-flex relative-container" *ngIf="model.actFrameData && model.actFrameData.frames">
+                    <div *ngFor="let frame of model.actFrameData.frames" class="sprite-frame" [style.left]="frame.x"
+                        [style.top]="frame.y" [style.width]="frame.width" [style.height]="frame.height">
+            
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frame Designer: -->
+            <div class="auto-flex" style="max-width: 30%;">
+                <mat-card>
+                    <mat-card-content>
+                        <frame-editor [(model)]="currentFrame"></frame-editor>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+
+        <div class="disp-flex auto-flex">
+
+            <solacetk-animation-editor [(model)]="model.actFrameData" [modelName]="model.name"
+                [(components)]="model.components" style="flex: 1 1 48em;" [(selectedFrame)]="selectedFrame">
+            </solacetk-animation-editor>
+
+        </div>
+
+
+    </div>
+
+    <div class="editor-buttons">
+
+    </div>
+
+    <!-- List Buttons -->
+    <div class="list-buttons">
+        <button mat-icon-button color="accent" matTooltip="Import Many Animations Aseprite Files."
+            aria-label="Import Many Animations Aseprite Files." (click)="aseUpload.click()">
+            <mat-icon>file_open</mat-icon>
+        </button>
+        <input type="file" class="file-input" (change)="importAseAnims($event)" accept=".ase,.aseprite" #aseUpload
+            multiple>
+    </div>
+
+</solacetk-model-list>

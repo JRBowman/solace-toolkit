@@ -1,0 +1,38 @@
+<div class="disp-flex">
+
+    <mat-form-field class="no-flex full-width font-small">
+        <mat-label>Duration</mat-label>
+        <input type="number" matInput [(ngModel)]="model.duration" placeholder="100">
+        <span matTextSuffix>ms</span>
+    </mat-form-field>
+
+    <mat-form-field class="no-flex full-width font-small">
+        <mat-label>Sprite Width</mat-label>
+        <input type="number" matInput [(ngModel)]="model.width" placeholder="192">
+        <span matTextSuffix>px</span>
+    </mat-form-field>
+
+    <mat-form-field class="no-flex full-width font-small">
+        <mat-label>Sprite Height</mat-label>
+        <input type="number" matInput [(ngModel)]="model.height" placeholder="192">
+        <span matTextSuffix>px</span>
+    </mat-form-field>
+
+    <mat-form-field class="no-flex full-width font-small">
+        <mat-label>Frame X</mat-label>
+        <input type="number" matInput [(ngModel)]="model.x" placeholder="0">
+        <span matTextSuffix>px</span>
+    </mat-form-field>
+
+    <mat-form-field class="no-flex full-width font-small">
+        <mat-label>Frame Y</mat-label>
+        <input type="number" matInput [(ngModel)]="model.y" placeholder="0">
+        <span matTextSuffix>px</span>
+    </mat-form-field>
+
+    <mat-form-field class="no-flex font-small full-width">
+        <mat-label>Speed</mat-label>
+        <input type="number" matInput [(ngModel)]="model.speed" placeholder="1">
+        <span matTextSuffix>x</span>
+    </mat-form-field>
+</div>
