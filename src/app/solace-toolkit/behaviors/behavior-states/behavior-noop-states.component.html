@@ -49,7 +49,7 @@
                     <mat-divider class="auto-flex full-width"></mat-divider>
                     <div class="gap-1 auto-flex full-width"></div>
                 </div>
-                
+
 
                 <!-- Next States View: -->
                 <div class="disp-flex flex-gap-050 auto-flex" *ngIf="model.nextStates">
@@ -62,7 +62,7 @@
                         <solacetk-model-card class="auto-flex" *ngIf="!behavior.noOp" [(model)]="behavior.animation"></solacetk-model-card>
 
                         <solacetk-panel *ngIf="behavior.noOp" class="auto-flex full-height width-5" unitWidth="5" panelColor="#803040" [panelName]="behavior?.name ?? ''" fontSize="medium">
-                        
+
                             <div class="panel-content auto-flex">
 
                                 <mat-chip-set class="auto-flex full-width full-height" aria-label="Branch States"
@@ -104,7 +104,7 @@
             <!-- Branch Graph Node: -->
             <solacetk-graph-object id="branch" cdkDrag name="branch"></solacetk-graph-object>
 
-           
+
 
             <solacetk-graph-object [id]="nState.name" cdkDrag [name]="nState.name ?? 'State'" [model]="nState" [ref]="true" *ngFor="let nState of (model.nextStates ?? [])" [trackedInputsT]="['anim', 'data']"></solacetk-graph-object>
 

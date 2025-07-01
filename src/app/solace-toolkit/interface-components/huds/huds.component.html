@@ -17,7 +17,7 @@
                             [style.transform]="'translate(' + element.positionX + 'px,' + element.positionY + 'px)'" [style.width]="element.width" [style.height]="element.height">
                             <span *ngIf="element.text == '' && element.type != 2" class="scene-text">{{element.name}}</span>
                             <span *ngIf="element.text != ''" class="scene-text">{{element.text}}</span>
-                            <img *ngIf="element.type == 2" class="sprite-perfect relative-input" style="display: block;" [src]="service.apiHost + 'Artifacts/'+ element.textureRef + '.png'" 
+                            <img *ngIf="element.type == 2" class="sprite-perfect relative-input" style="display: block;" [src]="service.apiHost + 'Artifacts/'+ element.textureRef + '.png'"
                             [width]="element.width" [height]="element.height">
                         </div>
                     </div>
@@ -35,7 +35,7 @@
 
             </solacetk-panel>
 
-            <solacetk-panel-list class="auto-flex full-height" [(model)]="model.elements" style="flex: 1 1 16em;" [showActions]="true" 
+            <solacetk-panel-list class="auto-flex full-height" [(model)]="model.elements" style="flex: 1 1 16em;" [showActions]="true"
                 panelName="HUD Elements" panelColor="#415c4f" panelType="expansionpanel" [(selectedInstance)]="selectedElement">
                 <div class="instance-editor">
                     <div class="disp-flex flex-gap-050">
@@ -93,7 +93,7 @@
                 style="flex: 1 1 16em; padding: 4px;">
 
                 <div class="panel-content disp-flex full-width">
-                    
+
                 </div>
 
                 <div class="panel-actions">

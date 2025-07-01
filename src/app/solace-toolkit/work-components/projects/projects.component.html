@@ -1,5 +1,5 @@
 <solacetk-model-list [(model)]="model" moduleName="Work Projects" (modelLoaded)="ModelLoaded()" modelUri="Work/projects"
-    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true" modulePlateType="Pr" 
+    (modelClosed)="ModelClosed()" [hideEditorHeading]="true" [collapseCoreEditor]="true" [indev]="true" modulePlateType="Pr"
     [dynamicTabHeight]="false" class="full-height">
 
     <div class="editor">
@@ -30,7 +30,7 @@
                         <mat-icon>refresh</mat-icon>
                     </button>
                 </div>
-    
+
                 <div *ngIf="model.isProjectBillable" class="disp-flex">
                     <div class="auto-flex">
                         <h4>Estimated Hours: <small class="mat-card-subtitle">{{totalEstimated}} Hours</small></h4>
@@ -48,7 +48,7 @@
                         <mat-icon>refresh</mat-icon>
                     </button>
                 </div>
-    
+
             </div>
         <!-- </div> -->
 

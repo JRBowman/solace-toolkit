@@ -25,7 +25,7 @@ export class SoundSourcesComponent implements OnInit {
 
   public RefreshArtifact(): void {
     if (this.model.artifactId == 0) return;
-    
+
     this.service.GetModelOp<Artifact>("Artifacts/" + this.model.artifactId).subscribe((next) => {
       this.artifact = next.data;
       // this.audioSource = this.soundService.loadAudioUrl(this.artifact?.artifactName ?? "x", this.artifact?.artifactUrl ?? "");

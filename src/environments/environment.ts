@@ -2,11 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import type { Environment } from './environment.model';
+
+export const environment: Environment = {
   production: false,
   //apiHost: "http://localhost:5010/",
   apiHost: "https://solacetk-core-api-dev-bowman-dev.apps.bocp0.bowmansoftworks.com",
-  identityHost: "https://identity-svc.onbowman.com"
+  identityHost: "https://identity-svc.onbowman.com",
 };
 
 /*

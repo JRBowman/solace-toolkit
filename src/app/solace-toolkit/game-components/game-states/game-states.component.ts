@@ -27,11 +27,11 @@ export class GameStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.behaviors = models;
     });
-    
+
   }
 
 }

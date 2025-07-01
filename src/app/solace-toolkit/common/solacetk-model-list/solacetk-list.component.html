@@ -13,7 +13,7 @@
       <div class="gap-2 no-flex"></div>
     </div> -->
     <!-- Json Editor: -->
-    <solacetk-markdown-panel class="disp-flex full-height auto-flex" [canEdit]="true" useLineNumbers ngPreserveWhitespace [(data)]="modelJson" 
+    <solacetk-markdown-panel class="disp-flex full-height auto-flex" [canEdit]="true" useLineNumbers ngPreserveWhitespace [(data)]="modelJson"
       [useData]="true" [useLanguage]="true" (dataChange)="ApplyModel($event)"></solacetk-markdown-panel>
 
   </mat-sidenav>
@@ -127,7 +127,7 @@
 
                   </div>
                   <div class="model-footer disp-flex">
-                    
+
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Additional Model Options">
                       <mat-icon>more_vert</mat-icon>
                     </button>

@@ -21,7 +21,7 @@ export class SolacetkParallaxPanelComponent implements OnInit {
   @Input() panelTransform: string = "translateZ(-16px) scale(1.5)";
   @Input() speed: string = "5s";
 
- 
+
 
 
   ngOnInit(): void {

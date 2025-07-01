@@ -11,30 +11,33 @@ import { AppServerModule } from './src/main.server';
 import * as httpProxy from 'http-proxy-middleware';
 import { environment } from 'src/environments/environment';
 
+interface ServiceEnvironment {
+  apiHost: string;
+  identityHost: string;
+}
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
 
   const server = express();
+  server.disable('x-powered-by');
+  server.use(express.json());
+  server.use(express.urlencoded({ extended: true }));
+
   const distFolder = join(process.cwd(), 'dist/onbowman-13/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
-  const apiProxy = httpProxy.createProxyMiddleware('/api', {
-    target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
-    changeOrigin: true,
-    xfwd: true,
-    secure: false,
-  });
+  const backendHost = process.env['BACKEND_SERVICE_HOST'] ?? environment.apiHost;
 
-  const artifactProxy = httpProxy.createProxyMiddleware('/Artifacts', {
-    target: process.env['BACKEND_SERVICE_HOST'] || environment.apiHost,
-    changeOrigin: true,
-    xfwd: true,
-    secure: false,
-  });
+  const createProxy = (target: string) =>
+    httpProxy.createProxyMiddleware({
+      target,
+      changeOrigin: true,
+      xfwd: true,
+      secure: false,
+    });
 
-
-  server.use('/api', apiProxy);
-  server.use('/Artifacts', artifactProxy);
+  server.use('/api', createProxy(backendHost));
+  server.use('/Artifacts', createProxy(backendHost));
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
   server.engine('html', ngExpressEngine({
@@ -51,22 +54,20 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('/**/*', (req, res) => {
-    console.log("using /**/* path for index");
     res.render(distFolder + '/index', { req, res });
   });
 
-  server.get('/*', (req, res) => {
-    console.log("using * path for index");
+  server.get('/*', (_req, res) => {
     res.sendFile(join(distFolder, 'index.html'));
-    // res.render(join(distFolder, 'index.html'), { req, res });
   });
 
   
 
-  server.get("/serviceenvironment", (req, res) => {
-    let envData: any = {};
-    envData.apiHost = process.env['BACKEND_SERVICE_HOST'];
-    envData.identityHost = process.env['IDENTITY_SERVICE_HOST'];
+  server.get('/serviceenvironment', (_req, res) => {
+    const envData: ServiceEnvironment = {
+      apiHost: process.env['BACKEND_SERVICE_HOST'] ?? environment.apiHost,
+      identityHost: process.env['IDENTITY_SERVICE_HOST'] ?? environment.identityHost,
+    };
     res.send(envData);
   });
 

@@ -43,7 +43,7 @@ export class TileShapeEditorComponent implements OnInit {
     console.log("updating shape editor...");
     this.editorPoints = [];
     if (this.model.shape == null) this.model.shape = new Shape();
-      
+
     for (let x = 0; x < this.model.width; x++)
       for (let y = 0; y < this.model.height; y++)
       {
@@ -68,5 +68,5 @@ export class TileShapeEditorComponent implements OnInit {
     console.log(this.model.shape);
   }
 
-  
+
 }

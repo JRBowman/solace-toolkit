@@ -26,7 +26,7 @@ export class BehaviorStatesComponent implements OnInit {
 
   }
 
-  
+
 
   public LogModel()
   {
@@ -39,7 +39,7 @@ export class BehaviorStatesComponent implements OnInit {
   }
 
   public CloseModel(): void {
-    
+
     this.unloadModules.emit(true);
   }
 
@@ -48,19 +48,19 @@ export class BehaviorStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/animations');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.animation = models[0];
     });
-    
+
   }
 
-  public openEventsSheet() 
+  public openEventsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Events');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.events = [...this.model.events, ...models];
     });
@@ -71,11 +71,11 @@ export class BehaviorStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/actions');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.events = models;
     });
-    
+
   }
 
   public openConditionsSheet()
@@ -83,18 +83,18 @@ export class BehaviorStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/conditions');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.conditions = models;
     });
-    
+
   }
 
   public openNextStateSheet(): void {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.nextStates = models;
     });

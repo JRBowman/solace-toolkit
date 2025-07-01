@@ -12,7 +12,7 @@ import { SoltkKeyValue } from '../../models/soltk-key-value';
 })
 export class ActionEventsComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { 
+  constructor(private _bottomSheet: MatBottomSheet) {
   }
 
   public model: ActionEvent = new ActionEvent();

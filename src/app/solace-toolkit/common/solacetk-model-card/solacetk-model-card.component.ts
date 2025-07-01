@@ -19,9 +19,9 @@ export class SolacetkModelCardComponent implements OnInit {
 
   @Input() hasPreview: boolean = true;
 
-  
+
   ngOnInit(): void {
-    
+
   }
 
   ngAfterViewInit(): void {

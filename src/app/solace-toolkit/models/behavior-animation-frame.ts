@@ -17,6 +17,6 @@ export class BehaviorAnimationFrame implements IModelTK {
 
     public frame: any = {};
     public frameData: string = "";
-    
+
     public downstreamData: SoltkKeyValue[] = [];
 }

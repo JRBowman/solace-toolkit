@@ -10,12 +10,12 @@ export class SolacetkStatusPanelComponent implements OnInit {
 
 
   constructor(public service: SolacetkService) {}
-  
+
   @Input() panelFlex: string = "";
 
   ngOnInit(): void {
-    
+
   }
 
- 
+
 }

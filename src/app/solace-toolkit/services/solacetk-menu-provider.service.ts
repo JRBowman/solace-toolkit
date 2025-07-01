@@ -20,11 +20,11 @@ export class SolacetkMenuProviderService {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData(module, multiple);
 
-    instance.instance.modelsSelected.subscribe((selected) => 
+    instance.instance.modelsSelected.subscribe((selected) =>
     {
       model = selected;
     });
-    
+
   }
 
   // Dialog Provider Methods:

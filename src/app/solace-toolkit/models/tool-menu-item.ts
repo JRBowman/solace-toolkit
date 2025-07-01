@@ -5,7 +5,7 @@ export class ToolMenu implements IModelTK {
     public name?: string = "Module";
     public description?: string = "Modules enabled in the Tool";
     public tags?: string = "";
-    
+
     public items: ToolMenuItem[] = [];
     public icon: string = "add";
 
@@ -16,7 +16,7 @@ export class ToolMenuItem implements IModelTK {
     public name?: string = "SubModule";
     public description?: string = "Modules enabled in the Tool";
     public tags?: string = "";
-    
+
     public icon?: string;
     public plateText: string = "Tk";
     public plateColor: string = "#901840"

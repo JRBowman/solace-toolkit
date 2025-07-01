@@ -10,6 +10,6 @@ export class BehaviorAnimationAtlas implements IModelTK {
     public animations: BehaviorAnimation[] = [];
 
     public texture: string = "";
-    
+
     public downstreamData: SoltkKeyValue[] = [];
 }

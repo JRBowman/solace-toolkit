@@ -11,7 +11,7 @@ import { SolacetkService } from '../../services/solacetk-service.service';
 export class SolacetkStorycardComponent implements OnInit {
 
   constructor(public solacetkService: SolacetkService) { }
-  
+
   @Input() model: StoryCard = new StoryCard();
   @Output() modelChange: EventEmitter<StoryCard> = new EventEmitter<StoryCard>();
 
@@ -26,5 +26,5 @@ export class SolacetkStorycardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

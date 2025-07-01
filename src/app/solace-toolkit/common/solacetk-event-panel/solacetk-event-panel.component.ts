@@ -29,7 +29,7 @@ export class SolacetkEventPanelComponent implements OnInit {
       this.model = [...this.model, n];
       this.modelChange.emit(this.model);
     });
-    
+
   }
 
   public RemoveEvent(key: ActionEvent): void {

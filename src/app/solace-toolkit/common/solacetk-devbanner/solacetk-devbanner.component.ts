@@ -15,5 +15,5 @@ export class SolacetkDevbannerComponent implements OnInit {
 
   snackBarRef = inject(MatSnackBarRef);
   dataRef = inject(MAT_SNACK_BAR_DATA);
- 
+
 }

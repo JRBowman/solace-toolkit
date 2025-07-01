@@ -10,7 +10,7 @@ export class StaticControllersComponent implements OnInit {
   constructor() { }
 
   public model: any;
-  
+
   ngOnInit(): void {
   }
 

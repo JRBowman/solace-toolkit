@@ -12,7 +12,7 @@ import { SoltkKeyValue } from '../../models/soltk-key-value';
   styleUrls: ['./behavior-branches.component.css']
 })
 export class BehaviorBranchesComponent implements OnInit {
-  
+
 
   constructor(private _bottomSheet: MatBottomSheet) { }
 
@@ -33,11 +33,11 @@ export class BehaviorBranchesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.states = models;
     });
-    
+
   }
 
   public buildConditionsChips()

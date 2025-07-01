@@ -5,7 +5,7 @@
 
         <mat-label class="font-small">{{tkHeading}}</mat-label>
         <mat-chip-grid class="auto-flex font-small" #chipList aria-label="Tag Selection">
-            
+
             <mat-chip class="font-small" style="flex: 1 1 4em;" *ngFor="let tag of tagItems" (removed)="remove(tag)" (click)="chipClick(tag)">
                 {{tag}}
                 <button matChipRemove>
@@ -38,7 +38,7 @@
                 <small>{{tag}}</small>
             </mat-chip>
         </div>
-        
+
     </mat-chip-set>
 
 </div>

@@ -11,7 +11,7 @@ export class VisualEffectsComponent implements OnInit {
   constructor() { }
 
 public model: Visualeffect = new Visualeffect();
-  
+
   ngOnInit(): void {
   }
 

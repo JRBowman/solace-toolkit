@@ -36,7 +36,7 @@ export class MapTile implements IModelTK {
 
     public isCollidable: boolean = false;
     public physicsShape: TilePhysicsShape = TilePhysicsShape.None;
-    
+
     public shape?: Shape;
 
     // UI Fields:
