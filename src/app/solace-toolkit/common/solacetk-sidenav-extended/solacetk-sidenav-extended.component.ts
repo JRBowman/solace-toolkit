@@ -14,7 +14,7 @@ export class SolacetkSidenavExtendedComponent implements OnInit{
 
   public toolsList: ToolMenu[] = [];
 
-  constructor() { 
+  constructor() {
     this.toolsList.push(this.createToolMenu("CORE", "account_tree", [
       { name: "Game Systems", abv: "Ga", route: "gamesystems" },
       { name: "Resource Collections", abv: "Ga", route: "resourcecollections" }
@@ -53,7 +53,7 @@ export class SolacetkSidenavExtendedComponent implements OnInit{
 
   ngOnInit(): void {
   }
-  
+
   public createToolMenu(name: string, icon: string, items: any[]): ToolMenu {
     var menu = new ToolMenu();
     menu.name = name;

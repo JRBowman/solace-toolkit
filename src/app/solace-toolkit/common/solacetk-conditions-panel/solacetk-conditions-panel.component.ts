@@ -18,7 +18,7 @@ export class SolacetkConditionsPanelComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.model) this.model = new BehaviorCondition();
-    
+
   }
 
 

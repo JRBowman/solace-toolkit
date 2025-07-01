@@ -24,7 +24,7 @@
     transform: translateZ(64px) scale(0.5);
     transform-style: preserve-3d;
     z-index: 5;
-    
+
     filter: blur(0px);
 }
 
@@ -33,7 +33,7 @@
     position: absolute;
     transform: scale(3);
     transform-style: preserve-3d;
-    
+
     filter: blur(0px);
 }
 

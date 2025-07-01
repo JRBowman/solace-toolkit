@@ -120,6 +120,8 @@ import { SolacetkGraphLineComponent } from './solace-toolkit/common/solacetk-gra
 import { GraphLineDirective } from './solace-toolkit/common/solacetk-graph-line/graph-line-directive';
 import { TileCreationDialogComponent } from './solace-toolkit/environment-components/environment-tilesets/tile-creation-dialog/tile-creation-dialog.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { APP_INITIALIZER } from '@angular/core';
+import { EnvironmentService } from './services/environment.service';
 import { BehaviorAnimationAtlasComponent } from './solace-toolkit/behaviors/behavior-animation-atlas/behavior-animation-atlas.component';
 import { FrameEditorComponent } from './solace-toolkit/behaviors/behavior-animation-atlas/frame-editor/frame-editor.component';
 
@@ -245,7 +247,13 @@ import { FrameEditorComponent } from './solace-toolkit/behaviors/behavior-animat
     }),
   ],
   providers: [
-    MarkdownService ,
+    MarkdownService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (envSvc: EnvironmentService) => () => envSvc.load().toPromise(),
+      deps: [EnvironmentService],
+      multi: true,
+    },
     { provide: APP_BASE_HREF, useValue: '/' } // Default base href
   ],
   bootstrap: [AppComponent]

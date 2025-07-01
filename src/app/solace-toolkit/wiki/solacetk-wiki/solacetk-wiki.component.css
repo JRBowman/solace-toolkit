@@ -22,7 +22,7 @@
     position: absolute;
     transform: scale(3);
     transform-style: preserve-3d;
-    
+
     filter: blur(0px);
 }
 

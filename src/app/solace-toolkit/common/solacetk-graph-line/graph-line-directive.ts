@@ -23,7 +23,7 @@ export class GraphLineDirective implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    
+
   }
 
 }

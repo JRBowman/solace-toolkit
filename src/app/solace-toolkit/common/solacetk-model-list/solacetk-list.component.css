@@ -32,13 +32,13 @@
 }
 
 .model-toolbar-text {
-    flex: 1 1 4rem; 
-    white-space: break-spaces; 
+    flex: 1 1 4rem;
+    white-space: break-spaces;
     margin: 0;
 }
 
 .text-center {
-    text-align: center; 
+    text-align: center;
 }
 
 .tab-container {

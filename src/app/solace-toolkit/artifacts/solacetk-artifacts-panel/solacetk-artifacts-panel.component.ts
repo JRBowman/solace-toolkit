@@ -9,9 +9,9 @@ export class SolacetkArtifactsPanelComponent implements OnInit {
 
   constructor() {}
 
-  
+
 
   ngOnInit(): void {
-    
+
   }
 }

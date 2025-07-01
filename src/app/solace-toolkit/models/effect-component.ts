@@ -17,7 +17,7 @@ export class EffectComponent implements IModelTK {
     public order: number = 0;
     public tint: string = "#ffffff";
     public effect: string = "shaderName";
-    
+
     public parameters: SoltkKeyValue[] = [];
 
     public renderLayer: RenderLayer = RenderLayer.All;

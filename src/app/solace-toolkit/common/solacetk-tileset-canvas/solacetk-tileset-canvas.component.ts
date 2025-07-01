@@ -12,10 +12,10 @@ import { MapTileset } from '../../models/map-tileset';
 export class SolacetkTilesetCanvasComponent implements OnInit {
   constructor() {}
 
-  @ViewChild('canvas', { static: true }) 
+  @ViewChild('canvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
 
-  @ViewChild('minimap', { static: true }) 
+  @ViewChild('minimap', { static: true })
   minimap!: ElementRef<HTMLCanvasElement>;
 
   @Input() model?: MapTileset;
@@ -121,7 +121,7 @@ export class SolacetkTilesetCanvasComponent implements OnInit {
 
   public checkRule(maptile: MapTile, rule: MapTileRule, currentX: number, currentY: number): boolean {
     if (rule.checkType == RuleCheckType.Any || rule.checkType == RuleCheckType.Disabled || (rule.vx == 0 && rule.vy == 0)) return true;
-    
+
     let currX = currentX + rule.vx;
     let currY = currentY + rule.vy;
 
@@ -152,7 +152,7 @@ export class SolacetkTilesetCanvasComponent implements OnInit {
     for (let y = 0; y < this.drawTilesY; y++) {
       for (let x = 0; x < this.drawTilesX; x++) {
         let tile: MapTile;
-        
+
         if (tileUpdate) tile = this.tiles[(y * this.drawTilesX) + x]
         else tile = new MapTile();
         tile.x = x;
@@ -183,7 +183,7 @@ export class SolacetkTilesetCanvasComponent implements OnInit {
         this._spriteWork.push(createImageBitmap(this.spriteSheet, x * sw, y * sh, sw, sh, { resizeQuality: "pixelated" }));
       }
     }
-    
+
     Promise.all(this._spriteWork).then((sprites) => {
       //   this.ctx?.drawImage(sprites[index], value.lx, value.ly);
       this.sprites = sprites;

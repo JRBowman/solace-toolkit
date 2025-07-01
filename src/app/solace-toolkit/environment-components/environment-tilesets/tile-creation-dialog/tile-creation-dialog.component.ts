@@ -49,5 +49,5 @@ export class TileCreationDialogComponent implements OnInit {
 
       this.dialogRef.close(tiles);
   }
-  
+
 }

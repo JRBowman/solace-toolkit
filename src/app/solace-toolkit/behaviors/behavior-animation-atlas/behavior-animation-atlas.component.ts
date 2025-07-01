@@ -18,7 +18,7 @@ import { MatSelectionList, MatSelectionListChange } from '@angular/material/list
 })
 export class BehaviorAnimationAtlasComponent implements OnInit {
   constructor(private service: SolacetkService, private _bottomSheet: MatBottomSheet) { }
-  
+
   public model: BehaviorAnimation = new BehaviorAnimation();
   public modelChanged = new EventEmitter<BehaviorAnimation>();
   public selectedFrame?: BehaviorAnimationFrame;
@@ -80,7 +80,7 @@ export class BehaviorAnimationAtlasComponent implements OnInit {
     entry.name = this.atlasModel.name + this.totalAnims;
 
     this.totalAnims++;
-    
+
     this.atlasModel.animations = [...this.atlasModel.animations, entry];
   }
 

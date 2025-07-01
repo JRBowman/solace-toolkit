@@ -22,12 +22,12 @@ export class WorkItemComponent implements OnInit {
     let instance = this._bottomSheet.open(WorkItemSheetEditorComponent);
     instance.instance.LoadData(this.model);
 
-    instance.afterDismissed().subscribe((model) => 
+    instance.afterDismissed().subscribe((model) =>
     {
       this.model = model;
       this.modelChange.emit(this.model);
     });
-    
+
   }
 
   public deleteWorkItem(): void {

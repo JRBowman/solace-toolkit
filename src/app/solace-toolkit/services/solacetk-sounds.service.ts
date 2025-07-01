@@ -1,20 +1,23 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { EnvironmentService } from '../../services/environment.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolaceTkSoundService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private envService: EnvironmentService) {
+    this.apiHost = this.envService.env.apiHost;
+    this.baseUrl = this.apiHost + this.apiVersion;
+  }
 
   //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
   public apiVersion: string = "api/v1/";
   //public apiHost: string = "http://localhost:5010/"
-  public apiHost: string = environment.apiHost;
-  public baseUrl: string = environment.apiHost + this.apiVersion;
+  public apiHost: string;
+  public baseUrl: string;
 
   public solTkServStatus: boolean = false;
   public solTkAuthStatus: boolean = false;

@@ -31,7 +31,7 @@
                 <button class="align-center" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Volume" aria-label="Volume">
                     <mat-icon>volume_up</mat-icon>
                 </button>
-        
+
                 <mat-menu #menu="matMenu">
                     <mat-slider min="0" max="1" step="0.01" style="margin-left: 2em; margin-right: 2em;">
                         <input matSliderThumb [(ngModel)]="audioSource.volume">

@@ -45,7 +45,7 @@ export class SolacetkPagedPanelComponent implements OnInit {
     //this.model.name = this.model.name;
     this.modelChange.emit(this.model);
 
-    
+
     //this.model.nextStates = this.model.nextStates ? [...this.model.nextStates] : [];
   }
 

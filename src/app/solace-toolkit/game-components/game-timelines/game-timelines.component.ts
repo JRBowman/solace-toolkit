@@ -20,13 +20,13 @@ export class GameTimelinesComponent implements OnInit {
 
   }
 
-  public timelineLoaded() 
+  public timelineLoaded()
   {
     this.model.storyCards.sort((a, b) => { console.log(a.order - b.order); return a.order - b.order; });
 
     this.model.storyCards.forEach(e => {
       e.order = this.model.storyCards.indexOf(e);
-    }); 
+    });
   }
 
   public addStoryCard()
@@ -34,12 +34,12 @@ export class GameTimelinesComponent implements OnInit {
     this.model.storyCards = [...this.model.storyCards, new StoryCard()];
   }
 
-  public openCardsSheet() 
+  public openCardsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('StoryCards');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.storyCards = [...this.model.storyCards, ...models];
     });

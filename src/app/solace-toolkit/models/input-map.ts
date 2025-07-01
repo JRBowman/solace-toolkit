@@ -13,7 +13,7 @@ export class InputMap implements IModelTK {
 
     public mapType: EngineMappingType = EngineMappingType.None;
     public mappings: InputMapField[] = [];
-    
+
 }
 
 export enum EngineMappingType {

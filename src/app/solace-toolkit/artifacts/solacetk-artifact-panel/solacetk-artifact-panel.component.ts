@@ -18,7 +18,7 @@ export class SolacetkArtifactPanelComponent implements OnInit {
   @Output() idChange = new EventEmitter<number>();
 
   ngOnInit(): void {
-    
+
   }
 
 
@@ -27,7 +27,7 @@ export class SolacetkArtifactPanelComponent implements OnInit {
   }
 
   public UpdateArtifact(): void {
-    
+
   }
 
   public fileName: string = "";

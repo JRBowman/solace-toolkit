@@ -26,7 +26,7 @@ export class SolacetkSearchSheetComponent implements OnInit {
   public tagFilters: string = "";
 
   ngOnInit(): void {
-    
+
   }
 
   public LoadData(resoureUri: string, multiple: boolean = true, queryParameters: string = "") {

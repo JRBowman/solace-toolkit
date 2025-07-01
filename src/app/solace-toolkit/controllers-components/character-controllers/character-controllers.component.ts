@@ -47,7 +47,7 @@ export class CharacterControllersComponent implements OnInit {
 
     // Load Behavior:
     if (this.model.behaviorSystemId != undefined || this.model.behaviorSystemId != 0) {
-      
+
     }
   }
 
@@ -108,11 +108,11 @@ export class CharacterControllersComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/systems');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.behaviorSystemId = models[0].id ?? 0;
     });
-    
+
   }
 
   public GetPreviewUrl(model: any): string {

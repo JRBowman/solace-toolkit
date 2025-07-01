@@ -9,7 +9,7 @@ export class SolacetkCanvasGridComponent implements OnInit {
 
   constructor() {}
 
-  @ViewChild('canvas', { static: true }) 
+  @ViewChild('canvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
 
   @Input() sheetUrl: string = "https://api-dev.solacetk.onbowman.com/Ase/sector1-ext-0/sector1-ext-0.png";
@@ -65,7 +65,7 @@ export class SolacetkCanvasGridComponent implements OnInit {
         this._spriteWork.push(createImageBitmap(this.spriteSheet, x * sw, y * sh, sw, sh, { resizeQuality: "pixelated" }));
       }
     }
-    
+
     Promise.all(this._spriteWork).then((sprites) => {
       //   this.ctx?.drawImage(sprites[index], value.lx, value.ly);
       this.sprites = sprites;

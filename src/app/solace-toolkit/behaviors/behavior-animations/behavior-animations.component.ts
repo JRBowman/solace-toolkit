@@ -118,7 +118,7 @@ export class BehaviorAnimationsComponent implements OnInit {
     if (index == -1) {
       // Doesn't Exist, add it:
       console.log("adding new frame data");
-      
+
       this.selectedFrame.downstreamData = [...this.selectedFrame.downstreamData, model];
       console.log(this.selectedFrame.downstreamData);
     }

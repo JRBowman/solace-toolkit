@@ -58,7 +58,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
 
   private interval: any;
 
-  
+
   public spriteWidth: number = 48;
   public spriteHeight: number = 48;
   public zoomFactor: number = 4;
@@ -87,9 +87,9 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
         this.texName = this.texName.replace("-act", "");
         this.framesChange.emit(this.texName + ".json");
         console.log("loaded");
-        
+
       }
-      
+
     });
 
     this.framesChange.subscribe((url) => {
@@ -126,7 +126,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
               modelFrame.y = f.frame.y;
               //this.frameWidth = (f.sourceSize.w * this.zoomFactor);
               this.model?.frames.push(modelFrame);
-            } 
+            }
             else {
               frameSearch.duration = f.duration;
               frameSearch.frame = f;
@@ -216,7 +216,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   //     this.modelChange.emit(this.model);
   //   }
 
-    
+
   // }
 
   // public onGetStateData(event: SoltkKeyValue[])
@@ -242,7 +242,7 @@ export class SolacetkAnimationEditorComponent implements OnInit, AfterViewInit {
   // }
 
   ngAfterViewInit(): void {
-    
+
   }
 
   playAnimation() {

@@ -47,7 +47,7 @@ public moduleData: any = {};
     this.model.name = this.model.name;
     this.modelChange.emit(this.model);
 
-    
+
     //this.model.nextStates = this.model.nextStates ? [...this.model.nextStates] : [];
   }
 
@@ -60,11 +60,11 @@ public moduleData: any = {};
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Events');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.events = models;
     });
-    
+
   }
 
   public openBranchesSheet(query: string = "")
@@ -72,7 +72,7 @@ public moduleData: any = {};
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states', true, query);
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.behaviors = [...this.model.behaviors, ...models];
 

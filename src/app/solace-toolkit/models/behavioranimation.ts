@@ -15,7 +15,7 @@ export class BehaviorAnimation implements IModelTK {
     public actFrameData?: BehaviorAnimationData;
     public components: SolTkComponent[] = [];
     // public endFrameData?: BehaviorAnimationData;
-    
+
     public keys: SoltkKeyValue[] = [];
 }
 

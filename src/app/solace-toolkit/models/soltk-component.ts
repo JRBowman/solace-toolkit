@@ -34,7 +34,7 @@ export class SolTkComponent implements IModelTK {
     public componentType: SolTkComponentTypes = 0;
 
     public static readonly componentTypes?: string[] = [
-        "GeneralObject", "SpriteRenderer", "RayCastPoint", 
+        "GeneralObject", "SpriteRenderer", "RayCastPoint",
         "SoundEmitter", "TargetPoint", "PointFollower", "RotationTracker",
         "Light", "InputComponent", "AudioEffect", "VisualEffect", "ParticleSystem",
         "SpriteAnimator", "BehaviorAnimator", "PhysicsBody", "Collider", "Timeline",

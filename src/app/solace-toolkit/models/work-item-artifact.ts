@@ -8,5 +8,5 @@ export class WorkItemArtifact {
     public artifactUrl: string = "";
     public created: Date = new Date();
     public updated: Date = new Date();
-    
+
 }

@@ -45,8 +45,8 @@ export class WorkItemSheetEditorComponent implements OnInit {
     });
     this.Close();
   }
-  
-  
+
+
   public Close() {
     this._bottomSheetRef.dismiss(this.model);
     this.model = new WorkItem();

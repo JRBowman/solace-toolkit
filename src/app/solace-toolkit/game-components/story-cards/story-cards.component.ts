@@ -9,8 +9,8 @@ import { StoryCard } from '../../models/storycard';
   styleUrls: ['./story-cards.component.css']
 })
 export class StoryCardsComponent {
-  
-  constructor(private _bottomSheet: MatBottomSheet) { 
+
+  constructor(private _bottomSheet: MatBottomSheet) {
   }
 
   public model: StoryCard = new StoryCard();

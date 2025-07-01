@@ -72,12 +72,12 @@ export class SolacetkAttributesPanelComponent implements OnInit {
     if (!key.type) key.type = 0;
     key.type = (key.type + 1) % 3;
 
-    if (key.type == 1) 
+    if (key.type == 1)
     {
       key.floatData = Number(key.data);
       key.intData = 0;
     }
-    else if (key.type == 2) 
+    else if (key.type == 2)
     {
       key.intData = Math.floor(Number(key.data));
       key.floatData = 0;

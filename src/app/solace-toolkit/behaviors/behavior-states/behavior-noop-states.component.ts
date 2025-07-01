@@ -67,7 +67,7 @@ export class BehaviorNoopStatesComponent implements OnInit {
               if (this.model.nextStates == null) return;
               this.model.nextStates[index] = value.data ?? new BehaviorState();
               console.log(this.model.nextStates[index]);
-              
+
             });
     }
     this.unloadModules.emit(false);
@@ -88,7 +88,7 @@ export class BehaviorNoopStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states', true, query);
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       if (this.model.nextStates == null) this.model.nextStates = [];
       models.forEach(m => {
@@ -96,15 +96,15 @@ export class BehaviorNoopStatesComponent implements OnInit {
       });
       this.model.nextStates = [...this.model.nextStates, ...models];
     });
-    
+
   }
 
-  public openEventsSheet() 
+  public openEventsSheet()
   {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Events');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.events = [...this.model.events, ...models];
     });
@@ -115,11 +115,11 @@ export class BehaviorNoopStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/actions');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.events = models;
     });
-    
+
   }
 
   public openConditionsSheet()
@@ -127,18 +127,18 @@ export class BehaviorNoopStatesComponent implements OnInit {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/conditions');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.conditions = models;
     });
-    
+
   }
 
   public openNextStateSheet(): void {
     let instance = this._bottomSheet.open(SolacetkSearchSheetComponent);
     instance.instance.LoadData('Behaviors/states');
 
-    instance.instance.modelsSelected.subscribe((models) => 
+    instance.instance.modelsSelected.subscribe((models) =>
     {
       this.model.nextStates = models;
     });

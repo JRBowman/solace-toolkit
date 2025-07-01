@@ -1,24 +1,29 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Artifact } from '../models/artifact';
 import { ServiceHealthReport } from '../models/service-health-report';
 import { SolTkOperation } from '../models/soltk-operation';
+import { EnvironmentService } from '../../services/environment.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolacetkService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private envService: EnvironmentService) {
+    this.apiHost = this.envService.env.apiHost.endsWith('/')
+      ? this.envService.env.apiHost
+      : this.envService.env.apiHost + '/';
+    this.baseUrl = this.apiHost + this.apiVersion;
+  }
 
   //public baseUrl: string = "https://solacetk-api-bowman.apps.naps-rosa.l36y.p1.openshiftapps.com/api/v1/";
-  public apiVersion: string = "v1/";
+  public apiVersion: string = 'v1/';
   //public apiHost: string = "http://localhost:5010/"
   // public apiHost: string = environment.apiHost;
-  public apiHost: string = "/api/"
+  public apiHost: string = '/api/';
   public baseUrl: string = this.apiHost + this.apiVersion;
 
   public deepGetQuery: string = "?includeElements=true";
@@ -40,8 +45,9 @@ export class SolacetkService {
   }
 
   public GetServiceEnvironmentData(): void {
-    this.http.get("/serviceenvironment").subscribe((data) => {
-
+    this.envService.load().subscribe((env) => {
+      this.apiHost = env.apiHost.endsWith('/') ? env.apiHost : env.apiHost + '/';
+      this.baseUrl = this.apiHost + this.apiVersion;
     });
   }
 
@@ -90,7 +96,7 @@ export class SolacetkService {
   public CreateModel(route: string, model: any): Observable<any> {
     return this.http.post<any>(this.baseUrl  + route, model);
   }
-  
+
   public CreateModelOp<T>(route: string, model: T): Observable<SolTkOperation<T>> {
     return this.http.post<SolTkOperation<T>>(this.baseUrl  + route, model);
   }

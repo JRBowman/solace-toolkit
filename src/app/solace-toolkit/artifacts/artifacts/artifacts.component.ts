@@ -33,11 +33,11 @@ export class ArtifactsComponent implements OnInit {
 
     //if (!this.model.tags) this.model.tags = "";
     this.artifactFileUrl = this.artifactFileUrl.replace(".json", "");
-    
+
     // type value or 0:
     this.artifactType = this.ArtifactTypeLookup.find(x => x.extensions.includes(this.model?.artifactExtension ?? ""))?.typeValue ?? 0;
     // if (this.artifactType == 1) this.audioSource = this.soundService.loadAudioUrl(this.model.artifactName, this.model.artifactUrl);
-    // if (this.artifactType == 2) this.artifactImage = "<img height='100%' width='100%' src='" + this.soundService.apiHost + this.model.artifactUrl + "'>" 
+    // if (this.artifactType == 2) this.artifactImage = "<img height='100%' width='100%' src='" + this.soundService.apiHost + this.model.artifactUrl + "'>"
     //if (this.artifactType == 3) this.videoSource = this.soundService.LoadVideoUrl(this.model.artifactName, this.model.artifactUrl)
 
     // if (this.artifactType == 4) {
@@ -53,7 +53,7 @@ export class ArtifactsComponent implements OnInit {
     if (this.audioSource) {
       this.audioSource.pause();
       this.audioSource = undefined;
-    } 
+    }
 
   }
 
@@ -100,7 +100,7 @@ export class ArtifactsComponent implements OnInit {
       forkJoin(tasks).subscribe((values) => {
         this.refreshList.emit();
       });
-      
+
 
     }
   }

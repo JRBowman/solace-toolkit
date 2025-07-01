@@ -32,7 +32,7 @@ export class ParticleEmitterInterpolator implements IModelTK {
 
 }
 
-export enum EmitterInterpolator 
+export enum EmitterInterpolator
 {
     Color,
     Hue,

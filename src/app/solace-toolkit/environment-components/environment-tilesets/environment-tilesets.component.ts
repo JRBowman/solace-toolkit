@@ -19,7 +19,7 @@ export class EnvironmentTilesetsComponent implements OnInit {
 
   constructor(public soltkService: SolacetkService, public menuService: SolacetkMenuProviderService) { }
 
-  // @ViewChild('canvas', { static: true }) 
+  // @ViewChild('canvas', { static: true })
   // canvas!: ElementRef<HTMLCanvasElement>;
 
   private ctx?: CanvasRenderingContext2D;
@@ -66,7 +66,7 @@ export class EnvironmentTilesetsComponent implements OnInit {
     //this.ctx?.scale(4, 4);
     //this.imageData = this.ctx?.getImageData(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
   }
-  
+
   loadEditor() {
 
     // Load Data related to the Model:
@@ -90,7 +90,7 @@ export class EnvironmentTilesetsComponent implements OnInit {
       //this.imageData = this.ctx?.createImageData()
       //this.ctx?.drawImage(this.tileImage, 0, 0);
       // this.imageData = this.ctx?.getImageData(0, 0, this.textureWidth, this.textureHeight) ?? new ImageData(384, 384);
-      
+
       // this.ctx?.scale(3, 3);
 
       // Slices:
@@ -107,14 +107,14 @@ export class EnvironmentTilesetsComponent implements OnInit {
         //   tile.height = slice.keys[0].bounds.h;
         //   tile.name = slice.name;
         //   this.model.tiles = [...this.model.tiles, tile];
-          
+
         // });
       }
 
 
-      
+
       //this.spriteSheet.src = this.profileUrl + ".png";
-      
+
 
 
     });
@@ -140,7 +140,7 @@ export class EnvironmentTilesetsComponent implements OnInit {
 
     if (tile.rules == null || tile.rules.length == 0) this.loadRules();
     //if (!tile.physicsShapeModel || tile.physicsShapeModel.points?.length == 0) this.loadShapeEditor();
-    
+
     console.log("tile selected!");
   }
 
@@ -151,7 +151,7 @@ export class EnvironmentTilesetsComponent implements OnInit {
       tile.selected = !tile.selected;
   }
 
-  public setTilesColorKey(): void 
+  public setTilesColorKey(): void
   {
     this.selectedCells.forEach(tile => {
       tile.colorKey = this.groupColorKey;
@@ -182,9 +182,9 @@ export class EnvironmentTilesetsComponent implements OnInit {
       this.selectedCells = new Array<any>();
     }
   }
-  
+
   public openTileCreationMenu(): void {
-    this.menuService.OpenDialog(TileCreationDialogComponent, { data: this.model.tiles }).afterClosed().subscribe((x) => 
+    this.menuService.OpenDialog(TileCreationDialogComponent, { data: this.model.tiles }).afterClosed().subscribe((x) =>
     {
       this.model.tiles = [...this.model.tiles, ...x];
       this.selectTile(x[0]);

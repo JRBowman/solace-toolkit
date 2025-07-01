@@ -150,7 +150,7 @@ export class ProjectsComponent implements OnInit {
       );
     }
     event.item.data = this.UpdateWorkItem(event.item.data);
-    
+
     this.ReportHours(true);
   }
 

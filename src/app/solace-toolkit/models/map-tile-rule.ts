@@ -36,7 +36,7 @@ export enum RuleDirection
 }
 
 export enum RuleCheckType
-{ 
+{
     Disabled,
     Empty,
     Any,
