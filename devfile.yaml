@@ -20,7 +20,7 @@ components:
   - container:
       cpuLimit: '2000m'
       cpuRequest: '500m'
-      image: 'registry.redhat.io/devspaces/udi-rhel8:latest'
+      image: 'registry.redhat.io/devspaces/udi-rhel9:latest'
       memoryLimit: 4G
       memoryRequest: 1384Mi
       mountSources: true
