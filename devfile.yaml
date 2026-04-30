@@ -18,8 +18,6 @@ projects:
         origin: https://github.com/JRBowman/solace-toolkit.git
 components:
   - container:
-      command:
-        - /checode/entrypoint-volume.sh
       cpuLimit: '2000m'
       cpuRequest: '500m'
       image: 'registry.redhat.io/devspaces/udi-rhel8:latest'
@@ -30,8 +28,6 @@ components:
       volumeMounts:
         - name: npm
           path: /home/user/.npm
-        - name: checode
-          path: /checode
     name: tools
   - name: npm
     volume:
